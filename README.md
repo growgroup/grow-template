@@ -91,7 +91,7 @@ dist ディレクトリ内に展開します。
 jade-settings.json ファイルの値を変更することで、
 自動的に変数に値がセットされ、HTMLにコンパイル時に反映されます。
 
-```json
+```json5
 {
   "general" : {
     "title" : "Grow Template", // サイト名
