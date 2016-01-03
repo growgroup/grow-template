@@ -22,7 +22,7 @@ Homebrew、もしくはその他の方法でインストールすること。
 
 ## インストール
 
-```
+```shell
 git clone https://github.com/growgroup/grow-template
 ```
 
@@ -30,7 +30,7 @@ git clone https://github.com/growgroup/grow-template
 
 ディレクトリの用意ができたら下記のコマンドを入力してください。
 
-```
+```shell
 npm run-script init
 ```
 
@@ -42,7 +42,7 @@ npm install と bower install コマンドが実行されます。
 基本的に、app ディレクトリ内の静的ファイルを Gulp で操作後、
 dist ディレクトリ内に展開します。
 
-```
+```json
 .
 ├── README.md
 ├── app
@@ -91,7 +91,7 @@ dist ディレクトリ内に展開します。
 jade-settings.json ファイルの値を変更することで、
 自動的に変数に値がセットされ、HTMLにコンパイル時に反映されます。
 
-```
+```json
 {
   "general" : {
     "title" : "Grow Template", // サイト名
@@ -151,8 +151,10 @@ app/assets/scss/style.scss をメインファイルとして、base/, layout/, c
 
 * 例 :
 
-```
-font-size: rem-calc(15);
+```css
+p {
+  font-size: rem-calc(15);
+}
 ```
 
 px から rem へ変換します。

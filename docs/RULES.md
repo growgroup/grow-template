@@ -11,12 +11,12 @@
 
 タグ、属性ともに小文字で記述すること。
 
-```
+```html
 <!-- Bad -->
 <a HREF="#"></a>
 ```
 
-```
+```html
 <!-- Good -->
 <a href="#"></a>
 ```
@@ -24,38 +24,38 @@
 ##### ID 属性についてはスタイル目的として利用しない
 ID 属性は JavaScript で利用する時のみ付与する
 
-```
+```html
 <!-- Bad -->
 <a href="" id="button-primary"></a>
 ```
 
-```
+```html
 <!-- Good -->
 <a href="" class="button-primary"></a>
 ```
 
 ##### img タグには alt 属性を必ず記述する
 Alt 属性に適切な値がない場合は、空状態で記述すること。
-```
+```html
 <!-- Bad -->
 <img src="/hoge.png">
 ```
 
-```
+```html
 <!-- Good -->
 <img src="/hoge.png" alt="">
 ```
 
 ##### インデントはスペースを2つで表現する
 インデントはスペース2つで表現する
-```
+```html
 <!-- Bad -->
 <div>
     <a href="#">hoge</a>
 </div>
 ```
 
-```
+```html
 <!-- Good -->
 <div>
   <a href="#">hoge</a>
@@ -64,12 +64,12 @@ Alt 属性に適切な値がない場合は、空状態で記述すること。
 
 ##### HTML引用符
 属性値の引用符は、ダブルクオーテーション(")を使用する。
-```
+```html
 <!-- Bad -->
 <a class='maia-button maia-button-secondary'>Sign in</a>
 ```
 
-```
+```html
 <!-- Good -->
 <a class="maia-button maia-button-secondary">Sign in</a>
 ```
@@ -81,7 +81,7 @@ HTML(構造)とCSS(見た目)とScript(振る舞い)は独立させて、3つの
 見た目に関するあらゆる内容はCSSへ、振る舞いに関してはScriptへ記述する。  
 HTMLからCSSやScriptへのリンクはなるべく減らし（まとめて）、互いのファイル間の接触部分をなるべく少なくする。  
 メンテナンス面を考慮すれば、構造、見た目、振る舞いの分離は重要。CSSやScriptの更新よりも、HTMLドキュメントやテンプレートの修正コストのほうが常に大きい。  
-```
+```html
 <!-- Bad -->
 <!DOCTYPE html>
 <title>HTML sucks</title>
@@ -94,7 +94,8 @@ HTMLからCSSやScriptへのリンクはなるべく減らし（まとめて）�
 <center>I can’t believe there’s no way to control the styling of
   my website without doing everything all over again!</center>
 ```
-```
+
+```html
 <!-- Good -->
 <!DOCTYPE html>
 <title>My first CSS-only redesign</title>
@@ -105,21 +106,18 @@ HTMLからCSSやScriptへのリンクはなるべく減らし（まとめて）�
   my website that is presentational.
 <p>It’s awesome!
 ```
-* img タグには Alt 属性を必ず付与する
-* インデントはスペース2つとする
-* JavaScript で操作する目的以外の style 属性は利用しないこと
-* インラインCSS, JavaScript は極力さけること
-
 
 ##### 実体参照
 
 UTF-8において、&mdash;, &rdquo;, or &#x263a;などの実体参照を使用する必要はない。  
 例外としてHTMLで特別な意味を持つ"<"や"&"には使用する。  
-```
+
+```html
 <!-- Bad -->
 The currency symbol for the Euro is &ldquo;&eur;&rdquo;.
 ```
-```
+
+```html
 <!-- Good -->
 The currency symbol for the Euro is “€”.
 ```
