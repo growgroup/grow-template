@@ -143,7 +143,7 @@ jade-settings.json ファイルの値を変更することで、
 
 本テンプレートでは SCSS 記法を採用しています。
 
-app/assets/scss/style.scss をメインファイルとして、base/, layout/, components/ フォルダ内の .scss ファイルをすべてインクルードしています。
+```app/assets/scss/style.scss``` をメインファイルとして、```base/```, ```layout/```, ```components/``` フォルダ内の .scss ファイルをすべてインクルードしています。
 
 ##### Function & mixin
 
@@ -172,7 +172,7 @@ JavaScript の構文チェッカーとして ESLint を採用しています。
 
 ### Bower
 
-本テンプレートでは、bower_components 内に ``` bower install ``` コマンドで追加したパッケージが格納されます。
+本テンプレートでは、```bower_components``` ディレクトリ内に ``` bower install ``` コマンドで追加したパッケージが格納されます。
 
 また、wiredep を採用していますので、gulp 実行時に ``` bower install {package-name} ``` コマンドを実行することで、
 自動的に Jade に インストールしたパッケージのメインファイルが反映されます。
