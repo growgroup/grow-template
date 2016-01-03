@@ -1,0 +1,26 @@
+//- filename: index.jade
+//- description: サイトのトップページ
+
+extends inc/core/_base
+
+block title
+    title #{pages.home.title}
+
+block meta
+    meta(name='description', content=pages.home.description)
+    meta(name='keywords', content=pages.home.keywords)
+    meta(name="viewport", content=general.viewport)
+
+block append meta
+
+    //- body タグのクラスを設定
+    - var bodyClass = "home";
+
+block body
+
+    main
+        section.l-main
+            h1 Grow Template
+
+        section.l-sidebar
+

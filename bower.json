@@ -1,0 +1,12 @@
+{
+  "name": "grow-template",
+  "description": "Grow Template - Using Gulp, Jade & Sass.",
+  "main": "index.js",
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "devDependencies": {},
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
