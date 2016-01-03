@@ -2,7 +2,6 @@
   "name": "grow-template",
   "version": "1.0.0",
   "description": "Grow Template - Using Gulp, Jade & Sass.",
-
   "scripts": {
     "init": "npm install && bower install",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -41,6 +40,7 @@
     "gulp-util": "^3.0.7",
     "main-bower-files": "^2.11.0",
     "run-sequence": "^1.1.5",
+    "sc5-styleguide": "^0.3.41",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "wiredep": "^3.0.0"

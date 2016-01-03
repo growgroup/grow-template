@@ -16,6 +16,7 @@
  *
  */
 
+
 'use strict';
 
 /**
@@ -34,8 +35,7 @@ import babelify from 'babelify';
 import mainBowerFiles from 'main-bower-files';
 import {stream as wiredep} from 'wiredep';
 import del from 'del';
-
-
+import styleguide from "sc5-styleguide";
 import gulpLoadPlugins from 'gulp-load-plugins';
 import pkg from './package.json';
 import jadeSettingFile from './jade-settings.json';
@@ -45,8 +45,14 @@ import jadeSettingFile from './jade-settings.json';
  * # 定数の定義
  * =================================
  */
+
+// gulp-**** と名のつくパッケージは $.****で呼び出せるように
 const $ = gulpLoadPlugins();
+
+// browserSync.reload のエイリアス
 const reload = browserSync.reload;
+
+// bower メインファイルの配列
 const bowerFiles = mainBowerFiles();
 
 /**
@@ -54,15 +60,17 @@ const bowerFiles = mainBowerFiles();
  * # 設定
  * =================================
  */
+
 var appPath = "app";
 var distPath = "dist";
 
+// スタイルガイドのアウトプット先
+var sg5OutputPath = "styleguides";
 
 var config = {};
 
 /**
- * Browser Sync 設定
- * @type {{notify: boolean, open: boolean, ghostMode: {clicks: boolean, forms: boolean, scroll: boolean}, tunnel: boolean}}
+ * 設定 - Browser Sync
  */
 config.browserSync = {
     notify: true,
@@ -77,8 +85,7 @@ config.browserSync = {
 }
 
 /**
- * Sass 設定
- * @type {{}}
+ * 設定 - Sass
  */
 config.sass = {
     src: appPath + "/assets/scss/*.scss",
@@ -86,8 +93,7 @@ config.sass = {
 }
 
 /**
- * JavaScript 設定
- * @type {{}}
+ * 設定 - JavaScript
  */
 config.js = {
     src: [
@@ -100,8 +106,7 @@ config.js = {
 
 
 /**
- * Jade 設定
- * @type {{}}
+ * 設定 - Jade
  */
 config.jade = {
     src: appPath + "/*.jade",
@@ -113,6 +118,7 @@ config.jade = {
 /**
  * =================================
  * # Sass
+ * Sass のコンパイル
  * =================================
  */
 gulp.task('styles', () => {
@@ -134,6 +140,7 @@ gulp.task('styles', () => {
 /**
  * =================================
  * # BrowserSync
+ * BrowserSync の立ち上げ
  * =================================
  */
 gulp.task('browserSync', () => {
@@ -143,6 +150,7 @@ gulp.task('browserSync', () => {
 /**
  * =================================
  * # Jade
+ * Jade テンプレートのコンパイル
  * =================================
  */
 gulp.task('jade', () => {
@@ -161,9 +169,10 @@ gulp.task('jade', () => {
 /**
  * =================================
  * # HTML
+ * useref で HTMLファイルを監視
  * =================================
  */
-gulp.task('html', ()=>{
+gulp.task('html', ()=> {
     return gulp.src(distPath + "/**/*.html")
         .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
         .pipe(gulp.dest(distPath));
@@ -171,7 +180,8 @@ gulp.task('html', ()=>{
 
 /**
  * =================================
- * # Jade
+ * # Scripts
+ * Js の concat, uglify
  * =================================
  */
 gulp.task('scripts', () => {
@@ -193,6 +203,7 @@ gulp.task('scripts', () => {
 /**
  * =================================
  * # Lint
+ * ESLint の動作
  * =================================
  */
 gulp.task('lint', () => {
@@ -205,12 +216,13 @@ gulp.task('lint', () => {
 /**
  * =================================
  * # Watch
+ * ファイルを監視
  * =================================
  */
 gulp.task('watch', ['browserSync'], ()=> {
 
     gulp.watch([appPath + '/**/**/*.jade'], ['jade', reload]);
-    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
+    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide', reload]);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
     gulp.watch([appPath + '/assets/images/**/*'], reload);
     gulp.watch([distPath + '/**/*.html'], ['html', reload]);
@@ -220,9 +232,9 @@ gulp.task('watch', ['browserSync'], ()=> {
 /**
  * =================================
  * # Copy
+ * dist ディレクトリへ app ディレクトリからファイルをコピー
  * =================================
  */
-
 gulp.task('copy', () =>
     gulp.src([
             'app/*',
@@ -238,10 +250,17 @@ gulp.task('copy', () =>
 /**
  * =================================
  * # Clean
+ * dist ディレクトリ内をすべて削除
  * =================================
  */
 gulp.task('clean', cb => del(['dist/*', '!dist/.git'], {dot: true}));
 
+/**
+ * =================================
+ * # Wiredep
+ * bower で追加、削除したパッケージを jade テンプレートに反映
+ * =================================
+ */
 gulp.task('wiredep', () => {
     gulp.src('app/**/*.jade')
         .pipe(wiredep({
@@ -253,7 +272,43 @@ gulp.task('wiredep', () => {
 
 /**
  * =================================
+ * # Style Guide
+ * ./styleguides/ 配下にスタイルガイドを出力
+ * =================================
+ */
+
+gulp.task('styleguide:generate', () => {
+    return gulp.src(appPath + "/assets/scss/**/*.scss")
+        .pipe(styleguide.generate({
+            title: 'Styleguide',
+            server: true,
+            rootPath: sg5OutputPath,
+            overviewPath: 'README.md'
+        }))
+        .pipe(gulp.dest(sg5OutputPath));
+});
+
+gulp.task('styleguide:serve', () => {
+    browserSync({
+        notify: true,
+        open: true,
+        port: 3003,
+        ghostMode: {
+            clicks: true,
+            forms: true,
+            scroll: false
+        },
+        tunnel: false,
+        server: ['./styleguides'],
+    })
+});
+
+gulp.task('styleguide', ['styleguide:generate','styleguide:serve']);
+
+/**
+ * =================================
  * # Default
+ * gulp コマンドで呼び出されるデフォルトのタスク
  * =================================
  */
 gulp.task('default', ['clean'], cb => {
