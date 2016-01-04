@@ -29,7 +29,7 @@ import gulp from 'gulp';
 import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
 import buffer from 'vinyl-buffer';
-import source from 'vinyl-source-stream';
+import stream from 'vinyl-source-stream';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import mainBowerFiles from 'main-bower-files';
@@ -104,6 +104,13 @@ config.js = {
     dist: distPath + "/assets/js/",
 }
 
+/**
+ * 設定 - Babel
+ */
+config.babel = {
+    src: appPath + "/assets/es6/index.es6",
+    dist: distPath + "/assets/js/",
+}
 
 /**
  * 設定 - Jade
@@ -114,6 +121,14 @@ config.jade = {
     settingsFilePath: "./jade-settings.json",
 }
 
+
+/**
+ * 設定 - Images
+ */
+config.images = {
+    src: appPath + "/assets/images/**/*",
+    dist: distPath + "/assets/images",
+}
 
 /**
  * =================================
@@ -174,7 +189,9 @@ gulp.task('jade', () => {
  */
 gulp.task('html', ()=> {
     return gulp.src(distPath + "/**/*.html")
-        .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
+        .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
+        .pipe($.useref({searchPath: ['app', '.']}))
+        .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
         .pipe(gulp.dest(distPath));
 });
 
@@ -188,17 +205,36 @@ gulp.task('scripts', () => {
     return gulp.src(config.js.src)
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe($.sourcemaps.init())
-        .pipe($.babel())
+        .pipe($.concat('main.js'))
+        .pipe($.uglify({compress: true}))
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest(config.js.dist))
-        .pipe($.concat('main.min.js'))
-        .pipe($.uglify({preserveComments: 'some'}))
         .pipe($.size({title: 'scripts'}))
         .pipe($.sourcemaps.write('.'))
         .pipe(reload({stream: true}))
         .pipe($.notify("Scripts Task Completed!"));
 });
 
+/**
+ * =================================
+ * # Babel
+ * es6 のコンパイル
+ * =================================
+ */
+gulp.task('babel', ()=> {
+    browserify({
+        entries: [config.babel.src]
+    })
+        .transform(babelify)
+        .bundle()
+        .on("error", function (err) {
+            console.log("Error : " + err.message);
+        })
+        .pipe(stream('index.js'))
+        .pipe(buffer())
+        .pipe(gulp.dest(config.babel.dist))
+        .pipe($.notify({message: 'Babel task complete！'}));
+});
 
 /**
  * =================================
@@ -222,6 +258,7 @@ gulp.task('lint', () => {
 gulp.task('watch', ['browserSync'], ()=> {
 
     gulp.watch([appPath + '/**/**/*.jade'], ['jade', reload]);
+    gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide', reload]);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
     gulp.watch([appPath + '/assets/images/**/*'], reload);
@@ -237,11 +274,13 @@ gulp.task('watch', ['browserSync'], ()=> {
  */
 gulp.task('copy', () =>
     gulp.src([
-            'app/*',
-            '!app/inc',
-            '!app/*.jade',
+            'app/**/*',
+            'app/fonts',
+            '!./app/inc',
+            '!./app/*.jade',
         ], {
-            dot: true
+            dot: true,
+            base : "app"
         })
         .pipe(gulp.dest('dist'))
         .pipe($.size({title: 'copy'}))
@@ -268,6 +307,24 @@ gulp.task('wiredep', () => {
         }))
         .pipe(gulp.dest(appPath));
 });
+
+/**
+ * =================================
+ * # Images
+ * 画像の最適化
+ * =================================
+ */
+
+gulp.task('images', () =>
+    gulp.src(config.images.src)
+        .pipe($.plumber())
+        .pipe($.cache($.imagemin({optimizationLevel: 8, progressive: true, interlaced: true})))
+        .pipe(gulp.dest(config.images.dist))
+        .pipe($.notify({message: 'Images task complete!'}))
+        .pipe($.size({title: 'images'}))
+);
+
+
 
 
 /**
@@ -304,7 +361,7 @@ gulp.task('styleguide:serve', () => {
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:generate', reload]);
 });
 
-gulp.task('styleguide', ['styleguide:generate','styleguide:serve']);
+gulp.task('styleguide', ['styleguide:generate', 'styleguide:serve']);
 
 /**
  * =================================
@@ -315,9 +372,24 @@ gulp.task('styleguide', ['styleguide:generate','styleguide:serve']);
 gulp.task('default', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'jade', 'scripts', 'copy'],
+        ['lint', 'jade', 'scripts', 'copy', 'babel'],
         'html',
         'watch',
+        cb
+    )
+});
+
+/**
+ * =================================
+ * # Build
+ * gulp コマンドで呼び出されるデフォルトのタスク
+ * =================================
+ */
+gulp.task('build', ['clean'], cb => {
+    runSequence(
+        'styles',
+        ['lint', 'jade', 'scripts', 'copy', 'babel','images'],
+        'html',
         cb
     )
 });

@@ -22,7 +22,8 @@
       "assets/css/style.css"
     ],
     "scripts": [
-      "assets/js/main.js"
+      "assets/js/main.js",
+      "assets/js/index.js"
     ]
   },
 

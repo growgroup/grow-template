@@ -6,6 +6,7 @@
     /**
      * ページトップヘ戻る
      */
+
     growTemplate.prototype.pageTop = function () {
         $('.js-pagetop').on('click', function (e) {
             e.preventDefault();
