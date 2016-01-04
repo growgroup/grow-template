@@ -2,6 +2,9 @@
   "name": "grow-template",
   "version": "1.0.0",
   "description": "Grow Template - Using Gulp, Jade & Sass.",
+  "engines": {
+    "node": ">=5.0.0"
+  },
   "scripts": {
     "init": "npm install && bower install",
     "test": "echo \"Error: no test specified\" && exit 1"

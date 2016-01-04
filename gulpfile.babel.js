@@ -300,7 +300,8 @@ gulp.task('styleguide:serve', () => {
         },
         tunnel: false,
         server: ['./styleguides'],
-    })
+    });
+    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:generate', reload]);
 });
 
 gulp.task('styleguide', ['styleguide:generate','styleguide:serve']);
