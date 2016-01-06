@@ -4,7 +4,7 @@
 /// @param {Number} $base [null] - The base value to use when calculating the `rem`. If you're using Foundation out of the box, this is 16px. If this parameter is `null`, the function will reference the `$base-font-size` variable as the base.
 ///
 /// @returns {List} A list of converted values.
-$global-font-size: "14px" !default;
+$global-font-size: 14 !default;
 
 @function rem-calc($values, $base: null) {
   $rem-values: ();
@@ -28,7 +28,13 @@ $global-font-size: "14px" !default;
 
   @return $rem-values;
 }
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
 
+  @return $number;
+}
 
 @function to-rem($value, $base: null) {
 
