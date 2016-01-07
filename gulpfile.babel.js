@@ -301,7 +301,8 @@ gulp.task('clean', cb => del(['dist/*', '!dist/.git'], {dot: true}));
  * =================================
  */
 gulp.task('wiredep', () => {
-    gulp.src('app/**/*.jade')
+    gulp.src(['app/**/*.jade','app/*.jade'])
+        .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe(wiredep({
             ignorePath: /^(\.\.\/)*\.\./
         }))

@@ -1,0 +1,87 @@
+// 変数設定
+//
+// プロジェクトのCSSで利用する変数を定義
+
+// # 1. Color
+$color-primary: "" !default; // プライマリカラー
+$color-secondary: "" !default; // セカンダリカラー
+$color-tertiary: "" !default; // ターシャリカラー
+
+$color-white: "#fff" !default; // 白
+$color-black: "#252525" !default; // 黒
+$color-darkgray: "#666" !default; // 濃い灰色
+$color-gray: "#999" !default; // 灰色
+$color-lightgray: "#ccc" !default; // 薄い灰色
+
+$color-state-danger: "" !default; // 危険
+$color-state-warning: "" !default; // 警告
+$color-state-info: "" !default; // お知らせ
+$color-state-success: "" !default; // 成功
+
+
+
+// # 2. Grid
+
+$grid-row-width: "" !default; // グリッドの幅
+$grid-column-count: "12" !default; // グリッド数
+$grid-column-responsive-gutter: (  // カラムとカラムの間隔
+        small: 20px, // モバイル
+        medium: 30px, // タブレット以上
+);
+
+
+// # 3. font
+
+$font-base-size: "" !default; // body のフォントサイズ
+$font-base-color: "" !default; // body のフォントサイズ
+
+$font-base-family: "" !default; // フォントファミリー
+$font-base-weight: "" !default; // フォント幅
+$font-base-style: "" !default; // フォントスタイル
+
+$font-heading-sizes: ( // 見出しのフォントサイズ
+        small: (
+                'h1': 24,
+                'h2': 20,
+                'h3': 19,
+                'h4': 18,
+                'h5': 17,
+                'h6': 16,
+        ),
+        medium: (
+                'h1': 48,
+                'h2': 40,
+                'h3': 31,
+                'h4': 25,
+                'h5': 20,
+                'h6': 16,
+        ),
+);
+
+$font-heading-color : $font-base-color !default; // 見出しカラー
+
+$font-small-size: $font-base-size/0.8 !default; // <small> フォントサイズ
+$font-small-color: "" !default; // <small> フォントサイズ
+
+$font-small-size: $font-base-size/0.8 !default; // <small> フォントサイズ
+
+// # 4. Margin
+
+$margin-base: 8px; !default;
+$margin-xlg: $margin-base*10; !default;
+$margin-lg: $margin-base*6; !default;
+$margin-md: $margin-base*2; !default;
+$margin-sm: $margin-base/2; !default;
+$margin-xs: $margin-base/4; !default;
+
+// # 5. border
+
+$border-base-color: $color-lightgray !default;
+$border-base-width: 1px !default;
+
+$border-radius: 3px !default;
+$border-radius-xlg: $border-radius*4 !default;
+$border-radius-lg: $border-radius*3 !default;
+$border-radius-md: $border-radius*2 !default;
+$border-radius-sm: $border-radius/2 !default;
+$border-radius-xs: $border-radius/3 !default;
