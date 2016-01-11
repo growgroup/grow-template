@@ -272,19 +272,33 @@ gulp.task('watch', ['browserSync'], ()=> {
  * dist ディレクトリへ app ディレクトリからファイルをコピー
  * =================================
  */
-gulp.task('copy', () =>
-    gulp.src([
+gulp.task('copy:bower', () => {
+    return gulp.src([
+            'bower_components/',
+            'bower_components/*',
+        ], {
+            dot: true,
+            base: "./"
+        })
+        .pipe(gulp.dest('dist'))
+        .pipe($.size({title: 'copy'}))
+});
+
+gulp.task('copy:app', () => {
+    return gulp.src([
             'app/**/*',
             'app/fonts',
             '!./app/inc',
             '!./app/*.jade',
         ], {
             dot: true,
-            base : "app"
+            base: "app"
         })
         .pipe(gulp.dest('dist'))
-        .pipe($.size({title: 'copy'}))
-);
+        .pipe($.size({title: 'copy'}));
+});
+
+gulp.task('copy', ['copy:app', 'copy:bower']);
 
 /**
  * =================================
@@ -301,13 +315,13 @@ gulp.task('clean', cb => del(['dist/*', '!dist/.git'], {dot: true}));
  * =================================
  */
 gulp.task('wiredep', () => {
-    gulp.src('app/**/*.jade')
+    gulp.src(appPath + '/**/*.jade')
+        .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe(wiredep({
             ignorePath: /^(\.\.\/)*\.\./
         }))
         .pipe(gulp.dest(appPath));
 });
-
 /**
  * =================================
  * # Images
@@ -323,8 +337,6 @@ gulp.task('images', () =>
         .pipe($.notify({message: 'Images task complete!'}))
         .pipe($.size({title: 'images'}))
 );
-
-
 
 
 /**
@@ -388,7 +400,7 @@ gulp.task('default', ['clean'], cb => {
 gulp.task('build', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'jade', 'scripts', 'copy', 'babel','images'],
+        ['lint', 'jade', 'scripts', 'copy', 'babel', 'images'],
         'html',
         cb
     )
