@@ -34,21 +34,23 @@ html
 
         //- スタイルシート
         block stylesheet
+            // build:css assets/css/vendor.css
+            // bower:css
+            // endbower
+            // endbuild
             each stylesheet in assets.styles
                 link(rel='stylesheet', href=stylesheet)
 
         //- ヘッダーに組み込むスクリプト
         block head_script
-            != '\n<!--[if lt IE 9]>'
-            script(src="shared/js/lib/html5shiv/html5shiv-printshiv.js")
-            != '\n<![endif]-->'
+
 
 
     body(class="#{bodyClass}")
 
         //- ヘッダー
         block header
-            include ../layouts/_header
+            include ../layout/_header
 
         //- メインコンテンツ
         block body
@@ -56,7 +58,7 @@ html
 
         //- フッター
         block footer
-            include ../layouts/_footer
+            include ../layout/_footer
 
         //- フッターに組み込むスクリプト
         block footer_scripts

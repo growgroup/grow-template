@@ -259,7 +259,7 @@ gulp.task('watch', ['browserSync'], ()=> {
 
     gulp.watch([appPath + '/**/**/*.jade'], ['jade', reload]);
     gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
-    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide', reload]);
+    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
     gulp.watch([appPath + '/assets/images/**/*'], reload);
     gulp.watch([distPath + '/**/*.html'], ['html', reload]);
@@ -315,7 +315,7 @@ gulp.task('clean', cb => del(['dist/*', '!dist/.git'], {dot: true}));
  * =================================
  */
 gulp.task('wiredep', () => {
-    gulp.src(appPath + '/**/*.jade')
+    gulp.src(['app/**/*.jade', 'app/*.jade'])
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe(wiredep({
             ignorePath: /^(\.\.\/)*\.\./
@@ -347,30 +347,28 @@ gulp.task('images', () =>
  */
 
 gulp.task('styleguide:generate', () => {
-    return gulp.src(appPath + "/assets/scss/**/*.scss")
+    return gulp.src([appPath + "/assets/scss/style.scss", appPath + "/assets/scss/**/*.scss"])
         .pipe(styleguide.generate({
-            title: 'Styleguide',
+            title: 'Grow Template',
             server: true,
+            port: 8888,
             rootPath: sg5OutputPath,
             overviewPath: 'README.md'
         }))
         .pipe(gulp.dest(sg5OutputPath));
 });
-
+gulp.task('styleguide:applystyles', function () {
+    return gulp.src(appPath + "/assets/scss/style.scss")
+        .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
+        .pipe($.cssGlobbing({extensions: ['.css', '.scss']}))
+        .pipe($.sass({
+            errLogToConsole: true
+        }))
+        .pipe(styleguide.applyStyles())
+        .pipe(gulp.dest(sg5OutputPath));
+});
 gulp.task('styleguide:serve', () => {
-    browserSync({
-        notify: true,
-        open: true,
-        port: 3003,
-        ghostMode: {
-            clicks: true,
-            forms: true,
-            scroll: false
-        },
-        tunnel: false,
-        server: ['./styleguides'],
-    });
-    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:generate', reload]);
+    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
 });
 
 gulp.task('styleguide', ['styleguide:generate', 'styleguide:serve']);

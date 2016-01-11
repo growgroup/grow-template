@@ -1,0 +1,58 @@
+// ベース
+//
+// Styleguide 1.0.0
+
+// 見出し
+//
+// Styleguide 1.1.0
+
+.heading {
+  small {
+    font-size: 0.65em;
+    color: $color-gray;
+  }
+}
+
+// 見出し - 極大
+//
+// markup:
+// <h1 class="heading heading--xlg">見出し - 極大 <small>heading top</small</h1>
+//
+// Styleguide 1.1.1
+
+.heading--xlg {
+  font-size: map-get(map-get($font-heading-sizes,"medium"), "h1");
+}
+
+// 見出し - 大
+//
+// markup:
+// <h1 class="heading heading--lg">見出し:大 <small>heading large</small</h1>
+//
+// Styleguide 1.1.2
+
+.heading--lg {
+  font-size: map-get(map-get($font-heading-sizes,"medium"), "h2");
+}
+
+// 見出し - 中
+//
+// markup:
+// <h1 class="heading heading--md">見出し:中 <small>heading middle</small</h1>
+//
+// Styleguide 1.1.3
+
+.heading--md {
+  font-size: map-get(map-get($font-heading-sizes,"medium"), "h3");
+}
+
+// 見出し - 小
+//
+// markup:
+// <h1 class="heading heading--sm">見出し:小 <small>heading small</small</h1>
+//
+// Styleguide 1.1.4
+
+.heading--sm {
+  font-size: map-get(map-get($font-heading-sizes,"medium"), "h4");
+}

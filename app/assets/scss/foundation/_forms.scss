@@ -1,0 +1,86 @@
+// フォーム
+//
+// Styleguide 1.6.0
+.form-group {
+  label {
+    //font-size: $font-base-size;
+    font-weight: bold;
+    margin-bottom: $margin-base;
+    display: block;
+  }
+}
+
+// テキストボックス
+//
+// markup:
+// <div class="form-group">
+//     <label>テキストボックス</label>
+//     <input type="text" value="テキストボックス">
+// </div>
+//
+// Styleguide 1.6.1
+input[type="text"],
+input[type="url"],
+input[type="search"],
+input[type="email"],
+input[type="tel"] {
+  font-size: $font-base-size;
+  line-height: 1.8;
+  border: $border-base-width solid $border-base-color;
+  border-radius: $border-radius;
+  padding: $margin-sm $margin-base;
+  max-width: 100%;
+  width: 100%;
+  @include hover(.2s, linear);
+  &:focus,
+  &:active {
+    box-shadow: none;
+    outline: 2px solid $color-primary;
+  }
+}
+
+// テキストエリア
+//
+// markup:
+// <textarea row="100" col="50" name="" placeholder="テキストエリア"></textarea>
+//
+// Styleguide 1.6.2
+textarea {
+  border: $border-base-width solid $border-base-color;
+  border-radius: $border-radius;
+  max-width: 100%;
+  width: 100%;
+  padding: $margin-sm $margin-base;
+  @include hover(.2s, linear);
+  &:focus,
+  &:active {
+    box-shadow: none;
+    outline: 2px solid $color-primary;
+  }
+}
+
+// チェックボックス
+//
+// markup:
+// <label for="checkbox"><input id="checkbox" type="checkbox" value="1"> チェックボックス</label>
+//
+// Styleguide 1.6.3
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+// ラジオボックス
+//
+// markup:
+// <label for="radio"><input id="radio" type="radio" value="1"> ラジオボックス</label>
+//
+// Styleguide 1.6.4
+
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}

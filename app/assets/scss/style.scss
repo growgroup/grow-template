@@ -22,11 +22,26 @@
  * ==============================
  **/
 
+@import "../../../bower_components/Andy/andy";
 
-
-
-@import "base/*";
+@import "foundation/mixin";
+@import "foundation/settings";
+@import "foundation/normalize";
+@import "foundation/heading";
+@import "foundation/forms";
+@import "foundation/text";
+@import "foundation/hr";
+@import "foundation/list";
+@import "foundation/blockquote";
 
 @import "layout/*";
 
-@import "components/*";
+// モジュール
+//
+// Styleguide 2.0.0
+
+@import "object/components/*";
+
+@import "object/project/*";
+
+@import "object/utility/*";

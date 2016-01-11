@@ -1,0 +1,58 @@
+// Mixin
+$font-base-size: 14 !default;
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function to-rem($value, $base: null) {
+
+  @if type-of($value) != 'number' {
+    @warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
+    @return $value;
+  }
+
+  @if unit($value) != 'rem' {
+    $value: strip-unit($value) / strip-unit($base) * 1rem;
+  }
+
+  @if $value == 0rem {
+    $value: 0;
+  }
+
+  @return $value;
+}
+
+@function rem-calc($values, $base: null) {
+  $rem-values: ();
+  $count: length($values);
+
+  @if $base == null {
+    $base: $font-base-size;
+  }
+
+  @if unit($base) == '%' {
+    $base: ($base / 100%) * 16px;
+  }
+
+  @if $count == 1 {
+    @return to-rem($values, $base);
+  }
+
+  @for $i from 1 through $count {
+    $rem-values: append($rem-values, to-rem(nth($values, $i), $base));
+  }
+
+  @return $rem-values;
+}
+
+
+
+@mixin center-block() {
+  margin-left: auto;
+  margin-right: auto;
+}
