@@ -382,7 +382,7 @@ gulp.task('styleguide', ['styleguide:generate', 'styleguide:serve']);
 gulp.task('default', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'jade', 'scripts', 'copy', 'babel'],
+        ['lint', 'jade', 'scripts', 'copy', 'babel','styleguide'],
         'html',
         'watch',
         cb

@@ -1,3 +1,73 @@
-.c-grid {
+// グリッド
+//
+// 基本的に12グリッドレイアウト方式とする。
+//
+// * large-{int} : デスクトップ時
+// * medium-{int} : タブレット時
+// * small-{int} : スマートフォン時
+//
+// markup:
+// <div class="container">
+//     <div class="small-2 medium-8 large-6">グリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッド</div>
+//     <div class="small-10 medium-4 large-6">グリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッドグリッド</div>
+// </div>
+//
+// Styleguide 2.2.0
 
+$susy: (
+        flow: ltr,
+        math: fluid,
+        output: fluid,
+        gutter-position: inside,
+        container: $grid-row-width,
+        container-position: center,
+        columns: $grid-column-count,
+        gutters: .25,
+        column-width: 60px,
+        global-box-sizing: border-box,
+        last-flow: to,
+        debug: (
+                image: hide,
+                color: rgba(#66f, .25),
+                output: background,
+                toggle: top right,
+        ),
+        use-custom: (
+                background-image: true,
+                background-options: false,
+                box-sizing: true,
+                clearfix: false,
+                rem: true,
+        )
+);
+
+.container {
+  //@include container($susy);
+}
+
+
+
+@include breakpoint(small only) {
+  @for $i from 1 through $grid-column-count {
+    .small-#{$i} {
+      @include span($i);
+    }
+  }
+}
+
+
+@include breakpoint(medium only) {
+  @for $i from 1 through $grid-column-count {
+    .medium-#{$i} {
+      @include span($i);
+    }
+  }
+}
+
+@include breakpoint(large) {
+  @for $i from 1 through $grid-column-count {
+    .large-#{$i} {
+      @include span($i);
+    }
+  }
 }

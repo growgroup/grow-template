@@ -10,6 +10,7 @@ html {
   font-family: sans-serif; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-font-smoothing: antialiased;
 }
 * {
   -webkit-box-sizing: border-box;
@@ -22,6 +23,7 @@ html {
 
 body {
   margin: 0;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* HTML5 display definitions

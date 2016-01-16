@@ -56,3 +56,152 @@ $font-base-size: 14 !default;
   margin-left: auto;
   margin-right: auto;
 }
+
+// Converts a unitless, pixel, or rem value to em, for use in breakpoints.
+@function to-em($value) {
+  // Pixel and unitless values are converted to rems
+  @if unit($value) == 'px' or unitless($value) {
+    $value: rem-calc($value, $base: 16px);
+  }
+
+  // Then the value is converted to ems
+  @return strip-unit($value) * 1em;
+}
+
+
+
+@function breakpoint($val: small) {
+
+  $bp: nth($val, 1);
+
+  $bp-max: 0;
+
+  $dir: if(length($val) > 1, nth($val, 2), up);
+
+  $str: '';
+
+  $named: false;
+
+  @if $bp == 'landscape' or $bp == 'portrait' {
+    @return '(orientation: #{$bp})';
+  }
+  @else if $bp == 'retina' {
+    @return '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
+  }
+
+
+  @if type-of($bp) == 'string' {
+    @if map-has-key($breakpoints, $bp) {
+      @if $dir == 'only' or $dir == 'down' {
+        $next-bp: map-next($breakpoints, $bp);
+
+        @if $next-bp == null {
+          $bp-max: null;
+          @warn 'breakpoint(): the media query "#{$val}" cannot be used because #{$bp} is the largest breakpoint.';
+        }
+        @else {
+          $bp-max: $next-bp;
+        }
+      }
+
+      $bp: map-get($breakpoints, $bp);
+      $named: true;
+    }
+    @else {
+      $bp: 0;
+    }
+  }
+
+  // Convert any pixel, rem, or unitless value to em
+  $bp: to-em($bp);
+  @if $bp-max {
+    $bp-max: to-em($bp-max) - (1/16);
+  }
+
+  // Skip media query creation if the input is "0 up"
+  @if $bp > 0em or $dir == 'only' or $dir == 'down' {
+    // `only` ranges use the format `(min-width: n) and (max-width: n)`
+    @if $dir == 'only' {
+      @if $named == true {
+        $str: $str + '(min-width: #{$bp})';
+
+        @if $bp-max != null {
+          $str: $str + ' and (max-width: #{$bp-max})';
+        }
+      }
+      @else {
+        @warn 'Only named media queries can have an `only` range.';
+      }
+    }
+
+      // `down` ranges use the format `(max-width: n)`
+    @else if $dir == 'down' {
+      $max: 0;
+
+      // For named breakpoints, subtract the breakpoint value by one "pixel", or 1/16em.
+      @if $named {
+        $max: $bp-max;
+      }
+      @else {
+        $max: $bp;
+      }
+
+      // Skip media query creation if input value is exactly "0 down" but don't "small down"
+      @if $named or $bp > 0em {
+        $str: $str + '(max-width: #{$max})';
+      }
+    }
+
+      // `up` ranges use the format `(min-width: n)`
+    @else if $bp > 0em {
+      $str: $str + '(min-width: #{$bp})';
+    }
+  }
+  @return $str;
+}
+
+
+@mixin breakpoint($value) {
+  $str: breakpoint($value);
+
+
+  @if $str == '' {
+    @content;
+  }
+
+
+  @else {
+    @media screen and #{$str} {
+      @content;
+    }
+  }
+}
+
+
+@function map-next($map, $key) {
+  // Store the values of the map as a list, so we can access them with nth
+  $values: map-values($map);
+
+  // Ghetto for loop
+  $i: 1;
+  $found: false;
+  @each $val in map-keys($map) {
+    @if $found == false {
+      @if ($key == $val) {
+        $found: true;
+      }
+      $i: $i + 1;
+    }
+  }
+
+  // If the key doesn't exist, or it's the last key in the map, return null
+  @if $i > length($map) {
+    @return null;
+  }
+    // Otherwise, return the value
+  @else {
+    @return nth($values, $i);
+  }
+}
+
+

@@ -1,0 +1,48 @@
+// ページヘッダー
+//
+// 下層ページの各タイトル部
+//
+// markup:
+// <header class="c-page-header">
+//     <h1 class="c-page-header__title">ページヘッダータイトル</h1>
+//     <p class="c-page-header__subtitle">ページヘッダーサブタイトル</p>
+// </header>
+// <header class="c-page-header is-left">
+//    <div class="container">
+//        <h1 class="c-page-header__title">ページヘッダータイトル</h1>
+//        <p class="c-page-header__subtitle">ページヘッダーサブタイトル</p>
+//    </div>
+// </header>
+// <header class="c-page-header is-right">
+//    <div class="container">
+//        <h1 class="c-page-header__title">ページヘッダータイトル</h1>
+//        <p class="c-page-header__subtitle">ページヘッダーサブタイトル</p>
+//    </div>
+// </header>
+//
+// Styleguide 2.7.0
+
+.c-page-header{
+  width: 100%;
+  max-width: 100%;
+  padding-top: rem-calc($margin-lg);
+  padding-bottom: rem-calc($margin-lg);
+  background: $color-tertiary;
+  border-top: 1px solid darken($color-tertiary,5);
+  border-bottom: 1px solid darken($color-tertiary,5);
+  text-align: center;
+  &.is-left{
+    text-align: left;
+  }
+
+  &.is-right{
+    text-align: right;
+  }
+  &__title{
+    font-size: rem-calc(36);
+
+  }
+  &__subtitle{
+    font-size: rem-calc(16);
+  }
+}

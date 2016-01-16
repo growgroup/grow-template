@@ -8,6 +8,7 @@
   "devDependencies": {},
   "dependencies": {
     "Andy": "andy#~1.0.4",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "susy": "~2.2.10"
   }
 }
