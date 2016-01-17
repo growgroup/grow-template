@@ -1,11 +1,70 @@
+// アコーディオン
+//
+//
+// markup:
+// <div class="c-accordion">
+//     <h1 class="c-accordion__title">アコーディオンタイトル</h1>
+//     <div class="c-accordion__content">
+//         <p>アコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツ</p>
+//     </div>
+// </div>
+// <div class="c-accordion is-danger">
+//     <h1 class="c-accordion__title">アコーディオンタイトル</h1>
+//     <div class="c-accordion__content">
+//         <p>アコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツ</p>
+//     </div>
+// </div>
+// <div class="c-accordion is-warning">
+//     <h1 class="c-accordion__title">アコーディオンタイトル</h1>
+//     <div class="c-accordion__content">
+//         <p>アコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツ</p>
+//     </div>
+// </div>
+// <div class="c-accordion is-info">
+//     <h1 class="c-accordion__title">アコーディオンタイトル</h1>
+//     <div class="c-accordion__content">
+//         <p>アコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツ</p>
+//     </div>
+// </div>
+// <div class="c-accordion is-success">
+//     <h1 class="c-accordion__title">アコーディオンタイトル</h1>
+//     <div class="c-accordion__content">
+//         <p>アコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツ</p>
+//     </div>
+// </div>
+//
+// Styleguide 2.18.0
+
 .c-accordion {
 
-  > .title {
-
+  // タイトル
+  &__title {
+    background: $color-primary;
+    color: $color-white;
+    padding: $margin-md $margin-lg;
+    margin-bottom: 0;
+    font-size: rem-calc(18);
+    border-radius: $border-radius $border-radius 0 0;
   }
 
-  > .content {
+  // コンテンツ
+  &__content {
+    padding: $margin-md $margin-lg;
+    border: 1px solid $color-tertiary;
+    border-radius: 0 0 $border-radius $border-radius;
+  }
 
+  &.is-danger .c-accordion__title {
+    background: $color-state-danger;
+  }
+  &.is-warning .c-accordion__title {
+    background: $color-state-warning;
+  }
+  &.is-success .c-accordion__title {
+    background: $color-state-success;
+  }
+  &.is-info .c-accordion__title {
+    background: $color-state-info;
   }
 
 }

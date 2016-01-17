@@ -1,0 +1,41 @@
+// お問い合わせフォーム
+//
+// お問合せフォームの標準スタイル
+//
+// markup:
+// <form class="p-contact-form">
+//     <div class="form-group">
+//         <label for="name">お名前</label>
+//         <input type="text" value="" placeholder="お名前をご記入ください" name="name">
+//     </div>
+//     <div class="form-group">
+//         <label for="furigana">フリガナ</label>
+//         <input type="text" value="" placeholder="フリガナをカタカナでご記入ください" name="furigana">
+//     </div>
+//     <div class="form-group">
+//         <label class="p-contact-form__title">お問い合せの種別</label>
+//         <div class="form-group__radio">
+//             <label for="radio"><input id="radio" type="radio" value="1"> ラジオボックス</label>
+//             <label for="radio"><input id="radio" type="radio" value="1"> ラジオボックス</label>
+//             <label for="radio"><input id="radio" type="radio" value="1"> ラジオボックス</label>
+//             <label for="radio"><input id="radio" type="radio" value="1"> ラジオボックス</label>
+//         </div>
+//     </div>
+//     <div class="form-group">
+//         <label for="furigana">お問い合せ内容</label>
+//         <textarea row="50" placeholder="お問い合せ内容をご記入ください。" name="message"></textarea>
+//     </div>
+//     <div class="form-group text-center">
+//         <button class="c-button is-lg">この内容で送信する</button>
+//     </div>
+//
+// </form>
+//
+// Styleguide 3.4.0
+
+
+.p-contact-form {
+  .form-group {
+    margin-bottom: rem-calc($margin-md);
+  }
+}

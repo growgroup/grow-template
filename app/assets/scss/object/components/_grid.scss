@@ -41,20 +41,48 @@ $susy: (
         )
 );
 
+
+// グリッド : コンテナー
+//
+// サイトの幅に合わせたセンター寄せのコンテナー
+//
+// markup:
+// <div class="container">
+// </div>
+//
+// Styleguide 2.2.1
+
 .container {
-  //@include container($susy);
+  @include container($susy);
 }
 
 
+// グリッド : スマートフォン
+//
+// スマートフォン時のグリッドアイテム
+//
+// markup:
+// <div class="small-2">
+// </div>
+//
+// Styleguide 2.2.2
 
-@include breakpoint(small only) {
-  @for $i from 1 through $grid-column-count {
-    .small-#{$i} {
-      @include span($i);
-    }
+@for $i from 1 through $grid-column-count {
+  .small-#{$i} {
+    @include span($i);
   }
 }
 
+
+// グリッド : タブレット
+//
+// タブレット時のグリッドアイテム
+//
+// markup:
+// <div class="medium-2">
+// </div>
+//
+// Styleguide 2.2.3
 
 @include breakpoint(medium only) {
   @for $i from 1 through $grid-column-count {
@@ -63,6 +91,16 @@ $susy: (
     }
   }
 }
+
+// グリッド : デスクトップ
+//
+// デスクトップ時のグリッドアイテム
+//
+// markup:
+// <div class="large-2">
+// </div>
+//
+// Styleguide 2.2.4
 
 @include breakpoint(large) {
   @for $i from 1 through $grid-column-count {

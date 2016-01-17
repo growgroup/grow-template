@@ -25,6 +25,8 @@
 @import "../../../bower_components/Andy/andy";
 @import "../../../bower_components/susy/sass/susy";
 
+//
+
 @import "foundation/mixin";
 @import "foundation/settings";
 @import "foundation/normalize";
@@ -35,14 +37,29 @@
 @import "foundation/list";
 @import "foundation/blockquote";
 
-@import "layout/*";
+
 
 // モジュール
+//
+// サイトで複数回利用する可能性のある粒度の細かい要素をモジュールを定義しています。
 //
 // Styleguide 2.0.0
 
 @import "object/components/*";
 
+// ブロック
+//
+// ベース・モジュールを利用した、サイトで利用するブロックを定義しています。
+//
+// Styleguide 3.0.0
 @import "object/project/*";
+
+@import "layout/*";
+
+// ユーティリティ
+//
+// サイトのヘルパーとなるスタイル群です。
+//
+// Styleguide 4.0.0
 
 @import "object/utility/*";

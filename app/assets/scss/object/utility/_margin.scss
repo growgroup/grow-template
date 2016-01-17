@@ -1,0 +1,52 @@
+// 間隔
+//
+// .u-mbs : 間隔
+//
+// .u-mbs.is-lg : 間隔 : 大
+//
+// .u-mbs.is-md : 間隔 : 中
+//
+// .u-mbs.is-sm : 間隔 : 小
+//
+// .u-mbs.is-top : 間隔 : 上のみ
+//
+// .u-mbs.is-bottom : 間隔 : 下のみ
+//
+// markup:
+// <div class="u-mbs">間隔 : 中</div>
+// <div class="u-mbs is-xlg">間隔 : 特大</div>
+// <div class="u-mbs is-lg">間隔 : 大</div>
+// <div class="u-mbs is-sm">間隔 : 小</div>
+// <div class="u-mbs is-top">間隔 : 上のみ</div>
+// <div class="u-mbs is-bottom">間隔 : 下のみ</div>
+// <div class="u-mbs is-top is-lg">間隔 : 上のみ大</div>
+//
+// Styleguide 4.3.0
+
+.u-mbs {
+  margin: $margin-md;
+
+  &.is-xlg {
+    margin-top: $margin-xlg !important;
+    margin-bottom: $margin-xlg !important;
+  }
+
+  &.is-lg {
+    margin-top: $margin-lg !important;
+    margin-bottom: $margin-lg !important;
+  }
+  
+  &.is-sm {
+    margin-top: $margin-sm !important;
+    margin-bottom: $margin-sm !important;
+  }
+
+  &.is-top {
+    margin-bottom: 0 !important;
+  }
+
+  &.is-bottom {
+    margin-top: 0 !important;
+  }
+  
+}

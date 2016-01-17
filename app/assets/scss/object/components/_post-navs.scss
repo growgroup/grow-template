@@ -1,3 +1,47 @@
+// 投稿詳細ナビゲーション
+//
+// 投稿詳細ページの記事ナビゲーション
+//
+// markup:
+// <nav class="c-navs-post">
+//     <ul>
+//         <li class="c-navs-post__prev"><a href="#">前の記事へ</a></li>
+//         <li class="c-navs-post__next"><a href="#">次の記事へ</a></li>
+//     </ul>
+// </nav>
+//
+// Styleguide 2.16.0
+
 .c-navs-post {
+  ul{
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+    overflow: hidden;
+  }
+  
+  &__prev,
+  &__next{
+    a {
+      border-radius: 1000px;
+      border: 2px solid $color-primary;
+      padding: $margin-base $margin-lg;
+      display: inline-block;
+      text-decoration: none;
+      &:hover {
+        background: $color-primary;
+        color: $color-white;
+      }
+    }
+  }
+
+  &__prev {
+    float: left;
+  }
+
+  &__next {
+    float: right;
+  }
+
 
 }

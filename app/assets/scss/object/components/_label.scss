@@ -24,6 +24,10 @@
   padding-left: rem-calc($margin-base);
   padding-right: rem-calc($margin-base);
   vertical-align: middle;
+  > a {
+    color: $color-white;
+    text-decoration: none;
+  }
 
   &.is-lg{
     font-size: rem-calc($font-base-size);

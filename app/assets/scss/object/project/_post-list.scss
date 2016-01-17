@@ -1,0 +1,181 @@
+// 投稿一覧
+//
+// markup:
+// <div class="p-post-list is-tile">
+//     <div class="small-12 large-3">
+//         <div class="p-post-list__item">
+//             <div class="p-post-list__thumbnail">
+//                 <img src="https://placehold.jp/300x200.png">
+//             </div>
+//             <h2 class="p-post-list__title"><a href="#">投稿タイトル</a></h2>
+//             <p class="p-post-list__detail">投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト</p>
+//             <div class="p-post-list__category c-label"><a href="#">カテゴリ名</a></div>
+//         </div>
+//     </div>
+//     <div class="small-12 large-3">
+//         <div class="p-post-list__item">
+//             <div class="p-post-list__thumbnail">
+//                 <img src="https://placehold.jp/300x200.png">
+//             </div>
+//             <h2 class="p-post-list__title"><a href="#">投稿タイトル</a></h2>
+//             <p class="p-post-list__detail">投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト</p>
+//             <div class="p-post-list__category c-label"><a href="#">カテゴリ名</a></div>
+//         </div>
+//     </div>
+//     <div class="small-12 large-3">
+//         <div class="p-post-list__item">
+//             <div class="p-post-list__thumbnail">
+//                 <img src="https://placehold.jp/300x200.png">
+//             </div>
+//             <h2 class="p-post-list__title"><a href="#">投稿タイトル</a></h2>
+//             <p class="p-post-list__detail">投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト</p>
+//             <div class="p-post-list__category c-label"><a href="#">カテゴリ名</a></div>
+//         </div>
+//     </div>
+//
+// Styleguide 3.2.0
+
+.p-post-list {
+
+  // 一つの投稿
+  &__item {
+    margin-bottom: rem-calc($margin-md);
+  }
+  
+  &__title {
+    font-size: rem-calc(18);
+    margin-top: rem-calc(8);
+    margin-bottom: rem-calc(8);
+    line-height: 1.3;
+    > a {
+      color: $color-black;
+      text-decoration: none;
+    }
+  }
+
+}
+
+
+// 投稿一覧 : 並行
+//
+// markup:
+// <div class="p-post-list is-horizon">
+//     <div class="p-post-list__item">
+//         <div class="p-post-list__thumbnail">
+//             <img src="https://placehold.jp/300x200.png">
+//         </div>
+//         <h2 class="p-post-list__title"><a href="#">投稿タイトル</a></h2>
+//         <p class="p-post-list__detail">投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト</p>
+//         <div class="p-post-list__category c-label"><a href="#">カテゴリ名</a></div>
+//     </div>
+//     <div class="p-post-list__item">
+//         <div class="p-post-list__thumbnail">
+//             <img src="https://placehold.jp/300x200.png">
+//         </div>
+//         <h2 class="p-post-list__title"><a href="#">投稿タイトル</a></h2>
+//         <p class="p-post-list__detail">投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト</p>
+//         <div class="p-post-list__category c-label"><a href="#">カテゴリ名</a></div>
+//     </div>
+//     <div class="p-post-list__item">
+//         <div class="p-post-list__thumbnail">
+//             <img src="https://placehold.jp/300x200.png">
+//         </div>
+//         <h2 class="p-post-list__title"><a href="#">投稿タイトル</a></h2>
+//         <p class="p-post-list__detail">投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト</p>
+//         <div class="p-post-list__category c-label"><a href="#">カテゴリ名</a></div>
+//     </div>
+// </div>
+//
+// Styleguide 3.2.1
+
+.is-horizon {
+
+  // 一つの投稿
+  .p-post-list__item {
+    border: 1px solid $color-tertiary;
+    @extend %clearfix;
+    padding: $margin-md;
+  }
+
+  // サムネイル
+  .p-post-list__thumbnail {
+    float: left;
+    margin-right: $margin-md;
+    margin-bottom: 0;
+  }
+
+}
+
+
+
+// 投稿一覧 : 一行
+//
+// markup:
+// <div class="p-post-list is-line">
+//     <div class="p-post-list__item">
+//         <div class="p-post-list__thumbnail">
+//             <img src="https://placehold.jp/300x200.png">
+//         </div>
+//         <div class="p-post-list__date c-label is-tertiary"><a href="#">2016.01.11</a></div>
+//         <div class="p-post-list__category c-label"><a href="#">カテゴリ名</a></div>
+//         <h2 class="p-post-list__title"><a href="#">投稿タイトル</a></h2>
+//     </div>
+//     <div class="p-post-list__item">
+//         <div class="p-post-list__thumbnail">
+//             <img src="https://placehold.jp/300x200.png">
+//         </div>
+//         <div class="p-post-list__date c-label is-tertiary"><a href="#">2016.01.11</a></div>
+//         <div class="p-post-list__category c-label"><a href="#">カテゴリ名</a></div>
+//         <h2 class="p-post-list__title"><a href="#">投稿タイトル</a></h2>
+//     </div>
+//     <div class="p-post-list__item">
+//         <div class="p-post-list__thumbnail">
+//             <img src="https://placehold.jp/300x200.png">
+//         </div>
+//         <div class="p-post-list__date c-label is-tertiary"><a href="#">2016.01.11</a></div>
+//         <div class="p-post-list__category c-label"><a href="#">カテゴリ名</a></div>
+//         <h2 class="p-post-list__title"><a href="#">投稿タイトル</a></h2>
+//     </div>
+// </div>
+//
+// Styleguide 3.2.2
+
+.is-line {
+
+  // 一つの投稿
+  .p-post-list__item {
+    border-bottom: 1px solid $color-tertiary;
+    @extend %clearfix;
+    padding: $margin-md;
+  }
+
+  // サムネイル
+  .p-post-list__thumbnail {
+    float: left;
+    margin-right: $margin-md;
+    margin-bottom: 0;
+    > img {
+      max-height: rem-calc(24);
+      width: auto;
+    }
+
+  }
+  
+  // カテゴリ、日付
+  .p-post-list__date,
+  .p-post-list__category{
+    margin-right: $margin-md;
+    float: left;
+  }
+
+  // タイトル
+  .p-post-list__title {
+    float: left;
+    margin-right: $margin-md;
+    margin-bottom: 0;
+    font-size: rem-calc(14);
+    margin-top: rem-calc(3);
+    margin-right: $margin-md;
+  }
+
+}
