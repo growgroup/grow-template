@@ -141,25 +141,15 @@ jade-settings.json ファイルの値を変更することで、
 
 ### Sass
 
-本テンプレートでは SCSS 記法を採用しています。
+本テンプレートでは SCSS を採用しています。  
+また CSSのコーディングルールとしてFLOCSSにて統一しています。
 
-```app/assets/scss/style.scss``` をメインファイルとして、```base/```, ```layout/```, ```components/``` フォルダ内の .scss ファイルをすべてインクルードしています。
+[https://github.com/hiloki/flocss](https://github.com/hiloki/flocss)
+
 
 ##### Function & mixin
 
-###### rem-calc (function)
 
-* 例 :
-
-```css
-p {
-  font-size: rem-calc(15);
-}
-```
-
-px から rem へ変換します。
-
-$global-font-size 変数をルートのサイズとして定義していますので適宜適時変更して下さい。
 
 ### JavaScript
 
@@ -186,6 +176,19 @@ Jade ファイルをHTMLにコンパイル後、useref が実行され、
 dist/assets フォルダ内に実行後のファイルが格納されます。
 
 * [https://github.com/jonkemp/gulp-useref](https://github.com/jonkemp/gulp-useref)
+
+
+### StyleGuide
+
+スタイルガイドは [sc5-styleguide](https://github.com/SC5/sc5-styleguide/pulls) を導入しています。  
+gulp を実行している際に、8888 ポートで閲覧することができます。
+
+
+Jade ファイルをHTMLにコンパイル後、useref が実行され、
+dist/assets フォルダ内に実行後のファイルが格納されます。
+
+* [https://github.com/jonkemp/gulp-useref](https://github.com/jonkemp/gulp-useref)
+
 
 
 ### その他

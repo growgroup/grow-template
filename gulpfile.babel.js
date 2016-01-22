@@ -116,7 +116,7 @@ config.babel = {
  * 設定 - Jade
  */
 config.jade = {
-    src: appPath + "/*.jade",
+    src: [appPath + '/*.jade', appPath + '**/*.jade', '!' + appPath + '/**/_*.jade'],
     dist: distPath + "/",
     settingsFilePath: "./jade-settings.json",
 }
@@ -171,6 +171,7 @@ gulp.task('browserSync', () => {
 gulp.task('jade', () => {
     return gulp.src(config.jade.src)
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
+        .pipe($.changed('./dist', {extension: '.html'}))
         .pipe($.data(function (file) {
             return jadeSettingFile;
         }))
@@ -257,7 +258,7 @@ gulp.task('lint', () => {
  */
 gulp.task('watch', ['browserSync'], ()=> {
 
-    gulp.watch([appPath + '/**/**/*.jade'], ['jade', reload]);
+    gulp.watch([appPath + '/**/*.jade'], ['jade', reload]);
     gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
@@ -357,6 +358,7 @@ gulp.task('styleguide:generate', () => {
         }))
         .pipe(gulp.dest(sg5OutputPath));
 });
+
 gulp.task('styleguide:applystyles', function () {
     return gulp.src(appPath + "/assets/scss/style.scss")
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
@@ -367,6 +369,7 @@ gulp.task('styleguide:applystyles', function () {
         .pipe(styleguide.applyStyles())
         .pipe(gulp.dest(sg5OutputPath));
 });
+
 gulp.task('styleguide:serve', () => {
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
 });
@@ -382,7 +385,7 @@ gulp.task('styleguide', ['styleguide:generate', 'styleguide:serve']);
 gulp.task('default', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'jade', 'scripts', 'copy', 'babel','styleguide'],
+        ['lint', 'jade', 'scripts', 'copy', 'babel'],
         'html',
         'watch',
         cb
