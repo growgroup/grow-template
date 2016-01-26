@@ -116,7 +116,7 @@ config.babel = {
  * 設定 - Jade
  */
 config.jade = {
-    src: [appPath + '/*.jade', appPath + '**/*.jade', '!' + appPath + '/**/_*.jade'],
+    src: [appPath + '/*.jade', appPath + '/**/*.jade'],
     dist: distPath + "/",
     settingsFilePath: "./jade-settings.json",
 }
@@ -127,7 +127,7 @@ config.jade = {
  */
 config.images = {
     src: appPath + "/assets/images/**/*",
-    dist: distPath + "/assets/images",
+    dist: distPath + "/assets/images/",
 }
 
 /**
@@ -170,8 +170,14 @@ gulp.task('browserSync', () => {
  */
 gulp.task('jade', () => {
     return gulp.src(config.jade.src)
+
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-        .pipe($.changed('./dist', {extension: '.html'}))
+        .pipe($.changed('dist', {extension: '.html'}))
+        .pipe($.if(global.isWatching, $.cached('jade')))
+        .pipe($.jadeInheritance({basedir: 'app/'}))
+        .pipe($.filter(function (file) {
+            return !/\/_/.test(file.path) && !/^_/.test(file.relative);
+        }))
         .pipe($.data(function (file) {
             return jadeSettingFile;
         }))
@@ -256,7 +262,12 @@ gulp.task('lint', () => {
  * ファイルを監視
  * =================================
  */
-gulp.task('watch', ['browserSync'], ()=> {
+
+gulp.task('setWatch', function () {
+    global.isWatching = true;
+});
+
+gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
 
     gulp.watch([appPath + '/**/*.jade'], ['jade', reload]);
     gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
@@ -291,6 +302,7 @@ gulp.task('copy:app', () => {
             'app/fonts',
             '!./app/inc',
             '!./app/*.jade',
+            '!./app/**/*.jade',
         ], {
             dot: true,
             base: "app"
