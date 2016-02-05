@@ -7,7 +7,8 @@
  */
 
 html {
-  font-family: sans-serif; /* 1 */
+  font-size: $font-base-size;
+  font-family: $font-base-family; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -webkit-font-smoothing: antialiased;
@@ -23,6 +24,7 @@ html {
 
 body {
   margin: 0;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -211,7 +213,7 @@ svg:not(:root) {
  */
 
 figure {
-  margin: 1em 40px;
+  margin: 0;
 }
 
 /**
@@ -430,4 +432,32 @@ table {
 td,
 th {
   padding: 0;
+}
+
+/* dl
+   ========================================================================== */
+
+/**
+ * Remove most spacing between dl, dd.
+ */
+
+dl,dd {
+  margin: 0;
+}
+
+/* ul
+   ========================================================================== */
+
+/**
+ * Remove most spacing between ul, li.
+ */
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  margin: 0;
 }
