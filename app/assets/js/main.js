@@ -18,9 +18,9 @@
 
     $(function(){
 
-       var growTemplate = new growTemplate();
+       var app = new growTemplate();
 
-        growTemplate.pageTop();
+        app.pageTop();
 
     });
 })(jQuery);
