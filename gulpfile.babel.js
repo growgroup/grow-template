@@ -32,8 +32,6 @@ import buffer from 'vinyl-buffer';
 import stream from 'vinyl-source-stream';
 import browserify from 'browserify';
 import babelify from 'babelify';
-import mainBowerFiles from 'main-bower-files';
-import {stream as wiredep} from 'wiredep';
 import del from 'del';
 import styleguide from "sc5-styleguide";
 import gulpLoadPlugins from 'gulp-load-plugins';
@@ -52,8 +50,6 @@ const $ = gulpLoadPlugins();
 // browserSync.reload のエイリアス
 const reload = browserSync.reload;
 
-// bower メインファイルの配列
-const bowerFiles = mainBowerFiles();
 
 /**
  * =================================
@@ -190,20 +186,6 @@ gulp.task('jade', () => {
 
 /**
  * =================================
- * # HTML
- * useref で HTMLファイルを監視
- * =================================
- */
-gulp.task('html', ()=> {
-    return gulp.src(distPath + "/**/*.html")
-        .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-        .pipe($.useref({searchPath: ['app', '.']}))
-        .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
-        .pipe(gulp.dest(distPath));
-});
-
-/**
- * =================================
  * # Scripts
  * Js の concat, uglify
  * =================================
@@ -274,8 +256,6 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
     gulp.watch([appPath + '/assets/images/**/*'], reload);
-    gulp.watch([distPath + '/**/*.html'], ['html', reload]);
-    gulp.watch('bower.json', ['wiredep']);
 });
 
 /**
@@ -284,17 +264,6 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
  * dist ディレクトリへ app ディレクトリからファイルをコピー
  * =================================
  */
-gulp.task('copy:bower', () => {
-    return gulp.src([
-            'bower_components/',
-            'bower_components/*',
-        ], {
-            dot: true,
-            base: "./"
-        })
-        .pipe(gulp.dest('dist'))
-        .pipe($.size({title: 'copy'}))
-});
 
 gulp.task('copy:app', () => {
     return gulp.src([
@@ -311,7 +280,7 @@ gulp.task('copy:app', () => {
         .pipe($.size({title: 'copy'}));
 });
 
-gulp.task('copy', ['copy:app', 'copy:bower']);
+gulp.task('copy', ['copy:app']);
 
 /**
  * =================================
@@ -321,20 +290,6 @@ gulp.task('copy', ['copy:app', 'copy:bower']);
  */
 gulp.task('clean', cb => del(['dist/*', '!dist/.git'], {dot: true}));
 
-/**
- * =================================
- * # Wiredep
- * bower で追加、削除したパッケージを jade テンプレートに反映
- * =================================
- */
-gulp.task('wiredep', () => {
-    gulp.src(['app/**/*.jade', 'app/*.jade'])
-        .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-        .pipe(wiredep({
-            ignorePath: /^(\.\.\/)*\.\./
-        }))
-        .pipe(gulp.dest(appPath));
-});
 /**
  * =================================
  * # Images
@@ -398,7 +353,6 @@ gulp.task('default', ['clean'], cb => {
     runSequence(
         'styles',
         ['lint', 'jade', 'scripts', 'copy', 'babel'],
-        'html',
         'watch',
         cb
     )
@@ -414,7 +368,6 @@ gulp.task('build', ['clean'], cb => {
     runSequence(
         'styles',
         ['lint', 'jade', 'scripts', 'copy', 'babel', 'images'],
-        'html',
         cb
     )
 });

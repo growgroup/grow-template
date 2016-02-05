@@ -17,9 +17,7 @@
     }
 
     $(function(){
-
-       var app = new growTemplate();
-
+        var app = new growTemplate();
         app.pageTop();
 
     });

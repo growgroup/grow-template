@@ -34,16 +34,11 @@ html
 
         //- スタイルシート
         block stylesheet
-            // build:css assets/css/vendor.css
-            // bower:css
-            // endbower
-            // endbuild
-            each stylesheet in assets.styles
-                link(rel='stylesheet', href=stylesheet)
+
+            link(rel='stylesheet', href="/assets/css/style.css")
 
         //- ヘッダーに組み込むスクリプト
         block head_script
-
 
 
     body(class="#{bodyClass}")
@@ -62,18 +57,8 @@ html
 
         //- フッターに組み込むスクリプト
         block footer_scripts
-            //- wiredep で bower で管理しているファイルを自動的に読み込み
 
-
-            // build:js assets/js/vendor.js
-            // bower:js
             script(src='/bower_components/jquery/dist/jquery.js')
-            // endbower
-            // endbuild
+            script(src='/assets/js/main.js')
 
-
-            // build:js assets/js/scripts.js
-            each script in assets.scripts
-                script(src=script)
-            // endbuild
 
