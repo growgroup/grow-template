@@ -7,6 +7,8 @@
 // Styleguide 1.1.0
 
 .heading {
+  margin-top: 1em;
+  margin-bottom: 1em;
   small {
     font-size: 0.65em;
     color: $color-gray;
@@ -16,43 +18,80 @@
 // 見出し - 極大
 //
 // markup:
-// <h1 class="heading heading--xlg">見出し - 極大 <small>heading top</small</h1>
+// <h1 class="heading is-xlg">見出し - 極大 <small>heading top</small</h1>
 //
 // Styleguide 1.1.1
 
-.heading--xlg {
-  font-size: map-get(map-get($font-heading-sizes,"medium"), "h1");
+.heading.is-xlg {
+  font-size: rem-calc(30);
+  text-align: center;
+  position: relative;
+  margin-bottom:rem-calc(60);
+  &:after{
+    content: "";
+    display: block;
+    width: rem-calc(100);
+    height: 5px;
+    background: $color-primary;
+    position: absolute;
+    left: 50%;
+    bottom: rem-calc(-20px);
+    margin-left: rem-calc(-50);
+  }
+  @include breakpoint(small only){
+    font-size: rem-calc(24);
+  }
 }
 
 // 見出し - 大
 //
 // markup:
-// <h1 class="heading heading--lg">見出し:大 <small>heading large</small</h1>
+// <h1 class="heading is-lg">見出し:大 <small>heading large</small</h1>
 //
 // Styleguide 1.1.2
 
-.heading--lg {
-  font-size: map-get(map-get($font-heading-sizes,"medium"), "h2");
+.heading.is-lg {
+  font-size: rem-calc(24);
+  border-bottom: 5px solid $color-primary;
+  padding-bottom:rem-calc(5);
+  @include breakpoint(small only){
+    font-size: rem-calc(18);
+  }
 }
 
 // 見出し - 中
 //
 // markup:
-// <h1 class="heading heading--md">見出し:中 <small>heading middle</small</h1>
+// <h1 class="heading is-md">見出し:中 <small>heading middle</small</h1>
 //
 // Styleguide 1.1.3
 
-.heading--md {
-  font-size: map-get(map-get($font-heading-sizes,"medium"), "h3");
+.heading.is-md {
+  font-size:  rem-calc(20);
+  @include breakpoint(small only){
+    font-size: rem-calc(24);
+  }
 }
 
 // 見出し - 小
 //
 // markup:
-// <h1 class="heading heading--sm">見出し:小 <small>heading small</small</h1>
+// <h1 class="heading is-sm">見出し:小 <small>heading small</small</h1>
 //
 // Styleguide 1.1.4
 
-.heading--sm {
-  font-size: map-get(map-get($font-heading-sizes,"medium"), "h4");
+.heading.is-sm {
+  font-size:  rem-calc(16);
+}
+
+// 見出し - 極小
+//
+// markup:
+// <h1 class="heading is-xs">見出し:極小 <small>heading small</small</h1>
+//
+// Styleguide 1.1.4
+
+.heading.is-xs {
+  font-size:  rem-calc(14);
+  font-weight: bold;
 }

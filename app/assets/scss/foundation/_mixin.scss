@@ -1,5 +1,5 @@
 // Mixin
-$font-base-size: 14 !default;
+//$font-base-size: 14 !default;
 
 @function strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {

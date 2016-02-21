@@ -24,7 +24,8 @@
 // Styleguide 4.3.0
 
 .u-mbs {
-  margin: $margin-md;
+  margin-top: $margin-md;
+  margin-bottom: $margin-md;
 
   &.is-xlg {
     margin-top: $margin-xlg !important;

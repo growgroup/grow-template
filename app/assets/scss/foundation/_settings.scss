@@ -3,7 +3,7 @@
 // プロジェクトのCSSで利用する変数を定義
 
 // # 1. Color
-$color-primary: #34517d !default; // プライマリカラー
+$color-primary: #5E671F !default; // プライマリカラー
 $color-secondary: #666 !default; // セカンダリカラー
 $color-tertiary: #dbdbdb !default; // ターシャリカラー
 
@@ -29,10 +29,10 @@ $grid-column-responsive-gutter: (// カラムとカラムの間隔
 
 // # 3. font
 
-$font-base-size: 14px !default; // body のフォントサイズ
+$font-base-size: 14 !default; // body のフォントサイズ
 $font-base-color: #000 !default; // body のフォントサイズ
 
-$font-base-family: sans-serif !default; // フォントファミリー
+$font-base-family: "YuGothic", sans-serif !default; // フォントファミリー
 $font-base-weight: normal !default; // フォント幅
 $font-base-style: "" !default; // フォントスタイル
 

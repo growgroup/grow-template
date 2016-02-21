@@ -69,3 +69,4 @@ bower_components
 ### App ###
 dist/
 styleguides/
+base/

@@ -5,7 +5,9 @@
   "license": "ISC",
   "moduleType": [],
   "homepage": "",
-  "devDependencies": {},
+  "devDependencies": {
+    "font-awesome": "~4.5.0"
+  },
   "dependencies": {
     "Andy": "andy#~1.0.4",
     "jquery": "~2.1.4",

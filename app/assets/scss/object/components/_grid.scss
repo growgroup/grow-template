@@ -52,7 +52,7 @@ $susy: (
 //
 // Styleguide 2.2.1
 
-.container {
+.row,.container {
   @include container($susy);
 }
 

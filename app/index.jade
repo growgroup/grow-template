@@ -20,8 +20,133 @@ block append meta
 block body
 
     main
+        // メインビジュアル
+        include /inc/object/components/_main-visual
+
         section.l-main
-            h1 Grow Template
+            .l-section
+                .l-container
+                    h1.heading.is-xlg 見出し スタイル
+                    h2.heading.is-xlg 見出し 極大
+                    h1.heading.is-lg 見出し 大
+                    h1.heading.is-md 見出し 中
+                    h1.heading.is-sm 見出し 小
+                    h1.heading.is-xs 見出し 最小
+
+            .l-section.is-gray
+                .l-container
+                    h1.heading.is-xlg ボタン
+                    .row.u-mbs
+                        .large-3
+                            a.c-button ボタン (通常)
+                        .large-3
+                            a.c-button.is-secondary ボタン (セカンダリ)
+                        .large-3
+                            a.c-button.is-tertiary ボタン (ターシャリ)
+                        .large-3
+                            a.c-button.is-danger ボタン (危険)
+                    .row.u-mbs
+                        .large-3
+                            a.c-button.is-warning ボタン (警告)
+                        .large-3
+                            a.c-button.is-success ボタン (成功)
+                        .large-3
+                            a.c-button.is-info ボタン (情報)
+                    .row.u-mbs
+                        .large-3
+                            a.c-button.is-lg ボタン (大)
+                        .large-3
+                            a.c-button.is-md ボタン (中)
+                        .large-3
+                            a.c-button.is-sm ボタン (小)
+                    .row.u-mbs
+                        .large-3
+                            a.c-button.is-round ボタン (丸角)
+
+            .l-section
+                .l-container
+                    h1.heading.is-xlg カード型リンク
+                    .row
+                        - for(var i = 0; i < 3 ; i++){
+                            .large-4
+                                a(href="#").c-card
+                                    | <img src="https://unsplash.it/300/200/?random" class="c-card__image">
+                                    p.c-card__text
+                                        | カードテキスト
+                        - }
+
+            .l-section
+                .l-container
+                    h1.heading.is-xlg バッジ
+                    .row
+
+                     | <span class="c-badge">バッジ</span>
+                     | <span class="c-badge is-lg">バッジ </span>
+                     | <span class="c-badge is-sm">バッジ</span>
+                     | <span class="c-badge is-secondary">バッジ</span>
+                     | <span class="c-badge is-tertiary">バッジ</span>
+                     | <span class="c-badge is-danger">バッジ</span>
+                     | <span class="c-badge is-warning">バッジ</span>
+                     | <span class="c-badge is-info">バッジ</span>
+                     | <span class="c-badge is-success">バッジ</span>
+
+            .l-section.is-gray
+                .l-container
+                    h1.heading.is-xlg 投稿一覧ブロック
+                    .row
+                        .large-12
+                            h2.heading.is-lg タイル型投稿一覧
+                            .p-post-list.is-tile
+                                .row
+                                    - for (var i = 0; i < 4; i++){
+                                    .small-12.large-3
+                                        .p-post-list__item
+                                            .p-post-list__thumbnail
+                                               | <img src="https://placehold.jp/300x200.png">
+                                            h2.p-post-list__title
+                                                a 投稿タイトル
+                                            .p-post-list__detail
+                                                | 投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト
+                                            .p-post-list__category.c-label
+                                                a カテゴリ名
+                                    - }
+                    .row
+                        .large-12
+                            h2.heading.is-lg 平行型投稿一覧
+                            .p-post-list.is-horizon
+                                .row
+                                    - for (var i = 0; i < 4; i++){
+                                    .large-12
+                                        .p-post-list__item
+                                            .p-post-list__thumbnail
+                                                | <img src="https://placehold.jp/300x200.png">
+                                            .p-post-list__category.c-label
+                                                a(href="#") カテゴリ名
+
+                                            h2.p-post-list__title
+                                                a(href="#") 投稿タイトル
+                                            .p-post-list__detail
+                                                | 投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト
+
+                                    - }
+                    .row
+                        .large-12
+                            h2.heading.is-lg 1行型投稿一覧
+                            .p-post-list.is-line
+                                .row
+                                    - for (var i = 0; i < 4; i++){
+                                    .large-12
+                                        .p-post-list__item
+                                            .p-post-list__thumbnail
+                                                | <img src="https://placehold.jp/300x200.png">
+                                            .p-post-list__category.c-label
+                                                a(href="#") カテゴリ名
+                                            h2.p-post-list__title
+                                                a(href="#") 投稿タイトル
+
+                                    - }
+
+
 
         section.l-sidebar
 

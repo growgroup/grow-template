@@ -2,6 +2,29 @@
  * module
  * サイドバー
  */
-.l-aside {
+.l-global-navigation {
+  border-top: 1px solid $color-lightgray;
+  border-bottom: 1px solid $color-lightgray;
+  ul {
+    > li {
+      float: left;
+      @include span(2.4);
+
+      a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: $color-black;
+        padding-top: rem-calc(14);
+        padding-bottom: rem-calc(14);
+        transition: all ease-in-out .2s;
+      }
+
+      a:hover {
+        background: $color-primary;
+        color: $color-white;
+      }
+    }
+  }
 
 }

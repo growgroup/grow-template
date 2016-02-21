@@ -77,7 +77,7 @@ config.browserSync = {
         scroll: false
     },
     tunnel: false,
-    server: ['dist', 'app'],
+    server: ['dist'],
 }
 
 /**
@@ -177,7 +177,7 @@ gulp.task('jade', () => {
         .pipe($.data(function (file) {
             return jadeSettingFile;
         }))
-        .pipe($.jade({pretty: true, escapePre: true}))
+        .pipe($.jade({pretty: true, escapePre: true, basedir: appPath + "/"}))
         .pipe(gulp.dest(config.jade.dist))
         .pipe($.size({title: 'HTML'}))
         .pipe(reload({stream: true}))
@@ -194,7 +194,7 @@ gulp.task('scripts', () => {
     return gulp.src(config.js.src)
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe($.sourcemaps.init())
-        .pipe($.concat('main.js'))
+        .pipe($.concat('scripts.js'))
         .pipe($.uglify({compress: true}))
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest(config.js.dist))
@@ -267,16 +267,17 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
 
 gulp.task('copy:app', () => {
     return gulp.src([
-            'app/**/*',
-            'app/fonts',
-            '!./app/inc',
-            '!./app/*.jade',
-            '!./app/**/*.jade',
+            appPath + '/**/*',
+            appPath + '/fonts',
+            '!./' + appPath + '/assets/{scss,scss/**}',
+            '!./' + appPath + '/inc',
+            '!./' + appPath + '/*.jade',
+            '!./' + appPath + '/**/*.jade',
         ], {
             dot: true,
             base: "app"
         })
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest(distPath))
         .pipe($.size({title: 'copy'}));
 });
 
@@ -288,7 +289,7 @@ gulp.task('copy', ['copy:app']);
  * dist ディレクトリ内をすべて削除
  * =================================
  */
-gulp.task('clean', cb => del(['dist/*', '!dist/.git'], {dot: true}));
+gulp.task('clean', cb => del([ distPath + '/*', '!' + distPath + '/.git'], {dot: true}));
 
 /**
  * =================================

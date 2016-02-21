@@ -1,6 +1,22 @@
 //- filename: footer.jade
 //- description: フッター
 
-footer.footer
-    .footer__copyright
+footer.l-footer
+    .l-container
+        .row
+            .large-4
+                .l-footer__logo
+                    h1 ロゴ
+            .large-8
+                .l-footer-menu
+                    - for(var k =0; k < 3; k++){
+                    .large-4
+                        ul
+                            - for (var i = 0; i  < 4;i++){
+                            li
+                                a(href="#") メニュー1
+                            - }
+                    - }
+.l-footer__copyright
+    .l-container
         p copyright © sample site All Right Reserved.

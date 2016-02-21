@@ -1,3 +1,17 @@
+// ヘッダー
+//
+// ヘッダーの標準スタイル
+//
+// markup:
+// <header class="l-header"></header>
+//
+// Styleguide 5.0.0
 .l-header {
+  padding-top: rem-calc(18);
+  padding-bottom: rem-calc(18);
 
+}
+
+.l-header__tel {
+  font-size: rem-calc(28);
 }

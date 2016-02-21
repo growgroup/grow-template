@@ -22,13 +22,18 @@
  * ==============================
  **/
 
+// !!!!! Warning !!!!!
+// bower install を忘れないこと
+
 @import "../../bower_components/Andy/andy";
 @import "../../bower_components/susy/sass/susy";
 
-//
 
-@import "foundation/mixin";
+@import "../../bower_components/font-awesome/scss/font-awesome";
+
+
 @import "foundation/settings";
+@import "foundation/mixin";
 @import "foundation/normalize";
 @import "foundation/heading";
 @import "foundation/forms";
