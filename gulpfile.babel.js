@@ -256,6 +256,7 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
     gulp.watch([appPath + '/assets/images/**/*'], reload);
+    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
 });
 
 /**
@@ -316,18 +317,19 @@ gulp.task('images', () =>
  */
 
 gulp.task('styleguide:generate', () => {
-    return gulp.src([appPath + "/assets/scss/style.scss", appPath + "/assets/scss/**/*.scss"])
+    return gulp.src([appPath + "/assets/scss/*.scss", appPath + "/assets/scss/**/*.scss"])
         .pipe(styleguide.generate({
             title: 'Grow Template',
             server: true,
-            port: 8888,
-            rootPath: sg5OutputPath,
-            overviewPath: 'README.md'
+            port: 8000,
+            rootPath: "./" + sg5OutputPath,
+            overviewPath: "./" + 'README.md'
         }))
         .pipe(gulp.dest(sg5OutputPath));
 });
 
 gulp.task('styleguide:applystyles', function () {
+
     return gulp.src(appPath + "/assets/scss/style.scss")
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe($.cssGlobbing({extensions: ['.css', '.scss']}))
@@ -338,11 +340,7 @@ gulp.task('styleguide:applystyles', function () {
         .pipe(gulp.dest(sg5OutputPath));
 });
 
-gulp.task('styleguide:serve', () => {
-    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
-});
-
-gulp.task('styleguide', ['styleguide:generate', 'styleguide:serve']);
+gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 
 /**
  * =================================
