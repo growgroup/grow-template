@@ -150,7 +150,6 @@ jade-settings.json ファイルの値を変更することで、
 ##### Function & mixin
 
 
-
 ### JavaScript
 
 ##### ESLint について
@@ -182,13 +181,6 @@ dist/assets フォルダ内に実行後のファイルが格納されます。
 
 スタイルガイドは [sc5-styleguide](https://github.com/SC5/sc5-styleguide/pulls) を導入しています。  
 gulp を実行している際に、8888 ポートで閲覧することができます。
-
-
-Jade ファイルをHTMLにコンパイル後、useref が実行され、
-dist/assets フォルダ内に実行後のファイルが格納されます。
-
-* [https://github.com/jonkemp/gulp-useref](https://github.com/jonkemp/gulp-useref)
-
 
 
 ### その他

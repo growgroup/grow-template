@@ -321,7 +321,7 @@ gulp.task('styleguide:generate', () => {
         .pipe(styleguide.generate({
             title: 'Grow Template',
             server: true,
-            port: 8000,
+            port: 8888,
             rootPath: "./" + sg5OutputPath,
             overviewPath: "./" + 'README.md'
         }))
