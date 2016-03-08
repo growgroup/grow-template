@@ -177,7 +177,7 @@ gulp.task('jade', () => {
         .pipe($.data(function (file) {
             return jadeSettingFile;
         }))
-        .pipe($.jade({pretty: true, escapePre: true, basedir: appPath + "/"}))
+        .pipe($.jade({pretty: true, escapePre: true, basedir: appPath + "/", cache: true}))
         .pipe(gulp.dest(config.jade.dist))
         .pipe($.size({title: 'HTML'}))
         .pipe(reload({stream: true}))
@@ -255,7 +255,7 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
     gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
-    gulp.watch([appPath + '/assets/images/**/*'], ['images','reload']);
+    gulp.watch([appPath + '/assets/images/**/*'], ['images',reload]);
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
 });
 
@@ -302,7 +302,7 @@ gulp.task('clean', cb => del([ distPath + '/*', '!' + distPath + '/.git'], {dot:
 gulp.task('images', () =>
     gulp.src(config.images.src)
         .pipe($.plumber())
-        .pipe($.cache($.imagemin({optimizationLevel: 8, progressive: true, interlaced: true})))
+        .pipe($.cached($.imagemin({optimizationLevel: 8, progressive: true, interlaced: true})))
         .pipe(gulp.dest(config.images.dist))
         .pipe($.notify({message: 'Images task complete!'}))
         .pipe($.size({title: 'images'}))
@@ -351,8 +351,9 @@ gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 gulp.task('default', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'jade', 'scripts', 'copy', 'babel', 'images'],
+        ['lint', 'jade', 'scripts', 'copy', 'babel'],
         'watch',
+        'images',
         cb
     )
 });

@@ -33,9 +33,185 @@
 //
 // Styleguide 3.4.0
 
+//スマホの時だけ背景
+.p-contact-form__wrap {
+  background: white;
+  padding-top: rem-calc($margin-xlg);
+  @include breakpoint(small only){
+    padding-top: rem-calc($margin-lg);
+    margin-left: rem-calc($margin-base);
+    margin-right: rem-calc($margin-base);
+  }
+}
 
 .p-contact-form {
-  .form-group {
-    margin-bottom: rem-calc($margin-md);
+  padding-right: rem-calc($margin-xlg);
+  padding-bottom: rem-calc($margin-xlg);
+  padding-left: rem-calc($margin-xlg);
+  @include breakpoint(small only){
+    background: white;
+    padding: rem-calc($margin-md);
+  }
+
+  .p-contact-form-group {
+    width: 100%;
+    border-top: 1px solid darken($color-tertiary, 15%);
+    border-right: 1px solid darken($color-tertiary, 15%);
+    border-left: 1px solid darken($color-tertiary, 15%);
+    display: table;
+    table-layout: fixed;
+    &.is-last {
+      border-bottom: 1px solid darken($color-tertiary, 9%);
+    }
+    @include breakpoint(small only){
+      display: block;
+      table-layout: inherit;
+    }
+
+    > dt {
+      display: table-cell;
+      width: 30%;
+      position: relative;
+      margin-top: 0;
+      padding-top: rem-calc($margin-md*1.5);
+      padding-left: rem-calc($margin-md*1.5);
+      background: darken($color-tertiary, 9%);
+      height: 100%;
+      vertical-align: top;
+      font-weight: bold;
+      @include breakpoint(small only){
+        width: 100%;
+        display: block;
+        padding-top: rem-calc($margin-base);
+        padding-left: rem-calc($margin-base);
+        padding-bottom: rem-calc($margin-base);
+      }
+
+      > .c-label {
+        position: absolute;
+        right: rem-calc($margin-md*1.5);
+        top: rem-calc($margin-md*1.5);
+        font-size: rem-calc(11);
+        @include breakpoint(small only){
+          right: rem-calc($margin-sm*1.4);
+          top: rem-calc($margin-sm*1.4);
+        }
+      }
+    }
+
+    > dd {
+      display: table-cell;
+      padding: rem-calc($margin-md*1.5) rem-calc($margin-md*1.5) rem-calc($margin-md*1.5);
+      @include breakpoint(small only){
+        width: 100%;
+        display: block;
+        padding: rem-calc($margin-md);
+      }
+
+      > label {
+        > span {
+          display: inline-block;
+          margin-right: rem-calc($margin-lg*1.9);
+          margin-bottom: rem-calc($margin-base);
+          @include breakpoint(small only){
+            display: block;
+            margin: 0 0 rem-calc($margin-base);
+          }
+        }
+      }
+      .error {
+        display: block;
+        padding-top: rem-calc($margin-base);
+        padding-bottom: rem-calc($margin-base);
+        font-size: rem-calc(12);
+        font-weight: bold;
+      }
+    }
+    &__select {
+      margin-right: $margin-base;
+      display: inline-block;
+      @include breakpoint(small only){
+        width: 100%;
+        margin-top: $margin-md;
+        margin-bottom: $margin-md*1.2;
+      }
+
+      &__custom {
+        position: relative;
+        display: inline-block;
+        width: 150px;
+        height: 35px;
+        margin: 0 rem-calc($margin-base) 0 0;
+        border: 1px solid $color-lightgray;
+        border-radius: $border-radius;
+        line-height: 1;
+        vertical-align: middle;
+        background: $color-white;
+        color: black;
+        @include breakpoint(small only){
+          width: 86%;
+        }
+
+        //　アイコン
+        &:after {
+          display: block;
+          position: absolute;
+          bottom: rem-calc($margin-base*1.2);
+          right: $margin-sm;
+          line-height: 1;
+          vertical-align: middle;
+          font-family: 'FontAwesome';
+          content: "\f107";
+        }
+
+        // default css reset for select
+        > select {
+          width: 89%;
+          height: 100%;
+          overflow: hidden;
+          margin: 0;
+          padding-right: rem-calc($margin-base);
+          padding-left: rem-calc($margin-base);
+          border: none;
+          line-height: 1;
+          vertical-align: middle;
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          -o-appearance: none;
+          -ms-appearance: none;
+          appearance: none;
+          background: none transparent;
+          box-sizing: content-box;
+        }
+      }
+    }
+  }
+
+
+  textarea {
+    min-height: 200px;
+  }
+
+  &__privacy {
+    height: 150px;
+    text-align: left;
+    background: #f2f2f2;
+    padding: $margin-md;
+    font-size: rem-calc(12);
+    margin-top: $margin-lg;
+    margin-bottom: $margin-lg;
+    overflow-y: auto;
+
+    &__title {
+      display: block;
+      font-size: rem-calc(14);
+      text-align: center;
+      margin-bottom: rem-calc($margin-md);
+    }
+
+    &__item {
+      padding-left: rem-calc($margin-md);
+      padding-right: rem-calc($margin-md);
+    }
   }
 }
