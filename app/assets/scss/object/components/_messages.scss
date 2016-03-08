@@ -1,0 +1,94 @@
+// メッセージボックス
+//
+// メッセージを表示するボックス
+//
+// markup:
+// <div class="c-message">
+//     <p><i class="fa fa-times c-message__icon"></i> メッセージボックスです</p>
+// </div>
+// <div class="c-message is-primary">
+//     <p>メッセージボックスです。アイコンが右の場合 <i class="fa fa-times c-message__icon is-right"></i></p>
+// </div>
+// <div class="c-message is-secondary">
+//     <p><i class="fa fa-times c-message__icon"></i> メッセージボックスです</p>
+// </div>
+// <div class="c-message is-danger">
+//     <p><i class="fa fa-times c-message__icon"></i> メッセージボックスです</p>
+// </div>
+// <div class="c-message is-warning">
+//     <p><i class="fa fa-times c-message__icon"></i> メッセージボックスです</p>
+// </div>
+// <div class="c-message is-info">
+//     <p><i class="fa fa-times c-message__icon"></i> メッセージボックスです</p>
+// </div>
+// <div class="c-message is-success">
+//     <p><i class="fa fa-times c-message__icon"></i> メッセージボックスです</p>
+// </div>
+//
+// Styleguide 2.22.0
+
+.c-message {
+  padding: $margin-sm $margin-md $margin-sm $margin-md;
+  background: $color-tertiary;
+  border: 1px solid $color-lightgray;
+  border-radius: $border-radius;
+  margin-bottom: $margin-md;
+  .c-message__icon {
+    margin-right: rem-calc(6);
+    &.is-right {
+      float: right;
+      margin-top: rem-calc(4);
+    }
+  }
+  > p {
+    margin-bottom: 0;
+  }
+}
+
+.c-message.is-primary {
+  background: $color-primary;
+  border: 1px solid darken($color-primary, 3);
+  > p {
+    color: #fff;
+  }
+}
+
+.c-message.is-secondary {
+  background: $color-secondary;
+  border: 1px solid darken($color-secondary, 3);
+  > p {
+    color: #fff;
+  }
+}
+
+.c-message.is-danger {
+  background: $color-state-danger;
+  border: 1px solid darken($color-state-danger, 3);
+  > * {
+    color: #fff;
+  }
+}
+
+.c-message.is-warning {
+  background: $color-state-warning;
+  border: 1px solid darken($color-state-warning, 3);
+  > p {
+    color: #fff;
+  }
+}
+
+.c-message.is-info {
+  background: $color-state-info;
+  border: 1px solid darken($color-state-info, 3);
+  > p {
+    color: #fff;
+  }
+}
+
+.c-message.is-success {
+  background: $color-state-success;
+  border: 1px solid darken($color-state-success, 3);
+  > p {
+    color: #fff;
+  }
+}

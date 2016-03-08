@@ -194,7 +194,7 @@ gulp.task('scripts', () => {
     return gulp.src(config.js.src)
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe($.sourcemaps.init())
-        .pipe($.concat('scripts.js'))
+        .pipe($.concat('scripts.min.js'))
         .pipe($.uglify({compress: true}))
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest(config.js.dist))
