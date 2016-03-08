@@ -58,7 +58,7 @@ const reload = browserSync.reload;
  */
 
 var appPath = "app";
-var distPath = "dist";
+var distPath = "wp";
 
 // スタイルガイドのアウトプット先
 var sg5OutputPath = "styleguides";
