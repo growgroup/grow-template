@@ -330,7 +330,7 @@ gulp.task('styleguide:generate', () => {
         .pipe(gulp.dest(sg5OutputPath));
 });
 
-gulp.task('styleguide:applystyles', function () {
+gulp.task('styleguide:applystyles', () =>  {
 
     return gulp.src(appPath + "/assets/scss/style.scss")
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
@@ -344,9 +344,14 @@ gulp.task('styleguide:applystyles', function () {
 
 gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 
+gulp.task('wp', cb => {
+  return gulp.src( distPath + '/assets/css/style.css')
+      .pipe(gulp.dest(distPath + "/"));
+});
+
 /**
  * =================================
- * # Default
+ * # DefaultÛ<65;122;28M
  * gulp コマンドで呼び出されるデフォルトのタスク
  * =================================
  */
