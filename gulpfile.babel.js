@@ -69,15 +69,16 @@ var config = {};
  * 設定 - Browser Sync
  */
 config.browserSync = {
-    notify: true,
+    notify: false,
     open: true,
     ghostMode: {
-        clicks: true,
+        clicks: false,
         forms: true,
         scroll: false
     },
     tunnel: false,
-    server: ['dist'],
+    server: [distPath],
+    ui: false,
 }
 
 /**
@@ -170,14 +171,14 @@ gulp.task('jade', () => {
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe($.changed('dist', {extension: '.html'}))
         .pipe($.if(global.isWatching, $.cached('jade')))
-        .pipe($.jadeInheritance({basedir: 'app/'}))
+        .pipe($.jadeInheritance({basedir: appPath +'/'}))
         .pipe($.filter(function (file) {
             return !/\/_/.test(file.path) && !/^_/.test(file.relative);
         }))
         .pipe($.data(function (file) {
             return jadeSettingFile;
         }))
-        .pipe($.jade({pretty: true, escapePre: true, basedir: appPath + "/"}))
+        .pipe($.jade({pretty: true, cache: true, escapePre: true, basedir: appPath + "/"}))
         .pipe(gulp.dest(config.jade.dist))
         .pipe($.size({title: 'HTML'}))
         .pipe(reload({stream: true}))
@@ -252,6 +253,7 @@ gulp.task('setWatch', function () {
 gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
 
     gulp.watch([appPath + '/**/*.jade'], ['jade', reload]);
+    gulp.watch([appPath + '/bower_components/**/*'], ['copy', reload]);
     gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
@@ -302,7 +304,7 @@ gulp.task('clean', cb => del([ distPath + '/*', '!' + distPath + '/.git'], {dot:
 gulp.task('images', () =>
     gulp.src(config.images.src)
         .pipe($.plumber())
-        .pipe($.cache($.imagemin({optimizationLevel: 8, progressive: true, interlaced: true})))
+        .pipe($.cached($.imagemin({optimizationLevel: 8, progressive: true, interlaced: true})))
         .pipe(gulp.dest(config.images.dist))
         .pipe($.notify({message: 'Images task complete!'}))
         .pipe($.size({title: 'images'}))
@@ -351,8 +353,9 @@ gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 gulp.task('default', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'jade', 'scripts', 'copy', 'babel', 'images'],
+        ['lint', 'jade', 'scripts', 'copy', 'babel' ],
         'watch',
+        'images',
         cb
     )
 });
