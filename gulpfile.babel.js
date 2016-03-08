@@ -194,7 +194,7 @@ gulp.task('scripts', () => {
     return gulp.src(config.js.src)
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe($.sourcemaps.init())
-        .pipe($.concat('scripts.min.js'))
+        .pipe($.concat('scripts.js'))
         .pipe($.uglify({compress: true}))
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest(config.js.dist))
@@ -255,7 +255,7 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
     gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
-    gulp.watch([appPath + '/assets/images/**/*'], reload);
+    gulp.watch([appPath + '/assets/images/**/*'], ['images','reload']);
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
 });
 
@@ -351,7 +351,7 @@ gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 gulp.task('default', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'jade', 'scripts', 'copy', 'babel'],
+        ['lint', 'jade', 'scripts', 'copy', 'babel', 'images'],
         'watch',
         cb
     )
