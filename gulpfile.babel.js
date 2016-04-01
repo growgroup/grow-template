@@ -178,11 +178,7 @@ gulp.task('jade', () => {
         .pipe($.data(function (file) {
             return jadeSettingFile;
         }))
-<<<<<<< HEAD
-        .pipe($.jade({pretty: true, escapePre: true, basedir: appPath + "/", cache: true}))
-=======
         .pipe($.jade({pretty: true, cache: true, escapePre: true, basedir: appPath + "/"}))
->>>>>>> 072ff0ab2106efec665fc5e836696c2b0cfd3056
         .pipe(gulp.dest(config.jade.dist))
         .pipe($.size({title: 'HTML'}))
         .pipe(reload({stream: true}))

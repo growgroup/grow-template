@@ -81,6 +81,11 @@ $susy: (
   .small-#{$i} {
     @include span($i);
   }
+  @for $i from 1 through $grid-column-count {
+    .is-push-sm-#{$i} {
+      @include push($i);
+    }
+  }
 }
 
 
@@ -98,6 +103,11 @@ $susy: (
   @for $i from 1 through $grid-column-count {
     .medium-#{$i} {
       @include span($i);
+    }
+  }
+  @for $i from 1 through $grid-column-count {
+    .is-push-md-#{$i} {
+      @include push($i);
     }
   }
 }
@@ -119,3 +129,11 @@ $susy: (
     }
   }
 }
+@include breakpoint(large) {
+  @for $i from 1 through $grid-column-count {
+    .is-push-lg-#{$i} {
+      @include push($i);
+    }
+  }
+}
+
