@@ -69,15 +69,16 @@ var config = {};
  * 設定 - Browser Sync
  */
 config.browserSync = {
-    notify: true,
+    notify: false,
     open: true,
     ghostMode: {
-        clicks: true,
+        clicks: false,
         forms: true,
         scroll: false
     },
     tunnel: false,
-    server: ['dist'],
+    server: [distPath],
+    ui: false,
 }
 
 /**
@@ -170,14 +171,18 @@ gulp.task('jade', () => {
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe($.changed('dist', {extension: '.html'}))
         .pipe($.if(global.isWatching, $.cached('jade')))
-        .pipe($.jadeInheritance({basedir: 'app/'}))
+        .pipe($.jadeInheritance({basedir: appPath +'/'}))
         .pipe($.filter(function (file) {
             return !/\/_/.test(file.path) && !/^_/.test(file.relative);
         }))
         .pipe($.data(function (file) {
             return jadeSettingFile;
         }))
+<<<<<<< HEAD
         .pipe($.jade({pretty: true, escapePre: true, basedir: appPath + "/", cache: true}))
+=======
+        .pipe($.jade({pretty: true, cache: true, escapePre: true, basedir: appPath + "/"}))
+>>>>>>> 072ff0ab2106efec665fc5e836696c2b0cfd3056
         .pipe(gulp.dest(config.jade.dist))
         .pipe($.size({title: 'HTML'}))
         .pipe(reload({stream: true}))
@@ -252,6 +257,7 @@ gulp.task('setWatch', function () {
 gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
 
     gulp.watch([appPath + '/**/*.jade'], ['jade', reload]);
+    gulp.watch([appPath + '/bower_components/**/*'], ['copy', reload]);
     gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
@@ -328,7 +334,7 @@ gulp.task('styleguide:generate', () => {
         .pipe(gulp.dest(sg5OutputPath));
 });
 
-gulp.task('styleguide:applystyles', function () {
+gulp.task('styleguide:applystyles', () =>  {
 
     return gulp.src(appPath + "/assets/scss/style.scss")
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
@@ -342,9 +348,14 @@ gulp.task('styleguide:applystyles', function () {
 
 gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 
+gulp.task('wp', cb => {
+  return gulp.src( distPath + '/assets/css/style.css')
+      .pipe(gulp.dest(distPath + "/"));
+});
+
 /**
  * =================================
- * # Default
+ * # DefaultÛ<65;122;28M
  * gulp コマンドで呼び出されるデフォルトのタスク
  * =================================
  */
