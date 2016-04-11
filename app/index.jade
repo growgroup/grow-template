@@ -24,7 +24,7 @@ block body
         include /inc/object/components/_main-visual
 
         section.l-main
-            .l-section
+            .l-section.anchorTest
                 .l-container
                     h1.heading.is-xlg 見出し スタイル
                     h2.heading.is-xlg 見出し 極大
@@ -63,6 +63,9 @@ block body
                         .large-3
                             a.c-button.is-round ボタン (丸角)
 
+            .l-section
+                .l-container
+                    img.js-parallax(src="https://unsplash.it/600/400/?random", data-parallax-end="100",data-parallax-start-offset="550", data-parallax-defaultprop='{"opacity": 0, "transform": "translateY(0px)"}', data-parallax-endprop='{"opacity": 1,"transform": "translateY(50px)"}')
             .l-section
                 .l-container
                     h1.heading.is-xlg カード型リンク
@@ -146,7 +149,10 @@ block body
 
                                     - }
 
-
+                .l-container
+                    p.u-text-center
+                        a.c-button(href="#anchorTest",data-anchor-target=".anchorTest") テストアンカーリンク
 
         section.l-sidebar
+
 
