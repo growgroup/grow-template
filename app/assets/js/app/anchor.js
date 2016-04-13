@@ -6,13 +6,12 @@
  * @license  MIT Licence
  * ====================================================================
  */
-(function($){
+(function ($) {
     'use strict';
-    
-    if ( typeof window.GApp === "undefined" ){
+
+    if (typeof window.GApp === "undefined") {
         window.GApp = {};
     }
-
 
     var GApp = window.GApp || {};
 
@@ -21,13 +20,13 @@
      * @type {{}}
      */
     var defaultOptions = {
-        selector : 'a[href*="#"],.js-anchor',
+        selector: 'a[href*="#"],.js-anchor',
         dataSelector: "anchor-target",
-        scrollSpeed:  500,
-        easing:  "linear",
+        scrollSpeed: 500,
+        easing: "linear",
     }
 
-    var Anchor = function ( options ){
+    var Anchor = function (options) {
         // オプションをセット
         this.options = $.extend(defaultOptions, options);
     };
@@ -36,7 +35,7 @@
      * 初期化
      * @param e ターゲットとなるエレメント
      */
-    Anchor.prototype.init = function(){
+    Anchor.prototype.init = function () {
 
 
         // ターゲットをセット
@@ -50,27 +49,39 @@
     /**
      * クリック時のイベント
      */
-    Anchor.prototype.onClick = function(){
+    Anchor.prototype.onClick = function () {
 
         var self = this;
 
-        this.target.on('click',function(e){
+        this.target.on('click', function (e) {
             e.preventDefault();
 
             // スクロール先のターゲットを指定
             var anchorTargetSelector = $(this).data(self.options.dataSelector);
-            var anchorTarget = $(anchorTargetSelector);
 
-            if ( ! anchorTarget.length ){
-                return false;
+
+            if ( typeof anchorTargetSelector === "undefined") {
+                var href = $(this).attr("href");
+                var anchorTargetSelector = href.match(/#(\S*)/g);
+                if (typeof anchorTargetSelector[0] === "undefined") {
+                    throw new Error("ターゲットとなる要素を取得できませんでした。");
+                    return false;
+                }
+                anchorTargetSelector = anchorTargetSelector[0];
             }
 
+            var anchorTarget = $(anchorTargetSelector);
+
+            if ( anchorTarget.length === 0 ){
+                throw new Error("ターゲットとなる要素を取得できませんでした。");
+                return false;
+            }
             var top = anchorTarget.offset().top;
 
             // スクロールさせる
             $('body,html').animate({
                 scrollTop: top,
-            },{
+            }, {
                 duration: self.options.scrollSpeed,
                 easing: self.options.easing
             })
@@ -78,7 +89,7 @@
     }
 
 
-    $(function(){
+    $(function () {
 
         GApp.Anchor = new Anchor();
         GApp.Anchor.init();

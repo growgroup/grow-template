@@ -72,7 +72,6 @@
             this.targetAll[i].startPosition = rect.top + document.body.scrollTop;
 
             // 動作が完了するまでのpixel数
-
             this.targetAll[i].endPosition = parseInt(( this.targetAll[i].getAttribute("data-parallax-end") ) ? this.targetAll[i].getAttribute("data-parallax-end") : 300);
 
             // 発動する位置までのオフセット

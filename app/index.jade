@@ -24,7 +24,7 @@ block body
         include /inc/object/components/_main-visual
 
         section.l-main
-            .l-section.anchorTest
+            .l-section#anchorTest
                 .l-container
                     h1.heading.is-xlg 見出し スタイル
                     h2.heading.is-xlg 見出し 極大
@@ -65,7 +65,7 @@ block body
 
             .l-section
                 .l-container
-                    img.js-parallax(src="https://unsplash.it/600/400/?random", data-parallax-end="100",data-parallax-start-offset="550", data-parallax-defaultprop='{"opacity": 0, "transform": "translateY(0px)"}', data-parallax-endprop='{"opacity": 1,"transform": "translateY(50px)"}')
+                    img.js-parallax(src="https://unsplash.it/600/400/?random", data-parallax-end="100", data-parallax-start-offset="550", data-parallax-defaultprop='{"opacity": 0, "transform": "translateY(0px)"}', data-parallax-endprop='{"opacity": 1, "transform": "translateY(50px)"}')
             .l-section
                 .l-container
                     h1.heading.is-xlg カード型リンク
@@ -101,15 +101,47 @@ block body
                             h2.heading.is-lg タイル型投稿一覧
                             .p-post-list.is-tile
                                 .row
-                                    - for (var i = 0; i < 4; i++){
-                                    .small-12.large-3
+                                    - for (var i = 0; i < 2; i++){
+                                    .small-12.large-4
                                         .p-post-list__item
                                             .p-post-list__thumbnail
                                                | <img src="https://placehold.jp/300x200.png">
                                             h2.p-post-list__title
                                                 a 投稿タイトル
-                                            .p-post-list__detail
+                                            .p-post-list__detail.js-heightline
                                                 | 投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト
+                                            .p-post-list__category.c-label
+                                                a カテゴリ名
+                                    .small-12.large-4
+                                        .p-post-list__item
+                                            .p-post-list__thumbnail
+                                               | <img src="https://placehold.jp/300x200.png">
+                                            h2.p-post-list__title
+                                                a 投稿タイトル
+                                            .p-post-list__detail.js-heightline
+                                                | 投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキ投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキストスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト
+                                            .p-post-list__category.c-label
+                                                a カテゴリ名
+                                    - }
+                                    - for (var i = 0; i < 2; i++){
+                                    .small-12.large-4
+                                        .p-post-list__item
+                                            .p-post-list__thumbnail
+                                               | <img src="https://placehold.jp/300x200.png">
+                                            h2.p-post-list__title
+                                                a 投稿タイトル
+                                            .p-post-list__detail.js-heightline
+                                                | 投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト
+                                            .p-post-list__category.c-label
+                                                a カテゴリ名
+                                    .small-12.large-4
+                                        .p-post-list__item
+                                            .p-post-list__thumbnail
+                                               | <img src="https://placehold.jp/300x200.png">
+                                            h2.p-post-list__title
+                                                a 投稿タイトル
+                                            .p-post-list__detail.js-heightline
+                                                | 投稿テキスト投稿テキスト投稿テキスト
                                             .p-post-list__category.c-label
                                                 a カテゴリ名
                                     - }
@@ -152,6 +184,7 @@ block body
                 .l-container
                     p.u-text-center
                         a.c-button(href="#anchorTest",data-anchor-target=".anchorTest") テストアンカーリンク
+                        a.c-button(href="#anchorTest") テストアンカーリンク2
 
         section.l-sidebar
 

@@ -12,7 +12,6 @@
     var GApp = window.GApp || {};
 
     $.transit = {
-        version: "0.9.12",
         propertyMap: {
             marginLeft: 'margin',
             marginRight: 'margin',
