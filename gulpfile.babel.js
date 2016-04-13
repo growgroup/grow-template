@@ -216,10 +216,10 @@ gulp.task('scripts', () => {
 gulp.task('scripts_app', () => {
     return gulp.src([
             appPath + "/assets/js/app/utils.js",
+            appPath + "/assets/js/app/tab.js",
             appPath + "/assets/js/app/anchor.js",
             appPath + "/assets/js/app/heightline.js",
             appPath + "/assets/js/app/parallax.js",
-            appPath + "/assets/js/app/tab.js",
             appPath + "/assets/js/app/accordion.js",
         ])
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))

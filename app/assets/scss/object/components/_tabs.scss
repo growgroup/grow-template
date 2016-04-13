@@ -50,6 +50,11 @@
 .c-tabs__content {
   border: 1px solid $color-tertiary;
   padding: $margin-base;
+  background: $color-white;
+  display: none;
+  &.is-active {
+    display: block;
+  }
   p {
     margin-top: 0;
   }

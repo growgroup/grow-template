@@ -20,7 +20,7 @@
      * @type {{}}
      */
     var defaultOptions = {
-        selector: 'a[href*="#"],.js-anchor',
+        selector: '.js-anchor',
         dataSelector: "anchor-target",
         scrollSpeed: 500,
         easing: "linear",

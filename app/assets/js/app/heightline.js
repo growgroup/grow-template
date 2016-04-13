@@ -21,9 +21,9 @@
         property: "minHeight", // or min-height
         mobile: true,
         responsive: {
-          "640" : {
-            columns: 2
-          }
+            "640": {
+                columns: 2
+            }
         }
     }
 
@@ -34,7 +34,7 @@
     /**
      * 初期化
      */
-    Heightline.prototype.init = function(){
+    Heightline.prototype.init = function () {
 
         // ターゲットとなる要素をセットする
 
@@ -47,8 +47,8 @@
 
         this.setResposiveOption();
 
-        if ( this.options.mobile === false && ! GApp.Utils.isMobile() ){
-          return false;
+        if (this.options.mobile === false && !GApp.Utils.isMobile()) {
+            return false;
         }
 
 
@@ -58,48 +58,47 @@
     /**
      * レスポンシブの設定
      */
-    Heightline.prototype.setResposiveOption = function(){
-      if ( this.options.responsive ){
-        for( var width in this.options.responsive ){
-          if ( screen.width < width ){
-            this.options  = $.extend(this.options.responsive[width], this.options);
-          }
+    Heightline.prototype.setResposiveOption = function () {
+        if (this.options.responsive) {
+            for (var width in this.options.responsive) {
+                if (screen.width < width) {
+                    this.options = $.extend(this.options.responsive[width], this.options);
+                }
+            }
         }
-      }
     }
-
-
+    
     /**
-     * 実行
+     * 実行する
      */
-    Heightline.prototype.run = function(){
+    Heightline.prototype.run = function () {
 
         var tempElements = [];
 
-        for( var i = 0; i < this.elements.length; i++ ){
-          var element = this.elements[i];
-          if ( this.maxHeight < element.clientHeight ){
-            this.maxHeight = element.clientHeight;
-          }
-          element.originalHeight = element.clientHeight;
-          tempElements.push(element);
-          this.currentColumns++;
-
-          // カラムを判定し、最後のカラムだったら実行する
-          if ( this.options.columns && ( this.currentColumns%this.options.columns === 0 || i+1 === this.elements.length ) ) {
-            for( var it = 0; it < tempElements.length; it++){
-              tempElements[it].style[this.options.property] = this.maxHeight + "px";
+        for (var i = 0; i < this.elements.length; i++) {
+            var element = this.elements[i];
+            if (this.maxHeight < element.clientHeight) {
+                this.maxHeight = element.clientHeight;
             }
-            this.maxHeight = 0;
-            tempElements = [];
-          }
+            element.originalHeight = element.clientHeight;
+            tempElements.push(element);
+            this.currentColumns++;
+
+            // カラムを判定し、最後のカラムだったら実行する
+            if (this.options.columns && ( this.currentColumns % this.options.columns === 0 || i + 1 === this.elements.length )) {
+                for (var it = 0; it < tempElements.length; it++) {
+                    tempElements[it].style[this.options.property] = this.maxHeight + "px";
+                }
+                this.maxHeight = 0;
+                tempElements = [];
+            }
         }
 
         // カラムが指定されていない時
-        if ( typeof this.options.columns === "undefined" || ! this.options.columns ){
-          for( var i = 0; i < this.elements.length; i++ ){
-            this.elements[i].style[this.options.properity] = this.maxHeight + "px";
-          }
+        if (typeof this.options.columns === "undefined" || !this.options.columns) {
+            for (var i = 0; i < this.elements.length; i++) {
+                this.elements[i].style[this.options.properity] = this.maxHeight + "px";
+            }
         }
 
     }
@@ -107,13 +106,13 @@
     /**
      * リセット
      */
-    Heightline.prototype.reset = function(){
-        for( var i = 0; i < this.elements.length; i++ ){
-           this.elements[i].style[this.options.property] = this.elements[i].originalHeight + "px";
+    Heightline.prototype.reset = function () {
+        for (var i = 0; i < this.elements.length; i++) {
+            this.elements[i].style[this.options.property] = this.elements[i].originalHeight + "px";
         }
     }
 
-    $(function(){
+    $(function () {
         GApp.Heightline = new Heightline();
         GApp.Heightline.init();
     });
