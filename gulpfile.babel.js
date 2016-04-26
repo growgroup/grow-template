@@ -221,6 +221,7 @@ gulp.task('scripts_app', () => {
             appPath + "/assets/js/app/heightline.js",
             appPath + "/assets/js/app/parallax.js",
             appPath + "/assets/js/app/accordion.js",
+            appPath + "/assets/js/app/fixedheader.js",
         ])
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe($.sourcemaps.init())

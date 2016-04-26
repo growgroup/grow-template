@@ -3,20 +3,20 @@
 // 投稿記事一覧のページネーション
 //
 // markup:
-// <div class="c-pagenation">
+// <div class="c-pagination">
 //     <ul>
-//         <li><a class="c-pagenation__prev" href="#">« 前へ</a></li>
+//         <li><a class="c-pagination__prev" href="#">« 前へ</a></li>
 //         <li><a  href="#">1</a></li>
 //         <li><span class="is-active">2</span></li>
 //         <li><a  href="#/">3</a></li>
 //         <li><a  href="#/">4</a></li>
 //         <li><a  href="#/">5</a></li>
-//         <li><a class="c-pagenation__next" href="#/">次へ »</a></li>
+//         <li><a class="c-pagination__next" href="#/">次へ »</a></li>
 //     </ul>
 // </div>
 //
 // Styleguide 2.10.0
-.c-pagenation {
+.c-pagination {
 
   > ul {
     text-align: center;

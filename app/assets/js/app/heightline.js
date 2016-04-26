@@ -28,7 +28,8 @@
     }
 
     var Heightline = function (options) {
-        this.options = $.extend(options, defaultOptions);
+        this.options = $.extend(defaultOptions, options);
+        return this;
     };
 
     /**
@@ -47,10 +48,9 @@
 
         this.setResposiveOption();
 
-        if (this.options.mobile === false && !GApp.Utils.isMobile()) {
+        if (this.options.mobile === false && GApp.Utils.isMobile()) {
             return false;
         }
-
 
         this.run();
     }
@@ -67,7 +67,7 @@
             }
         }
     }
-    
+
     /**
      * 実行する
      */
@@ -112,9 +112,24 @@
         }
     }
 
+    /**
+     * jQueryプラグインとして利用できるように
+     * @param  {object} options
+     * @return {object}
+     */
+    $.fn.heightline = function(options){
+        var options = options || {};
+        options.selector = this.selector;
+        var heightline = new Heightline(options);
+        heightline.init();
+        return this;
+    };
+
     $(function () {
-        GApp.Heightline = new Heightline();
-        GApp.Heightline.init();
+        GApp.Heightline = Heightline;
+        var heightline = new Heightline();
+
+        heightline.init();
     });
 
 })(jQuery);
