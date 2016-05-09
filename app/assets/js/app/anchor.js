@@ -60,7 +60,7 @@
             var anchorTargetSelector = $(this).data(self.options.dataSelector);
 
 
-            if ( typeof anchorTargetSelector === "undefined") {
+            if (typeof anchorTargetSelector === "undefined") {
                 var href = $(this).attr("href");
                 var anchorTargetSelector = href.match(/#(\S*)/g);
                 if (typeof anchorTargetSelector[0] === "undefined") {
@@ -72,7 +72,7 @@
 
             var anchorTarget = $(anchorTargetSelector);
 
-            if ( anchorTarget.length === 0 ){
+            if (anchorTarget.length === 0) {
                 throw new Error("ターゲットとなる要素を取得できませんでした。");
                 return false;
             }

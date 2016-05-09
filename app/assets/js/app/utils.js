@@ -17,14 +17,10 @@
     var GApp = window.GApp || {};
 
 
-    var push = Array.prototype.push,
-        slice = Array.prototype.slice,
-        toString = Object.prototype.toString,
-        hasOwnProperty = Object.hasOwnProperty;
+    var toString = Object.prototype.toString;
 
     var nativeIsArray = Array.isArray,
-        nativeKeys = Object.keys,
-        nativeCreate = Object.create;
+        nativeKeys = Object.keys;
 
     var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
 
@@ -54,7 +50,7 @@
         return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
     };
 
-    Utils.prototype.isObject = function(obj) {
+    Utils.prototype.isObject = function (obj) {
         var type = typeof obj;
         return type === 'function' || type === 'object' && !!obj;
     };
@@ -64,8 +60,8 @@
      * @type {*|Function}
      */
     Utils.prototype.isArray = nativeIsArray || function (obj) {
-        return toString.call(obj) === '[object Array]';
-    };
+            return toString.call(obj) === '[object Array]';
+        };
 
 
     Utils.prototype.keys = function (obj) {

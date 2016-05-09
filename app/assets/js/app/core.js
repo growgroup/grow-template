@@ -11,6 +11,5 @@
     'use strict';
 
     window.GApp = function(){};
-
-
+    
 })(jQuery);

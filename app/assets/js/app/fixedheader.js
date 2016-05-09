@@ -47,7 +47,7 @@
 
 
     /**
-     * 実行する
+     * 実行
      */
     Fixedheader.prototype.run = function () {
 
