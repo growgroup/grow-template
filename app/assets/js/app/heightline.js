@@ -18,6 +18,7 @@
     var defaultOptions = {
         columns: 3,
         selector: ".js-heightline",
+        dataAttribute: "heightline-group",
         property: "minHeight", // or min-height
         mobile: true,
         responsive: {
@@ -41,6 +42,8 @@
 
         this.elements = document.querySelectorAll(this.options.selector);
 
+        this.bulkElements = $("*[data-" + this.options.dataAttribute + "]");
+
         // 最大の高さを格納
         this.maxHeight = 0;
 
@@ -53,6 +56,7 @@
         }
 
         this.run();
+        this.bulkRun();
     }
 
     /**
@@ -97,8 +101,53 @@
         // カラムが指定されていない時
         if (typeof this.options.columns === "undefined" || !this.options.columns) {
             for (var i = 0; i < this.elements.length; i++) {
-                this.elements[i].style[this.options.properity] = this.maxHeight + "px";
+                this.elements[i].style[this.options.property] = this.maxHeight + "px";
             }
+        }
+    }
+
+    /**
+     * データ属性のグループに応じて高さをあわせる
+     */
+    Heightline.prototype.bulkRun = function () {
+
+        var formatElement = {};
+        var self = this;
+
+
+        for (var i = 0; i < this.bulkElements.length; i++) {
+            var el = this.bulkElements[i];
+
+            var groupKey = $(el).data(this.options.dataAttribute);
+
+            if (!$.isArray(formatElement[groupKey])) {
+                formatElement[groupKey] = [];
+            }
+            formatElement[groupKey].push(el);
+        }
+
+
+
+
+        for (var key in formatElement) {
+            var tempElements = [];
+
+            var groupEl = formatElement[key];
+
+            for (var gi = 0; gi < groupEl.length; gi++) {
+                var singleEl = groupEl[gi];
+
+                if (this.maxHeight < singleEl.clientHeight) {
+                    this.maxHeight = singleEl.clientHeight;
+                }
+                singleEl.originalHeight = singleEl.clientHeight;
+                tempElements.push(singleEl);
+            }
+
+            for (var gi = 0; gi < tempElements.length; gi++) {
+                $(tempElements[gi]).css(this.options.property, this.maxHeight + "px");
+            }
+            this.maxHeight = 0;
         }
 
     }
@@ -112,12 +161,13 @@
         }
     }
 
+
     /**
      * jQueryプラグインとして利用できるように
      * @param  {object} options
      * @return {object}
      */
-    $.fn.heightline = function(options){
+    $.fn.heightline = function (options) {
         var options = options || {};
         options.selector = this.selector;
         var heightline = new Heightline(options);
