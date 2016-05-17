@@ -24,7 +24,7 @@ block body
         include /inc/object/components/_main-visual
 
         section.l-main
-            .l-section
+            .l-section#anchorTest
                 .l-container
                     h1.heading.is-xlg 見出し スタイル
                     h2.heading.is-xlg 見出し 極大
@@ -65,6 +65,9 @@ block body
 
             .l-section
                 .l-container
+                    img.js-parallax(src="https://unsplash.it/600/400/?random", data-parallax-end="100", data-parallax-start-offset="550", data-parallax-defaultprop='{"opacity": 0, "transform": "translateY(0px)"}', data-parallax-endprop='{"opacity": 1, "transform": "translateY(50px)"}')
+            .l-section
+                .l-container
                     h1.heading.is-xlg カード型リンク
                     .row
                         - for(var i = 0; i < 3 ; i++){
@@ -98,15 +101,47 @@ block body
                             h2.heading.is-lg タイル型投稿一覧
                             .p-post-list.is-tile
                                 .row
-                                    - for (var i = 0; i < 4; i++){
-                                    .small-12.large-3
+                                    - for (var i = 0; i < 2; i++){
+                                    .small-12.large-4
                                         .p-post-list__item
                                             .p-post-list__thumbnail
                                                | <img src="https://placehold.jp/300x200.png">
                                             h2.p-post-list__title
                                                 a 投稿タイトル
-                                            .p-post-list__detail
+                                            .p-post-list__detail.js-heightline
                                                 | 投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト
+                                            .p-post-list__category.c-label
+                                                a カテゴリ名
+                                    .small-12.large-4
+                                        .p-post-list__item
+                                            .p-post-list__thumbnail
+                                               | <img src="https://placehold.jp/300x200.png">
+                                            h2.p-post-list__title
+                                                a 投稿タイトル
+                                            .p-post-list__detail.js-heightline
+                                                | 投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキ投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキストスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト
+                                            .p-post-list__category.c-label
+                                                a カテゴリ名
+                                    - }
+                                    - for (var i = 0; i < 2; i++){
+                                    .small-12.large-4
+                                        .p-post-list__item
+                                            .p-post-list__thumbnail
+                                               | <img src="https://placehold.jp/300x200.png">
+                                            h2.p-post-list__title
+                                                a 投稿タイトル
+                                            .p-post-list__detail.js-heightline
+                                                | 投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト
+                                            .p-post-list__category.c-label
+                                                a カテゴリ名
+                                    .small-12.large-4
+                                        .p-post-list__item
+                                            .p-post-list__thumbnail
+                                               | <img src="https://placehold.jp/300x200.png">
+                                            h2.p-post-list__title
+                                                a 投稿タイトル
+                                            .p-post-list__detail.js-heightline
+                                                | 投稿テキスト投稿テキスト投稿テキスト
                                             .p-post-list__category.c-label
                                                 a カテゴリ名
                                     - }
@@ -146,7 +181,81 @@ block body
 
                                     - }
 
+                .l-container
+                    p.u-text-center
+                        a.c-button(href="#anchorTest",data-anchor-target=".anchorTest") テストアンカーリンク
+                        a.c-button(href="#anchorTest") テストアンカーリンク2
+                    | <div class="c-tabs js-tabs">
+                    |     <ul class="c-tabs__navs">
+                    |         <li><a href="#" class="is-active" data-tab-target="tab1">リスト1</a></li>
+                    |         <li><a href="#" data-tab-target="tab2">リスト2</a></li>
+                    |         <li><a href="#" data-tab-target="tab3">リスト3</a></li>
+                    |         <li><a href="#" data-tab-target="tab4">リスト4</a></li>
+                    |     </ul>
+                    |     <div class="c-tabs__panes">
+                    |     <div class="c-tabs__content is-active" data-tab-name="tab1">
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |     </div>
+                    |     <div class="c-tabs__content" data-tab-name="tab2">
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |     </div>
+                    |     <div class="c-tabs__content" data-tab-name="tab3">
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |     </div>
+                    |     <div class="c-tabs__content" data-tab-name="tab4">
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
+                    |     </div>
+                    |   </div>
+                    | </div>
 
+                    | <div class="c-panel js-accordion">
+                    |     <h1 class="c-panel__title" data-accordion-title="true">パネルタイトル</h1>
+                    |     <div class="c-panel__content" data-accordion-content="true">
+                    |         <p>パネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツ</p>
+                    |     </div>
+                    | </div>
+                    | <div class="c-panel is-danger">
+                    |     <h1 class="c-panel__title">パネルタイトル</h1>
+                    |     <div class="c-panel__content">
+                    |         <p>パネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツ</p>
+                    |     </div>
+                    | </div>
+                    | <div class="c-panel is-warning">
+                    |     <h1 class="c-panel__title">パネルタイトル</h1>
+                    |     <div class="c-panel__content">
+                    |         <p>パネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツ</p>
+                    |     </div>
+                    | </div>
+                    | <div class="c-panel is-info">
+                    |     <h1 class="c-panel__title">パネルタイトル</h1>
+                    |     <div class="c-panel__content">
+                    |         <p>パネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツ</p>
+                    |     </div>
+                    | </div>
+                    | <div class="c-panel is-success">
+                    |     <h1 class="c-panel__title">パネルタイトル</h1>
+                    |     <div class="c-panel__content">
+                    |         <p>パネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツ</p>
+                    |     </div>
+                    | </div>
 
         section.l-sidebar
+
 

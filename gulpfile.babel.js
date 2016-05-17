@@ -95,7 +95,8 @@ config.sass = {
 config.js = {
     src: [
         appPath + "/assets/js/*.js",
-    /** 他に追加したいファイルがある場合は追記 **/
+        "!" + appPath + "/assets/js/app/*.js",
+
         // appPath + "/assets/js/example.js"
     ],
     dist: distPath + "/assets/js/",
@@ -171,7 +172,7 @@ gulp.task('jade', () => {
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe($.changed('dist', {extension: '.html'}))
         .pipe($.if(global.isWatching, $.cached('jade')))
-        .pipe($.jadeInheritance({basedir: appPath +'/'}))
+        .pipe($.jadeInheritance({basedir: appPath + '/'}))
         .pipe($.filter(function (file) {
             return !/\/_/.test(file.path) && !/^_/.test(file.relative);
         }))
@@ -203,6 +204,36 @@ gulp.task('scripts', () => {
         .pipe($.sourcemaps.write('.'))
         .pipe(reload({stream: true}))
         .pipe($.notify("Scripts Task Completed!"));
+});
+
+
+/**
+ * =================================
+ * # Scripts
+ * Js の concat, uglify
+ * =================================
+ */
+gulp.task('scripts_app', () => {
+    return gulp.src([
+            appPath + "/assets/js/app/utils.js",
+            appPath + "/assets/js/app/tab.js",
+            appPath + "/assets/js/app/anchor.js",
+            appPath + "/assets/js/app/heightline.js",
+            appPath + "/assets/js/app/parallax.js",
+            appPath + "/assets/js/app/accordion.js",
+            appPath + "/assets/js/app/fixedheader.js",
+            appPath + "/assets/js/app/slider.js",
+        ])
+        .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
+        .pipe($.sourcemaps.init())
+        .pipe($.concat('app.js'))
+        .pipe($.uglify({compress: true}))
+        .pipe($.sourcemaps.write())
+        .pipe(gulp.dest(config.js.dist))
+        .pipe($.size({title: 'app'}))
+        .pipe($.sourcemaps.write('.'))
+        .pipe(reload({stream: true}))
+        .pipe($.notify("Scripts App Task Completed!"));
 });
 
 /**
@@ -257,7 +288,8 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
     gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
-    gulp.watch([appPath + '/assets/images/**/*'], ['images',reload]);
+    gulp.watch([appPath + '/assets/js/app/*.js'], ['lint', 'scripts_app']);
+    gulp.watch([appPath + '/assets/images/**/*'], ['images', reload]);
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
 });
 
@@ -292,7 +324,7 @@ gulp.task('copy', ['copy:app']);
  * dist ディレクトリ内をすべて削除
  * =================================
  */
-gulp.task('clean', cb => del([ distPath + '/*', '!' + distPath + '/.git'], {dot: true}));
+gulp.task('clean', cb => del([distPath + '/*', '!' + distPath + '/.git'], {dot: true}));
 
 /**
  * =================================
@@ -330,7 +362,7 @@ gulp.task('styleguide:generate', () => {
         .pipe(gulp.dest(sg5OutputPath));
 });
 
-gulp.task('styleguide:applystyles', () =>  {
+gulp.task('styleguide:applystyles', () => {
 
     return gulp.src(appPath + "/assets/scss/style.scss")
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
@@ -345,8 +377,8 @@ gulp.task('styleguide:applystyles', () =>  {
 gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 
 gulp.task('wp', cb => {
-  return gulp.src( distPath + '/assets/css/style.css')
-      .pipe(gulp.dest(distPath + "/"));
+    return gulp.src(distPath + '/assets/css/style.css')
+        .pipe(gulp.dest(distPath + "/"));
 });
 
 /**
@@ -358,7 +390,7 @@ gulp.task('wp', cb => {
 gulp.task('default', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'jade', 'scripts', 'copy', 'babel'],
+        ['lint', 'jade', 'scripts', 'scripts_app', 'copy', 'babel'],
         'watch',
         'images',
         cb
@@ -374,7 +406,7 @@ gulp.task('default', ['clean'], cb => {
 gulp.task('build', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'jade', 'scripts', 'copy', 'babel', 'images'],
+        ['lint', 'jade', 'scripts', 'scripts_app', 'copy', 'babel', 'images'],
         cb
     )
 });
