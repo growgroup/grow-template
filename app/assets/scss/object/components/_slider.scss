@@ -4,14 +4,14 @@
 }
 
 .c-slider-outer {
-
   > * {
     display: inline-block;
+    text-align: center;
   }
 }
 
 .c-slider__prev,
-.c-slider__next{
+.c-slider__next {
   position: absolute;
   top: 50%;
   margin-top: -10px;
@@ -29,6 +29,7 @@
 .c-slider__next {
   right: 10%;
 }
+
 .c-slider__prev {
   left: 10%;
 }

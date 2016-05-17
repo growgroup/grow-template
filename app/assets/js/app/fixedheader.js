@@ -30,6 +30,7 @@
      */
     var Fixedheader = function (options) {
         this.options = $.extend(defaultOptions, options);
+
     }
 
     /**
@@ -37,6 +38,9 @@
      */
     Fixedheader.prototype.init = function () {
         this.target = $(this.options.selector);
+
+        Fixedheader.prototype.isFixed = Fixedheader.prototype.isFixed.bind(this);
+        Fixedheader.prototype.run = Fixedheader.prototype.run.bind(this);
         if (
             ( screen.width > 768 && this.options.mobile )
             || this.options.mobile === false
@@ -50,8 +54,7 @@
      * 実行
      */
     Fixedheader.prototype.run = function () {
-
-        if (Fixedheader.prototype.isFixed()) {
+        if (this.isFixed()) {
             this.target.addClass(this.options.activeClass);
         } else {
             this.target.removeClass(this.options.activeClass);
@@ -65,6 +68,7 @@
      * @returns {boolean}
      */
     Fixedheader.prototype.isFixed = function () {
+        
         // オフセットより高いか判断する
         return ( window.pageYOffset > this.options.offset ) ? true : false;
     }

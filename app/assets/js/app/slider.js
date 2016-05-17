@@ -23,6 +23,7 @@
         'autoplay': true,
         'nav': true,
         'dot': true,
+        'screenAll': true,
         'navNext': '<span class="c-slider__next"> > </span>',
         'navPrev': '<span class="c-slider__prev"> < </span>',
     }
@@ -31,14 +32,14 @@
         this.options = $.extend(defaultOptions, options);
     }
 
-    var Item = function(el){
+    var Item = function (el) {
         this.instance = el;
     }
 
     /**
      * ポジションをセットする
      */
-    Item.prototype.setPosition = function(){
+    Item.prototype.setPosition = function () {
 
     }
 
@@ -54,6 +55,7 @@
         this.container = $(this.options.selector);
 
         // スライドさせる要素をセット
+        this.initializeItems();
         this.items = this.container.find(this.options.itemSelector);
 
         this.item = [];
@@ -86,7 +88,7 @@
         this.setOuter();
         this.setNav();
         this.addEventListener();
-
+        // this.debug();
 
     }
 
@@ -97,6 +99,19 @@
         return this.options.namespace + name;
     }
 
+
+    Slider.prototype.initializeItems = function () {
+        var items = this.container.find(this.options.itemSelector)
+
+        for (var i = 0; i < items.length; i++) {
+            var item = $(items[i]);
+            item.attr("data-slider-key", i);
+            if (this.options.screenAll) {
+
+                item.css("width", $(window).width());
+            }
+        }
+    }
 
     /**
      * アイテムを複製する
@@ -115,13 +130,16 @@
         }
 
         for (var i = 0; i < cloneItemsLength; i++) {
-            var $cloneItem = $(cloneItems[i]).addClass('cloned');
+            var $cloneItem = $(cloneItems[i]).addClass('cloned').removeAttr("data-slider-key");
             if (i >= (cloneItemsLength / 2)) {
                 this.container.prepend($cloneItem);
             } else {
                 this.container.append($cloneItem);
             }
         }
+
+        this.itemsClone = cloneItems;
+        this.originalItems = this.items;
         this.items = this.container.find(this.options.itemSelector);
     }
 
@@ -135,8 +153,9 @@
         this.container.append(this.outer);
         this.calcOuterWidth();
         this.updateOuterWidth();
+        this.centerdOuter();
 
-        this.outer.css("transform", 'translate3d(0,0,0)')
+        // this.outer.css("transform", 'translate3d(0,0,0)')
     }
     /**
      * アウターをセット
@@ -146,28 +165,29 @@
         var self = this;
 
         var temptran;
-        this.outer.on('mousedown', function(e){
-
+        this.outer.on('mousedown', function (e) {
             var touchX = e.pageX;
             self.slideX = $(this).position().left;
-            $(this).on('mousemove',function(e){
+            self.outer.css("transition", '0s');
+            $(this).on('mousemove', function (e) {
                 e.preventDefault();
                 var slideX = self.slideX - (touchX - e.pageX);
                 self.moveTo(slideX);
-                if ( ! temptran ) {
+                if (!temptran) {
                     temptran = $(this).css("transition");
                     $(this).css("transition", "");
                 }
+                self.outer.css("transition", '0s');
+
             });
         });
 
-        this.outer.on('mouseup', function(e){
+        this.outer.on('mouseup', function (e) {
             $(this).off('mousemove');
-            $(this).css("transition",temptran);
+            $(this).css("transition", temptran);
             temptran = false;
+            self.outer.css("transition", '1s');
         });
-
-
 
     }
 
@@ -182,12 +202,21 @@
      */
     Slider.prototype.updateOuterPosition = function (position) {
 
+        this.outer.css("transition", '1s');
         if (position) {
             this.currentOuterPosition = position;
         }
 
         var translate = 'translate3d(' + this.currentOuterPosition + 'px,0px,0px)'
         this.outer.css('transform', translate);
+    }
+
+    /**
+     * アウターをセンターに合わせる
+     */
+    Slider.prototype.centerdOuter = function () {
+        var halfKey = Math.round(this.originalItems.length / 2);
+        this.moveTo(-this.getItemWidth(halfKey));
     }
 
 
@@ -250,12 +279,28 @@
      */
     Slider.prototype.getItemWidth = function (idx) {
         var tempWidth = 0;
+
         for (var i = 0; i < idx; i++) {
-            tempWidth += $(this.items[i]).width();
+            tempWidth += $(this.originalItems[i]).width();
         }
-        return tempWidth - $(this.items[i]).width() / 1.5;
+
+        console.log(tempWidth);
+
+        return - $(this.originalItems[i]).width() / 1.5;
     }
 
+    /**
+     * キーから取得する
+     */
+    Slider.prototype.getItemFromKey = function (key) {
+
+        var tempItems = "";
+        $.each(this.originalItems, function () {
+            if ($(this).attr('data-slider-key') === key) {
+                return true;
+            }
+        })
+    }
 
     /**
      * 現在のアイテムを更新
@@ -268,7 +313,7 @@
      * 前のスライドへ移動する
      */
     Slider.prototype.next = function () {
-        if (this.currentItemId === (this.items.length - 1)) {
+        if (this.currentItemId === this.item.length - 1) {
             this.currentItemId = 0;
         } else {
             this.currentItemId++;
@@ -282,11 +327,11 @@
      */
     Slider.prototype.prev = function () {
         if (this.currentItemId === 0) {
-            this.currentItemId = this.items.length;
+            this.currentItemId = this.item.length - 1;
         } else {
             this.currentItemId--;
         }
-
+        this.log(this.currentItemId)
         this.moveTo(this.getItemWidth(this.currentItemId));
     }
 
@@ -318,6 +363,10 @@
         if (this.debug === true) {
             console.dir(text);
         }
+    }
+
+    Slider.prototype.debug = function () {
+        this.log(this);
     }
 
 
