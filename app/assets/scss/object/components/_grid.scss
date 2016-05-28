@@ -41,7 +41,6 @@ $susy: (
         )
 );
 
-
 // グリッド : コンテナー
 //
 // サイトの幅に合わせたセンター寄せのコンテナー
@@ -52,7 +51,6 @@ $susy: (
 //
 // Styleguide 2.2.1
 
-
 .container {
   @include container($susy);
 }
@@ -61,7 +59,7 @@ $susy: (
   margin-left: -(map_get($grid-column-responsive-gutter,medium)/2);
   margin-right: -(map_get($grid-column-responsive-gutter,medium)/2);
   @include susy-clearfix();
-  @include breakpoint(small only){
+  @include breakpoint(small only) {
     margin-left: 0;
     margin-right: 0;
   }
@@ -81,13 +79,10 @@ $susy: (
   .small-#{$i} {
     @include span($i);
   }
-  @for $i from 1 through $grid-column-count {
-    .is-push-sm-#{$i} {
-      @include push($i);
-    }
+  .is-push-sm-#{$i} {
+    @include push($i);
   }
 }
-
 
 // グリッド : タブレット
 //
@@ -104,13 +99,12 @@ $susy: (
     .medium-#{$i} {
       @include span($i);
     }
-  }
-  @for $i from 1 through $grid-column-count {
     .is-push-md-#{$i} {
       @include push($i);
     }
   }
 }
+
 
 // グリッド : デスクトップ
 //
@@ -127,10 +121,6 @@ $susy: (
     .large-#{$i} {
       @include span($i);
     }
-  }
-}
-@include breakpoint(large) {
-  @for $i from 1 through $grid-column-count {
     .is-push-lg-#{$i} {
       @include push($i);
     }

@@ -16,7 +16,6 @@
  *
  */
 
-
 'use strict';
 
 /**
@@ -137,11 +136,11 @@ config.images = {
 gulp.task('styles', () => {
     return gulp.src(config.sass.src)
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-        .pipe($.cssGlobbing({extensions: ['.css', '.scss']}))
-        .pipe($.sourcemaps.init())
+        .pipe($.cssGlobbing({extensions: ['.scss']}))
+        // .pipe($.sourcemaps.init())
         .pipe($.sass.sync({
             outputStyle: 'expanded',
-            precision: 10,
+            precision: 4,
             includePaths: ['.']
         }).on('error', $.sass.logError))
         .pipe($.size({title: 'styles'}))
@@ -290,7 +289,7 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
     gulp.watch([appPath + '/assets/js/app/*.js'], ['lint', 'scripts_app']);
     gulp.watch([appPath + '/assets/images/**/*'], ['images', reload]);
-    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
+    // gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
 });
 
 /**
