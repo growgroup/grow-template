@@ -27,6 +27,7 @@
 import gulp from 'gulp';
 import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
+import fs from 'fs';
 import buffer from 'vinyl-buffer';
 import stream from 'vinyl-source-stream';
 import browserify from 'browserify';
@@ -128,6 +129,53 @@ config.images = {
 }
 
 /**
+ * 設定 - WordPress
+ */
+config.wp = {
+    // テーマ名
+    "Name": "grow-html-template",
+    // テーマのURI
+    "Uri": "http://github.com/growgroup/grow-html-template",
+    // 著者
+    "Author": "growgroup",
+    // 著者URL
+    "AuthorUri": "http://grow-group.jp",
+    // 説明文
+    "Description": "HTML Boilerplate",
+    // バージョン
+    "Version": "1.0.0",
+    // ライセンス
+    "License": "GPL v3 or Later",
+    // ライセンスの詳細が記載されているURI
+    "LicenseUri": "",
+    // 親テーマ名
+    "Template": "growp",
+    // タグ
+    "Tag": "",
+    // テキストドメイン
+    "TextDomain": "grow-html-template",
+    // その他
+    "Option": "",
+}
+
+var wpThemeInfo = '@charset "UTF-8";\n'
+ + '/*\n'
+ + ' Theme Name: ' + config.wp.Name + '\n'
+ + ' Theme URI: ' + config.wp.Uri + '\n'
+ + ' Author: ' + config.wp.Author + '\n'
+ + ' Author URI: ' + config.wp.AuthorUri + '\n'
+ + ' Description: ' + config.wp.Description + '\n'
+ + ' Version: ' + config.wp.Version + '\n'
+ + ' Theme License: ' + config.wp.License + '\n'
+ + ' License URI: ' + config.wp.LicenseUri + '\n'
+ + ' Template: ' + config.wp.Template + '\n'
+ + ' Tags: ' + config.wp.Tag + '\n'
+ + ' Text Domain: ' + config.wp.TextDomain + '\n'
+ + config.wp.Option
+ + '*/\n';
+
+
+/**
  * =================================
  * # Sass
  * Sass のコンパイル
@@ -221,6 +269,7 @@ gulp.task('scripts_app', () => {
             appPath + "/assets/js/app/parallax.js",
             appPath + "/assets/js/app/accordion.js",
             appPath + "/assets/js/app/fixedheader.js",
+            appPath + "/assets/js/app/responsive-table.js",
             // appPath + "/assets/js/app/slider.js",
         ])
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
@@ -255,6 +304,7 @@ gulp.task('babel', ()=> {
         .pipe(gulp.dest(config.babel.dist))
         .pipe($.notify({message: 'Babel task complete！'}));
 });
+
 
 /**
  * =================================
@@ -375,9 +425,23 @@ gulp.task('styleguide:applystyles', () => {
 
 gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 
-gulp.task('wp', cb => {
-    return gulp.src(distPath + '/assets/css/style.css')
-        .pipe(gulp.dest(distPath + "/"));
+/**
+ * =================================
+ * # WP
+ * WordPress テーマの準備
+ * =================================
+ */
+
+function makeWordPressFile(){
+    if ( wpThemeInfo ) {
+        fs.writeFile(distPath + '/style.css', wpThemeInfo);
+        fs.writeFile(distPath + '/index.php', "");
+        fs.writeFile(distPath + '/functions.php', "");
+    }
+}
+
+gulp.task('wp', function() {
+    makeWordPressFile();
 });
 
 /**
@@ -392,6 +456,7 @@ gulp.task('default', ['clean'], cb => {
         ['lint', 'jade', 'scripts', 'scripts_app', 'copy', 'babel'],
         'watch',
         'images',
+        'wp',
         cb
     )
 });
