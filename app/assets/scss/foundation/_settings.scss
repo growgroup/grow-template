@@ -22,9 +22,9 @@ $color-tertiary-light: darken( $color-tertiary, 10) !default; // 薄いターシ
 $color-tertiary-dark: lighten( $color-tertiary, 10) !default; // 濃いターシャリカラー
 
 // # アクセント
-$color-tertiary: #b8b8b8 !default; // ターシャリカラー
-$color-tertiary-light: darken( $color-tertiary, 10) !default; // 薄いターシャリカラー
-$color-tertiary-dark: lighten( $color-tertiary, 10) !default; // 濃いターシャリカラー
+$color-accent: #b8b8b8 !default; // ターシャリカラー
+$color-accent-light: darken( $color-tertiary, 10) !default; // 薄いターシャリカラー
+$color-accent-dark: lighten( $color-tertiary, 10) !default; // 濃いターシャリカラー
 
 // # 灰色
 $color-gray-dark: #252525 !default; // 濃い灰色
