@@ -3,16 +3,37 @@
 // プロジェクトのCSSで利用する変数を定義
 
 // # 1. Color
-$color-primary: #5E671F !default; // プライマリカラー
-$color-secondary: #666 !default; // セカンダリカラー
-$color-tertiary: #efefef !default; // ターシャリカラー
-
 $color-white: #fff !default; // 白
-$color-black: #252525 !default; // 黒
-$color-darkgray: #666 !default; // 濃い灰色
-$color-gray: #999 !default; // 灰色
-$color-lightgray: #cccccc !default; // 薄い灰色
+$color-black: #000 !default; // 黒
 
+// # プライマリ
+$color-primary: #5E671F !default; // プライマリカラー
+$color-primary-dark: darken( $color-primary, 10) !default; // 濃いプライマリカラー
+$color-primary-light: lighten( $color-primary, 10) !default; // 薄いプライマリカラー
+
+// # セカンダリー
+$color-secondary: #666 !default; // セカンダリカラー
+$color-secondary-dark: darken( $color-secondary, 10) !default; // 濃いセカンダリカラー
+$color-secondary-light: lighten( $color-secondary, 10) !default; // 薄いセカンダリカラー
+
+// # ターシャリー
+$color-tertiary: #efefef !default; // ターシャリカラー
+$color-tertiary-light: darken( $color-tertiary, 10) !default; // 薄いターシャリカラー
+$color-tertiary-dark: lighten( $color-tertiary, 10) !default; // 濃いターシャリカラー
+
+// # アクセント
+$color-tertiary: #b8b8b8 !default; // ターシャリカラー
+$color-tertiary-light: darken( $color-tertiary, 10) !default; // 薄いターシャリカラー
+$color-tertiary-dark: lighten( $color-tertiary, 10) !default; // 濃いターシャリカラー
+
+// # 灰色
+$color-gray-dark: #252525 !default; // 濃い灰色
+$color-gray-darken: #999999 !default; // やや濃い灰色
+$color-gray: #cccccc !default; // 灰色
+$color-gray-lighten: #d8d8d8 !default; // やや薄い灰色
+$color-gray-light: #f2f2f2 !default; // 薄い灰色
+
+// # 役割別
 $color-state-danger: #cc2919 !default; // 危険
 $color-state-warning: #cc9e12 !default; // 警告
 $color-state-info: #378da3 !default; // お知らせ
@@ -58,11 +79,11 @@ $font-heading-sizes: (// 見出しのフォントサイズ
 $font-heading-color: $font-base-color !default; // 見出しカラー
 
 $font-large-size: $font-base-size*1.4px !default; // <small> フォントサイズ
-$font-large-color: $color-darkgray !default; // <small> フォントサイズ
+$font-large-color: $color-gray !default; // <small> フォントサイズ
 
 
 $font-small-size: $font-base-size*0.8px !default; // <small> フォントサイズ
-$font-small-color: $color-darkgray !default; // <small> フォントサイズ
+$font-small-color: $color-gray !default; // <small> フォントサイズ
 
 $font-small-size: $font-base-size/0.8 !default; // <small> フォントサイズ
 
@@ -77,7 +98,7 @@ $margin-xs: $margin-base/4 !default;
 
 // # 5. border
 
-$border-base-color: $color-lightgray !default;
+$border-base-color: $color-gray-light !default;
 $border-base-width: 1px !default;
 
 $border-radius: 3px !default;
