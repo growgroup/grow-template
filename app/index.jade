@@ -12,7 +12,7 @@ block meta
     meta(name='keywords', content=pages.home.keywords)
     meta(name="viewport", content=general.viewport)
 
-block append meta
+block prepend head_script
 
     //- body タグのクラスを設定
     - var bodyClass = "home";
