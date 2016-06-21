@@ -1,0 +1,123 @@
+// スライダーメニュー
+//
+// markup:
+//  <!-- メニュー -->
+// <div class="slidebar-menu js-slidebar-menu">
+//   <ul>
+//    <li class="is-current">
+//        <a href="#">サンプル1</a>
+//   </li>
+//  </ul>
+// </div>
+//  <!-- ボタン -->
+//  <a href="#" class="slidebar-button js-slidebar-button">
+//    <i class="fa fa-bars"></i>
+//  </a>
+//  <!-- 全体を包むラッパー -->
+//  <div class="slidebar-container js-slidebar-container">
+//     hogehoge
+//  </div>
+//
+// Styleguide 4.5
+
+$slidebar-menu-bg: $color-primary !default;
+$slidebar-menu-width: 75% !default;
+$slidebar-menu-eaasing: all ease-in-out .2s !default;
+$slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
+
+@include breakpoint(medium up) {
+  .slidebar-button {
+    display: none !important;
+  }
+  .slidebar-menu{
+    display: none !important;
+  }
+}
+
+@include breakpoint(small only) {
+
+  .slidebar-button {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    font-size: rem-calc(28);
+    z-index: 100000;
+  }
+
+  .slidebar-menu {
+    height: 100%;
+    position: fixed;
+    z-index: 100000;
+    background: $slidebar-menu-bg;
+    width: $slidebar-menu-width;
+    transform: translate3d(100%, 0px, 0px);
+    right: 0;
+    top: 0;
+    transition: $slidebar-menu-eaasing;
+    > ul > li {
+      a {
+        display: block;
+        padding-left: rem-calc(16);
+        padding-top: rem-calc(8);
+        padding-bottom: rem-calc(8);
+        padding-right: rem-calc(8);
+        text-decoration: none;
+        color: #fff;
+      }
+    }
+  }
+
+  .slidebar-container {
+    height: 100%;
+    &:after {
+      content: "";
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: $slidebar-container-bg;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: $slidebar-menu-eaasing;
+      display: none;
+    }
+  }
+
+  .js-slidebar-button {
+
+  }
+
+  .js-slidebar-menu {
+
+  }
+
+  body, html {
+    height: 100%;
+  }
+
+  .slidebar-container {
+    transition: $slidebar-menu-eaasing;
+  }
+
+  .is-slidebar-active {
+    .slidebar-container {
+      transform: translate3d(-$slidebar-menu-width, 0px, 0px);
+      &:after {
+        content: "";
+        opacity: 1;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: $slidebar-container-bg;
+        display: block;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    .slidebar-menu {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+}
