@@ -53,6 +53,7 @@
     padding: $margin-md $margin-lg;
     border: 1px solid $color-tertiary;
     border-radius: 0 0 $border-radius $border-radius;
+    background: $color-white;
   }
 
   &.is-danger .c-panel__title {

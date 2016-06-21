@@ -1,3 +1,10 @@
-.l-main {
+// メインカラム
+$layout-main-width: calc(100% - rem-calc(320)) !default;
+$layout-main-float: left !default;
 
+.l-main {
+  &.is-two-columns {
+    width: $layout-main-width;
+    float: $layout-main-float;
+  }
 }

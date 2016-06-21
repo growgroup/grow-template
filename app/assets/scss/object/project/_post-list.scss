@@ -41,7 +41,7 @@
   &__item {
     margin-bottom: rem-calc($margin-md);
   }
-  
+
   &__title {
     font-size: rem-calc(18);
     margin-top: rem-calc(8);
@@ -54,7 +54,6 @@
   }
 
 }
-
 
 // 投稿一覧 : 並行
 //
@@ -95,6 +94,7 @@
     border: 1px solid $color-tertiary;
     @extend %clearfix;
     padding: $margin-md;
+    background: $color-white;
   }
 
   // サムネイル
@@ -105,8 +105,6 @@
   }
 
 }
-
-
 
 // 投稿一覧 : 一行
 //
@@ -146,9 +144,9 @@
   .p-post-list__item {
     border-bottom: 1px solid $color-tertiary;
     @extend %clearfix;
-    padding: $margin-md;
+    padding-top: $margin-md;
+    padding-bottom: $margin-md;
   }
-
   // サムネイル
   .p-post-list__thumbnail {
     float: left;
@@ -160,10 +158,10 @@
     }
 
   }
-  
+
   // カテゴリ、日付
   .p-post-list__date,
-  .p-post-list__category{
+  .p-post-list__category {
     margin-right: $margin-md;
     float: left;
   }

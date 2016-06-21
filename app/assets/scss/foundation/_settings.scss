@@ -7,7 +7,7 @@ $color-white: #fff !default; // 白
 $color-black: #000 !default; // 黒
 
 // # プライマリ
-$color-primary: #5E671F !default; // プライマリカラー
+$color-primary: #76b26f !default; // プライマリカラー
 $color-primary-dark: darken( $color-primary, 10) !default; // 濃いプライマリカラー
 $color-primary-light: lighten( $color-primary, 10) !default; // 薄いプライマリカラー
 
@@ -81,7 +81,6 @@ $font-heading-color: $font-base-color !default; // 見出しカラー
 $font-large-size: $font-base-size*1.4px !default; // <small> フォントサイズ
 $font-large-color: $color-gray !default; // <small> フォントサイズ
 
-
 $font-small-size: $font-base-size*0.8px !default; // <small> フォントサイズ
 $font-small-color: $color-gray !default; // <small> フォントサイズ
 
@@ -119,3 +118,12 @@ $breakpoints: (
 ) !default;;
 
 $breakpoint-classes: (small medium large) !default;
+
+
+// # 7. layouts
+
+$layout-sidebar-width: rem-calc(320);
+$layout-sidebar-float: left;
+
+$layout-main-width: calc(100% - rem-calc(320));
+$layout-main-float: left;
