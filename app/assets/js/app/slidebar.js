@@ -39,7 +39,7 @@
 
         this.trigger();
         this.bodyTrigger();
-        this.prototype.toggle = this.prototype.toggle.bind(this);
+        Slidebar.prototype.toggle = Slidebar.prototype.toggle.bind(this);
         $("body").addClass('slidebar-init')
     }
 

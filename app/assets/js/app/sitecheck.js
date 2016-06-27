@@ -16,7 +16,6 @@
 
     var GApp = window.GApp || {};
 
-
     /**
      * 初期化
      * @type {{}}
@@ -129,18 +128,7 @@
             }
         });
         wrap.append(barDisplayBtn);
-
-        // リンクチェック
-        var linkCheckBtn = $("<a></a>");
         var self = this;
-        linkCheckBtn.addClass("sc-togglebtn__checklink");
-        linkCheckBtn.text("リンク切れチェック");
-
-        linkCheckBtn.on('click', function () {
-            self.checkLink();
-        });
-
-        wrap.append(linkCheckBtn);
         $('body').append(wrap);
     }
 

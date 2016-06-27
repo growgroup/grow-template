@@ -271,6 +271,7 @@ gulp.task('scripts_app', () => {
             appPath + "/assets/js/app/fixedheader.js",
             appPath + "/assets/js/app/responsive-table.js",
             appPath + "/assets/js/app/slidebar.js",
+            appPath + "/assets/js/app/slider.js",
         ])
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe($.sourcemaps.init())

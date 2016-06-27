@@ -30,7 +30,6 @@
      */
     var Fixedheader = function (options) {
         this.options = $.extend(defaultOptions, options);
-
     }
 
     /**

@@ -1,12 +1,18 @@
+// スライダー用
+
 .c-slider {
   overflow: hidden;
   position: relative;
 }
 
 .c-slider-outer {
+  cursor: pointer;
+
   > * {
     display: inline-block;
     text-align: center;
+    cursor: pointer;
+
   }
 }
 
@@ -32,4 +38,8 @@
 
 .c-slider__prev {
   left: 10%;
+}
+
+.c-slider .is-transition {
+  transition: all ease .4s;
 }

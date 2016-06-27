@@ -24,7 +24,7 @@
 
         dataEffectSelector: "parallax-effect",
 
-        offset: 300,
+        offset: 100,
 
         // 透過アニメーションの係数
         opacityProp: 0,
