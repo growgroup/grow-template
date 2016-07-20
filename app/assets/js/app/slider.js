@@ -7,19 +7,12 @@
  * ====================================================================
  */
 
-/*
- * ====================================================================
- * Grow Template
- * @package  Grow Template
- * @author   GrowGroup.Inc <info@grow-group.jp>
- * @license  MIT Licence
- * ====================================================================
- */
 
 ;(function ($) {
     "use strict";
 
 
+    // 初期設定
     var defaultOptions = {
         'namespace': "c-slider",
         'selector': ".js-slider",
@@ -40,7 +33,7 @@
 
     var Slider = function (options) {
     }
-    
+
     /**
      * 実行
      */
@@ -100,10 +93,12 @@
         this.watch();
 
         // this.debug();
-
     }
 
-    Slider.prototype.setInfo = function(){
+    /**
+     * 画面情報を保存
+     */
+    Slider.prototype.setInfo = function () {
         this.info = {
             windowWidth: window.outerWidth,
             windowHeight: window.outerWidth
@@ -117,14 +112,18 @@
     }
 
 
+    /**
+     * アイテムを初期化
+     */
     Slider.prototype.initializeItems = function () {
         var items = this.container.find(this.options.itemSelector)
 
         for (var i = 0; i < items.length; i++) {
+
             var item = $(items[i]);
             item.attr("data-slider-key", i);
-            if (this.options.screenAll) {
 
+            if (this.options.screenAll) {
                 item.css("width", $(window).width());
             }
         }
@@ -158,6 +157,9 @@
         this.itemsClone = cloneItems;
         this.originalItems = this.items;
         this.items = this.container.find(this.options.itemSelector);
+        this.items.each(function (key) {
+            $(this).attr("data-slider-key", key)
+        })
     }
 
     /**
@@ -171,7 +173,6 @@
         this.calcOuterWidth();
         this.updateOuterWidth();
         this.centerdOuter();
-        // this.outer.css("transform", 'translate3d(0,0,0)')
     }
     /**
      * アウターをセット
@@ -185,7 +186,7 @@
 
             var touchX = e.pageX;
 
-            if ( typeof e.originalEvent.changedTouches !== "undefined" ){
+            if (typeof e.originalEvent.changedTouches !== "undefined") {
                 touchX = e.originalEvent.changedTouches[0].pageX;
             }
 
@@ -195,7 +196,7 @@
             $(this).on('mousemove touchmove', function (e) {
                 e.preventDefault();
                 var pageX = e.pageX;
-                if ( typeof e.originalEvent.changedTouches !== "undefined" ){
+                if (typeof e.originalEvent.changedTouches !== "undefined") {
                     pageX = e.originalEvent.changedTouches[0].pageX;
                 }
                 self.outer.removeClass("is-transition");
@@ -206,20 +207,21 @@
             });
         });
 
+
         this.outer.on('mouseup touchend', function (e) {
             $(this).off('mousemove touchmove');
             self.outer.addClass("is-transition");
 
-            var itemWidth = $(self.items[self.currentItemId+1]).width()/3;
-            var position = ( (- self.currentOuterPosition ) - ($(self.items[self.currentItemId+1]).width() * (self.currentItemId+1)) );
-            if (  position > itemWidth ){
+            var itemWidth = $(self.items[self.currentItemId + 1]).width() / 3;
+            var position = ( (-self.currentOuterPosition ) - ($(self.items[self.currentItemId + 1]).width() * (self.currentItemId + 1)) );
+            if (position > itemWidth) {
                 if (self.currentItemId === self.item.length) {
                     self.currentItemId = 1;
                 } else {
                     self.currentItemId++;
                 }
 
-            } else if( position <( - itemWidth )){
+            } else if (position < ( -itemWidth )) {
                 if (self.currentItemId === 1) {
                     self.currentItemId = self.item.length;
                 } else {
@@ -242,25 +244,32 @@
     /**
      * アウターを更新
      */
-    Slider.prototype.updateOuterPosition = function (position) {
+    Slider.prototype.updateOuterPosition = function (position, isLoop, method) {
 
-
-        if (position) {
-            this.currentOuterPosition = position;
-        }
-
+        this.currentOuterPosition = position;
         this.isAutoplay = false;
-        this.outer.addClass("is-transition");
+        if ( ! isLoop ) {
+            this.outer.addClass("is-transition");
+        }
         var translate = 'translate3d(' + this.currentOuterPosition + 'px,0px,0px)'
         this.outer.css('transform', translate);
         var self = this;
+        if ( isLoop ){
+            if ( method == "next" ){
+                self.next();
+            } else {
+                self.prev();
+            }
+
+        }
         setTimeout(function () {
             self.outer.removeClass("is-transition");
             self.isAutoplay = true;
+
         }, this.options.animationTimeout / 10)
 
-    }
 
+    }
     /**
      * アウターをセンターに合わせる
      */
@@ -287,9 +296,7 @@
         this.outerWidth = width;
     }
 
-    /**
-     * アウターの幅を計算
-     */
+
     Slider.prototype.calcItemWidth = function () {
         this.outerWidth = width;
     }
@@ -297,9 +304,11 @@
     /**
      * 移動する
      */
-    Slider.prototype.moveTo = function (position) {
-
-        this.updateOuterPosition(position);
+    Slider.prototype.moveTo = function (to, isLoop,method) {
+        var position = this.getItemWidth(to);
+        this.items.removeClass('is-active');
+        $(this.items[to]).addClass('is-active');
+        this.updateOuterPosition(position, isLoop,method);
     }
 
     /**
@@ -308,7 +317,6 @@
     Slider.prototype.setNav = function () {
         this.navs = $('<div />');
         this.navs.addClass(this.getClass('__nav'));
-
         this.navPrev = $(this.options.navPrev);
         this.navNext = $(this.options.navNext);
         this.navs.append(this.navPrev);
@@ -333,9 +341,17 @@
      */
     Slider.prototype.getItemWidth = function (idx) {
         var tempWidth = 0;
-        for (var i = 0; i <= idx; i++) {
+
+
+        var count = 0;
+        for (var i = 0; i < idx; i++) {
             tempWidth += $(this.items[i]).width();
+            count++;
         }
+        console.log(count);
+        // if ( ! count  ){
+        //     tempWidth = 0;
+        // }
         return -tempWidth;
     }
 
@@ -343,8 +359,6 @@
      * キーから取得する
      */
     Slider.prototype.getItemFromKey = function (key) {
-
-        var tempItems = "";
         $.each(this.originalItems, function () {
             if ($(this).attr('data-slider-key') === key) {
                 return true;
@@ -363,25 +377,32 @@
      * 前のスライドへ移動する
      */
     Slider.prototype.next = function () {
-        if (this.currentItemId === this.item.length) {
-            this.currentItemId = 1;
+        var isLoop = false;
+
+
+        if (this.currentItemId === this.items.length - 1) {
+            this.currentItemId = 0;
+            isLoop = true;
         } else {
             this.currentItemId++;
         }
-        this.log(this.currentItemId);
-        this.moveTo(this.getItemWidth(this.currentItemId));
+
+        this.moveTo(this.currentItemId,isLoop, "next");
     }
     /**
      * 前のスライドへ移動する
      */
     Slider.prototype.prev = function () {
-        if (this.currentItemId === 1) {
-            this.currentItemId = this.item.length;
+        var isLoop = false;
+        if (this.currentItemId === 0) {
+            this.currentItemId = this.items.length - 1;
+            isLoop = true;
         } else {
             this.currentItemId--;
         }
-        this.log(this.currentItemId)
-        this.moveTo(this.getItemWidth(this.currentItemId));
+
+        this.moveTo(this.currentItemId, isLoop, 'prev');
+
     }
 
     /**
@@ -422,22 +443,22 @@
     /**
      * スライダーを見張る
      */
-    Slider.prototype.watch = function(timestamp){
+    Slider.prototype.watch = function (timestamp) {
 
 
-        if ( this.info.windowWidth !== window.outerWidth ) {
+        if (this.info.windowWidth !== window.outerWidth) {
             this.refresh();
         }
         this.setInfo();
 
-        if ( this.options.autoplay && this.isAutoplay ){
-            if ( Math.floor(timestamp) % (this.options.autoplayTimeout)/1000*60 <= 1 ){
+        if (this.options.autoplay && this.isAutoplay) {
+            if (Math.floor(timestamp) % (this.options.autoplayTimeout) / 1000 * 60 <= 1) {
                 this.next()
             }
         }
 
-        if ( this.isDragEnd ){
-            this.moveTo(this.getItemWidth(this.currentItemId))
+        if (this.isDragEnd) {
+            this.moveTo(this.currentItemId)
             this.isDragEnd = false;
         }
 
@@ -453,6 +474,9 @@
         }
     }
 
+    /**
+     * デバッグ用
+     */
     Slider.prototype.debug = function () {
         this.log(this);
     }

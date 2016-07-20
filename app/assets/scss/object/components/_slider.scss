@@ -1,4 +1,4 @@
-// スライダー用
+// スライダー
 
 .c-slider {
   overflow: hidden;
@@ -7,7 +7,6 @@
 
 .c-slider-outer {
   cursor: pointer;
-
   > * {
     display: inline-block;
     text-align: center;
