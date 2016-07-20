@@ -5,6 +5,21 @@
  * @author   GrowGroup.Inc <info@grow-group.jp>
  * @license  MIT Licence
  * ====================================================================
+ *
+ * # example:
+ * <table class="c-table js-table">
+ *     <tbody>
+ *         <tr>
+ *             <th>
+ *                 title
+ *             </th>
+ *             <td>
+ *                 content
+ *             </td>
+ *         </tr>
+ *     </tbody>
+ * </table>
+ *
  */
 
 (function ($) {

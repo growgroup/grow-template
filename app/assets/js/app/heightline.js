@@ -5,8 +5,23 @@
  * @author   GrowGroup.Inc <info@grow-group.jp>
  * @license  MIT Licence
  * ====================================================================
+ *
+ * # example:
+ * <div class="js-heightline"></div>
+ * <div class="js-heightline"></div>
+ * <div class="js-heightline"></div>
+ *
+ * or
+ *
+ * <div class="c-example" data-heightline-group="example1"></div>
+ * <div class="c-example" data-heightline-group="example1"></div>
+ * <div class="c-example" data-heightline-group="example1"></div>
+ * <div class="c-example" data-heightline-group="example2"></div>
+ * <div class="c-example" data-heightline-group="example2"></div>
+ * <div class="c-example" data-heightline-group="example2"></div>
+ *
  */
-(function ($) {
+;(function ($) {
     "use strict";
 
     if (typeof window.GApp === "undefined") {

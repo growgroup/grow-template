@@ -7,7 +7,6 @@
  * ====================================================================
  */
 
-
 ;(function ($) {
     "use strict";
 
@@ -154,7 +153,6 @@
             }
         }
 
-        this.itemsClone = cloneItems;
         this.originalItems = this.items;
         this.items = this.container.find(this.options.itemSelector);
         this.items.each(function (key) {
@@ -171,19 +169,20 @@
         this.outer.append(this.items);
         this.container.append(this.outer);
         this.calcOuterWidth();
-        this.updateOuterWidth();
+        this.setOuterWidth();
         this.centerdOuter();
     }
+
+
     /**
-     * アウターをセット
+     * ドラッグに対応
      */
     Slider.prototype.eventDragAndDrop = function () {
 
         var self = this;
 
-        var temptran;
-        this.outer.on('mousedown touchstart', function (e) {
 
+        this.outer.on('mousedown touchstart', function (e) {
             var touchX = e.pageX;
 
             if (typeof e.originalEvent.changedTouches !== "undefined") {
@@ -210,27 +209,30 @@
 
         this.outer.on('mouseup touchend', function (e) {
             $(this).off('mousemove touchmove');
-            self.outer.addClass("is-transition");
+            // self.outer.addClass("is-transition");
+            var itemWidth = $(self.items[self.currentItemId]).width() / 9;
+            var position = ( (-self.currentOuterPosition ) - ($(self.items[self.currentItemId]).width() * (self.currentItemId)) );
 
-            var itemWidth = $(self.items[self.currentItemId + 1]).width() / 3;
-            var position = ( (-self.currentOuterPosition ) - ($(self.items[self.currentItemId + 1]).width() * (self.currentItemId + 1)) );
             if (position > itemWidth) {
-                if (self.currentItemId === self.item.length) {
-                    self.currentItemId = 1;
+                if (self.currentItemId === self.items.length - 1) {
+                    self.currentItemId = 0;
+                    isLoop = true;
                 } else {
                     self.currentItemId++;
                 }
-
+                // self.moveTo(self.currentItemId, isLoop, 'next');
             } else if (position < ( -itemWidth )) {
-                if (self.currentItemId === 1) {
-                    self.currentItemId = self.item.length;
+                var isLoop = false;
+                if (self.currentItemId === 0) {
+                    self.currentItemId = self.items.length - 1;
+                    isLoop = true;
                 } else {
                     self.currentItemId--;
                 }
+                // self.moveTo(self.currentItemId, isLoop, 'prev');
             }
             self.isDragEnd = true;
             self.isAutoplay = true;
-
         });
 
     }
@@ -238,9 +240,10 @@
     /**
      * アウターを更新
      */
-    Slider.prototype.updateOuterWidth = function () {
+    Slider.prototype.setOuterWidth = function () {
         this.outer.width(this.outerWidth);
     }
+
     /**
      * アウターを更新
      */
@@ -292,7 +295,6 @@
             width += tempWidth;
             $(el).width(tempWidth);
         });
-
         this.outerWidth = width;
     }
 
@@ -348,10 +350,6 @@
             tempWidth += $(this.items[i]).width();
             count++;
         }
-        console.log(count);
-        // if ( ! count  ){
-        //     tempWidth = 0;
-        // }
         return -tempWidth;
     }
 
@@ -413,18 +411,11 @@
         this.init();
     }
 
-    /**
-     * 自動再生
-     */
-    Slider.prototype.autoplay = function () {
-
-    }
 
     /**
      * ドットを表示
      */
-    Slider.prototype.showDots = function () {
-
+    Slider.prototype.setDots = function () {
     }
 
     /**

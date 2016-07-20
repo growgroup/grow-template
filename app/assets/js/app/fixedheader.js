@@ -5,6 +5,12 @@
  * @author   GrowGroup.Inc <info@grow-group.jp>
  * @license  MIT Licence
  * ====================================================================
+ *
+ * # example:
+ * <header class="l-header js-fixedheader">
+ *     Content
+ * </header>
+ *
  */
 (function ($) {
     "use strict";

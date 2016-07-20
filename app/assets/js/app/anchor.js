@@ -5,6 +5,11 @@
  * @author   GrowGroup.Inc <info@grow-group.jp>
  * @license  MIT Licence
  * ====================================================================
+ * # example:
+ * <a class="js-anchor" data-anchor-taget=".target-selector">
+ *     Link
+ * </a>
+ *
  */
 (function ($) {
     'use strict';

@@ -5,6 +5,17 @@
  * @author   GrowGroup.Inc <info@grow-group.jp>
  * @license  MIT Licence
  * ====================================================================
+ *
+ * # example:
+ * <div class="c-panel js-accordion">
+ *     <div class="c-panel__title" data-accordion-title>
+ *         Title
+ *     </div>
+ *     <div class="c-panel__content" data-accordion-content>
+ *         Content
+ *     </div>
+ * </div>
+ *
  */
 (function ($) {
     "use strict";

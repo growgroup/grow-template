@@ -1,3 +1,28 @@
+/*
+ * ====================================================================
+ * Grow Template
+ * @package  Grow Template
+ * @author   GrowGroup.Inc <info@grow-group.jp>
+ * @license  MIT Licence
+ * ====================================================================
+ *
+ * # example:
+ *
+ * <div class="js-slidebar-menu">
+ *    <ul>
+ *        <li>menu</li>
+ *        <li>menu</li>
+ *        <li>menu</li>
+ *    </ul>
+ * </div>
+ *
+ * <a href="#" class="js-slidebar-button"><i class="fa fa-bars"></i></a>
+ *
+ * <div class="js-slidebar-container">
+ *     content
+ * </div>
+ *
+ */
 (function ($) {
 
     "use strict";
@@ -22,7 +47,6 @@
     var Slidebar = function (options) {
         // オプションをセット
         this.options = $.extend(defaultOptions, options);
-
         // オープン
         this.isActive = false;
     };
@@ -43,8 +67,10 @@
         $("body").addClass('slidebar-init')
     }
 
+    /**
+     * クリック時のトリガー
+     */
     Slidebar.prototype.trigger = function () {
-
         var self = this;
         $(document).on('click', this.options.buttonSelector, function(e){
             e.preventDefault();
@@ -52,6 +78,9 @@
         });
     }
 
+    /**
+     * 開閉動作
+     */
     Slidebar.prototype.toggle = function () {
         if ( this.isActive === false ){
             this.open();
@@ -61,7 +90,6 @@
     }
 
     Slidebar.prototype.bodyTrigger = function(){
-
         var self = this;
         $(document).on('click', this.options.containerSelector, function(e){
             if ( self.isActive ){
