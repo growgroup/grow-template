@@ -10,7 +10,6 @@
 ;(function ($) {
     "use strict";
 
-
     // 初期設定
     var defaultOptions = {
         'namespace': "c-slider",
