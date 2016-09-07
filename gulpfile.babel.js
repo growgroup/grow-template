@@ -23,7 +23,6 @@
  * # モジュールの読み込み
  * =================================
  */
-
 import gulp from 'gulp';
 import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
@@ -57,11 +56,11 @@ const reload = browserSync.reload;
  * =================================
  */
 
-var appPath = "app";
-var distPath = "dist";
+const appPath = "app";
+const distPath = "dist";
 
 // スタイルガイドのアウトプット先
-var sg5OutputPath = "styleguides";
+const sg5OutputPath = "styleguides";
 
 var config = {};
 
@@ -182,6 +181,17 @@ var wpThemeInfo = '@charset "UTF-8";\n'
  * =================================
  */
 gulp.task('styles', () => {
+
+    // bower がインストールされているかどうかのチェック
+    try {
+        fs.statSync( __dirname + "/" + appPath + "/bower_components" )
+    } catch ( err ){
+        if ( err.code  === "ENOENT") {
+            console.error('\u001b[33m'+"[Error] Please run \"bower install\" "+'\u001b[0m');
+            return false;
+        };
+    }
+
     return gulp.src(config.sass.src)
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe($.cssGlobbing({extensions: ['.scss']}))

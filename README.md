@@ -163,26 +163,16 @@ JavaScript の構文チェッカーとして ESLint を採用しています。
 
 本テンプレートでは、```bower_components``` ディレクトリ内に ``` bower install ``` コマンドで追加したパッケージが格納されます。
 
-また、wiredep を採用していますので、gulp 実行時に ``` bower install {package-name} ``` コマンドを実行することで、
-自動的に Jade に インストールしたパッケージのメインファイルが反映されます。
-
 * [Bower](http://bower.io/)
-* [wiredep](https://github.com/taptapship/wiredep)
-
-### useref
-
-Jade ファイルをHTMLにコンパイル後、useref が実行され、
-dist/assets フォルダ内に実行後のファイルが格納されます。
-
-* [https://github.com/jonkemp/gulp-useref](https://github.com/jonkemp/gulp-useref)
-
 
 ### StyleGuide
 
 スタイルガイドは [sc5-styleguide](https://github.com/SC5/sc5-styleguide/pulls) を導入しています。  
-gulp を実行している際に、8888 ポートで閲覧することができます。
-
+gulp を実行している際に、初期状態では 8888 ポートで閲覧することができます。
 
 ### その他
 
-* [コーディング規約](docs/RULES.md)
+* [HTMLコーディング規約](docs/RULES_HTML_CODING.md)
+* [命名規則](docs/RULES_NAMING.md)
+
+
