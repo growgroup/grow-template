@@ -1,0 +1,14 @@
+//- 投稿一覧を出力
+//-
+//- use: +p_post_list_item()
+mixin p_post_item(el,image,title,date,category,text)
+    #{el}.p-post-item&attributes(attributes)
+        .p-post-item__thumbnail
+            img(src=image)
+        .p-post-item__content
+            .p-post-item__date= date
+            .p-post-item__category= category
+            .p-post-item__title= title
+            - if( typeof text !== "undefined" ) {
+            .p-post-item__text= text
+            - }

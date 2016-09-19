@@ -28,7 +28,7 @@
 // Styleguide 2.22.0
 
 .c-message {
-  padding: $margin-sm $margin-md $margin-sm $margin-md;
+  padding: rem-calc(16);
   background: $color-tertiary;
   border: 1px solid $color-gray-light;
   border-radius: $border-radius;

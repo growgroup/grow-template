@@ -16,26 +16,26 @@
  *
  */
 
-'use strict';
+'use strict'
 
 /**
  * =================================
  * # モジュールの読み込み
  * =================================
  */
-import gulp from 'gulp';
-import runSequence from 'run-sequence';
-import browserSync from 'browser-sync';
-import fs from 'fs';
-import buffer from 'vinyl-buffer';
-import stream from 'vinyl-source-stream';
-import browserify from 'browserify';
-import babelify from 'babelify';
-import del from 'del';
-import styleguide from "sc5-styleguide";
-import gulpLoadPlugins from 'gulp-load-plugins';
-import pkg from './package.json';
-import jadeSettingFile from './jade-settings.json';
+import gulp from 'gulp'
+import runSequence from 'run-sequence'
+import browserSync from 'browser-sync'
+import fs from 'fs'
+import buffer from 'vinyl-buffer'
+import stream from 'vinyl-source-stream'
+import browserify from 'browserify'
+import babelify from 'babelify'
+import del from 'del'
+import styleguide from "sc5-styleguide"
+import gulpLoadPlugins from 'gulp-load-plugins'
+import pkg from './package.json'
+import pugSettingFile from './pug-settings.json'
 
 /**
  * =================================
@@ -112,10 +112,10 @@ config.babel = {
 /**
  * 設定 - Jade
  */
-config.jade = {
-    src: [appPath + '/*.jade', appPath + '/**/*.jade'],
+config.pug = {
+    src: [appPath + '/*.pug', appPath + '/**/*.pug'],
     dist: distPath + "/",
-    settingsFilePath: "./jade-settings.json",
+    settingsFilePath: "./pug-settings.json",
 }
 
 
@@ -223,24 +223,29 @@ gulp.task('browserSync', () => {
  * Jade テンプレートのコンパイル
  * =================================
  */
-gulp.task('jade', () => {
-    return gulp.src(config.jade.src)
+gulp.task('pug', () => {
+    return gulp.src(config.pug.src)
 
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
         .pipe($.changed('dist', {extension: '.html'}))
-        .pipe($.if(global.isWatching, $.cached('jade')))
-        .pipe($.jadeInheritance({basedir: appPath + '/'}))
+        .pipe($.if(global.isWatching, $.cached('pug')))
+        .pipe($.pugInheritance({basedir: appPath + '/'}))
         .pipe($.filter(function (file) {
             return !/\/_/.test(file.path) && !/^_/.test(file.relative);
         }))
         .pipe($.data(function (file) {
-            return jadeSettingFile;
+            return pugSettingFile;
         }))
-        .pipe($.jade({pretty: true, cache: true, escapePre: true, basedir: appPath + "/"}))
-        .pipe(gulp.dest(config.jade.dist))
+        .pipe($.pug({
+            pretty: true,
+            cache: true,
+            escapePre: true,
+            basedir: appPath + "/",
+        }))
+        .pipe(gulp.dest(config.pug.dist))
         .pipe($.size({title: 'HTML'}))
         .pipe(reload({stream: true}))
-        .pipe($.notify("Jade Task Completed!"));
+        .pipe($.notify("pug Task Completed!"));
 });
 
 /**
@@ -343,7 +348,7 @@ gulp.task('setWatch', function () {
 
 gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
 
-    gulp.watch([appPath + '/**/*.jade'], ['jade', reload]);
+    gulp.watch([appPath + '/**/*.pug'], ['pug', reload]);
     gulp.watch([appPath + '/bower_components/**/*'], ['copy', reload]);
     gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
@@ -366,8 +371,8 @@ gulp.task('copy:app', () => {
             appPath + '/fonts',
             '!./' + appPath + '/assets/{scss,scss/**}',
             '!./' + appPath + '/inc',
-            '!./' + appPath + '/*.jade',
-            '!./' + appPath + '/**/*.jade',
+            '!./' + appPath + '/*.pug',
+            '!./' + appPath + '/**/*.pug',
         ], {
             dot: true,
             base: "app"
@@ -464,7 +469,7 @@ gulp.task('wp', function() {
 gulp.task('default', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'jade', 'scripts', 'scripts_app', 'copy', 'babel'],
+        ['lint', 'pug', 'scripts', 'scripts_app', 'copy', 'babel'],
         'watch',
         'images',
         'wp',
@@ -481,7 +486,7 @@ gulp.task('default', ['clean'], cb => {
 gulp.task('build', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'jade', 'scripts', 'scripts_app', 'copy', 'babel', 'images'],
+        ['lint', 'pug', 'scripts', 'scripts_app', 'copy', 'babel', 'images'],
         cb
     )
 });
