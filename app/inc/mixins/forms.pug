@@ -1,0 +1,43 @@
+//- フォーム関連
+//-
+//- # Use Case
+//- +l_section("h2","これが見出しです。").is-xlg
+mixin input(name,type)
+    input(name=name,type=type).c-form__input&attributes(attributes)
+
+//- セレクトボックス
+mixin select(name,options)
+    select(name=name).c-form__select&attributes(attributes)
+        if options
+            each option in options
+                option(value=option.value)= option.text
+        else
+            block
+
+//- ラジオボタン
+mixin radio(name,options)
+    div(name=name).c-form__radio&attributes(attributes)
+        if options
+            each option in options
+                - var id = "radio_"+option.value;
+                label(for=id)
+                    input(name=name,type="radio",value=option.value,id=id)
+                    span= option.label
+        else
+            block
+
+//- チェックボックス
+mixin checkbox(name,options)
+    div(name=name).c-form__checkbox&attributes(attributes)
+        if options
+            each option in options
+                label(for="checkbox_"+option.value)
+                    input(name=name,type="checkbox",value=option.value)
+                    span= option.label
+        else
+            block
+
+//- テキストボックス
+mixin textarea(name,row)
+    textarea(name=name,row!=row)
+        block

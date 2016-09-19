@@ -24,7 +24,7 @@ $susy: (
         columns: $grid-column-count,
         gutters: map_get($grid-column-responsive-gutter,medium)/60px,
         column-width: 60px,
-        global-box-sizing: border-box,
+        global-box-sizing: b order-box,
         last-flow: to,
         debug: (
                 image: hide,
