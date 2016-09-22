@@ -31,7 +31,7 @@ mixin checkbox(name,options)
     div(name=name).c-form__checkbox&attributes(attributes)
         if options
             each option in options
-                label(for="checkbox_"+option.value)
+                label(for="checkbox_" + option.value)
                     input(name=name,type="checkbox",value=option.value)
                     span= option.label
         else
@@ -41,3 +41,29 @@ mixin checkbox(name,options)
 mixin textarea(name,row)
     textarea(name=name,row!=row)
         block
+
+
+//- コンタクトフォーム
+mixin contactform(name,action,fields)
+    form(name=name,action=action)
+        each field in fields
+            .c-form-block
+                .row
+                    .large-6
+                        span= field.label
+                        if field.require
+                            span.c-label.is-danger 必須
+                    .large-6
+                        case field.type
+                            when "select"
+                                +select(field.name,field.options)
+                            when "text"
+                                +input(field.name,field.type)
+                            when "radio"
+                                +radio(field.name,field.options)
+                            when "checkbox"
+                                +checkbox(field.name,field.options)
+                            when "textarea"
+                                +textarea(field.name,field.row)
+
+
