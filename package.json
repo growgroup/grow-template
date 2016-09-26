@@ -1,7 +1,7 @@
 {
   "name": "grow-template",
   "version": "1.0.0",
-  "description": "Grow Template - Using Gulp, Jade & Sass.",
+  "description": "Grow Template - Using Gulp, Pug & Sass.",
   "engines": {
     "node": ">=5.0.0"
   },
