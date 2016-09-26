@@ -1,0 +1,87 @@
+//- フォーム関連
+//-
+//- # Use Case
+//- +l_section("h2","これが見出しです。").is-xlg
+mixin input(name,type)
+    input(name=name,type=type).c-form__input&attributes(attributes)
+
+//- セレクトボックス
+mixin select(name,options)
+    select(name=name).c-form__select&attributes(attributes)
+        if options
+            each option in options
+                option(value=option.value)= option.text
+        else
+            block
+
+//- ラジオボタン
+mixin radio(name,options)
+    div(name=name).c-form__radio&attributes(attributes)
+        if options
+            each option in options
+                - var id = "radio_"+option.value;
+                label(for=id)
+                    input(name=name,type="radio",value=option.value,id=id)
+                    span= option.label
+        else
+            block
+
+//- チェックボックス
+mixin checkbox(name,options)
+    div(name=name).c-form__checkbox&attributes(attributes)
+        if options
+            each option in options
+                label(for="checkbox_" + option.value)
+                    input(name=name,type="checkbox",value=option.value)
+                    span= option.label
+        else
+            block
+
+//- テキストボックス
+mixin textarea(name,row)
+    textarea(name=name,row!=row)
+        block
+
+
+//- コンタクトフォーム
+    Use case:
+    +contactform("name","post.php",[
+        {
+            label: "テキスト",
+            type: "text",
+            name: "textbox",
+            require: true,
+        },{
+            label: "セレクトボックス",
+            type: "select",
+            name: "select",
+            options:[]
+        },{
+            label: "テキスト",
+            type: "text",
+            name: "textbox"
+        },
+    ])
+mixin contactform(name,action,fields)
+    form(name=name,action=action)
+        each field in fields
+            .c-form-block
+                .row
+                    .large-6
+                        span= field.label
+                        if field.require
+                            span.c-label.is-danger.is-required 必須
+                    .large-6
+                        case field.type
+                            when "select"
+                                +select(field.name,field.options)
+                            when "text"
+                                +input(field.name,field.type)
+                            when "radio"
+                                +radio(field.name,field.options)
+                            when "checkbox"
+                                +checkbox(field.name,field.options)
+                            when "textarea"
+                                +textarea(field.name,field.row)
+
+
