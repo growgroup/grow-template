@@ -1,14 +1,12 @@
 // フォーム
 //
 // Styleguide 1.6.0
-.form-group {
-  > label {
-    //font-size: $font-base-size;
-    font-weight: bold;
-    margin-bottom: $margin-base;
-    display: block;
-  }
-}
+
+$forms-transition: all ease-in-out .2s !default;
+
+$forms-input-font-size: $font-base-size + px;
+$forms-input-border-color: #ccc;
+$forms-input-active-border-color: $color-primary;
 
 // テキストボックス
 //
@@ -24,18 +22,17 @@ input[type="url"],
 input[type="search"],
 input[type="email"],
 input[type="tel"] {
-  font-size: $font-base-size;
+  font-size: $forms-input-font-size;
   line-height: 1.8;
-  border: $border-base-width solid $border-base-color;
+  border: $border-base-width solid $forms-input-border-color;
   border-radius: $border-radius;
   padding: $margin-sm $margin-base;
   max-width: 100%;
   width: 100%;
-  @include hover(.2s, linear);
+  transition: $forms-transition;
   &:focus,
   &:active {
-    box-shadow: none;
-    outline: 2px solid $color-primary;
+    @include input-active();
   }
 }
 
@@ -46,16 +43,16 @@ input[type="tel"] {
 //
 // Styleguide 1.6.2
 textarea {
-  border: $border-base-width solid $border-base-color;
+  border: $border-base-width solid $forms-input-border-color;
   border-radius: $border-radius;
   max-width: 100%;
+  font-size: $forms-input-font-size;
   width: 100%;
   padding: $margin-sm $margin-base;
-  @include hover(.2s, linear);
+  transition: $forms-transition;
   &:focus,
   &:active {
-    box-shadow: none;
-    outline: 2px solid $color-primary;
+    @include input-active();
   }
 }
 
@@ -83,4 +80,37 @@ input[type="radio"] {
   width: 18px;
   height: 18px;
   vertical-align: middle;
+}
+
+// セレクトボックス
+//
+// markup:
+// <label for="select">
+//    <select id="select" name="select">
+//        <option>選択してください</option>
+//        <option value="1">サンプルオプション1</option>
+//        <option value="2">サンプルオプション2</option>
+//        <option value="3">サンプルオプション3</option>
+//    </select>
+// </label>
+//
+// Styleguide 1.6.5
+select {
+  text-transform: none;
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }

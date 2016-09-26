@@ -355,8 +355,12 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
     gulp.watch([appPath + '/assets/js/app/*.js'], ['lint', 'scripts_app']);
     gulp.watch([appPath + '/assets/images/**/*'], ['images', reload]);
-    // gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
+
 });
+
+gulp.task('watch:styleguide',()=>{
+    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
+})
 
 /**
  * =================================
@@ -422,7 +426,13 @@ gulp.task('styleguide:generate', () => {
             server: true,
             port: 8888,
             rootPath: "./" + sg5OutputPath,
-            overviewPath: "./" + 'README.md'
+            overviewPath: "./" + 'README.md',
+            extraHead: [
+                '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>',
+                '<script src="/assets/js/vendor.js"></script>',
+                '<script src="/assets/js/app.js"></script>',
+
+            ]
         }))
         .pipe(gulp.dest(sg5OutputPath));
 });
@@ -439,7 +449,7 @@ gulp.task('styleguide:applystyles', () => {
         .pipe(gulp.dest(sg5OutputPath));
 });
 
-gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
+gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles','watch:styleguide']);
 
 /**
  * =================================

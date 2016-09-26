@@ -7,10 +7,10 @@
   border-bottom: 1px solid $color-gray-light;
   background: $color-white;
   ul {
+    width: 100%;
+    display: table;
     > li {
-      float: left;
-      @include span(2.4);
-
+      display: table-cell;
       a {
         display: block;
         text-align: center;
@@ -19,8 +19,11 @@
         padding-top: rem-calc(14);
         padding-bottom: rem-calc(14);
         transition: all ease-in-out .2s;
+        &.is-current {
+          background: $color-primary;
+          color: $color-white;
+        }
       }
-
       a:hover {
         background: $color-primary;
         color: $color-white;

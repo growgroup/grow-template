@@ -44,6 +44,24 @@ mixin textarea(name,row)
 
 
 //- コンタクトフォーム
+    Use case:
+    +contactform("name","post.php",[
+        {
+            label: "テキスト",
+            type: "text",
+            name: "textbox",
+            require: true,
+        },{
+            label: "セレクトボックス",
+            type: "select",
+            name: "select",
+            options:[]
+        },{
+            label: "テキスト",
+            type: "text",
+            name: "textbox"
+        },
+    ])
 mixin contactform(name,action,fields)
     form(name=name,action=action)
         each field in fields
@@ -52,7 +70,7 @@ mixin contactform(name,action,fields)
                     .large-6
                         span= field.label
                         if field.require
-                            span.c-label.is-danger 必須
+                            span.c-label.is-danger.is-required 必須
                     .large-6
                         case field.type
                             when "select"

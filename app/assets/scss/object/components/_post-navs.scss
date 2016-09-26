@@ -3,15 +3,14 @@
 // 投稿詳細ページの記事ナビゲーション
 //
 // markup:
-// <nav class="c-navs-post">
+// <nav class="c-post-navs">
 //     <ul>
-//         <li class="c-navs-post__prev"><a href="#">前の記事へ</a></li>
-//         <li class="c-navs-post__next"><a href="#">次の記事へ</a></li>
+//         <li class="c-post-navs__prev"><a href="#">前の記事へ</a></li>
+//         <li class="c-post-navs__next"><a href="#">次の記事へ</a></li>
 //     </ul>
 // </nav>
 //
 // Styleguide 2.16.0
-
 .c-post-navs {
   ul{
     list-style: none;

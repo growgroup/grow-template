@@ -194,14 +194,144 @@
     }
   }
 
-  // If the key doesn't exist, or it's the last key in the map, return null
+
   @if $i > length($map) {
     @return null;
   }
-    // Otherwise, return the value
   @else {
     @return nth($values, $i);
   }
 }
 
+// フォームの有効化時のスタイル
+@mixin input-active(){
+  outline: none;
+  border-color: $forms-input-active-border-color;
+  -webkit-box-shadow: inset 0 0 0px 2px $color-primary;
+  box-shadow: inset 0 0 0px 3px $color-primary;
+}
 
+// Pug Mixin
+//
+// Pug テンプレート内で利用可能なMixin一覧
+//
+// Styleguide 6.0.0
+
+// タイトル
+//
+// タイトルを出力します。<br>
+// <br>
+// <code>
+// @el : 要素を指定 eg. h2<br>
+// @type : 大きさを指定 eg. xlg
+// </code>
+//
+// markup:
+// <pre>+heading(el,type)</pre>
+//
+// Styleguide 6.1.0
+
+// ボタン
+//
+// ボタンの出力<br>
+// <br>
+// <code>
+// @el : 要素を指定 eg. "a"<br>
+// @link : リンク先 eg. "http://example.com"
+// </code>
+//
+// markup:
+// <pre>+c_button(el,link)</pre>
+//
+// Styleguide 6.2.0
+
+// リスト
+//
+// リストの出力<br>
+// <br>
+// <code>
+// @data : リストの情報をJsで指定</code>
+// <h4>サンプル</h4>
+// <pre>
+// +list(["リスト1","リスト2","リスト3",<br>
+// {
+//     attr: {
+//         class: "is-active"
+//     },
+//     link: "http://asdfasdfasdf.com",
+//     text: "テキスト"
+// },
+// {
+//     attr: {
+//         class: "is-active"
+//     },
+//     link: {
+//         href: "text",
+//         target: "_blank",
+//     },
+//     text: "テキスト",
+// }
+// ])</pre>
+//
+// markup:
+// <pre>+list(data)</pre>
+//
+// Styleguide 6.3.0
+
+// テーブル
+//
+// テーブルの出力<br>
+// <br>
+// <code>
+// @data : 表データのオブジェクト。キーの値は適当に指定して下さい<br>
+// @headers : 見出しデータのオブジェクト
+// </code>
+// <h4>サンプル</h4>
+// <pre>
+// +c_table([
+//         {
+//              th: "見出し1",
+//             _1: "通常",
+//             _2: "通常",
+//         }, {
+//             th: "見出し1",
+//             _1: "通常",
+//             _2: "通常",
+//         }, {
+//             th: "見出し1",
+//             _1: {
+//                 attr: {
+//                     colspan: 2
+//                 },
+//                 text: "通常"
+//             },
+//         },
+//         ])
+// </pre>
+//
+// markup:
+// <pre>+c_table(data,headers)</pre>
+//
+// Styleguide 6.4.0
+
+// 投稿記事
+//
+// 一覧ページでの記事表示<br>
+// <br>
+// <code>
+// @el : 要素<br>
+// @image : 画像URL<br>
+// @title : 投稿タイトル<br>
+// @date : 日付<br>
+// @category : カテゴリ<br>
+// @text : 抜粋文章<br>
+// </code>
+// <h4>サンプル</h4>
+// <pre>
+// +p_post_item("div","https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150","タイトル","2016.10.10","カテゴリ","説明文説明文説明文説明文説明文説明文説明文説明文説明文説明文").is-horizon
+// </pre>
+//
+// markup:
+// <pre>+p_post_item(el,image,title,date,category,text)</pre>
+//
+// Styleguide 6.5.0

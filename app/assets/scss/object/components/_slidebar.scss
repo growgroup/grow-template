@@ -1,4 +1,6 @@
-// スライダーメニュー
+// スライドメニュー
+//
+// スマホ時のメニュー。別途 GApp プラグインを呼び出す必要があります。
 //
 // markup:
 //  <!-- メニュー -->
@@ -36,6 +38,7 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
 
 @include breakpoint(small only) {
 
+  // トリガーとなるボタン
   .slidebar-button {
     position: fixed;
     right: 10px;
@@ -44,6 +47,7 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
     z-index: 100000;
   }
 
+  // メニュー自体
   .slidebar-menu {
     height: 100%;
     position: fixed;
@@ -67,6 +71,7 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
     }
   }
 
+  // メニュー以外をラップする要素
   .slidebar-container {
     height: 100%;
     &:after {
@@ -83,14 +88,6 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
     }
   }
 
-  .js-slidebar-button {
-
-  }
-
-  .js-slidebar-menu {
-
-  }
-
   body, html {
     height: 100%;
   }
@@ -99,7 +96,9 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
     transition: $slidebar-menu-eaasing;
   }
 
+  // 有効時
   .is-slidebar-active {
+
     .slidebar-container {
       transform: translate3d(-$slidebar-menu-width, 0px, 0px);
       &:after {
@@ -118,6 +117,7 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
     .slidebar-menu {
       transform: translate3d(0, 0, 0);
     }
+
   }
 
 }
