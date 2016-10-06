@@ -1,9 +1,32 @@
 // フッター
 .l-footer {
-  padding-top: rem-calc(30);
-  padding-bottom: rem-calc(30);
+  border-top: 1px solid $border-base-color;
+  padding-top: rem-calc(48);
+  padding-bottom: rem-calc(48);
+  &__logo {
+    img {
+      max-width: 180px;
+    }
+  }
+  &__menu {
+    ul > li {
+      a {
+        color: $font-base-color;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 // コピーライト
-.l-footer__copyright {
+.l-footer-copyright {
+  text-align: center;
+  background: $font-base-color;
+  padding-top: rem-calc(16);
+  padding-bottom: rem-calc(16);
+  p {
+    margin-bottom: 0;
+    font-size: rem-calc(12);
+    color: $color-white;
+  }
 }

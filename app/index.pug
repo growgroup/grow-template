@@ -24,225 +24,92 @@ block body
         // メインビジュアル
         include /inc/object/components/_main-visual
 
-
-
         section.l-main
-            .l-section#anchorTest
-                .l-container
-                    h1.heading.is-xlg 見出し スタイル
-                    h2.heading.is-xlg 見出し 極大
-                    h1.heading.is-lg 見出し 大
-                    h1.heading.is-md 見出し 中
-                    h1.heading.is-sm 見出し 小
-                    h1.heading.is-xs 見出し 最小
-
-            .l-section.is-gray
-                .l-container
-                    h1.heading.is-xlg ボタン
-                    .row.u-mbs
-                        .large-3
-                            a.c-button ボタン (通常)
-                        .large-3
-                            a.c-button.is-secondary ボタン (セカンダリ)
-                        .large-3
-                            a.c-button.is-tertiary ボタン (ターシャリ)
-                        .large-3
-                            a.c-button.is-danger ボタン (危険)
-                    .row.u-mbs
-                        .large-3
-                            a.c-button.is-warning ボタン (警告)
-                        .large-3
-                            a.c-button.is-success ボタン (成功)
-                        .large-3
-                            a.c-button.is-info ボタン (情報)
-                    .row.u-mbs
-                        .large-3
-                            a.c-button.is-lg ボタン (大)
-                        .large-3
-                            a.c-button.is-md ボタン (中)
-                        .large-3
-                            a.c-button.is-sm ボタン (小)
-                    .row.u-mbs
-                        .large-3
-                            a.c-button.is-round ボタン (丸角)
 
             .l-section
                 .l-container
-                    img.js-parallax(src="/assets/images/example01.jpg", data-parallax-end="100", data-parallax-start-offset="550", data-parallax-defaultprop='{"opacity": 0, "transform": "translateY(0px)"}', data-parallax-endprop='{"opacity": 1, "transform": "translateY(50px)"}')
-            .l-section
-                .l-container
-                    h1.heading.is-xlg カード型リンク
-                    .row
-                        - for(var i = 0; i < 3 ; i++){
-                        .large-4
-                            a(href="#").c-card
-                                | <img src="/assets/images/example01.jpg" class="c-card__image">
-                                p.c-card__text
-                                    | カードテキスト
-                        - }
-
-            .l-section
-                .l-container
-                    h1.heading.is-xlg バッジ
-                    .row
-
-                        | <span class="c-badge">バッジ</span>
-                        | <span class="c-badge is-lg">バッジ </span>
-                        | <span class="c-badge is-sm">バッジ</span>
-                        | <span class="c-badge is-secondary">バッジ</span>
-                        | <span class="c-badge is-tertiary">バッジ</span>
-                        | <span class="c-badge is-danger">バッジ</span>
-                        | <span class="c-badge is-warning">バッジ</span>
-                        | <span class="c-badge is-info">バッジ</span>
-                        | <span class="c-badge is-success">バッジ</span>
-
-            .l-section.is-gray
-                .l-container
-                    h1.heading.is-xlg 投稿一覧ブロック
-                    .row
-                        .large-11.is-offset-lg-1
-                            h2.heading.is-lg タイル型投稿一覧
-                            .p-post-list.is-tile
-                                .row
-                                    - for (var i = 0; i < 2; i++){
-                                    .small-12.large-4
-                                        .p-post-list__item
-                                            .p-post-list__thumbnail
-                                                | <img src="https://placehold.jp/300x200.png">
-                                            h2.p-post-list__title
-                                                a 投稿タイトル
-                                            .p-post-list__detail.js-heightline
-                                                | 投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト
-                                            .p-post-list__category.c-label
-                                                a カテゴリ名
-                                    .small-12.large-4
-                                        .p-post-list__item
-                                            .p-post-list__thumbnail
-                                                | <img src="https://placehold.jp/300x200.png">
-                                            h2.p-post-list__title
-                                                a 投稿タイトル
-                                            .p-post-list__detail.js-heightline
-                                                | 投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキ投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキストスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト
-                                            .p-post-list__category.c-label
-                                                a カテゴリ名
-                                    - }
-                                    - for (var i = 0; i < 2; i++){
-                                    .small-12.large-4
-                                        .p-post-list__item
-                                            .p-post-list__thumbnail
-                                                | <img src="https://placehold.jp/300x200.png">
-                                            h2.p-post-list__title
-                                                a 投稿タイトル
-                                            .p-post-list__detail.js-heightline
-                                                | 投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト投稿テキスト
-                                            .p-post-list__category.c-label
-                                                a カテゴリ名
-                                    .small-12.large-4
-                                        .p-post-list__item
-                                            .p-post-list__thumbnail
-                                                | <img src="https://placehold.jp/300x200.png">
-                                            h2.p-post-list__title
-                                                a 投稿タイトル
-                                            .p-post-list__detail.js-heightline
-                                                | 投稿テキスト投稿テキスト投稿テキスト
-                                            .p-post-list__category.c-label
-                                                a カテゴリ名
-                                    - }
-                    .row
-                        .large-12
-                            h2.heading.is-lg 平行型投稿一覧
-                            .p-post-list.is-horizon
-                                .row
-                                    - for (var i = 0; i < 4; i++){
-                                    .large-12
-                                        +p_post_item("div","https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150","タイトル","2016.10.10","カテゴリ","説明文説明文説明文説明文説明文説明文説明文説明文説明文説明文").is-horizon
-                                    - }
-                    .row
-                        .large-12
-                            h2.heading.is-lg 1行型投稿一覧
-                            .p-post-list.is-line
-                                .row
-                                    - for (var i = 0; i < 4; i++){
-                                    .large-12
-                                        +p_post_item("div","https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150","タイトル","2016.10.10","カテゴリ","説明文説明文説明文説明文説明文説明文説明文説明文説明文説明文").is-line
-
-                                    - }
-
-                .l-container
+                    h2.heading.is-xlg CONCEPT
                     p.u-text-center
-                        a.c-button(href="#anchorTest",data-anchor-target=".anchorTest") テストアンカーリンク
-                        a.c-button(href="#anchorTest") テストアンカーリンク2
+                        | ここにコンセプトテキストが入ります。
+                        | ここにコンセプトテキストが入ります。
+                        br
+                        | ここにコンセプトテキストが入ります。
+                        | ここにコンセプトテキストが入ります。
+                        | ここにコンセプトテキストが入ります。
+                        | ここにコンセプトテキストが入ります。
+                        | ここにコンセプトテキストが入ります。
+                        | ここにコンセプトテキストが入ります。
+                        | ここにコンセプトテキストが入ります。
+                        | ここにコンセプトテキストが入ります。
+                        | ここにコンセプトテキストが入ります。
+                        | ここにコンセプトテキストが入ります。
 
-                    | <div class="c-tabs js-tabs">
-                    |     <ul class="c-tabs__navs">
-                    |         <li><a href="#" class="is-active" data-tab-target="tab1">リスト1</a></li>
-                    |         <li><a href="#" data-tab-target="tab2">リスト2</a></li>
-                    |         <li><a href="#" data-tab-target="tab3">リスト3</a></li>
-                    |         <li><a href="#" data-tab-target="tab4">リスト4</a></li>
-                    |     </ul>
-                    |     <div class="c-tabs__panes">
-                    |     <div class="c-tabs__content is-active" data-tab-name="tab1">
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |     </div>
-                    |     <div class="c-tabs__content" data-tab-name="tab2">
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |     </div>
-                    |     <div class="c-tabs__content" data-tab-name="tab3">
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |     </div>
-                    |     <div class="c-tabs__content" data-tab-name="tab4">
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |         <p>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</p>
-                    |     </div>
-                    |   </div>
-                    | </div>
+                    p.u-text-center
+                        a(href="#").c-button.is-lg.is-outline
+                            | 私たちについて
+                            i.fa.fa-angle-right.c-button__icon
 
-                    | <div class="c-panel js-accordion">
-                    |     <h1 class="c-panel__title" data-accordion-title="true">パネルタイトル</h1>
-                    |     <div class="c-panel__content" data-accordion-content="true">
-                    |         <p>パネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツ</p>
-                    |     </div>
-                    | </div>
-                    | <div class="c-panel is-danger">
-                    |     <h1 class="c-panel__title">パネルタイトル</h1>
-                    |     <div class="c-panel__content">
-                    |         <p>パネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツ</p>
-                    |     </div>
-                    | </div>
-                    | <div class="c-panel is-warning">
-                    |     <h1 class="c-panel__title">パネルタイトル</h1>
-                    |     <div class="c-panel__content">
-                    |         <p>パネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツ</p>
-                    |     </div>
-                    | </div>
-                    | <div class="c-panel is-info">
-                    |     <h1 class="c-panel__title">パネルタイトル</h1>
-                    |     <div class="c-panel__content">
-                    |         <p>パネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツ</p>
-                    |     </div>
-                    | </div>
-                    | <div class="c-panel is-success">
-                    |     <h1 class="c-panel__title">パネルタイトル</h1>
-                    |     <div class="c-panel__content">
-                    |         <p>パネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツパネルコンテンツ</p>
-                    |     </div>
-                    | </div>
+            .l-section.is-gray
+                .l-container
+                    h2.heading.is-xlg SERVICE
+                    .row
+                        .large-4
+                            a.c-card
+                                .c-card__image(style="background-image: url(/assets/images/example01.jpg)")
+                                .c-card__title Web制作
+                                .c-card__text Web制作に関するテキストが入ります。
+                        .large-4
+                            a.c-card
+                                .c-card__image(style="background-image: url(/assets/images/example02.jpg)")
+                                .c-card__title DTP
+                                .c-card__text DTPに関するテキストが入ります。
+                        .large-4
+                            a.c-card
+                                .c-card__image(style="background-image: url(/assets/images/example03.jpg)")
+                                .c-card__title コンサルティング
+                                .c-card__text コンサルティングに関するテキストが入ります。
+                    p.u-text-center
+                        a(href="#").c-button.is-lg.is-outline
+                            | サービスの詳細を見る
+                            i.fa.fa-angle-right.c-button__icon
+
+            .l-section
+                .l-container
+                    h2.heading.is-xlg
+                        | NEWS
+
+                    p.heading-lead 最新の情報をお届けします。
+                    .row
+                        .large-8
+                            - var i = 0;
+                            while i < 4
+                                +p_post_item("a",false,"投稿テストです。投稿テストです。","2016/10/10","お知らせ",false).is-line
+                                - i++
+                        .large-3.is-push-lg-1
+                            p
+                                a(href="#")
+                                    img(src="/assets/images/example01.jpg")
+                            p
+                                a(href="#")
+                                    img(src="/assets/images/example02.jpg")
+                            p
+                                a(href="#")
+                                    img(src="/assets/images/example03.jpg")
+            .l-section.is-contact.is-md
+                .l-container
+                    .p-contact
+                        h2.p-contact__title.heading.is-xlg CONTACT
+                        p.p-contact__lead お問い合わせは以下からお願いします。
+                        .row
+                            .large-6
+                                .p-contact__button
+                                    a(href="#").c-button メールでのお問い合わせはこちら
+                            .large-6
+                                .p-contact__tel
+                                    i.fa.fa-phone
+                                    | 0120-24-2010
+                                p
+                                    | 平日 10:00 〜 19:00
 
         section.l-sidebar
 

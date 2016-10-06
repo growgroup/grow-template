@@ -35,6 +35,8 @@
   @extend %clearfix;
   padding-top: $margin-md;
   padding-bottom: $margin-md;
+  display: block;
+  margin-bottom: 0;
 
   // サムネイル
   .p-post-item__thumbnail {
@@ -52,11 +54,13 @@
   .p-post-item__category {
     margin-right: $margin-md;
     float: left;
+    color: $font-base-color;
   }
 
   // タイトル
   .p-post-item__title {
     float: left;
+    color: $font-base-color;
     margin-right: $margin-md;
     margin-bottom: 0;
     font-size: rem-calc(14);

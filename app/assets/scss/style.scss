@@ -16,7 +16,6 @@
  *
  */
 
-
 /**
  * ==============================
  * Grow Template - スタイルシート
@@ -34,6 +33,7 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
 @import "../../bower_components/font-awesome/scss/font-awesome";
 
 
+@import "foundation/_webfont";
 @import "foundation/_settings";
 @import "foundation/_mixin";
 @import "foundation/_normalize";

@@ -7,8 +7,9 @@ mixin p_post_item(el,image,title,date,category,text)
             img(src=image)
         .p-post-item__content
             .p-post-item__date= date
-            .p-post-item__category= category
+            .p-post-item__category
+                .c-label.is-secondary= category
             .p-post-item__title= title
-            - if( typeof text !== "undefined" ) {
+            - if( typeof text !== "undefined" && text ) {
             .p-post-item__text= text
             - }

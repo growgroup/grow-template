@@ -1,0 +1,85 @@
+//- filename: index.jade
+//- description: サイトのトップページ
+
+extends inc/foundation/_base
+
+block title
+
+    title #{pages.home.title}
+
+block meta
+    meta(name='description', content=pages.home.description)
+    meta(name='keywords', content=pages.home.keywords)
+    meta(name="viewport", content=general.viewport)
+
+block prepend head_script
+
+    //- body タグのクラスを設定
+    - var bodyClass = "home";
+
+block body
+
+    main
+
+        // メインビジュアル
+        .c-page-header
+            h1 ABOUT
+            p 私たちについてご紹介します。
+
+        section.l-main
+
+            .l-section
+
+                h2.heading.is-xlg はじまりはいつもここから
+                .p-landing-block
+                    .p-landing-block__thumbnail(style="background-image: url(/assets/images/example01.jpg)")
+                    .p-landing-block__content
+                        .p-landing-block__content__inner
+                            h3.heading.is-lg タイトル1タイトル1タイトル1
+                            p
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                .p-landing-block
+                    .p-landing-block__content
+                        .p-landing-block__content__inner
+                            h3.heading.is-lg タイトル1タイトル1タイトル1
+                            p
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                    .p-landing-block__thumbnail(style="background-image: url(/assets/images/example02.jpg)")
+
+                .p-landing-block
+                    .p-landing-block__thumbnail(style="background-image: url(/assets/images/example03.jpg)")
+                    .p-landing-block__content
+                        .p-landing-block__content__inner
+                            h3.heading.is-lg タイトル1タイトル1タイトル1
+                            p
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                                | テキストテキストテキストテキストテキストテキストテキスト
+                                | テキストテキストテキストテキストテキストテキストテキスト
+
+            .l-section.is-contact.is-md
+                .l-container
+                    .p-contact
+                        h2.p-contact__title.heading.is-xlg CONTACT
+                        p.p-contact__lead お問い合わせは以下からお願いします。
+
+                        .p-contact__tel
+                            i.fa.fa-phone
+                            | 0120-24-2010
+                        p
+                            | 平日 10:00 〜 19:00
+                        .p-contact__button
+                            a(href="#").c-button.is-outline メールでのお問い合わせはこちら
+
+        section.l-sidebar
+
+

@@ -42,15 +42,41 @@
 // </form>
 //
 // Styleguide 3.4.0
+.c-contactform {
+  border-top: 1px solid #B9BDBE;
+  border-bottom: 1px solid #B9BDBE;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
 .c-form-block {
   padding-top: rem-calc(16);
   padding-bottom: rem-calc(16);
-  border-top: 1px solid #f1f1f1;
   overflow: hidden;
 
   // 必須マーク
-  .c-label {
-    margin-left: rem-calc(16)
+  .c-label.is-danger {
+    margin-left: rem-calc(16);
+    position: absolute;
+    left: 0;
+    background: $color-primary;
+    color: $font-base-color;
+    @include breakpoint(small only) {
+      margin-left: 0;
+    }
+  }
+
+  &__title {
+    padding-left: 80px;
+    font-weight: bold;
+    position: relative;
+    @include breakpoint(small only) {
+      margin-bottom: 20px;
+      padding-left: 50px;
+    }
+  }
+
+  textarea {
+    min-height:200px;
   }
 
   // ラベル
@@ -61,17 +87,21 @@
   }
 
   &__title {
-    width: 40%;
-    float: left;
+    //width: 40%;
+    //float: left;
     label {
       margin-top: 6px;
     }
     .c-label {
       margin-top: -2px;
+      @include breakpoint(small only) {
+        margin-left: 0;
+      }
     }
-    @breakpoint(small only){
+    @include breakpoint(small only){
       width: 100%;
       float: none;
+      margin-bottom: 20px;
     }
   }
   &__box {
@@ -81,9 +111,36 @@
       margin-top: 8px;
       font-size: 0.9em;
     }
-    @breakpoint(small only){
+    @include breakpoint(small only){
       width: 100%;
       float: none;
     }
+  }
+
+}
+
+.c-form__radio {
+  label {
+    display: inline-block;
+    margin-right: 32px;
+    input {
+      margin-right: 8px;
+    }
+  }
+}
+
+.p-privacy {
+  margin-top: 48px;
+  margin-bottom: 48px;
+  padding: 32px;
+  background: #EEF1F1;
+  max-width: 896px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  h4 {
+    margin-top: 0;
+    font-size: 15px;
+    margin-bottom: 16px;
   }
 }

@@ -1,0 +1,123 @@
+//- filename: index.jade
+//- description: サイトのトップページ
+
+extends inc/foundation/_base
+
+block title
+
+    title #{pages.home.title}
+
+block meta
+    meta(name='description', content=pages.home.description)
+    meta(name='keywords', content=pages.home.keywords)
+    meta(name="viewport", content=general.viewport)
+
+block prepend head_script
+
+    //- body タグのクラスを設定
+    - var bodyClass = "home";
+
+block body
+
+    main
+
+        // メインビジュアル
+        .c-page-header
+            h1 CONTACT
+            p お問い合わせは以下のフォームからお願い致します。
+        .l-container
+            .c-breadcrumb
+                ul
+                    li
+                        a(href="#") HOME
+                    li
+                        span >
+                    li
+                        span CONTACT
+        section.l-main
+            .l-section
+                .l-container
+                    +contactform("name","action",[
+                        {
+                            label: "氏名",
+                            type: "text",
+                            name: "name",
+                            require: true,
+                        }, {
+                            label: "フリガナ",
+                            type: "text",
+                            name: "kana",
+                            require: true,
+                        }, {
+                            label: "メールアドレス",
+                            type: "text",
+                            name: "address",
+                            require: true,
+                        }, {
+                            label: "TEL",
+                            type: "text",
+                            name: "address",
+                            require: false,
+                        }, {
+                            label: "ご住所",
+                            type: "text",
+                            name: "addr2",
+                            require: false,
+                        }, {
+                            label: "お問い合わせ種別",
+                            type: "radio",
+                            name: "type",
+                            require: true,
+                            options: [
+                                {
+                                    value: "1",
+                                    label: "採用について"
+                                }, {
+                                    value: "2",
+                                    label: "講習・セミナーについて"
+                                }, {
+                                    value: "3",
+                                    label: "その他"
+                                }
+                            ]
+                        }, {
+                            label: "ご相談内容",
+                            type: "textarea",
+                            name: "addr2",
+                            require: true,
+                        }, {
+                            label: "当サイトを知ったきっかけは？",
+                            type: "radio",
+                            name: "type",
+                            require: true,
+                            options: [
+                                {
+                                    value: "1",
+                                    label: "知人の紹介"
+                                }, {
+                                    value: "2",
+                                    label: "SNS"
+                                }, {
+                                    value: "3",
+                                    label: "ホームページ"
+                                }, {
+                                    value: "4",
+                                    label: "その他"
+                                }
+                            ]
+                        },
+                    ])
+
+                    .p-privacy
+                        h4 個人情報の取扱について
+                        p
+                            | 入力された個人情報は、当社からの連絡を目的で収集するものであり、原則として、
+                            br
+                            | ご本人の承諾なく第三者に開示・提供いたしません。
+                    p.u-text-center
+                        button.c-button.is-lg.is-outline 確認画面へ進む
+
+
+        section.l-sidebar
+
+

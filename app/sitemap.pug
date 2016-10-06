@@ -1,0 +1,69 @@
+//- filename: index.jade
+//- description: サイトのトップページ
+
+extends inc/foundation/_base
+
+block title
+
+    title #{pages.home.title}
+
+block meta
+    meta(name='description', content=pages.home.description)
+    meta(name='keywords', content=pages.home.keywords)
+    meta(name="viewport", content=general.viewport)
+
+block prepend head_script
+
+    //- body タグのクラスを設定
+    - var bodyClass = "home";
+
+block body
+
+    main
+
+        // メインビジュアル
+        .c-page-header
+            h1 SITEMAP
+            p 当サイトのコンテンツ一覧を紹介します。
+        .l-container
+            .c-breadcrumb
+                ul
+                    li
+                        a(href="#") HOME
+                    li
+                        span >
+                    li
+                        span SITEMAP
+        section.l-main
+            .l-section
+                .l-container
+                    .row
+                        .large-6
+                            .p-sitemap
+                                h2.p-sitemap__title 会社について
+                                ul
+                                    li
+                                        a(href="#") トップページ
+                                    li
+                                        a(href="#") 私たちについて
+                                    li
+                                        a(href="#") 会社概要
+                                    li
+                                        a(href="#") 代表メッセージ
+                        .large-6
+                            .p-sitemap
+                                h2.p-sitemap__title ブログ
+                                ul
+                                    li
+                                        a(href="#") トップページ
+                                    li
+                                        a(href="#") 私たちについて
+                                    li
+                                        a(href="#") 会社概要
+                                    li
+                                        a(href="#") 代表メッセージ
+
+
+        section.l-sidebar
+
+

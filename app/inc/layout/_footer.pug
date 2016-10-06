@@ -6,17 +6,24 @@ footer.l-footer
         .row
             .large-4
                 .l-footer__logo
-                    h1 ロゴ
+                    h1
+                        img(src="assets/images/logo.png",alt="ロゴ")
+
             .large-8
-                .l-footer-menu
-                    - for(var k =0; k < 3; k++){
+                .l-footer__menu
                     .large-4
                         ul
-                            - for (var i = 0; i  < 4;i++){
                             li
-                                a(href="#") メニュー1
-                            - }
-                    - }
-.l-footer__copyright
+                                a(href="./index.html") HOME
+                            li
+                                a(href="./about.html") ABOUT
+                            li
+                                a(href="./contact.html") CONTACT
+                            li
+                                a(href="./sitemap.html") SITEMAP
+                            li
+                                a(href="./privacy-policy.html") PRIVACY POLICY
+
+.l-footer-copyright
     .l-container
         p copyright © sample site All Right Reserved.

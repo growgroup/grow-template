@@ -63,25 +63,27 @@ mixin textarea(name,row)
         },
     ])
 mixin contactform(name,action,fields)
-    form(name=name,action=action)
-        each field in fields
-            .c-form-block
-                .row
-                    .large-6
-                        span= field.label
-                        if field.require
-                            span.c-label.is-danger.is-required 必須
-                    .large-6
-                        case field.type
-                            when "select"
-                                +select(field.name,field.options)
-                            when "text"
-                                +input(field.name,field.type)
-                            when "radio"
-                                +radio(field.name,field.options)
-                            when "checkbox"
-                                +checkbox(field.name,field.options)
-                            when "textarea"
-                                +textarea(field.name,field.row)
+    .c-contactform
+        form(name=name,action=action)
+            each field in fields
+                .c-form-block
+                    .row
+                        .large-4
+                            .c-form-block__title
+                                if field.require
+                                    span.c-label.is-danger.is-required 必須
+                                span= field.label
 
-
+                        .large-8
+                            .c-form-block__content
+                                case field.type
+                                    when "select"
+                                        +select(field.name,field.options)
+                                    when "text"
+                                        +input(field.name,field.type)
+                                    when "radio"
+                                        +radio(field.name,field.options)
+                                    when "checkbox"
+                                        +checkbox(field.name,field.options)
+                                    when "textarea"
+                                        +textarea(field.name,field.row)

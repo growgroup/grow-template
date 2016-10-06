@@ -18,6 +18,10 @@
 //
 // Styleguide 2.11.0
 
+$c-button-md-font-size: rem-calc(16) !default;
+$c-button-sm-font-size: rem-calc(13) !default;
+$c-button-lg-font-size: rem-calc(16) !default;
+$c-button-radius: 0px !default;
 
 .c-button {
   display: inline-block;
@@ -25,12 +29,21 @@
   padding-right: rem-calc($margin-md);
   padding-top: rem-calc($margin-base);
   padding-bottom: rem-calc($margin-base);
-  border-radius: $border-radius;
+  border-radius: $c-button-radius;
   background: $color-primary;
   color: $color-white;
   text-decoration: none;
   border: none;
   font-size: rem-calc($font-base-size);
+
+  position: relative;
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    margin-top: -12px;
+    font-size: rem-calc(24);
+  }
 
   &:hover {
     opacity: 0.8;
@@ -46,23 +59,23 @@
   }
 
   &:active {
-    box-shadow: inset 0px 2px 2px rgba(0,0,0,.3);
+    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, .3);
     outline: none;
     color: #fff;
   }
 
   &.is-lg {
-    font-size: rem-calc($font-large-size);
-    padding: rem-calc($margin-md) rem-calc($margin-lg);
+    font-size: rem-calc($c-button-lg-font-size);
+    padding: rem-calc($margin-md) rem-calc(64px);
   }
 
   &.is-sm {
-    font-size: rem-calc($font-small-size);
+    font-size: rem-calc($c-button-sm-font-size);
     padding: rem-calc($margin-sm) rem-calc($margin-md);
   }
 
   &.is-xs {
-    font-size: rem-calc($font-small-size*0.8);
+    font-size: rem-calc($c-button-lg-font-size*0.8);
     padding: rem-calc($margin-sm*0.5) rem-calc($margin-md*0.8);
   }
 
@@ -92,6 +105,13 @@
 
   &.is-round {
     border-radius: 1000px;
+  }
+
+  &.is-outline {
+    background: transparent;
+    border: 3px solid $font-base-color;
+    color: $font-base-color;
+    font-weight: bold;
   }
 
 }
