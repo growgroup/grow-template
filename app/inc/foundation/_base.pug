@@ -44,27 +44,47 @@ html
 
     body(class=bodyClass)
 
-        //- ヘッダー
-        block header
-            include /inc/layout/_header
+        //- スマホメニューのボタン
+        a(href="#").slidebar-button.js-slidebar-button
+            i.fa.fa-bars
+            span メニュー
 
-        //- グローバルナビゲーション
-        block global_nav
-            include /inc/layout/_global-nav
+        .slidebar-menu.js-slidebar-menu
+            ul
+                li
+                    a(href="#") ホーム
+                li
+                    a(href="#") ホーム
+                li
+                    a(href="#") ホーム
+                li
+                    a(href="#") ホーム
+                li
+                    a(href="#") ホーム
 
-        //- メインコンテンツ
-        block body
+        //- スマホメニュー用のコンテナ
+        .slidebar-container.js-slidebar-container
+            //- ヘッダー
+            block header
+                include /inc/layout/_header
+
+            //- グローバルナビゲーション
+            block global_nav
+                include /inc/layout/_global-nav
+
+            //- メインコンテンツ
+            block body
 
 
-        //- フッター
-        block footer
-            include /inc/layout/_footer
+            //- フッター
+            block footer
+                include /inc/layout/_footer
 
-        //- フッターに組み込むスクリプト
-        block footer_scripts
+            //- フッターに組み込むスクリプト
+            block footer_scripts
 
-            script(src='/bower_components/jquery/dist/jquery.js')
-            script(src='/assets/js/app.js')
-            script(src='/assets/js/scripts.js')
+                script(src='/bower_components/jquery/dist/jquery.js')
+                script(src='/assets/js/app.js')
+                script(src='/assets/js/scripts.js')
 
 

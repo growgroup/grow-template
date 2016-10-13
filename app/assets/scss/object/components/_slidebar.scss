@@ -43,8 +43,20 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
     position: fixed;
     right: 10px;
     top: 10px;
+    text-align: center;
     font-size: rem-calc(28);
     z-index: 100000;
+    text-decoration: none;
+    padding: 4px;
+    border-radius: 3px;
+    background: $color-primary;
+    line-height: 1;
+    color: $color-white;
+    > span {
+      display: block;
+      text-align: center;
+      font-size:rem-calc(9);
+    }
   }
 
   // メニュー自体
@@ -54,16 +66,18 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
     z-index: 100000;
     background: $slidebar-menu-bg;
     width: $slidebar-menu-width;
+    -webkit-transform: translate3d(100%, 0px, 0px);
     transform: translate3d(100%, 0px, 0px);
     right: 0;
     top: 0;
+    -webkit-transition: $slidebar-menu-eaasing;
     transition: $slidebar-menu-eaasing;
     > ul > li {
       a {
         display: block;
         padding-left: rem-calc(16);
-        padding-top: rem-calc(8);
-        padding-bottom: rem-calc(8);
+        padding-top: rem-calc(12);
+        padding-bottom: rem-calc(12);
         padding-right: rem-calc(8);
         text-decoration: none;
         color: #fff;
@@ -83,16 +97,18 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
       top: 0;
       left: 0;
       opacity: 0;
+      -webkit-transition: $slidebar-menu-eaasing;
       transition: $slidebar-menu-eaasing;
       display: none;
     }
   }
 
   body, html {
-    height: 100%;
+    //height: 100%;
   }
 
   .slidebar-container {
+    -webkit-transition: $slidebar-menu-eaasing;
     transition: $slidebar-menu-eaasing;
   }
 
@@ -100,6 +116,7 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
   .is-slidebar-active {
 
     .slidebar-container {
+      -webkit-transform: translate3d(-$slidebar-menu-width, 0px, 0px);
       transform: translate3d(-$slidebar-menu-width, 0px, 0px);
       &:after {
         content: "";
@@ -115,6 +132,7 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
     }
 
     .slidebar-menu {
+      -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0);
     }
 
