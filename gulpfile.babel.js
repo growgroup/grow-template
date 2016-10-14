@@ -227,7 +227,8 @@ gulp.task('pug', () => {
     return gulp.src(config.pug.src)
 
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-        .pipe($.changed('dist', {extension: '.html'}))
+
+        // .pipe($.changed('dist', {extension: '.html'}))
         .pipe($.if(global.isWatching, $.cached('pug')))
         .pipe($.pugInheritance({basedir: appPath + '/'}))
         .pipe($.filter(function (file) {

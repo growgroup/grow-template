@@ -3,15 +3,7 @@
 nav.l-global-navigation
     .l-container
         ul
+          each item in config.globalNav
             li
-                a(href="/") HOME
-            li.is-active
-                a(href="./about.html") ABOUT
-            li
-                a(href="./service.html") SERVICE
-            li
-                a(href="#") WORKS
-            li
-                a(href="./contact.html") CONTACT
-
+                a(href=item.link)= item.name
 

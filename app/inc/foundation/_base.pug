@@ -2,19 +2,21 @@ include /inc/mixins/_mixins
 doctype html
 html
     head
+        block config
+          include /inc/_settings
 
         meta(charset='UTF-8')
 
         //- サイトのタイトル
         block title
-            title #{general.title}
+            title= config.site.title
 
         //- メタ情報
         block meta
 
-            meta(name='description', content=general.description)
-            meta(name='keywords', content=general.keywords)
-            meta(name="viewport", content=general.viewport)
+            meta(name='description', content=config.site.description)
+            meta(name='keywords', content=config.site.keywords)
+            meta(name="viewport", content=config.site.viewport)
 
         //- OGP
         block meta_ogp

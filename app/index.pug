@@ -20,6 +20,7 @@ block prepend head_script
 block body
 
     main
+        p= config.test
 
         // メインビジュアル
         include /inc/object/components/_main-visual
@@ -95,22 +96,9 @@ block body
                             p
                                 a(href="#")
                                     img(src="/assets/images/example03.jpg")
-            .l-section.is-contact.is-md
-                .l-container
-                    .p-contact
-                        h2.p-contact__title.heading.is-xlg CONTACT
-                        p.p-contact__lead お問い合わせは以下からお願いします。
-                        .row
-                            .large-6
-                                .p-contact__button
-                                    a(href="#").c-button メールでのお問い合わせはこちら
-                            .large-6
-                                .p-contact__tel
-                                    i.fa.fa-phone
-                                    | 0120-24-2010
-                                p
-                                    | 平日 10:00 〜 19:00
 
-        section.l-sidebar
+            include /inc/object/components/_offer
+
+
 
 
