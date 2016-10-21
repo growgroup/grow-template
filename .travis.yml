@@ -4,9 +4,8 @@ node_js:
   - '6'
 install:
   - npm install -g node-gyp
-  - npm install
-
-before_script:
   - npm install -g gulp
+  - npm install -g bower
+  - npm install
 script:
   - npm run build
