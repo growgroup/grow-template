@@ -1,6 +1,6 @@
 # Grow Template
 
-Gulp, Sass & Jade を利用した必要最小限のプロジェクトテンプレートです。
+Gulp, Sass & Pug を利用した必要最小限のプロジェクトテンプレートです。
 
 より効率的なHTMLコーディングを実現するために作成しています。
 
@@ -14,9 +14,9 @@ Gulp, Sass & Jade を利用した必要最小限のプロジェクトテンプ�
 
 Homebrew、もしくはその他の方法でインストールすること。
 
-* node.js
-* gulp
-* bower
+* node >=6.3.1 
+* bower >= 1.7.9
+* gulp >= 3.9.1
 * git
 * editorconfig (各IDE, テキストエディタのプラグイン/パッケージ)
 
@@ -31,11 +31,8 @@ git clone https://github.com/growgroup/grow-template
 ディレクトリの用意ができたら下記のコマンドを入力してください。
 
 ```shell
-npm run-script init
+npm install
 ```
-
-npm install と bower install コマンドが実行されます。
-
 
 ## ディレクトリ構成
 
@@ -77,66 +74,75 @@ dist ディレクトリ内に展開します。
 │   └── index.html
 ├── docs
 ├── gulpfile.babel.js
-├── jade-settings.json
 └── package.json
 
 ```
 
 ## 作業の進め方
 
-### Jade
+### Pug
 
-##### jade-settings.json の編集
+##### _settings.pug の編集
 
-jade-settings.json ファイルの値を変更することで、
+app/inc/_settings.pug ファイルの値を変更することで、
 自動的に変数に値がセットされ、HTMLにコンパイル時に反映されます。
 
-```json5
-{
-  "general" : {
-    "title" : "Grow Template", // サイト名
-    "description" : "Grow Template", // サイトの説明文
-    "keywords" : "Grow Template", // サイトのキーワード
-    "viewport" : "width=device-width,initial-scale=1", // ビューポート
-    "favicon" : "favicon.ico", // ファビコンへのパス
-    "apple-touch-icon" : "apple-touch-icon.png", // iOS アイコンへのパス
-    "ogp" : { // OGP の各値
-      "locale" : "ja_JP",
-      "type" : "website",
-      "title":  "Grow Template",
-      "description":  "Grow Template",
-      "url":  "",
-      "site_name":  "Grow Template",
-      "image" : "ogp.jpg"
-    }
-  },
+```pug
+    //- サイトの設定
+    -
+      config = {
+    
+        // サイト情報
+        site: {
+          title: "サイト名",
+          description: "説明文",
+          keywords: "キーワード",
+          viewport: "width=device-width,initial-scale=1",
+          favicon: "",
+          "apple-touch-icon": "",
+          ogp: {
+            locale: "ja",
+            type: "type",
+            title: "title",
+            description: "description",
+            url: "",
+            site_name: "",
+            image: ""
+          },
+        },
+    
+        // ページ情報
+        pages: {
+          'top': {
+            name: "top",
+            title: "ホーム",
+            description: "",
+          },
+          'about': {
+            name: "about",
+            title: "私たちについて",
+            description: "",
+          },
+          'service': {
+            name: "service",
+            title: "サービス紹介",
+            description: "",
+          },
+          'works': {
+            name: "works",
+            title: "実績紹介",
+            description: "",
+          },
+          'contact': {
+            name: "contact",
+            title: "お問合せ",
+            description: "",
+          },
+    
+        },
+      }
+    
 
-  "assets" : {
-    "styles": [
-      "assets/css/style.css" // CSS ファイルへのパス
-    ],
-    "scripts": [
-      "assets/js/main.js" // JavaScript ファイルへのパス
-    ]
-  },
-
-  "pages" : {
-    // トップページの設定
-    "home" : {
-      "title" : "トップページ",
-      "description" : "ページの説明文",
-      "keywords" : "ページのキーワード"
-    },
-    // 例 : 会社概要ページ
-    "about" : {
-      "title" : "会社概要",
-      "description" : "このページではサンプル会社の概要について説明しています",
-      "keywords" : "サンプル会社, サンプル"
-    },
-
-    // ...ページを増やすごとに追加
-  }
-}
 ```
 
 ### Sass
@@ -174,5 +180,4 @@ gulp を実行している際に、初期状態では 8888 ポートで閲覧す
 
 * [HTMLコーディング規約](docs/RULES_HTML_CODING.md)
 * [命名規則](docs/RULES_NAMING.md)
-
 

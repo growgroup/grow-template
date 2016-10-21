@@ -1,21 +1,10 @@
 //- filename: index.jade
 //- description: サイトのトップページ
 
-extends inc/foundation/_base
+extends /inc/foundation/_base
 
-block title
-
-    title トップページ
-
-block meta
-    meta(name='description', content="説明文")
-    meta(name='keywords', content="キーワード")
-    meta(name="viewport", content=config.site.viewport)
-
-block prepend head_script
-
-    //- body タグのクラスを設定
-    - var bodyClass = "home";
+block prepend title
+    - id = "top"
 
 block body
 

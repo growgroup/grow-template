@@ -1,21 +1,7 @@
-//- filename: index.jade
-//- description: サイトのトップページ
+extends /inc/foundation/_base
 
-extends inc/foundation/_base
-
-block title
-
-    title #{pages.home.title}
-
-block meta
-    meta(name='description', content=pages.home.description)
-    meta(name='keywords', content=pages.home.keywords)
-    meta(name="viewport", content=general.viewport)
-
-block prepend head_script
-
-    //- body タグのクラスを設定
-    - var bodyClass = "home";
+block prepend title
+    - id = "about"
 
 block body
 
@@ -30,7 +16,7 @@ block body
 
             .l-section
 
-                h2.heading.is-xlg はじまりはいつもここから
+                h2.heading.is-xlg 見出し大
                 .p-landing-block
                     .p-landing-block__thumbnail(style="background-image: url(/assets/images/example01.jpg)")
                     .p-landing-block__content

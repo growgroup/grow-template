@@ -3,7 +3,7 @@
 nav.l-global-navigation
     .l-container
         ul
-          each item in config.globalNav
+          each item in config.pages
             li
-                a(href=item.link)= item.name
+                a(href="/" + item.name + ".html")= item.title
 

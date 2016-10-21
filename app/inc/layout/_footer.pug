@@ -7,22 +7,16 @@ footer.l-footer
             .large-4
                 .l-footer__logo
                     h1
-                        img(src="assets/images/logo.png",alt="ロゴ")
+                        img(src="/assets/images/logo.png",alt="ロゴ")
 
             .large-8
                 .l-footer__menu
                     .large-12
                         ul.c-inline-list
-                            li
-                                a(href="./index.html") HOME
-                            li
-                                a(href="./about.html") ABOUT
-                            li
-                                a(href="./contact.html") CONTACT
-                            li
-                                a(href="./sitemap.html") SITEMAP
-                            li
-                                a(href="./privacy-policy.html") PRIVACY POLICY
+                            each item in config.pages
+                                li
+                                    a(href="/" + item.name + "/")= item.title
+
 
 .l-footer-copyright
     .l-container

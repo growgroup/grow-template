@@ -2,37 +2,40 @@ include /inc/mixins/_mixins
 doctype html
 html
     head
+        - var id = "top";
         block config
-          include /inc/_settings
+            include /inc/_settings
 
         meta(charset='UTF-8')
 
         //- サイトのタイトル
         block title
-            title= config.site.title
+            if typeof config.pages[id] !== "undefined"
+                if id !== "top"
+                    title= getPagesValue(id, "title") + " | " + config.site.title
+                else
+                    title= getPagesValue(id, "title")
 
         //- メタ情報
         block meta
-
-            meta(name='description', content=config.site.description)
-            meta(name='keywords', content=config.site.keywords)
+            meta(name='description', content=getPagesValue(id, "description"))
             meta(name="viewport", content=config.site.viewport)
 
         //- OGP
         block meta_ogp
-            meta(property="og:locale", content=general.ogp.locale)
-            meta(property="og:type",content=general.ogp.type)
-            meta(property="og:title", content=general.ogp.title)
-            meta(property="og:description", content=general.ogp.description )
-            meta(property="og:url", content=general.ogp.url)
-            meta(property="og:site_name", content=general.ogp.site_name)
-            meta(property="og:image", content=general.ogp.image)
+            meta(property="og:locale", content=config.site.ogp.locale)
+            meta(property="og:type",content=config.site.ogp.type)
+            meta(property="og:title", content=getPagesValue(id, "title"))
+            meta(property="og:description", content=getPagesValue(id, "description") )
+            meta(property="og:url", content=config.site.ogp.url + "/" + id + "/")
+            meta(property="og:site_name", content=config.site.ogp.site_name)
+            meta(property="og:image", content=config.site.ogp.image)
 
         //- リンクファイル
         block link
-            link(rel='icon', href=general.favicon)
-            link(rel='shortcut icon', href=general.favicon)
-            link(rel='apple-touch-icon', href=general["apple-touch-icon"])
+            link(rel='icon', href=config.favicon)
+            link(rel='shortcut icon', href=config.favicon)
+            link(rel='apple-touch-icon', href=config["apple-touch-icon"])
 
 
         //- スタイルシート
@@ -53,16 +56,9 @@ html
 
         .slidebar-menu.js-slidebar-menu
             ul
-                li
-                    a(href="#") ホーム
-                li
-                    a(href="#") ホーム
-                li
-                    a(href="#") ホーム
-                li
-                    a(href="#") ホーム
-                li
-                    a(href="#") ホーム
+                each item in config.pages
+                    li
+                        a(href="/" + item.name + ".html")= item.title
 
         //- スマホメニュー用のコンテナ
         .slidebar-container.js-slidebar-container

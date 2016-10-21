@@ -21,42 +21,46 @@
       },
     },
 
+    // ページ情報
     pages: {
       'top': {
         name: "top",
-        title: "",
+        title: "ホーム",
         description: "",
       },
       'about': {
         name: "about",
-        title: "私",
-        description: "あべのハルカス22階にある婦人科(不妊治療)を専門とするハルカス大阪レディースクリニックの院長から皆様へのご挨拶を紹介します。",
+        title: "私たちについて",
+        description: "",
       },
-    },
+      'service': {
+        name: "service",
+        title: "サービス紹介",
+        description: "",
+      },
+      'works': {
+        name: "works",
+        title: "実績紹介",
+        description: "",
+      },
+      'contact': {
+        name: "contact",
+        title: "お問合せ",
+        description: "",
+      },
 
-    // グローバルナビゲーション
-    globalNav: [
-      {
-        name: "HOME",
-        link: "/",
-      },
-      {
-        name: "ABOUT",
-        link: "/about.html",
-      },
-      {
-        name: "SERVICE",
-        link: "#",
-      },
-      {
-        name: "WORKS",
-        link: "#",
-      },
-      {
-        name: "CONTACT",
-        link: "/contact.html",
-      },
-    ]
+    },
+  }
+
+  getPagesValue = function(id,key){
+    if ( typeof config.pages[id] !== "undefined" && typeof config.pages[id][key] !== "undefined" ){
+      return config.pages[id][key];
+    }
+    // タイトル,説明文等についてはサイトの設定を返す
+    if ( typeof config.site[key] !== "undefined" ){
+      return config.site[key]
+    }
+    return "";
   }
 
 

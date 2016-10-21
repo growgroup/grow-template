@@ -35,7 +35,6 @@ import del from 'del'
 import styleguide from "sc5-styleguide"
 import gulpLoadPlugins from 'gulp-load-plugins'
 import pkg from './package.json'
-import pugSettingFile from './pug-settings.json'
 
 /**
  * =================================
@@ -234,9 +233,7 @@ gulp.task('pug', () => {
         .pipe($.filter(function (file) {
             return !/\/_/.test(file.path) && !/^_/.test(file.relative);
         }))
-        .pipe($.data(function (file) {
-            return pugSettingFile;
-        }))
+
         .pipe($.pug({
             pretty: true,
             cache: true,
