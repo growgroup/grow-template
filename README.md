@@ -1,4 +1,4 @@
-# Grow Template
+# Grow Template [![Build Status](https://travis-ci.org/growgroup/grow-template.svg?branch=master)](https://travis-ci.org/growgroup/grow-template)
 
 Gulp, Sass & Pug を利用した必要最小限のプロジェクトテンプレートです。
 
