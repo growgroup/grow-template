@@ -7,7 +7,9 @@
   },
   "scripts": {
     "init": "npm install && bower install",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install",
+    "build": "gulp build"
   },
   "author": "GrowGroup",
   "devDependencies": {
