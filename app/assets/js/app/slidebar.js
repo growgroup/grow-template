@@ -91,7 +91,7 @@
 
     Slidebar.prototype.bodyTrigger = function(){
         var self = this;
-        $(document).on('click', this.options.containerSelector, function(e){
+        $(document).on('touchend', this.options.containerSelector, function(e){
             if ( self.isActive ){
                 self.close();
             }
