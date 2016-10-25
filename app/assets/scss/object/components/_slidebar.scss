@@ -114,7 +114,7 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
 
   // 有効時
   .is-slidebar-active {
-
+    cursor: pointer;
     .slidebar-container {
       -webkit-transform: translateX(-$slidebar-menu-width);
       transform: translate3d(-$slidebar-menu-width, 0px, 0px);
