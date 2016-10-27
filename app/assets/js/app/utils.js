@@ -1,5 +1,5 @@
 /*
- * ==================================================================== 
+ * ====================================================================
  * Grow Template
  * @package  Grow Template
  * @author   GrowGroup.Inc <info@grow-group.jp>
@@ -7,24 +7,23 @@
  * ====================================================================
  */
 
-(function ($) {
-    "use strict";
+import  $ from "./jquery-shim.js"
 
-    if (typeof window.GApp === "undefined") {
-        window.GApp = {};
-    }
-
-    var GApp = window.GApp || {};
+const toString = Object.prototype.toString;
+const nativeIsArray = Array.isArray;
+const nativeKeys = Object.keys;
+const MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
 
 
-    var toString = Object.prototype.toString;
+export default class Utils {
 
-    var nativeIsArray = Array.isArray,
-        nativeKeys = Object.keys;
 
-    var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
-
-    var Utils = function () {
+    constructor() {
+        $.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Error'], (key, name)=> {
+            this['is' + name] = function (obj) {
+                return toString.call(obj) === '[object ' + name + ']';
+            };
+        });
     }
 
     /**
@@ -32,7 +31,7 @@
      * @param i
      * @param units
      */
-    Utils.prototype.unit = function (i, units) {
+    unit(i, units) {
         if ((typeof i === "string") && (!i.match(/^[\-0-9\.]+$/))) {
             return i;
         } else {
@@ -41,60 +40,57 @@
     }
 
     /**
+     *
      * 配列かどうか
      * @param collection
      * @returns {boolean}
      */
-    Utils.prototype.isArrayLike = function (collection) {
+    isArrayLike(collection) {
         var length = collection.length;
         return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
-    };
+    }
 
-    Utils.prototype.isObject = function (obj) {
+    /**
+     * オブジェクトかどうか
+     * @param obj
+     * @returns {boolean}
+     */
+    isObject(obj) {
         var type = typeof obj;
         return type === 'function' || type === 'object' && !!obj;
-    };
+    }
 
     /**
      * 配列か判別
      * @type {*|Function}
      */
-    Utils.prototype.isArray = nativeIsArray || function (obj) {
-            return toString.call(obj) === '[object Array]';
-        };
+    isArray(obj) {
+        return nativeIsArray || function (obj) {
+                return toString.call(obj) === '[object Array]';
+            }
+    }
 
-
-    Utils.prototype.keys = function (obj) {
-        if (!Utils.prototype.isObject(obj)) return [];
+    keys(obj) {
+        if (!this.isObject(obj)) return [];
         if (nativeKeys) return nativeKeys(obj);
         var keys = [];
         for (var key in obj) if ($.inArray(obj, key)) keys.push(key);
-
         return keys;
-    };
+    }
+
     /**
      * オブジェクトが空かどうか判断
      * @param obj
      * @returns {boolean}
      */
-    Utils.prototype.isEmpty = function (obj) {
+
+    isEmpty(obj) {
         if (obj == null) return true;
-        if (Utils.prototype.isArrayLike(obj) && (Utils.prototype.isArray(obj) || Utils.prototype.isString(obj) || Utils.prototype.isArguments(obj))) return obj.length === 0;
-        return Utils.prototype.keys(obj).length === 0;
+        if (this.isArrayLike(obj) && (this.isArray(obj) || this.isString(obj) || this.isArguments(obj))) return obj.length === 0;
+        return this.keys(obj).length === 0;
     }
 
-    // その他型調査用
-    $.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Error'], function (key, name) {
-        Utils.prototype['is' + name] = function (obj) {
-            return toString.call(obj) === '[object ' + name + ']';
-        };
-    });
-
-    /**
-     * モバイル端末か判別
-     * @returns {boolean}
-     */
-    Utils.prototype.isMobile = function () {
+    isMobile() {
         var ua = navigator.userAgent;
 
         if (screen.width < 768) {
@@ -122,19 +118,20 @@
             }
         }
 
-        if (!Utils.prototype.isEmpty(isMobile.any())) {
+        if (!this.isEmpty(isMobile.any())) {
             return true;
         }
 
         return false;
     }
 
+
     /**
-     * クエリーをパース
+     * クエリをパース
      * @param string
      * @returns {{}}
      */
-    Utils.prototype.parseQueryString = function (string) {
+    parseQueryString(string) {
 
         var parsed = {};
         string = (string !== undefined) ? string : window.location.search;
@@ -177,15 +174,16 @@
         return parsed;
     }
 
+
     /**
      * クエリを指定したキーから取得する
      * @param key
      * @param string
      * @returns {boolean}
      */
-    Utils.prototype.getQueryString = function (key, string) {
+    getQueryString(key, string) {
         var string = (string !== undefined) ? string : window.location.search;
-        var queries = Utils.prototype.parseQueryString();
+        var queries = this.parseQueryString();
         var match = false;
         $.each(queries, function (qkey, value) {
             if (key === qkey) {
@@ -196,16 +194,13 @@
         return match;
     }
 
-    /**
-     * requestAnimationFrame のPolyfil
-     * @returns {*}
-     */
-    Utils.prototype.requestAnimationFrame = function () {
+
+    requestAnimationFrame() {
         var requestAnimFrame = window.requestAnimationFrame;
 
         var lastTime = Date.now();
 
-        if (Utils.prototype.isMobile() || !requestAnimFrame) {
+        if (this.isMobile() || !requestAnimFrame) {
             requestAnimFrame = function (callback) {
                 var deltaTime = Date.now() - lastTime;
                 var delay = Math.max(0, 1000 / 60 - deltaTime);
@@ -217,11 +212,10 @@
             };
         }
         return requestAnimFrame;
-    };
-
-    $(function () {
-        GApp.Utils = new Utils();
-    });
+    }
+}
 
 
-})(jQuery);
+
+
+

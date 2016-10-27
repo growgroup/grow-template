@@ -92,10 +92,8 @@ config.sass = {
  */
 config.js = {
     src: [
-        appPath + "/assets/js/*.js",
+        appPath + "/assets/js/scripts.js",
         "!" + appPath + "/assets/js/app/*.js",
-
-        // appPath + "/assets/js/example.js"
     ],
     dist: distPath + "/assets/js/",
 }
@@ -116,7 +114,6 @@ config.pug = {
     dist: distPath + "/",
     settingsFilePath: "./pug-settings.json",
 }
-
 
 /**
  * 設定 - Images
@@ -226,10 +223,9 @@ gulp.task('pug', () => {
     return gulp.src(config.pug.src)
 
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-
         // .pipe($.changed('dist', {extension: '.html'}))
         .pipe($.if(global.isWatching, $.cached('pug')))
-        .pipe($.pugInheritance({basedir: appPath + '/'}))
+        // .pipe($.pugInheritance({basedir: appPath + '/'}))
         .pipe($.filter(function (file) {
             return !/\/_/.test(file.path) && !/^_/.test(file.relative);
         }))
@@ -269,37 +265,6 @@ gulp.task('scripts', () => {
 
 /**
  * =================================
- * # Scripts
- * Js の concat, uglify
- * =================================
- */
-gulp.task('scripts_app', () => {
-    return gulp.src([
-            appPath + "/assets/js/app/utils.js",
-            appPath + "/assets/js/app/tab.js",
-            appPath + "/assets/js/app/anchor.js",
-            appPath + "/assets/js/app/heightline.js",
-            appPath + "/assets/js/app/parallax.js",
-            appPath + "/assets/js/app/accordion.js",
-            appPath + "/assets/js/app/fixedheader.js",
-            appPath + "/assets/js/app/responsive-table.js",
-            appPath + "/assets/js/app/slidebar.js",
-            appPath + "/assets/js/app/slider.js",
-        ])
-        .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-        .pipe($.sourcemaps.init())
-        .pipe($.concat('app.js'))
-        .pipe($.uglify({compress: true}))
-        .pipe($.sourcemaps.write())
-        .pipe(gulp.dest(config.js.dist))
-        .pipe($.size({title: 'app'}))
-        .pipe($.sourcemaps.write('.'))
-        .pipe(reload({stream: true}))
-        .pipe($.notify("Scripts App Task Completed!"));
-});
-
-/**
- * =================================
  * # Babel
  * es6 のコンパイル
  * =================================
@@ -317,6 +282,31 @@ gulp.task('babel', ()=> {
         .pipe(buffer())
         .pipe(gulp.dest(config.babel.dist))
         .pipe($.notify({message: 'Babel task complete！'}));
+});
+
+/**
+ * アプリケーション
+ * @param  {[type]} err) {                   console.log("Error : " + err.message);    })    .pipe(stream('app.js'))    .pipe(buffer())    .pipe(gulp.dest(config.babel.dist))    .pipe($.notify({message: 'Babel App task complete！'}));} [description]
+ * @return {[type]}      [description]
+ */
+gulp.task('babel_app', ()=> {
+    browserify({
+        entries: ["./app/assets/js/app.js"]
+    })
+
+    .transform(babelify)
+    .bundle()
+    .on("error", function (err) {
+        console.log("Error : " + err.message);
+    })
+
+    .pipe(stream('app.js'))
+    .pipe(buffer())
+    .pipe($.sourcemaps.init())
+    .pipe($.uglify({compress: true}))
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest(config.babel.dist))
+    .pipe($.notify({message: 'Babel App task complete！'}));
 });
 
 
@@ -351,7 +341,7 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
     gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
-    gulp.watch([appPath + '/assets/js/app/*.js'], ['lint', 'scripts_app']);
+    gulp.watch([appPath + '/assets/js/app/*.js',appPath + '/assets/js/app.js'], ['lint', 'babel_app']);
     gulp.watch([appPath + '/assets/images/**/*'], ['images', reload]);
 
 });
@@ -375,6 +365,8 @@ gulp.task('copy:app', () => {
             '!./' + appPath + '/inc',
             '!./' + appPath + '/*.pug',
             '!./' + appPath + '/**/*.pug',
+            '!./' + appPath + '/assets/js/app.js',
+            '!./' + appPath + '/assets/js/app/*.js',
         ], {
             dot: true,
             base: "app"
@@ -477,7 +469,7 @@ gulp.task('wp', function() {
 gulp.task('default', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'pug', 'scripts', 'scripts_app', 'copy', 'babel'],
+        ['lint', 'pug', 'scripts', 'copy', 'babel','babel_app'],
         'watch',
         'images',
         'wp',
@@ -494,7 +486,7 @@ gulp.task('default', ['clean'], cb => {
 gulp.task('build', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'pug', 'scripts', 'scripts_app', 'copy', 'babel', 'images'],
+        ['lint', 'pug', 'scripts', 'copy', 'babel', 'images','babel_app'],
         cb
     )
 });

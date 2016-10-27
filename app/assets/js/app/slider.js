@@ -7,35 +7,44 @@
  * ====================================================================
  */
 
-;(function ($) {
-    "use strict";
+import Utils from "./utils.js"
+import  $ from "./jquery-shim.js"
 
-    // 初期設定
-    var defaultOptions = {
-        'namespace': "c-slider",
-        'selector': ".js-slider",
-        'itemSelector': " > *",
-        'animation': 'slide',
-        'animationTimeout': '4000',
-        'items': 1,
-        'margin': 0,
-        'speed': 500,
-        'autoplayTimeout': 5000,
-        'autoplay': false,
-        'nav': true,
-        'dot': true,
-        'screenAll': true,
-        'navNext': '<span class="c-slider__next"> > </span>',
-        'navPrev': '<span class="c-slider__prev"> < </span>',
-    }
+"use strict";
 
-    var Slider = function (options) {
+// 初期設定
+var defaultOptions = {
+    'namespace': "c-slider",
+    'selector': ".js-slider",
+    'itemSelector': " > *",
+    'animation': 'slide',
+    'animationTimeout': '4000',
+    'items': 1,
+    'margin': 0,
+    'speed': 500,
+    'autoplayTimeout': 5000,
+    'autoplay': false,
+    'nav': true,
+    'dot': true,
+    'screenAll': true,
+    'navNext': '<span class="c-slider__next"> > </span>',
+    'navPrev': '<span class="c-slider__prev"> < </span>',
+}
+
+export default class Slider {
+
+    /**
+     * 初期化
+     * @param options
+     */
+    constructor(options) {
+        this.init(options)
     }
 
     /**
      * 実行
      */
-    Slider.prototype.init = function (options) {
+    init(options) {
 
         this.options = $.extend(defaultOptions, options);
 
@@ -96,16 +105,17 @@
     /**
      * 画面情報を保存
      */
-    Slider.prototype.setInfo = function () {
+    setInfo() {
         this.info = {
             windowWidth: window.outerWidth,
             windowHeight: window.outerWidth
         }
     }
+
     /**
      * ネームスペースを取得
      */
-    Slider.prototype.getClass = function (name) {
+    getClass(name) {
         return this.options.namespace + name;
     }
 
@@ -113,7 +123,7 @@
     /**
      * アイテムを初期化
      */
-    Slider.prototype.initializeItems = function () {
+    initializeItems() {
         var items = this.container.find(this.options.itemSelector)
 
         for (var i = 0; i < items.length; i++) {
@@ -130,7 +140,7 @@
     /**
      * アイテムを複製する
      */
-    Slider.prototype.cloneItems = function () {
+    cloneItems() {
 
         var cloneItemsLength = 0;
         var cloneItems = [];
@@ -162,7 +172,7 @@
     /**
      * アウターをセット
      */
-    Slider.prototype.setOuter = function () {
+    setOuter() {
         this.outer = $('<div />');
         this.outer.addClass(this.getClass('-outer'));
         this.outer.append(this.items);
@@ -176,7 +186,7 @@
     /**
      * ドラッグに対応
      */
-    Slider.prototype.eventDragAndDrop = function () {
+    eventDragAndDrop() {
 
         var self = this;
 
@@ -239,25 +249,25 @@
     /**
      * アウターを更新
      */
-    Slider.prototype.setOuterWidth = function () {
+    setOuterWidth() {
         this.outer.width(this.outerWidth);
     }
 
     /**
      * アウターを更新
      */
-    Slider.prototype.updateOuterPosition = function (position, isLoop, method) {
+    updateOuterPosition(position, isLoop, method) {
 
         this.currentOuterPosition = position;
         this.isAutoplay = false;
-        if ( ! isLoop ) {
+        if (!isLoop) {
             this.outer.addClass("is-transition");
         }
         var translate = 'translate3d(' + this.currentOuterPosition + 'px,0px,0px)'
         this.outer.css('transform', translate);
         var self = this;
-        if ( isLoop ){
-            if ( method == "next" ){
+        if (isLoop) {
+            if (method == "next") {
                 self.next();
             } else {
                 self.prev();
@@ -272,10 +282,11 @@
 
 
     }
+
     /**
      * アウターをセンターに合わせる
      */
-    Slider.prototype.centerdOuter = function () {
+    centerdOuter() {
         var halfKey = Math.round(this.originalItems.length / 2);
 
         this.currentItemId = halfKey;
@@ -287,35 +298,35 @@
     /**
      * アウターの幅を計算
      */
-    Slider.prototype.calcOuterWidth = function () {
+    calcOuterWidth() {
         var width = 0;
         this.items.map(function (idx, el, array) {
             var tempWidth = $(el).innerWidth();
             width += tempWidth;
-            $(el).width(tempWidth);
+            $(el).width(tempWidth - 20);
         });
         this.outerWidth = width;
     }
 
 
-    Slider.prototype.calcItemWidth = function () {
+    calcItemWidth() {
         this.outerWidth = width;
     }
 
     /**
      * 移動する
      */
-    Slider.prototype.moveTo = function (to, isLoop,method) {
+    moveTo(to, isLoop, method) {
         var position = this.getItemWidth(to);
         this.items.removeClass('is-active');
         $(this.items[to]).addClass('is-active');
-        this.updateOuterPosition(position, isLoop,method);
+        this.updateOuterPosition(position, isLoop, method);
     }
 
     /**
      * ナビゲーションをセット
      */
-    Slider.prototype.setNav = function () {
+    setNav() {
         this.navs = $('<div />');
         this.navs.addClass(this.getClass('__nav'));
         this.navPrev = $(this.options.navPrev);
@@ -329,7 +340,7 @@
     /**
      * 次のスライドへ移動する
      */
-    Slider.prototype.addEventListener = function () {
+    addEventListener() {
         this.navNext.on('click', this.next.bind(this));
         this.navPrev.on('click', this.prev.bind(this));
         this.eventDragAndDrop();
@@ -340,22 +351,21 @@
      * @param idx
      * @returns {*}
      */
-    Slider.prototype.getItemWidth = function (idx) {
+    getItemWidth(idx) {
         var tempWidth = 0;
-
-
         var count = 0;
         for (var i = 0; i < idx; i++) {
-            tempWidth += $(this.items[i]).width();
+            tempWidth += $(this.items[i]).outerWidth();
             count++;
         }
+        console.log(tempWidth);
         return -tempWidth;
     }
 
     /**
      * キーから取得する
      */
-    Slider.prototype.getItemFromKey = function (key) {
+    getItemFromKey(key) {
         $.each(this.originalItems, function () {
             if ($(this).attr('data-slider-key') === key) {
                 return true;
@@ -366,33 +376,34 @@
     /**
      * 現在のアイテムを更新
      */
-    Slider.prototype.updateCurrentItem = function () {
+    updateCurrentItem() {
 
     }
 
     /**
      * 前のスライドへ移動する
      */
-    Slider.prototype.next = function () {
+    next() {
         var isLoop = false;
 
 
-        if (this.currentItemId === this.items.length - 1) {
-            this.currentItemId = 0;
+        if (this.currentItemId === this.items.length - 3) {
+            this.currentItemId = 3;
             isLoop = true;
         } else {
             this.currentItemId++;
         }
 
-        this.moveTo(this.currentItemId,isLoop, "next");
+        this.moveTo(this.currentItemId, isLoop, "next");
     }
+
     /**
      * 前のスライドへ移動する
      */
-    Slider.prototype.prev = function () {
+    prev() {
         var isLoop = false;
         if (this.currentItemId === 0) {
-            this.currentItemId = this.items.length - 1;
+            this.currentItemId = this.items.length - 3;
             isLoop = true;
         } else {
             this.currentItemId--;
@@ -405,7 +416,7 @@
     /**
      * スライダーを再構築する
      */
-    Slider.prototype.refresh = function () {
+    refresh() {
         this.destroy();
         this.init();
     }
@@ -414,13 +425,13 @@
     /**
      * ドットを表示
      */
-    Slider.prototype.setDots = function () {
+    setDots() {
     }
 
     /**
      * スライダーを破棄する
      */
-    Slider.prototype.destroy = function () {
+    destroy() {
 
         this.container.after(this.defaultContainer);
         this.container.remove();
@@ -433,7 +444,7 @@
     /**
      * スライダーを見張る
      */
-    Slider.prototype.watch = function (timestamp) {
+    watch(timestamp) {
 
 
         if (this.info.windowWidth !== window.outerWidth) {
@@ -458,7 +469,7 @@
     /**
      * ドットを表示
      */
-    Slider.prototype.log = function (text) {
+    log(text) {
         if (this.debug === true) {
             console.dir(text);
         }
@@ -467,15 +478,9 @@
     /**
      * デバッグ用
      */
-    Slider.prototype.debug = function () {
+    debug() {
         this.log(this);
     }
 
 
-    $(function () {
-        var slider = new Slider();
-        slider.init();
-
-    });
-
-})(jQuery);
+}

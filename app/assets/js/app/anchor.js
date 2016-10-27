@@ -1,5 +1,5 @@
 /*
- * ==================================================================== 
+ * ====================================================================
  * Grow Template
  * @package  Grow Template
  * @author   GrowGroup.Inc <info@grow-group.jp>
@@ -11,36 +11,35 @@
  * </a>
  *
  */
-(function ($) {
-    'use strict';
+'use strict';
 
-    if (typeof window.GApp === "undefined") {
-        window.GApp = {};
-    }
+import  $ from "./jquery-shim.js"
 
-    var GApp = window.GApp || {};
+/**
+ * デフォルトオプション
+ * @type {{}}
+ */
+var defaultOptions = {
+    selector: '.js-anchor',
+    dataSelector: "anchor-target",
+    scrollSpeed: 500,
+    easing: "linear",
+}
 
-    /**
-     * デフォルトオプション
-     * @type {{}}
-     */
-    var defaultOptions = {
-        selector: '.js-anchor',
-        dataSelector: "anchor-target",
-        scrollSpeed: 500,
-        easing: "linear",
-    }
+export default class Anchor {
 
-    var Anchor = function (options) {
+    constructor(options) {
         // オプションをセット
         this.options = $.extend(defaultOptions, options);
-    };
+        this.init();
+    }
+
 
     /**
      * 初期化
      * @param e ターゲットとなるエレメント
      */
-    Anchor.prototype.init = function () {
+    init() {
 
 
         // ターゲットをセット
@@ -54,7 +53,7 @@
     /**
      * クリック時のイベント
      */
-    Anchor.prototype.onClick = function () {
+    onClick() {
 
         var self = this;
 
@@ -92,13 +91,6 @@
             })
         });
     }
+}
 
 
-    $(function () {
-
-        GApp.Anchor = new Anchor();
-        GApp.Anchor.init();
-
-    });
-
-})(jQuery);

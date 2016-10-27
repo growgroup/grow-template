@@ -23,39 +23,36 @@
  * </div>
  *
  */
-(function ($) {
 
-    "use strict";
+import  $ from "./jquery-shim.js"
 
-    if (typeof window.GApp === "undefined") {
-        window.GApp = {};
-    }
 
-    var GApp = window.GApp || {};
+/**
+ * デフォルトオプション
+ * @type {{}}
+ */
+var defaultOptions = {
+    containerSelector: '.js-slidebar-container',
+    buttonSelector: '.js-slidebar-button',
+    menuSelector: '.js-slidebar-menu',
+    slideSpeed: 500
+}
 
-    /**
-     * デフォルトオプション
-     * @type {{}}
-     */
-    var defaultOptions = {
-        containerSelector: '.js-slidebar-container',
-        buttonSelector: '.js-slidebar-button',
-        menuSelector: '.js-slidebar-menu',
-        slideSpeed: 500
-    }
+export default class Slidebar {
 
-    var Slidebar = function (options) {
+    constructor(options) {
         // オプションをセット
         this.options = $.extend(defaultOptions, options);
         // オープン
         this.isActive = false;
-    };
 
+        this.init();
+    }
 
     /**
      * 初期化
      */
-    Slidebar.prototype.init = function () {
+    init() {
 
         this.menu = $(this.options.menuSelector)
         this.button = $(this.options.buttonSelector)
@@ -63,16 +60,17 @@
 
         this.trigger();
         this.bodyTrigger();
-        Slidebar.prototype.toggle = Slidebar.prototype.toggle.bind(this);
+        this.toggle = this.toggle.bind(this);
+
         $("body").addClass('slidebar-init')
     }
 
     /**
      * クリック時のトリガー
      */
-    Slidebar.prototype.trigger = function () {
+    trigger() {
         var self = this;
-        $(document).on('click', this.options.buttonSelector, function(e){
+        $(document).on('click', this.options.buttonSelector, function (e) {
             e.preventDefault();
             self.toggle();
         });
@@ -81,37 +79,31 @@
     /**
      * 開閉動作
      */
-    Slidebar.prototype.toggle = function () {
-        if ( this.isActive === false ){
+    toggle() {
+        if (this.isActive === false) {
             this.open();
         } else {
             this.close();
         }
     }
 
-    Slidebar.prototype.bodyTrigger = function(){
+    bodyTrigger() {
         var self = this;
-        $(document).on('click', this.options.containerSelector, function(e){
-            if ( self.isActive ){
+        $(document).on('click', this.options.containerSelector, function (e) {
+            if (self.isActive) {
                 self.close();
             }
         });
     }
 
-    Slidebar.prototype.open = function () {
+    open() {
         $("body").addClass('is-slidebar-active');
         this.isActive = true;
     }
 
-    Slidebar.prototype.close = function () {
+    close() {
         $("body").removeClass('is-slidebar-active');
         this.isActive = false;
     }
 
-    $(function(){
-       var slidebar = new Slidebar();
-        slidebar.init();
-    });
-
-
-})(window.jQuery);
+}

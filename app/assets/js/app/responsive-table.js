@@ -21,21 +21,26 @@
  * </table>
  *
  */
+import  $ from "./jquery-shim.js"
 
-(function ($) {
 
-    var defaultOptions = {
-        selector: ".js-table,.tablepress"
-    }
+var defaultOptions = {
+    selector: ".js-table,.tablepress"
+}
 
-    var ResponsiveTable = function (options) {
+
+export default class ResponsiveTable {
+
+    constructor(options) {
         this.options = $.extend(defaultOptions, options);
+        this.init();
     }
+
 
     /**
      * 初期化
      */
-    ResponsiveTable.prototype.init = function () {
+    init() {
         this.tables = $(this.options.selector);
         this.run();
     }
@@ -43,7 +48,7 @@
     /**
      * 実行
      */
-    ResponsiveTable.prototype.run = function () {
+    run() {
 
         for (var i = 0; i < this.tables.length; i++) {
             var wrapper = $('<div class="js-responsive-table"></div>');
@@ -53,11 +58,4 @@
             $(table).remove();
         }
     }
-
-    $(function () {
-        var table = new ResponsiveTable();
-        table.init();
-    });
-
-
-})(jQuery);
+}

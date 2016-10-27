@@ -17,36 +17,31 @@
  * </div>
  *
  */
-(function ($) {
-    "use strict";
 
-    if (typeof window.GApp === "undefined") {
-        window.GApp = {};
-    }
+import  $ from "./jquery-shim.js"
 
-    var GApp = window.GApp || {};
+var defaultOptions = {
+    selector: ".js-accordion",
+    titleTargetAttr: "data-accordion-title",
+    contentTargetAttr: "data-accordion-content",
+    speed: 300,
+    defaultOpen: false
+}
 
-
-    var defaultOptions = {
-        selector: ".js-accordion",
-        titleTargetAttr: "data-accordion-title",
-        contentTargetAttr: "data-accordion-content",
-        speed: 300,
-        defaultOpen: false
-    }
-
+export default class Accordion {
     /**
-     * コンストラクター
-     * @constructor
+     * 初期化
+     * @param options
      */
-    var Accordion = function (options) {
+    constructor(options) {
         this.options = $.extend(defaultOptions, options);
+        this.init();
     }
 
     /**
      * 初期化
      */
-    Accordion.prototype.init = function () {
+    init() {
 
         // ターゲットを取得する
         this.targetAll = $(this.options.selector);
@@ -62,7 +57,7 @@
     /**
      * 実行する
      */
-    Accordion.prototype.run = function () {
+    run() {
         for (var i = 0; i < this.targetAll.length; i++) {
             var target = $(this.targetAll[i]);
             target.title = target.find('*[' + this.options.titleTargetAttr + ']');
@@ -78,7 +73,7 @@
      * アコーディオンの動作
      * @param el
      */
-    Accordion.prototype.accordion = function (el) {
+    accordion(el) {
         // クリック時の動作
         var self = this;
         $(el.title).on('click', function (e) {
@@ -90,11 +85,4 @@
             $(this).css('cursor', 'pointer');
         });
     }
-
-    $(function () {
-        GApp.Accordion = new Accordion();
-        GApp.Accordion.init();
-    });
-
-
-})(jQuery);
+}

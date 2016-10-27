@@ -21,37 +21,40 @@
  * <div class="c-example" data-heightline-group="example2"></div>
  *
  */
-;(function ($) {
-    "use strict";
+import  $ from "./jquery-shim.js"
+import Utils from "./utils.js"
+import imagesLoaded from "imagesloaded"
 
-    if (typeof window.GApp === "undefined") {
-        window.GApp = {};
-    }
-
-    var GApp = window.GApp || {};
-
-    var defaultOptions = {
-        columns: 3,
-        selector: ".js-heightline",
-        dataAttribute: "heightline-group",
-        property: "minHeight", // or min-height
-        mobile: true,
-        responsive: {
-            "640": {
-                columns: 2
-            }
+imagesLoaded.makeJQueryPlugin( $ );
+var defaultOptions = {
+    columns: 3,
+    selector: ".js-heightline",
+    dataAttribute: "heightline-group",
+    property: "minHeight", // or min-height
+    mobile: true,
+    responsive: {
+        "640": {
+            columns: 2
         }
     }
+}
 
-    var Heightline = function (options) {
+
+export default class Heightline {
+
+    /**
+     * 初期化
+     * @param options
+     */
+    constructor(options) {
         this.options = $.extend(defaultOptions, options);
-        return this;
-    };
+        this.init();
+    }
 
     /**
      * 初期化
      */
-    Heightline.prototype.init = function () {
+    init() {
 
         // ターゲットとなる要素をセットする
 
@@ -66,18 +69,20 @@
 
         this.setResposiveOption();
 
-        if (this.options.mobile === false && GApp.Utils.isMobile()) {
+        if (this.options.mobile === false && GApptils.isMobile()) {
             return false;
         }
 
-        this.run();
-        this.bulkRun();
+        $(this.options.selector + "," + "*[data-" + this.options.dataAttribute + "]").imagesLoaded(()=>{
+          this.run();
+          this.bulkRun();
+        })
     }
 
     /**
      * レスポンシブの設定
      */
-    Heightline.prototype.setResposiveOption = function () {
+    setResposiveOption() {
         if (this.options.responsive) {
             for (var width in this.options.responsive) {
                 if (screen.width < width) {
@@ -90,7 +95,7 @@
     /**
      * 実行する
      */
-    Heightline.prototype.run = function () {
+    run() {
 
         var tempElements = [];
 
@@ -124,7 +129,7 @@
     /**
      * データ属性のグループに応じて高さをあわせる
      */
-    Heightline.prototype.bulkRun = function () {
+    bulkRun() {
 
         var formatElement = {};
         var self = this;
@@ -140,8 +145,6 @@
             }
             formatElement[groupKey].push(el);
         }
-
-
 
 
         for (var key in formatElement) {
@@ -170,31 +173,10 @@
     /**
      * リセット
      */
-    Heightline.prototype.reset = function () {
+    reset() {
         for (var i = 0; i < this.elements.length; i++) {
             this.elements[i].style[this.options.property] = this.elements[i].originalHeight + "px";
         }
     }
 
-
-    /**
-     * jQueryプラグインとして利用できるように
-     * @param  {object} options
-     * @return {object}
-     */
-    $.fn.heightline = function (options) {
-        var options = options || {};
-        options.selector = this.selector;
-        var heightline = new Heightline(options);
-        heightline.init();
-        return this;
-    };
-
-    $(function () {
-        GApp.Heightline = Heightline;
-        var heightline = new Heightline();
-
-        heightline.init();
-    });
-
-})(jQuery);
+}

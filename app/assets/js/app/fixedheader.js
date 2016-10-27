@@ -12,40 +12,31 @@
  * </header>
  *
  */
-(function ($) {
-    "use strict";
+import  $ from "./jquery-shim.js"
 
-    if (typeof window.GApp === "undefined") {
-        window.GApp = {};
-    }
+var defaultOptions = {
+    selector: '.js-fixedheader', // 実行するセレクタ
+    offset: 500, // 実行するオフセットピクセル数,
+    cssClass: ".l-global-navigation", // CSSが定義されているクラス
+    activeClass: "is-fixed", // 有効な時に付与するクラス
+    mobile: false // モバイル時にどう動作するか
+}
 
-    var GApp = window.GApp || {};
+export default class Fixedheader {
 
-    var defaultOptions = {
-        selector: '.js-fixedheader', // 実行するセレクタ
-        offset: 500, // 実行するオフセットピクセル数,
-        cssClass: ".l-global-navigation", // CSSが定義されているクラス
-        activeClass: "is-fixed", // 有効な時に付与するクラス
-        mobile: false // モバイル時にどう動作するか
-    }
-
-    /**
-     * コンストラクター
-     * @param options
-     * @constructor
-     */
-    var Fixedheader = function (options) {
+    constructor(options){
         this.options = $.extend(defaultOptions, options);
+        this.init();
     }
 
     /**
      * 初期化する
      */
-    Fixedheader.prototype.init = function () {
+    init() {
         this.target = $(this.options.selector);
 
-        Fixedheader.prototype.isFixed = Fixedheader.prototype.isFixed.bind(this);
-        Fixedheader.prototype.run = Fixedheader.prototype.run.bind(this);
+        this.isFixed = this.isFixed.bind(this);
+        this.run = this.run.bind(this);
         if (
             ( screen.width > 768 && this.options.mobile )
             || this.options.mobile === false
@@ -58,7 +49,7 @@
     /**
      * 実行
      */
-    Fixedheader.prototype.run = function () {
+    run() {
         if (this.isFixed()) {
             this.target.addClass(this.options.activeClass);
         } else {
@@ -72,18 +63,9 @@
      * 判断する
      * @returns {boolean}
      */
-    Fixedheader.prototype.isFixed = function () {
-        
+    isFixed() {
         // オフセットより高いか判断する
         return ( window.pageYOffset > this.options.offset ) ? true : false;
     }
 
-
-    $(function () {
-
-        GApp.Fixedheader = new Fixedheader();
-        GApp.Fixedheader.init();
-    })
-
-
-})(jQuery);
+}
