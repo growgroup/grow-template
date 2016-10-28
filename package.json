@@ -38,7 +38,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.0.1",
     "gulp-pug": "^3.0.4",
-    "gulp-pug-inheritance": "^0.1.1",
+    "gulp-pug-inheritance": "^0.2.1",
     "gulp-sass": "^2.3.2",
     "gulp-size": "^2.0.0",
     "gulp-sourcemaps": "^2.0.0-alpha",
@@ -52,5 +52,8 @@
   },
   "dependencies": {
     "imagesloaded": "^4.1.1"
-  }
+  },
+  "skipInheritances": [
+    "node_modules"
+  ]
 }

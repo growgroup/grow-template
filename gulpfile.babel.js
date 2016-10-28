@@ -16,7 +16,7 @@
  *
  */
 
-'use strict'
+'use strict';
 
 /**
  * =================================
@@ -34,8 +34,7 @@ import babelify from 'babelify'
 import del from 'del'
 import styleguide from "sc5-styleguide"
 import gulpLoadPlugins from 'gulp-load-plugins'
-import pkg from './package.json'
-
+import debug from 'gulp-debug';
 /**
  * =================================
  * # 定数の定義
@@ -154,20 +153,20 @@ config.wp = {
 }
 
 var wpThemeInfo = '@charset "UTF-8";\n'
- + '/*\n'
- + ' Theme Name: ' + config.wp.Name + '\n'
- + ' Theme URI: ' + config.wp.Uri + '\n'
- + ' Author: ' + config.wp.Author + '\n'
- + ' Author URI: ' + config.wp.AuthorUri + '\n'
- + ' Description: ' + config.wp.Description + '\n'
- + ' Version: ' + config.wp.Version + '\n'
- + ' Theme License: ' + config.wp.License + '\n'
- + ' License URI: ' + config.wp.LicenseUri + '\n'
- + ' Template: ' + config.wp.Template + '\n'
- + ' Tags: ' + config.wp.Tag + '\n'
- + ' Text Domain: ' + config.wp.TextDomain + '\n'
- + config.wp.Option
- + '*/\n';
+    + '/*\n'
+    + ' Theme Name: ' + config.wp.Name + '\n'
+    + ' Theme URI: ' + config.wp.Uri + '\n'
+    + ' Author: ' + config.wp.Author + '\n'
+    + ' Author URI: ' + config.wp.AuthorUri + '\n'
+    + ' Description: ' + config.wp.Description + '\n'
+    + ' Version: ' + config.wp.Version + '\n'
+    + ' Theme License: ' + config.wp.License + '\n'
+    + ' License URI: ' + config.wp.LicenseUri + '\n'
+    + ' Template: ' + config.wp.Template + '\n'
+    + ' Tags: ' + config.wp.Tag + '\n'
+    + ' Text Domain: ' + config.wp.TextDomain + '\n'
+    + config.wp.Option
+    + '*/\n';
 
 
 /**
@@ -180,12 +179,13 @@ gulp.task('styles', () => {
 
     // bower がインストールされているかどうかのチェック
     try {
-        fs.statSync( __dirname + "/" + appPath + "/bower_components" )
-    } catch ( err ){
-        if ( err.code  === "ENOENT") {
-            console.error('\u001b[33m'+"[Error] Please run \"bower install\" "+'\u001b[0m');
+        fs.statSync(__dirname + "/" + appPath + "/bower_components")
+    } catch (err) {
+        if (err.code === "ENOENT") {
+            console.error('\u001b[33m' + "[Error] Please run \"bower install\" " + '\u001b[0m');
             return false;
-        };
+        }
+        ;
     }
 
     return gulp.src(config.sass.src)
@@ -221,25 +221,23 @@ gulp.task('browserSync', () => {
  */
 gulp.task('pug', () => {
     return gulp.src(config.pug.src)
-
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-        // .pipe($.changed('dist', {extension: '.html'}))
+        .pipe($.changed(distPath, {extension: '.html'}))
         .pipe($.if(global.isWatching, $.cached('pug')))
-        // .pipe($.pugInheritance({basedir: appPath + '/'}))
+        .pipe($.pugInheritance({basedir: appPath, skip: 'node_modules'}))
         .pipe($.filter(function (file) {
             return !/\/_/.test(file.path) && !/^_/.test(file.relative);
         }))
-
         .pipe($.pug({
             pretty: true,
             cache: true,
             escapePre: true,
-            basedir: appPath + "/",
+            basedir: appPath,
         }))
         .pipe(gulp.dest(config.pug.dist))
         .pipe($.size({title: 'HTML'}))
         .pipe(reload({stream: true}))
-        .pipe($.notify("pug Task Completed!"));
+        .pipe($.notify("Pug Task Completed!"));
 });
 
 /**
@@ -293,20 +291,18 @@ gulp.task('babel_app', ()=> {
     browserify({
         entries: ["./app/assets/js/app.js"]
     })
-
-    .transform(babelify)
-    .bundle()
-    .on("error", function (err) {
-        console.log("Error : " + err.message);
-    })
-
-    .pipe(stream('app.js'))
-    .pipe(buffer())
-    .pipe($.sourcemaps.init())
-    .pipe($.uglify({compress: true}))
-    .pipe($.sourcemaps.write())
-    .pipe(gulp.dest(config.babel.dist))
-    .pipe($.notify({message: 'Babel App task complete！'}));
+        .transform(babelify)
+        .bundle()
+        .on("error", function (err) {
+            console.log("Error : " + err.message);
+        })
+        .pipe(stream('app.js'))
+        .pipe(buffer())
+        .pipe($.sourcemaps.init())
+        .pipe($.uglify({compress: true}))
+        .pipe($.sourcemaps.write())
+        .pipe(gulp.dest(config.babel.dist))
+        .pipe($.notify({message: 'Babel App task complete！'}));
 });
 
 
@@ -341,12 +337,12 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
     gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
-    gulp.watch([appPath + '/assets/js/app/*.js',appPath + '/assets/js/app.js'], ['lint', 'babel_app']);
+    gulp.watch([appPath + '/assets/js/app/*.js', appPath + '/assets/js/app.js'], ['lint', 'babel_app']);
     gulp.watch([appPath + '/assets/images/**/*'], ['images', reload]);
 
 });
 
-gulp.task('watch:styleguide',()=>{
+gulp.task('watch:styleguide', ()=> {
     gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
 })
 
@@ -359,18 +355,18 @@ gulp.task('watch:styleguide',()=>{
 
 gulp.task('copy:app', () => {
     return gulp.src([
-            appPath + '/**/*',
-            appPath + '/fonts',
-            '!./' + appPath + '/assets/{scss,scss/**}',
-            '!./' + appPath + '/inc',
-            '!./' + appPath + '/*.pug',
-            '!./' + appPath + '/**/*.pug',
-            '!./' + appPath + '/assets/js/app.js',
-            '!./' + appPath + '/assets/js/app/*.js',
-        ], {
-            dot: true,
-            base: "app"
-        })
+        appPath + '/**/*',
+        appPath + '/fonts',
+        '!./' + appPath + '/assets/{scss,scss/**}',
+        '!./' + appPath + '/inc',
+        '!./' + appPath + '/*.pug',
+        '!./' + appPath + '/**/*.pug',
+        '!./' + appPath + '/assets/js/app.js',
+        '!./' + appPath + '/assets/js/app/*.js',
+    ], {
+        dot: true,
+        base: "app"
+    })
         .pipe(gulp.dest(distPath))
         .pipe($.size({title: 'copy'}));
 });
@@ -439,7 +435,7 @@ gulp.task('styleguide:applystyles', () => {
         .pipe(gulp.dest(sg5OutputPath));
 });
 
-gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles','watch:styleguide']);
+gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles', 'watch:styleguide']);
 
 /**
  * =================================
@@ -448,15 +444,15 @@ gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles','watch:
  * =================================
  */
 
-function makeWordPressFile(){
-    if ( wpThemeInfo ) {
+function makeWordPressFile() {
+    if (wpThemeInfo) {
         fs.writeFile(distPath + '/style.css', wpThemeInfo);
         fs.writeFile(distPath + '/index.php', "");
         fs.writeFile(distPath + '/functions.php', "");
     }
 }
 
-gulp.task('wp', function() {
+gulp.task('wp', function () {
     makeWordPressFile();
 });
 
@@ -469,7 +465,7 @@ gulp.task('wp', function() {
 gulp.task('default', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'pug', 'scripts', 'copy', 'babel','babel_app'],
+        ['lint', 'pug', 'scripts', 'copy', 'babel', 'babel_app'],
         'watch',
         'images',
         'wp',
@@ -486,7 +482,7 @@ gulp.task('default', ['clean'], cb => {
 gulp.task('build', ['clean'], cb => {
     runSequence(
         'styles',
-        ['lint', 'pug', 'scripts', 'copy', 'babel', 'images','babel_app'],
+        ['lint', 'pug', 'scripts', 'copy', 'babel', 'images', 'babel_app'],
         cb
     )
 });

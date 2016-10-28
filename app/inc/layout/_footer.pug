@@ -6,7 +6,7 @@ footer.l-footer
         .row
             .large-4
                 .l-footer__logo
-                    h1
+                    a(href="/")
                         img(src="/assets/images/logo.png",alt="ロゴ")
 
             .large-8
@@ -16,7 +16,6 @@ footer.l-footer
                             each item in config.pages
                                 li
                                     a(href="/" + item.name + "/")= item.title
-
 
 .l-footer-copyright
     .l-container

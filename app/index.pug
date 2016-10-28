@@ -1,18 +1,17 @@
 //- filename: index.jade
 //- description: サイトのトップページ
 
-extends /inc/foundation/_base
+extends /inc/foundation/_base.pug
 
 block prepend title
     - id = "top"
-
 block body
 
     main
         p= config.test
 
         // メインビジュアル
-        include /inc/object/components/_main-visual
+        include /inc/object/components/_main-visual.pug
 
         section.l-main
 
@@ -86,7 +85,7 @@ block body
                                 a(href="#")
                                     img(src="/assets/images/example03.jpg")
 
-            include /inc/object/components/_offer
+            include /inc/object/components/_offer.pug
 
 
 
