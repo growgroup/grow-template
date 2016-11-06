@@ -335,10 +335,10 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
     gulp.watch([appPath + '/**/*.pug'], ['pug', reload]);
     gulp.watch([appPath + '/bower_components/**/*'], ['copy', reload]);
     gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
-    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', reload]);
+    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles']);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
     gulp.watch([appPath + '/assets/js/app/*.js', appPath + '/assets/js/app.js'], ['lint', 'babel_app']);
-    gulp.watch([appPath + '/assets/images/**/*'], ['images', reload]);
+    gulp.watch([appPath + '/assets/images/**/*'], ['images']);
 
 });
 
