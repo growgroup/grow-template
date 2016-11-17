@@ -34,7 +34,7 @@ import babelify from 'babelify'
 import del from 'del'
 import styleguide from "sc5-styleguide"
 import gulpLoadPlugins from 'gulp-load-plugins'
-import debug from 'gulp-debug';
+
 /**
  * =================================
  * # 定数の定義
