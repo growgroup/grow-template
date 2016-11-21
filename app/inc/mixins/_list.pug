@@ -33,6 +33,8 @@ mixin list(data)
                     if li.link
                         li
                             if typeof li.link === "object"
-                                a&attributes(li.link)= li.text
+                                a(title=li.text)&attributes(li.link)= li.text
+                            else 
+                                a(title=li.text,href=li.link)= li.text
                     else
                         li&attributes(li.attr)= li.text
