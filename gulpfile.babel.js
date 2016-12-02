@@ -47,6 +47,9 @@ const $ = gulpLoadPlugins();
 // browserSync.reload のエイリアス
 const reload = browserSync.reload;
 
+// Sass or Scss 
+const SASS_EXTENSION = "scss";
+
 
 /**
  * =================================
@@ -70,19 +73,21 @@ config.browserSync = {
     open: true,
     ghostMode: {
         clicks: false,
-        forms: true,
+        forms: false,
         scroll: false
     },
     tunnel: false,
+    // proxy: "http://change-to-develop-url.dev",
     server: [distPath],
     ui: false,
+    scrollRestoreTechnique: "cookie"
 }
 
 /**
  * 設定 - Sass
  */
 config.sass = {
-    src: appPath + "/assets/scss/*.scss",
+    src: appPath + "/assets/"+ SASS_EXTENSION +"/*." + SASS_EXTENSION,
     dist: distPath + "/assets/css/",
 }
 
@@ -190,7 +195,7 @@ gulp.task('styles', () => {
 
     return gulp.src(config.sass.src)
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-        .pipe($.cssGlobbing({extensions: ['.scss']}))
+        .pipe($.cssGlobbing({extensions: ['.' + SASS_EXTENSION]}))
         // .pipe($.sourcemaps.init())
         .pipe($.sass.sync({
             outputStyle: 'expanded',
@@ -335,7 +340,7 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
     gulp.watch([appPath + '/**/*.pug'], ['pug', reload]);
     gulp.watch([appPath + '/bower_components/**/*'], ['copy', reload]);
     gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
-    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles']);
+    gulp.watch([appPath + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles']);
     gulp.watch([appPath + '/assets/js/**/*.js'], ['lint', 'scripts']);
     gulp.watch([appPath + '/assets/js/app/*.js', appPath + '/assets/js/app.js'], ['lint', 'babel_app']);
     gulp.watch([appPath + '/assets/images/**/*'], ['images']);
@@ -343,7 +348,7 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
 });
 
 gulp.task('watch:styleguide', ()=> {
-    gulp.watch([appPath + '/assets/**/*.{scss,css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
+    gulp.watch([appPath + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
 })
 
 /**
@@ -357,7 +362,7 @@ gulp.task('copy:app', () => {
     return gulp.src([
         appPath + '/**/*',
         appPath + '/fonts',
-        '!./' + appPath + '/assets/{scss,scss/**}',
+        '!./' + appPath + '/assets/{' + SASS_EXTENSION + ',' + SASS_EXTENSION + '/**}',
         '!./' + appPath + '/inc',
         '!./' + appPath + '/*.pug',
         '!./' + appPath + '/**/*.pug',
@@ -406,7 +411,7 @@ gulp.task('images', () =>
  */
 
 gulp.task('styleguide:generate', () => {
-    return gulp.src([appPath + "/assets/scss/*.scss", appPath + "/assets/scss/**/*.scss"])
+    return gulp.src([appPath + '/assets/' + SASS_EXTENSION + '/*.' + SASS_EXTENSION, appPath + '/assets/' + SASS_EXTENSION + '/**/*.' + SASS_EXTENSION])
         .pipe(styleguide.generate({
             title: 'Grow Template',
             server: true,
@@ -425,9 +430,9 @@ gulp.task('styleguide:generate', () => {
 
 gulp.task('styleguide:applystyles', () => {
 
-    return gulp.src(appPath + "/assets/scss/style.scss")
+    return gulp.src(appPath + '/assets/' + SASS_EXTENSION + '/style.' + SASS_EXTENSION)
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-        .pipe($.cssGlobbing({extensions: ['.css', '.scss']}))
+        .pipe($.cssGlobbing({extensions: ['.css', '.' + SASS_EXTENSION ]}))
         .pipe($.sass({
             errLogToConsole: true
         }))
