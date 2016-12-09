@@ -9,8 +9,8 @@
   @return $number;
 }
 
+// rem へ変換
 @function to-rem($value, $base: null) {
-
   @if type-of($value) != 'number' {
     @warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
     @return $value;
@@ -23,10 +23,10 @@
   @if $value == 0rem {
     $value: 0;
   }
-
   @return $value;
 }
 
+// rem 計算
 @function rem-calc($values, $base: null) {
   $rem-values: ();
   $count: length($values);
@@ -50,26 +50,15 @@
   @return $rem-values;
 }
 
-
-
-@mixin center-block() {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-// Converts a unitless, pixel, or rem value to em, for use in breakpoints.
+// em へ変換
 @function to-em($value) {
-  // Pixel and unitless values are converted to rems
   @if unit($value) == 'px' or unitless($value) {
     $value: rem-calc($value, $base: 16px);
   }
-
-  // Then the value is converted to ems
   @return strip-unit($value) * 1em;
 }
 
-
-
+// ブレイクポイントのテキストを返す
 @function breakpoint($val: small) {
 
   $bp: nth($val, 1);
@@ -112,15 +101,13 @@
     }
   }
 
-  // Convert any pixel, rem, or unitless value to em
   $bp: to-em($bp);
   @if $bp-max {
     $bp-max: to-em($bp-max) - (1/16);
   }
 
-  // Skip media query creation if the input is "0 up"
   @if $bp > 0em or $dir == 'only' or $dir == 'down' {
-    // `only` ranges use the format `(min-width: n) and (max-width: n)`
+
     @if $dir == 'only' {
       @if $named == true {
         $str: $str + '(min-width: #{$bp})';
@@ -134,11 +121,9 @@
       }
     }
 
-      // `down` ranges use the format `(max-width: n)`
     @else if $dir == 'down' {
       $max: 0;
 
-      // For named breakpoints, subtract the breakpoint value by one "pixel", or 1/16em.
       @if $named {
         $max: $bp-max;
       }
@@ -146,13 +131,10 @@
         $max: $bp;
       }
 
-      // Skip media query creation if input value is exactly "0 down" but don't "small down"
       @if $named or $bp > 0em {
         $str: $str + '(max-width: #{$max})';
       }
     }
-
-      // `up` ranges use the format `(min-width: n)`
     @else if $bp > 0em {
       $str: $str + '(min-width: #{$bp})';
     }
@@ -161,14 +143,13 @@
 }
 
 
+// ブレイクポイントを出力
 @mixin breakpoint($value) {
   $str: breakpoint($value);
-
 
   @if $str == '' {
     @content;
   }
-
 
   @else {
     @media screen and #{$str} {
@@ -178,11 +159,10 @@
 }
 
 
+// map にアクセス
 @function map-next($map, $key) {
-  // Store the values of the map as a list, so we can access them with nth
   $values: map-values($map);
 
-  // Ghetto for loop
   $i: 1;
   $found: false;
   @each $val in map-keys($map) {
@@ -193,8 +173,6 @@
       $i: $i + 1;
     }
   }
-
-
   @if $i > length($map) {
     @return null;
   }
@@ -209,6 +187,64 @@
   border-color: $forms-input-active-border-color;
   -webkit-box-shadow: inset 0 0 0px 2px $color-primary;
   box-shadow: inset 0 0 0px 3px $color-primary;
+}
+
+
+// センタリング
+@mixin center-block() {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+// トランジション
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+// クリアフィックス
+@mixin clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// box sizing
+@mixin box-sizing($type) {
+  -webkit-box-sizing:$type;
+  -moz-box-sizing:$type;
+  box-sizing:$type;
+}
+
+// センターに合わせる
+@mixin center-both {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+// クリアフィックス
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 }
 
 // Pug Mixin

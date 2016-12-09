@@ -16,9 +16,7 @@
 //
 //
 
-@import "../../bower_components/Andy/andy";
 @import "../../bower_components/susy/sass/susy";
-
 
 // Font Awesome
 // http://fontawesome.io/
@@ -36,8 +34,6 @@ $fa-font-path: "../../bower_components/font-awesome/fonts";
 @import "foundation/_hr";
 @import "foundation/_list";
 @import "foundation/_blockquote";
-@import "foundation/_img";
-@import "foundation/_definition-list";
 
 
 // モジュール

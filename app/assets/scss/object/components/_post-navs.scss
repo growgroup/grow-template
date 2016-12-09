@@ -12,15 +12,15 @@
 //
 // Styleguide 2.16.0
 .c-post-navs {
-  ul{
+  ul {
     list-style: none;
     padding-left: 0;
     margin-left: 0;
     overflow: hidden;
   }
-  
+
   &__prev,
-  &__next{
+  &__next {
     a {
       border-radius: 1000px;
       border: 2px solid $color-primary;
@@ -41,6 +41,5 @@
   &__next {
     float: right;
   }
-
 
 }

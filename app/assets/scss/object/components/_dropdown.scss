@@ -45,7 +45,6 @@
   display: none;
   opacity: 0;
   z-index: 10000000;
-  @include hover(.2s, linear);
   li {
     border-bottom: 1px solid $border-base-color;
     &:last-child {
@@ -53,7 +52,6 @@
     }
     a {
       text-decoration: none;
-      @include hover(.1s, linear);
       display: block;
       padding-top: $margin-base;
       padding-bottom: $margin-base;

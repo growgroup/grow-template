@@ -1,0 +1,28 @@
+//- img タグ
+mixin img(file,alt)
+    img(src="/assets/images/" + file, alt!=alt)&attributes(attribute)
+
+//- 背景画像
+mixin bgimg(file)
+    div(style="background-image: url(/assets/images/" + file + ")")&attributes(attribute)
+        block
+
+//- ページヘッダー
+mixin page_header(image,text)
+    if image
+        +bgimg(image).c-page-header
+            h1!= text
+            block
+    else
+        .c-page-header
+            h1!= text
+            block
+
+//- ループ
+//- +loop(10)
+//-   p ここにループするコンテンツ
+mixin loop(count)
+    - var n = 0
+    while n < count
+        block
+        - n++
