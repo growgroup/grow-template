@@ -74,15 +74,17 @@ export default class Accordion {
      * @param el
      */
     accordion(el) {
-        // クリック時の動作
-        var self = this;
-        $(el.title).on('click', function (e) {
+
+
+        $(el.title).on('click', (e) => {
             e.preventDefault();
-            el.content.slideToggle(self.options.speed);
+            el.content.slideToggle(this.options.speed);
+            el.content.closest(this.options.selector).toggleClass("is-open");
         });
 
-        $(el.title).on('mouseover', function (e) {
+        $(el.title).on('mouseover', (e) => {
             $(this).css('cursor', 'pointer');
         });
+
     }
 }
