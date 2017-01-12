@@ -47,9 +47,8 @@ const $ = gulpLoadPlugins();
 // browserSync.reload のエイリアス
 const reload = browserSync.reload;
 
-// Sass or Scss 
+// Sass or Scss
 const SASS_EXTENSION = "scss";
-
 
 /**
  * =================================

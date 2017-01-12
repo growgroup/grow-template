@@ -15,7 +15,7 @@ charset = utf-8                 # 文字コードは UTF-8
 trim_trailing_whitespace = true # 行末のスペースを削除
 insert_final_newline = true     # ファイルの末尾を改行
 
-## MarkDown, Jade は行末のスペースを削除しない
+## MarkDown, Pug は行末のスペースを削除しない
 
 [*.md,*.jade]
 trim_trailing_whitespace = false
