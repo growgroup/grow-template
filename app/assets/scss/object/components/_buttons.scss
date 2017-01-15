@@ -15,6 +15,7 @@
 // <p><a href="#" class="c-button is-info">情報ボタン</a><p>
 // <p><a href="#" class="c-button is-round">丸角ボタン</a><p>
 // <p><a href="#" class="c-button is-lg is-success is-round">丸角ボタン</a><p>
+// <p><a href="#" class="c-button is-lg is-expand">最大幅</a><p>
 //
 // Styleguide 2.11.0
 
@@ -25,10 +26,10 @@ $c-button-radius: 0px !default;
 
 .c-button {
   display: inline-block;
-  padding-left: rem-calc($margin-md);
-  padding-right: rem-calc($margin-md);
-  padding-top: rem-calc($margin-base);
-  padding-bottom: rem-calc($margin-base);
+  padding-left: rem-calc(16);
+  padding-right: rem-calc(16);
+  padding-top: rem-calc(12);
+  padding-bottom: rem-calc(12);
   border-radius: $c-button-radius;
   background: $color-primary;
   color: $color-white;
@@ -64,6 +65,9 @@ $c-button-radius: 0px !default;
     color: #fff;
   }
 
+  //
+  // @state 大きさ
+  //
   &.is-lg {
     font-size: rem-calc($c-button-lg-font-size);
     padding: rem-calc($margin-md) rem-calc(64px);
@@ -79,6 +83,9 @@ $c-button-radius: 0px !default;
     padding: rem-calc($margin-sm*0.5) rem-calc($margin-md*0.8);
   }
 
+  //
+  // @state カラー
+  //
   &.is-secondary {
     background: $color-secondary;
   }
@@ -103,6 +110,9 @@ $c-button-radius: 0px !default;
     background: $color-state-success;
   }
 
+  //
+  // @state その他
+  //
   &.is-round {
     border-radius: 1000px;
   }
@@ -112,6 +122,10 @@ $c-button-radius: 0px !default;
     border: 3px solid $font-base-color;
     color: $font-base-color;
     font-weight: bold;
+  }
+  &.is-expand {
+    width: 100%;
+    text-align: center;
   }
 
 }

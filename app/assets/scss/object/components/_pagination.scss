@@ -30,8 +30,10 @@
   > ul > li > span,
   > ul > li > a {
     display: inline-block;
-    padding-left: $margin-base;
-    padding-right: $margin-base;
+    padding-left: rem-calc(16);
+    padding-right: rem-calc(16);
+    padding-top: rem-calc(8);
+    padding-bottom: rem-calc(8);
     text-decoration: none;
     border-radius: $border-radius;
 
@@ -58,9 +60,11 @@
     color: #fff;
     border-radius: 1000px;
   }
+
   &__prev {
     margin-right: rem-calc($margin-lg);
   }
+
   &__next {
     margin-left: rem-calc($margin-lg);
 

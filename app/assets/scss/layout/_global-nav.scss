@@ -1,10 +1,13 @@
-/**
- * module
- * サイドバー
- */
-.l-global-navigation {
-  // border-top: 1px solid $color-gray-light;
-  // border-bottom: 1px solid $color-gray-light;
+// グローバルナビゲーション
+//
+// グローバルナビゲーションのスタイル
+//
+// markup:
+// <header class="l-header"></header>
+//
+// Styleguide 5.4.0
+
+.l-global-nav {
   background: $color-white;
   margin-bottom: rem-calc(32);
   margin-top: rem-calc(32);
@@ -41,20 +44,17 @@
           left: 0;
           transition: all ease .2s;
         }
-
         &.is-current {
           &:after {
             opacity: 1;
           }
         }
-
         &:hover {
           &:after {
             opacity: 1;
           }
         }
       }
-
     }
   }
 

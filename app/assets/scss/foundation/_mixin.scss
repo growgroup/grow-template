@@ -1,5 +1,7 @@
 // Mixin
-//$font-base-size: 14 !default;
+//
+// テンプレート内で利用できる mixin と function を定義
+//
 
 @function strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
@@ -208,7 +210,7 @@
 
 // クリアフィックス
 @mixin clearfix {
-  *zoom: 1;
+  zoom: 1;
   &:before, &:after {
     content: " ";
     display: table;
@@ -237,8 +239,9 @@
 
 // クリアフィックス
 %clearfix {
-  *zoom: 1;
-  &:before, &:after {
+  zoom: 1;
+  &:before,
+  &:after {
     content: " ";
     display: table;
   }

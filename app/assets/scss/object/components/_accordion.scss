@@ -32,6 +32,12 @@
 //         <p>アコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツアコーディオンコンテンツ</p>
 //     </div>
 // </div>
+// <div class="c-accordion is-faq">
+//     <h1 class="c-accordion__title">よくあるご質問タイトル</h1>
+//     <div class="c-accordion__content">
+//         <p>よくあるご質問のコンテンツよくあるご質問のコンテンツよくあるご質問のコンテンツよくあるご質問のコンテンツよくあるご質問のコンテンツ</p>
+//     </div>
+// </div>
 //
 // Styleguide 2.18.0
 
@@ -54,17 +60,49 @@
     border-radius: 0 0 $border-radius $border-radius;
   }
 
+  // is-danger state
   &.is-danger .c-accordion__title {
     background: $color-state-danger;
   }
+
+  // is-warning state
   &.is-warning .c-accordion__title {
     background: $color-state-warning;
   }
+
+  // is-success state
   &.is-success .c-accordion__title {
     background: $color-state-success;
   }
+
+  // is-info state
   &.is-info .c-accordion__title {
     background: $color-state-info;
+  }
+
+  // よくあるご質問アコーディオン
+  &.is-faq {
+
+    .c-accordion__title {
+      position: relative;
+      padding-left: rem-calc(68);
+      &:before {
+        content: "Q";
+        left: rem-calc(24);
+        top: rem-calc(14);
+        font-size: rem-calc(18);
+        background: $color-accent;
+        text-align: center;
+        border-radius: rem-calc(1000);
+        display: block;
+        width: rem-calc(32);
+        height: rem-calc(32);
+        box-sizing: border-box;
+        padding-top: rem-calc(2);
+        margin-right: rem-calc(8);
+        position: absolute;
+      }
+    }
   }
 
 }

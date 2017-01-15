@@ -1,13 +1,24 @@
 // フッター
+//
+// フッターの標準スタイル
+//
+// markup:
+// <footer class="l-header"></footer>
+//
+// Styleguide 5.2.0
 .l-footer {
   border-top: 1px solid $border-base-color;
   padding-top: rem-calc(48);
   padding-bottom: rem-calc(48);
+
+  // ロゴ
   &__logo {
     img {
       max-width: 180px;
     }
   }
+
+  // メニュー
   &__menu {
     margin-top:  rem-calc(32);
     ul > li {
@@ -17,6 +28,7 @@
       }
     }
   }
+
 }
 
 // コピーライト

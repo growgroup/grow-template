@@ -1,4 +1,11 @@
 // セクション
+//
+// セクションのスタイル
+//
+// markup:
+// <dev class="l-section [is-lg | is-md | is-sm | is-bottom | is-top]"></dev>
+//
+// Styleguide 5.3.0
 .l-section {
 
   padding-top: rem-calc(80);

@@ -42,36 +42,35 @@
 // </form>
 //
 // Styleguide 3.4.0
+
 .c-contactform {
   border-top: 1px solid #B9BDBE;
   border-bottom: 1px solid #B9BDBE;
   padding-top: 48px;
   padding-bottom: 48px;
 }
+
 .c-form-block {
   padding-top: rem-calc(16);
   padding-bottom: rem-calc(16);
   overflow: hidden;
 
-  // 必須マーク
-  .c-label.is-danger {
-    margin-left: rem-calc(16);
-    position: absolute;
-    left: 0;
-    background: $color-primary;
-    color: $font-base-color;
-    @include breakpoint(small only) {
-      margin-left: 0;
-    }
-  }
-
   &__title {
     padding-left: 80px;
     font-weight: bold;
     position: relative;
+    .c-label {
+      margin-top: 6px;
+      margin-top: -2px;
+      @include breakpoint(small only) {
+        margin-left: 0;
+      }
+    }
     @include breakpoint(small only) {
       margin-bottom: 20px;
       padding-left: 50px;
+      width: 100%;
+      float: none;
     }
   }
 
@@ -86,24 +85,6 @@
     display: inline-block;
   }
 
-  &__title {
-    //width: 40%;
-    //float: left;
-    label {
-      margin-top: 6px;
-    }
-    .c-label {
-      margin-top: -2px;
-      @include breakpoint(small only) {
-        margin-left: 0;
-      }
-    }
-    @include breakpoint(small only){
-      width: 100%;
-      float: none;
-      margin-bottom: 20px;
-    }
-  }
   &__box {
     width: 60%;
     float: left;
@@ -119,7 +100,8 @@
 
 }
 
-.c-form__radio {
+
+.c-form-block__radio {
   label {
     display: inline-block;
     margin-right: 32px;
