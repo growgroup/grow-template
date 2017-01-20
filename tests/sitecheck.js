@@ -1,22 +1,27 @@
 import Nightmare from "nightmare"
 import co from "co"
-import fs from "fs-extra"
+import fsextra from "fs-extra"
+
 import {log} from "./util.js"
-const options = require("../package.json").sitecheck
-var stringify = require('csv-stringify');
-var generate = require('csv-generate');
+import request from "superagent"
+const pages = require("../package.json").checktools.pages
+const options = require("../package.json").checktools.sitecheck
+var fs = require("fs")
+
 co(function*() {
-        var headers = ["id", "url", "title", "description", "tel&fax", "tel link"];
+        var headers = ["id", "url", "title", "h1", "description", "tel&fax", "tel link"];
         var data = [];
         data.push(headers)
-        for (var i = 0; options.urls.length > i; i++) {
-            var url = options.urls[i];
+        for (var i = 0; pages.length > i; i++) {
+
+            var url = pages[i];
+
             var nightmare = Nightmare({show: false, width: 1920, height: 800})
             var _data = []
             _data.push(i)
             _data.push(url)
-            // タイトルタグ
 
+            // タイトルタグ
             yield nightmare.goto(url)
                 .evaluate((selector) => {
                     return document.querySelector(selector).innerText
@@ -44,6 +49,20 @@ co(function*() {
                     log("meta description が設定されていません", "err", url);
                 })
 
+            // h1
+            yield nightmare.goto(url)
+                .evaluate((selector) => {
+                    return document.querySelector(selector).innerText
+                }, "h1")
+                .then((text) => {
+                    _data.push(text)
+                    log(text, "h1", url);
+                })
+                .catch((err) => {
+                    _data.push("h1 タグが設定されていません")
+                    log("h1 タグが設定されていません", "err", url);
+                })
+
             // 電話番号チェック
             yield nightmare.goto(url)
                 .evaluate((selector) => {
@@ -52,29 +71,29 @@ co(function*() {
                 .then((text) => {
                     var tel = text.match(/0\d{1,2}-\d{3,4}-\d{4}/g)
                     _data.push(tel.join("、"))
-                    log(tel, "電話番号文字列", url);
+                    log(tel, "電話・FAX番号文字列", url);
                 })
                 .catch((err) => {
                     _data.push("not set")
-                    log("電話番号が見つかりませんでした", "err", url);
+                    log("電話・FAX番号が見つかりませんでした", "err", url);
                 })
 
             // 電話番号リンクチェック
             yield nightmare.goto(url)
                 .evaluate((selector) => {
                     var lists = []
-                    document.querySelectorAll(selector).forEach(function (data) {
+                    document.querySelectorAll(selector).forEach((data) => {
                         lists.push(data.getAttribute("href"))
                     })
                     return lists;
                 }, "a[href*='tel:']")
                 .then((text) => {
                     _data.push(text.join("、"))
-                    log(text, "電話番号リンク", url);
+                    log(text, "電話・FAX番号リンク", url);
                 })
                 .catch((err) => {
                     _data.push("not set")
-                    log("電話番号リンクが見つかりませんでした", "err", url);
+                    log("電話・FAX番号リンクが見つかりませんでした", "err", url);
                 })
 
             data.push(_data)
@@ -89,8 +108,9 @@ co(function*() {
         });
 
         var csvContent = lineArray.join("\n");
-        fs.outputFile(__dirname + "/sitecheck_results.csv", csvContent, function (err,data) {
-            if ( err) {
+
+        fsextra.outputFile(__dirname + "/results/sitecheck_results.csv", csvContent, function (err, data) {
+            if (err) {
                 console.log(err);
             }
             log("tests/sitecheck_results.csv へエクスポートしました")

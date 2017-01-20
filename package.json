@@ -11,20 +11,21 @@
     "postinstall": "bower install",
     "build": "gulp build",
     "screenshot": "babel-node tests/screenshot.js",
-    "sitecheck": "babel-node tests/sitecheck.js"
+    "sitecheck": "babel-node tests/sitecheck.js",
+    "linkcheck": "babel-node tests/linkcheck.js > ./tests/results/linkcheck.log",
+    "checkall": "npm run screenshot && npm run sitecheck && npm run linkcheck"
   },
   "author": "GrowGroup",
   "devDependencies": {
-    "autoprefixer": "^6.4.1",
     "babel-cli": "^6.22.1",
     "babel-core": "^6.3.26",
     "babel-preset-es2015": "^6.3.13",
     "babelify": "^7.2.0",
+    "broken-link-checker": "^0.7.4",
     "browser-sync": "^2.10.1",
     "browserify": "^13.0.0",
     "chalk": "^1.1.3",
     "co": "^4.6.0",
-    "csv": "^1.1.0",
     "del": "^2.2.0",
     "eslint": "^3.4.0",
     "fs-extra": "^2.0.0",
@@ -54,9 +55,11 @@
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "nightmare": "^2.9.1",
+    "node-linkchecker": "^0.0.3",
     "pageres": "^4.3.0",
     "run-sequence": "^1.1.5",
     "sc5-styleguide": "^1.1.3",
+    "superagent": "^3.3.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
@@ -66,39 +69,34 @@
   "skipInheritances": [
     "node_modules"
   ],
-  "sitecheck": {
-    "urls": [
-      "http://sou-creative.grgr.red/",
-      "http://sou-creative.grgr.red/concept/",
-      "http://sou-creative.grgr.red/contact/",
-      "http://sou-creative.grgr.red/company/",
-      "http://sou-creative.grgr.red/realestate/",
-      "http://sou-creative.grgr.red/greeting/",
-      "http://sou-creative.grgr.red/works/"
-
-    ]
-  },
-  "screenshots": {
-    "screenshotPath": "./screenshots",
-    "urls": [
+  "checktools": {
+    "pages": [
       "https://grow-group.jp/"
     ],
-    "pageres": {
-      "delay": 0,
-      "timeout": 60,
-      "crop": false,
-      "css": "",
-      "script": "",
-      "cookies": ""
+    "linkcheck": {
     },
-    "viewports": {
-      "pc": {
-        "width": 1920,
-        "height": 720
+    "sitecheck": {
+      "csv": "sitecheck_results.csv"
+    },
+    "screenshots": {
+      "screenshotPath": "./results/screenshots",
+      "pageres": {
+        "delay": 0,
+        "timeout": 60,
+        "crop": false,
+        "css": "",
+        "script": "",
+        "cookies": ""
       },
-      "smp": {
-        "width": 320,
-        "height": 568
+      "viewports": {
+        "pc": {
+          "width": 1920,
+          "height": 720
+        },
+        "smp": {
+          "width": 320,
+          "height": 568
+        }
       }
     }
   }

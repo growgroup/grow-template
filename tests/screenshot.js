@@ -2,7 +2,9 @@
 // package.json に設定を追記
 import {cleanDirectroy, log} from "./util.js"
 const Pageres = require("pageres")
-const pages = require("../package.json").screenshots
+
+const pages = require("../package.json").checktools.pages
+const options = require("../package.json").checktools.screenshots
 
 class Screenshot {
 
@@ -25,7 +27,7 @@ class Screenshot {
      */
     shot(url, device) {
 
-        if (typeof pages.urls[this.activekey] === "undefined") {
+        if (typeof pages[this.activekey] === "undefined") {
             // log("すべて完了しました！...", device);
             return false;
         }
@@ -36,20 +38,14 @@ class Screenshot {
 
         log("スクリーンショットを変換しています...", device, url);
 
-        var viewports = pages.viewports
-
-        var _name = url.replace(/\//g, "_");
-        var _name = _name.replace(/\./g, "_");
-        var _name = _name.replace(/http:/, "");
-        var _name = _name.replace(/__/, "");
-
-        let options = {
+        var viewports = options.viewports
+        let _options = {
             delay: 1
         }
-        options  = Object.assign(options,pages.pageres)
-        const _pageres = new Pageres(options)
+        var pageresoptions = Object.assign(_options, options.pageres)
+        const _pageres = new Pageres(pageresoptions)
             .src(url, [viewports[device].width + 'x' + viewports[device].height])
-            .dest(__dirname + '/screenshots/' + device + '/')
+            .dest(__dirname + '/results/screenshots/' + device + '/')
             .run()
             .then(() => {
                 log("完了しました", device, url);
@@ -63,8 +59,8 @@ class Screenshot {
      */
     run() {
 
-        for (var device in pages.viewports) {
-            this.shot(pages.urls[this.activekey], device)
+        for (var device in options.viewports) {
+            this.shot(pages[this.activekey], device)
         }
     }
 
