@@ -2,7 +2,7 @@
 // package.json に設定を追記
 
 import Nightmare from "nightmare"
-import {cleanDirectroy,log} from "./util.js"
+import {cleanDirectroy, log} from "./util.js"
 const Pageres = require("pageres")
 const pages = require("../package.json").screenshots
 
@@ -45,7 +45,11 @@ class Screenshot {
         var _name = _name.replace(/http:/, "");
         var _name = _name.replace(/__/, "");
 
-        const _pageres = new Pageres({delay: 2})
+        let options = {
+            delay: 1
+        }
+        options  = Object.assign(options,pages.pageres)
+        const _pageres = new Pageres(options)
             .src(url, [viewports[device].width + 'x' + viewports[device].height])
             .dest(__dirname + '/screenshots/' + device + '/')
             .run()
@@ -61,7 +65,7 @@ class Screenshot {
      */
     run() {
 
-        for( var device in pages.viewports ){
+        for (var device in pages.viewports) {
             this.shot(pages.urls[this.activekey], device)
         }
     }

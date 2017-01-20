@@ -15,6 +15,7 @@
   "author": "GrowGroup",
   "devDependencies": {
     "autoprefixer": "^6.4.1",
+    "babel-cli": "^6.22.1",
     "babel-core": "^6.3.26",
     "babel-preset-es2015": "^6.3.13",
     "babelify": "^7.2.0",
@@ -65,8 +66,16 @@
   "screenshots": {
     "screenshotPath": "./screenshots",
     "urls": [
-      "http://www.google.com/"
+      "https://grow-group.jp/"
     ],
+    "pageres": {
+      "delay": 0,
+      "timeout": 60,
+      "crop": false,
+      "css":  "",
+      "script": "",
+      "cookies": ""
+    },
     "viewports": {
       "pc": {
         "width": 1920,
