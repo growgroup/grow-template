@@ -201,6 +201,9 @@ gulp.task('styles', () => {
             precision: 4,
             includePaths: ['.']
         }).on('error', $.sass.logError))
+        .pipe($.autoprefixer({
+            browsers: ['ie 9','Android 4'],
+        }))
         .pipe($.size({title: 'styles'}))
         .pipe(gulp.dest(config.sass.dist))
         .pipe(reload({stream: true}))

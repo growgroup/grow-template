@@ -68,7 +68,14 @@
   ],
   "sitecheck": {
     "urls": [
-      "https://grow-group.jp/"
+      "http://sou-creative.grgr.red/",
+      "http://sou-creative.grgr.red/concept/",
+      "http://sou-creative.grgr.red/contact/",
+      "http://sou-creative.grgr.red/company/",
+      "http://sou-creative.grgr.red/realestate/",
+      "http://sou-creative.grgr.red/greeting/",
+      "http://sou-creative.grgr.red/works/"
+
     ]
   },
   "screenshots": {
