@@ -26,6 +26,7 @@ import Utils from "./utils.js"
 import imagesLoaded from "imagesloaded"
 
 imagesLoaded.makeJQueryPlugin( $ );
+
 var defaultOptions = {
     columns: 3,
     selector: ".js-heightline",
@@ -38,7 +39,6 @@ var defaultOptions = {
         }
     }
 }
-
 
 export default class Heightline {
 
