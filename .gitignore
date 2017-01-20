@@ -70,5 +70,5 @@ bower_components
 dist/
 styleguides/
 base/
-tests/screenshots/
-tests/sitecheck_results.csv
+tests/results/
+
