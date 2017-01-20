@@ -62,8 +62,6 @@ co(function*() {
                     log("電話番号リンクが見つかりませんでした", "err", url);
                 })
 
-
-
             yield nightmare.end();
 
         }
