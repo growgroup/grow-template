@@ -7,11 +7,11 @@ const pages = require("../package.json").screenshots;
  * ログを出力
  */
 export const log = function(text,device,url) {
-    let log = chalk.blue.bold('[Screenshot] ');
-    if ( typeof device !== "undefined" ){
+    let log = chalk.blue.bold('[GG] ');
+    if ( typeof device !== "undefined" && device !== false ){
         log += chalk.red.bold(" (" + device.toUpperCase() + ") ");
     }
-    if ( typeof url !== "undefined" ){
+    if ( typeof url !== "undefined" && url !== false ){
         log += chalk.green.bold(" " + url + " ");
     }
     log += " " + text;

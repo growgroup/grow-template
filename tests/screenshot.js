@@ -1,7 +1,5 @@
 // スクリーンショットを一括で撮る
 // package.json に設定を追記
-
-import Nightmare from "nightmare"
 import {cleanDirectroy, log} from "./util.js"
 const Pageres = require("pageres")
 const pages = require("../package.json").screenshots
