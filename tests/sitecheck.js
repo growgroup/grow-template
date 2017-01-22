@@ -1,15 +1,14 @@
 import Nightmare from "nightmare"
 import co from "co"
 import fsextra from "fs-extra"
-
 import {log} from "./util.js"
-import request from "superagent"
+
 const pages = require("../package.json").checktools.pages
 const options = require("../package.json").checktools.sitecheck
 var fs = require("fs")
 
 co(function*() {
-        var headers = ["id", "url", "title", "h1", "description", "tel&fax", "tel link"];
+        var headers = ["id", "url", "title", "description", "h1", "tel&fax", "tel link"];
         var data = [];
         data.push(headers)
         for (var i = 0; pages.length > i; i++) {
