@@ -15,7 +15,7 @@
 
     $(function () {
         var app = new growApp();
-        app.pageTop();
+
     });
 
 
