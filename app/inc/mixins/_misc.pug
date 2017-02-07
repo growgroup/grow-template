@@ -8,7 +8,7 @@ mixin bgimg(file)
         block
 
 //- ページヘッダー
-mixin page_header(image,text)
+mixin c_page_header(image,text)
     if image
         +bgimg(image).c-page-header
             h1!= text
@@ -36,3 +36,22 @@ mixin c_faqbox(title,content)
                 != content
             else
                 block
+
+//- ページネーション
+mixin c_pagination()
+    .c-pagination
+        ul
+            li: a(href="#").c-pagenation__prev « 前へ
+            li: span.is-active 1
+            li: a(href="#") 2
+            li: a(href="#") 3
+            li: a(href="#") 4
+            li: a(href="#") 5
+            li: a(href="#").c-pagenation__next 次へ »
+
+//- 投稿ページナビゲーション
+mixin c_post_nav()
+    nav.c-post-navs
+        ul
+            li.c-post-navs__prev: a(href="#") 前の記事へ
+            li.c-post-navs__next: a(href="#") 次の記事へ
