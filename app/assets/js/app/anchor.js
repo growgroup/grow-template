@@ -22,7 +22,7 @@ import  $ from "./jquery-shim.js"
 var defaultOptions = {
     selector: '.js-anchor',
     dataSelector: "anchor-target",
-    scrollSpeed: 500,
+    scrollSpeed: 300,
     easing: "linear",
 }
 

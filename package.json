@@ -8,7 +8,7 @@
   "scripts": {
     "init": "npm install && bower install",
     "postinstall": "bower install",
-    "build": "gulp build",
+    "build": "gulp build"
   },
   "author": "GrowGroup",
   "devDependencies": {
