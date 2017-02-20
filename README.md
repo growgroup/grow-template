@@ -176,63 +176,6 @@ JavaScript の構文チェッカーとして ESLint を採用しています。
 スタイルガイドは [sc5-styleguide](https://github.com/SC5/sc5-styleguide/pulls) を導入しています。  
 gulp を実行している際に、初期状態では 8888 ポートで閲覧することができます。
 
-### チェックツール
-```shell
-$ npm run checkall
-```
-
-上記コマンドを実行することで、以下のことを実行します。
-
-* デバイスごとのスクリーンショットの生成
-* HTML
-* 
-
-設定は ```package.json``` にて行います。
-
-
-```javascript
-{
-"checktools": {
-    // チェックを行うURLを設定
-    "pages": [
-      "https://grow-group.jp/"
-    ],
-    "linkcheck": {
-    },
-    "sitecheck": {
-      "csv": "sitecheck_results.csv"
-    },
-    "screenshots": {
-      "screenshotPath": "./results/screenshots",
-      "pageres": {
-        "delay": 0,
-        "timeout": 60,
-        "crop": false,
-        "css": "",
-        "script": "",
-        "cookies": ""
-      },
-      "viewports": {
-        "pc": {
-          "width": 1920,
-          "height": 720
-        },
-        "smp": {
-          "width": 320,
-          "height": 568
-        }
-      }
-    }
-  }
-}
-```
-
-例えば、aos.js を導入する場合、screenshots.pageres.css に以下を指定することで、問題なくスクリーンショットを撮ることができます。
-
-```
-*[data-aos]{opacity: 1 !important; visibility: visible !important}
-```
-
 
 ### その他
 
