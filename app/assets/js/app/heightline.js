@@ -27,6 +27,8 @@ import imagesLoaded from "imagesloaded"
 
 imagesLoaded.makeJQueryPlugin( $ );
 
+const util = new Utils()
+
 var defaultOptions = {
     columns: 3,
     selector: ".js-heightline",
@@ -69,7 +71,7 @@ export default class Heightline {
 
         this.setResposiveOption();
 
-        if (this.options.mobile === false && GApptils.isMobile()) {
+        if (this.options.mobile === false && util.isMobile()) {
             return false;
         }
 
