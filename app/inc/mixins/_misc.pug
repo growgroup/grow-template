@@ -30,8 +30,8 @@ mixin loop(count)
 //- よくあるご質問
 mixin c_faqbox(title,content)
     .c-faqbox.js-accordion
-        .c-faqbox__title!= title
-        .c-faqbox__content
+        .c-faqbox__title(data-accordion-title="true")!= title
+        .c-faqbox__content(data-accordion-content="true",style="display: none")
             if content
                 != content
             else
