@@ -29,35 +29,35 @@
     text-decoration: none;
   }
 
-  &.is-lg{
+  &.is-lg {
     font-size: rem-calc($font-base-size);
   }
 
-  &.is-sm{
+  &.is-sm {
     font-size: rem-calc($font-small-size*0.8);
   }
 
-  &.is-secondary{
+  &.is-secondary {
     background: $color-secondary;
   }
 
-  &.is-tertiary{
+  &.is-tertiary {
     background: $color-tertiary;
   }
 
-  &.is-danger{
+  &.is-danger {
     background: $color-state-danger;
   }
 
-  &.is-warning{
+  &.is-warning {
     background: $color-state-warning;
   }
 
-  &.is-info{
+  &.is-info {
     background: $color-state-info;
   }
 
-  &.is-success{
+  &.is-success {
     background: $color-state-success;
   }
 

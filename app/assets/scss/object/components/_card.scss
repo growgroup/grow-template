@@ -38,6 +38,7 @@
   text-align: center;
   text-decoration: none;
   margin-bottom: rem-calc(32);
+
   &__image {
     width: 100%;
     max-width: 100%;
@@ -46,14 +47,17 @@
     background-size: cover;
     margin-bottom: rem-calc(16);
   }
+
   &__title {
     color: $font-base-color;
     font-size: rem-calc(24);
     margin-bottom: rem-calc(16);
   }
+
   &__text {
     position: relative;
     color: $font-base-color;
     z-index: 1;
   }
+
 }

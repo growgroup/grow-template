@@ -45,11 +45,14 @@
   display: none;
   opacity: 0;
   z-index: 10000000;
+
   li {
     border-bottom: 1px solid $border-base-color;
+
     &:last-child {
       border-radius: 0 0 $border-radius-sm $border-radius-sm;
     }
+
     a {
       text-decoration: none;
       display: block;
@@ -68,7 +71,6 @@
 
 .c-dropdown__trigger:hover{
   cursor: pointer;
-
 }
 
 .c-dropdown__trigger:hover  .c-dropdown__list {

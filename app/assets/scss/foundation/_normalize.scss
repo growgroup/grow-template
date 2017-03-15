@@ -12,11 +12,13 @@ html {
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 /**
  * Remove default margin.
  */
@@ -141,13 +143,43 @@ dfn {
 
 h1 {
   font-size: 2em;
+  font-weight: bold;
   margin: 0.67em 0;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+  margin-top: 1.7rem;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+  margin-top: 1.7rem;
+  margin-bottom: 1rem;
+}
+
+h5 {
+  font-size: 1.4rem;
+  margin-top: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+h6 {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 /**
  * Address styling not present in IE 8/9.
  */
-
 mark {
   background: #ff0;
   color: #000;
@@ -439,7 +471,7 @@ th {
  * Remove most spacing between dl, dd.
  */
 
-dl,dd {
+dl, dd {
   margin: 0;
 }
 
