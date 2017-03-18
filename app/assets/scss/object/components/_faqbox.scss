@@ -4,12 +4,12 @@
   border-radius: 3px;
   padding: 23px 30px 5px;
   margin-bottom: 16px;
-  
+
   @include breakpoint(small only) {
     padding-left: 16px;
     padding-right: 16px;
   }
-  
+
   // オープン時のスタイル
   &.is-open {
     .c-faqbox__title {
@@ -34,7 +34,7 @@
     font-size: rem-calc(16);
   }
   position: relative;
-  
+
   &:after {
     content: "\f107";
     font-family: FontAwesome;
@@ -92,9 +92,9 @@
     font-size: rem-calc(18);
     width: 36px;
     height: 36px;
-    border-radius: 5000pxv
+    border-radius: 5000px;
     color: $color-primary;
-    position: absolutev
+    position: absolute;
     text-align: center;
     padding-top: 3px;
     background: #f2f2f2;
