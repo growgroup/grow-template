@@ -1,6 +1,6 @@
 {
   "env": {
-    "browser": true,
+    "browser": true
   },
   "ecmaFeatures": {
     "arrowFunctions": true,
@@ -201,6 +201,6 @@
     ],
     "space-infix-ops": 1,
     "space-return-throw-case": 1,
-    "spaced-comment": 1,
+    "spaced-comment": 1
   }
 }

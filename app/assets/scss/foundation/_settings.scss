@@ -8,23 +8,23 @@ $color-black: #000 !default; // 黒
 
 // # プライマリ
 $color-primary: #29b48e !default; // プライマリカラー
-$color-primary-dark: darken( $color-primary, 10) !default; // 濃いプライマリカラー
-$color-primary-light: lighten( $color-primary, 10) !default; // 薄いプライマリカラー
+$color-primary-dark: darken($color-primary, 10) !default; // 濃いプライマリカラー
+$color-primary-light: lighten($color-primary, 10) !default; // 薄いプライマリカラー
 
 // # セカンダリー
 $color-secondary: #666 !default; // セカンダリカラー
-$color-secondary-dark: darken( $color-secondary, 10) !default; // 濃いセカンダリカラー
-$color-secondary-light: lighten( $color-secondary, 10) !default; // 薄いセカンダリカラー
+$color-secondary-dark: darken($color-secondary, 10) !default; // 濃いセカンダリカラー
+$color-secondary-light: lighten($color-secondary, 10) !default; // 薄いセカンダリカラー
 
 // # ターシャリー
 $color-tertiary: #efefef !default; // ターシャリカラー
-$color-tertiary-light: darken( $color-tertiary, 10) !default; // 薄いターシャリカラー
-$color-tertiary-dark: lighten( $color-tertiary, 10) !default; // 濃いターシャリカラー
+$color-tertiary-light: darken($color-tertiary, 10) !default; // 薄いターシャリカラー
+$color-tertiary-dark: lighten($color-tertiary, 10) !default; // 濃いターシャリカラー
 
 // # アクセント
 $color-accent: #b8b8b8 !default; // ターシャリカラー
-$color-accent-light: darken( $color-tertiary, 10) !default; // 薄いターシャリカラー
-$color-accent-dark: lighten( $color-tertiary, 10) !default; // 濃いターシャリカラー
+$color-accent-light: darken($color-tertiary, 10) !default; // 薄いターシャリカラー
+$color-accent-dark: lighten($color-tertiary, 10) !default; // 濃いターシャリカラー
 
 // # 灰色
 $color-gray-dark: #252525 !default; // 濃い灰色
@@ -44,14 +44,14 @@ $color-state-success: #13a83a !default; // 成功
 $grid-row-width: 1080px !default; // グリッドの幅
 $grid-column-count: 12 !default; // グリッド数
 $grid-column-responsive-gutter: (// カラムとカラムの間隔
-        small: 20px, // モバイル
-        medium: 30px, // タブレット以上
+        small: 24px, // モバイル
+        medium: 24px, // タブレット以上
 );
 
 // # 3. font
 
 $font-base-size: 16 !default; // body のフォントサイズ
-$font-base-color: #454449 !default; // body のフォントカラー
+$font-base-color: #333 !default; // body のフォントカラー
 
 $font-base-family: sans-serif !default; // フォントファミリー
 $font-base-weight: normal !default; // フォント幅
@@ -113,7 +113,8 @@ $breakpoints: (
         large: 1024px,
         xlarge: 1200px,
         xxlarge: 1440px,
-) !default;;
+) !default;
+;
 
 $breakpoint-classes: (small medium large) !default;
 

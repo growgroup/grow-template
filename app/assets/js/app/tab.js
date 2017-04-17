@@ -12,10 +12,10 @@ import  $ from "./jquery-shim.js"
 var defaultOptions = {
     selector: ".js-tabs", // 実行するタブを包括するセレクタ
     activeClass: "is-active", // 有効時に付与する class
-    navsClass: ".c-tabs__navs", // ナビゲーションのクラス
+    navsClass: ".c-tabs__navs,.js-tabs-nav", // ナビゲーションのクラス
     navTargetAttr: "data-tab-target",
     paneNameAttr: "data-tab-name",
-    paneClass: ".c-tabs__content",
+    paneClass: ".c-tabs__content,.js-tabs-content",
 }
 
 export default class Tab {

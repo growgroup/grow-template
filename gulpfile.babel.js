@@ -86,7 +86,7 @@ config.browserSync = {
  * 設定 - Sass
  */
 config.sass = {
-    src: appPath + "/assets/"+ SASS_EXTENSION +"/*." + SASS_EXTENSION,
+    src: appPath + "/assets/" + SASS_EXTENSION + "/*." + SASS_EXTENSION,
     dist: distPath + "/assets/css/",
 }
 
@@ -202,7 +202,7 @@ gulp.task('styles', () => {
             includePaths: ['.']
         }).on('error', $.sass.logError))
         .pipe($.autoprefixer({
-            browsers: ['ie 9','Android 4'],
+            browsers: ['ie 9', 'Android 4'],
         }))
         .pipe($.size({title: 'styles'}))
         .pipe(gulp.dest(config.sass.dist))
@@ -274,7 +274,7 @@ gulp.task('scripts', () => {
  * es6 のコンパイル
  * =================================
  */
-gulp.task('babel', ()=> {
+gulp.task('babel', () => {
     browserify({
         entries: [config.babel.src]
     })
@@ -289,12 +289,11 @@ gulp.task('babel', ()=> {
         .pipe($.notify({message: 'Babel task complete！'}));
 });
 
+
 /**
- * アプリケーション
- * @param  {[type]} err) {                   console.log("Error : " + err.message);    })    .pipe(stream('app.js'))    .pipe(buffer())    .pipe(gulp.dest(config.babel.dist))    .pipe($.notify({message: 'Babel App task complete！'}));} [description]
- * @return {[type]}      [description]
+ * 初期状態で読み込む js
  */
-gulp.task('babel_app', ()=> {
+gulp.task('babel_app', () => {
     browserify({
         entries: ["./app/assets/js/app.js"]
     })
@@ -337,7 +336,7 @@ gulp.task('setWatch', function () {
     global.isWatching = true;
 });
 
-gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
+gulp.task('watch', ['setWatch', 'browserSync'], () => {
 
     gulp.watch([appPath + '/**/*.pug'], ['pug', reload]);
     gulp.watch([appPath + '/bower_components/**/*'], ['copy', reload]);
@@ -349,7 +348,7 @@ gulp.task('watch', ['setWatch', 'browserSync'], ()=> {
 
 });
 
-gulp.task('watch:styleguide', ()=> {
+gulp.task('watch:styleguide', () => {
     gulp.watch([appPath + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
 })
 
@@ -398,7 +397,11 @@ gulp.task('clean', cb => del([distPath + '/*', '!' + distPath + '/.git'], {dot: 
 gulp.task('images', () =>
     gulp.src(config.images.src)
         .pipe($.plumber())
-        .pipe($.cached($.imagemin({optimizationLevel: 8, progressive: true, interlaced: true})))
+        .pipe($.cached($.imagemin({
+            optimizationLevel: 5,
+            progressive: true,
+            interlaced: true
+        })))
         .pipe(gulp.dest(config.images.dist))
         .pipe($.notify({message: 'Images task complete!'}))
         .pipe($.size({title: 'images'}))
@@ -434,7 +437,7 @@ gulp.task('styleguide:applystyles', () => {
 
     return gulp.src(appPath + '/assets/' + SASS_EXTENSION + '/style.' + SASS_EXTENSION)
         .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-        .pipe($.cssGlobbing({extensions: ['.css', '.' + SASS_EXTENSION ]}))
+        .pipe($.cssGlobbing({extensions: ['.css', '.' + SASS_EXTENSION]}))
         .pipe($.sass({
             errLogToConsole: true
         }))

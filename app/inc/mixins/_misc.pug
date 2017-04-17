@@ -55,3 +55,10 @@ mixin c_post_nav()
         ul
             li.c-post-navs__prev: a(href="#") 前の記事へ
             li.c-post-navs__next: a(href="#") 次の記事へ
+
+//- table row
+mixin tr(th, td)
+    tr&attributes(attributes)
+        th!= th
+        td!= td
+

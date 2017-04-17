@@ -3,7 +3,7 @@
 // お問合せフォームの標準スタイル
 //
 // markup:
-// <form class="p-contact-form">
+// <form class="c-form">
 //     <div class="c-form-block">
 //         <label for="name">お名前</label>
 //         <span class="c-label is-danger is-reduired">必須</span>
@@ -43,9 +43,9 @@
 //
 // Styleguide 3.4.0
 
-.c-contactform {
-  border-top: 1px solid #B9BDBE;
-  border-bottom: 1px solid #B9BDBE;
+.c-form {
+  border-top: 1px solid $border-base-color;
+  border-bottom: 1px solid $border-base-color;
   padding-top: 48px;
   padding-bottom: 48px;
 }
@@ -55,11 +55,11 @@
   padding-bottom: rem-calc(16);
   overflow: hidden;
 
+  // 入力項目のラベル
   &__title {
     padding-left: 80px;
     font-weight: bold;
     position: relative;
-
     .c-label {
       margin-top: 6px;
       margin-top: -2px;
@@ -75,55 +75,43 @@
     }
   }
 
-  textarea {
-    min-height:200px;
-  }
-
-  // ラベル
-  label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    display: inline-block;
-  }
-
-  &__box {
+  // 入力項目
+  &__content {
     width: 60%;
     float: left;
+
+    textarea {
+      min-height: 200px;
+    }
+
+    // ラベル
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
     p {
       margin-top: 8px;
       font-size: 0.9em;
     }
-    @include breakpoint(small only){
+    @include breakpoint(small only) {
       width: 100%;
       float: none;
     }
   }
 
-}
-
-
-.c-form-block__radio {
-  label {
-    display: inline-block;
-    margin-right: 32px;
-    input {
-      margin-right: 8px;
+  // ラジオボタンを囲むdiv
+  &__radio {
+    label {
+      display: inline-block;
+      margin-right: 32px;
+      input {
+        margin-right: 8px;
+      }
     }
+
   }
+
 }
 
-.p-privacy {
-  margin-top: 48px;
-  margin-bottom: 48px;
-  padding: 32px;
-  background: #EEF1F1;
-  max-width: 896px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  h4 {
-    margin-top: 0;
-    font-size: 15px;
-    margin-bottom: 16px;
-  }
-}

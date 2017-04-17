@@ -25,7 +25,7 @@ import  $ from "./jquery-shim.js"
 import Utils from "./utils.js"
 import imagesLoaded from "imagesloaded"
 
-imagesLoaded.makeJQueryPlugin( $ );
+imagesLoaded.makeJQueryPlugin($);
 
 const util = new Utils()
 
@@ -75,9 +75,9 @@ export default class Heightline {
             return false;
         }
 
-        $(this.options.selector + "," + "*[data-" + this.options.dataAttribute + "]").imagesLoaded(()=>{
-          this.run();
-          this.bulkRun();
+        $(this.options.selector + "," + "*[data-" + this.options.dataAttribute + "]").imagesLoaded(() => {
+            this.run();
+            this.bulkRun();
         })
     }
 

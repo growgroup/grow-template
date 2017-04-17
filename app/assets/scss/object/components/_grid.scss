@@ -59,10 +59,7 @@ $susy: (
   margin-left: -(map_get($grid-column-responsive-gutter,medium)/2);
   margin-right: -(map_get($grid-column-responsive-gutter,medium)/2);
   @include susy-clearfix();
-  @include breakpoint(small only) {
-    margin-left: 0;
-    margin-right: 0;
-  }
+
 }
 
 // グリッド : スマートフォン
@@ -104,7 +101,6 @@ $susy: (
     }
   }
 }
-
 
 // グリッド : デスクトップ
 //

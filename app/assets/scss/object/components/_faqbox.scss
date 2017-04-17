@@ -29,7 +29,7 @@
   position: relative;
   padding-left: 68px;
   position: relative;
-  @include breakpoint(small only){
+  @include breakpoint(small only) {
     padding-left: 48px;
     font-size: rem-calc(16);
   }
@@ -62,7 +62,7 @@
     color: #fff;
     top: -3px;
     left: 0px;
-    @include breakpoint(small only){
+    @include breakpoint(small only) {
       padding-top: 1px;
       width: 30px;
       height: 30px;
@@ -100,7 +100,7 @@
     background: #f2f2f2;
     top: 15px;
     left: 0px;
-    @include breakpoint(small only){
+    @include breakpoint(small only) {
       padding-top: 1px;
       width: 30px;
       height: 30px;
