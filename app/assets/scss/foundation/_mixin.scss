@@ -250,6 +250,23 @@
   }
 }
 
+// スクロールバーを常時表示する
+@mixin always_display_scrollbar($scrollbar-color) {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-track-piece:start {
+    background: $scrollbar-color;
+  }
+  &::-webkit-scrollbar-track-piece:end {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
 // Pug Mixin
 //
 // Pug テンプレート内で利用可能なMixin一覧
