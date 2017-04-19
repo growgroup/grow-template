@@ -7,15 +7,13 @@ root = true
 ## すべての拡張子
 
 [*]
-
-indent_style = space            # インデントはスペース
-indent_size = 2                 # インデントのサイズは2
-end_of_line = lf                # 改行コードは LF
-charset = utf-8                 # 文字コードは UTF-8
-trim_trailing_whitespace = true # 行末のスペースを削除
-insert_final_newline = true     # ファイルの末尾を改行
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8 
+trim_trailing_whitespace = true
+insert_final_newline = true
 
 ## MarkDown, Pug は行末のスペースを削除しない
-
-[*.md,*.jade]
+[*.md,*.pug]
 trim_trailing_whitespace = false
