@@ -3,7 +3,7 @@ import url from "url";
 
 var defaultOptions = {
   targetSelector: '.js-current-nav', // 実行するセレクタ
-  activeClass: "is-current", // CSSが定義されているクラス
+  activeClass: "is-current", // 付与するクラス
   include_children: true
 }
 
@@ -11,7 +11,7 @@ export default class CurretnNav {
 
   constructor(options) {
     this.options = Object.assign(defaultOptions, options)
-
+    this.init();
   }
 
   init() {
