@@ -169,7 +169,6 @@ export default class Heightline {
         }
         singleEl.originalHeight = singleEl.clientHeight;
         tempElements.push(singleEl);
-
         columns = groupEl[gi].columns
         currentColumns++;
         if (
