@@ -1,56 +1,56 @@
 extends /inc/foundation/_base.pug
 
 block prepend title
-    - id = "about"
+  - id = "about"
 
 block body
 
-    main
-        // メインビジュアル
-        +c_page_header("example01.jpg",text)
+  main
+    // メインビジュアル
+    +c_page_header("example01.jpg",text)
 
-        section.l-main
+    section.l-main
 
-            .l-section
+      .l-section
 
-                h2.heading.is-xlg 見出し大
-                .p-landing-block
-                    .p-landing-block__thumbnail(style="background-image: url(/assets/images/example01.jpg)")
-                    .p-landing-block__content
-                        .p-landing-block__content__inner
-                            h3.heading.is-lg タイトル1タイトル1タイトル1
-                            p
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                .p-landing-block
-                    .p-landing-block__content
-                        .p-landing-block__content__inner
-                            h3.heading.is-lg タイトル1タイトル1タイトル1
-                            p
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                    .p-landing-block__thumbnail(style="background-image: url(/assets/images/example02.jpg)")
+        h2.heading.is-xlg 見出し大
+        .p-landing-block
+          .p-landing-block__thumbnail(style="background-image: url(/assets/images/example01.jpg)")
+          .p-landing-block__content
+            .p-landing-block__content__inner
+              h3.heading.is-lg タイトル1タイトル1タイトル1
+              p
+                | テキストテキストテキストテキストテキストテキストテキスト
+                | テキストテキストテキストテキストテキストテキストテキスト
+                | テキストテキストテキストテキストテキストテキストテキスト
+                | テキストテキストテキストテキストテキストテキストテキスト
+                | テキストテキストテキストテキストテキストテキストテキスト
+        .p-landing-block
+          .p-landing-block__content
+            .p-landing-block__content__inner
+              h3.heading.is-lg タイトル1タイトル1タイトル1
+              p
+                | テキストテキストテキストテキストテキストテキストテキスト
+                | テキストテキストテキストテキストテキストテキストテキスト
+                | テキストテキストテキストテキストテキストテキストテキスト
+                | テキストテキストテキストテキストテキストテキストテキスト
+                | テキストテキストテキストテキストテキストテキストテキスト
+          .p-landing-block__thumbnail(style="background-image: url(/assets/images/example02.jpg)")
 
-                .p-landing-block
-                    .p-landing-block__thumbnail(style="background-image: url(/assets/images/example03.jpg)")
-                    .p-landing-block__content
-                        .p-landing-block__content__inner
-                            h3.heading.is-lg タイトル1タイトル1タイトル1
-                            p
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                                | テキストテキストテキストテキストテキストテキストテキスト
-                                | テキストテキストテキストテキストテキストテキストテキスト
+        .p-landing-block
+          .p-landing-block__thumbnail(style="background-image: url(/assets/images/example03.jpg)")
+          .p-landing-block__content
+            .p-landing-block__content__inner
+              h3.heading.is-lg タイトル1タイトル1タイトル1
+              p
+                | テキストテキストテキストテキストテキストテキストテキスト
+                | テキストテキストテキストテキストテキストテキストテキスト
+                | テキストテキストテキストテキストテキストテキストテキスト
+                | テキストテキストテキストテキストテキストテキストテキスト
+                | テキストテキストテキストテキストテキストテキストテキスト
 
-                include /inc/object/components/_offer.pug
+        include /inc/object/components/_offer.pug
 
-        section.l-sidebar
+    section.l-sidebar
 
 

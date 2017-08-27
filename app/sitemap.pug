@@ -1,55 +1,55 @@
 extends inc/foundation/_base.pug
 
 block prepend title
-    - id = "sitemap"
+  - id = "sitemap"
 
 block body
 
-    main
+  main
 
-        // メインビジュアル
-        .c-page-header
-            h1 SITEMAP
-            p 当サイトのコンテンツ一覧を紹介します。
+    // メインビジュアル
+    .c-page-header
+      h1 SITEMAP
+      p 当サイトのコンテンツ一覧を紹介します。
+    .l-container
+      .c-breadcrumb
+        ul
+          li
+            a(href="#") HOME
+          li
+            span >
+          li
+            span SITEMAP
+    section.l-main
+      .l-section
         .l-container
-            .c-breadcrumb
+          .row
+            .large-6
+              .p-sitemap
+                h2.p-sitemap__title 会社について
                 ul
-                    li
-                        a(href="#") HOME
-                    li
-                        span >
-                    li
-                        span SITEMAP
-        section.l-main
-            .l-section
-                .l-container
-                    .row
-                        .large-6
-                            .p-sitemap
-                                h2.p-sitemap__title 会社について
-                                ul
-                                    li
-                                        a(href="#") トップページ
-                                    li
-                                        a(href="#") 私たちについて
-                                    li
-                                        a(href="#") 会社概要
-                                    li
-                                        a(href="#") 代表メッセージ
-                        .large-6
-                            .p-sitemap
-                                h2.p-sitemap__title ブログ
-                                ul
-                                    li
-                                        a(href="#") トップページ
-                                    li
-                                        a(href="#") 私たちについて
-                                    li
-                                        a(href="#") 会社概要
-                                    li
-                                        a(href="#") 代表メッセージ
+                  li
+                    a(href="#") トップページ
+                  li
+                    a(href="#") 私たちについて
+                  li
+                    a(href="#") 会社概要
+                  li
+                    a(href="#") 代表メッセージ
+            .large-6
+              .p-sitemap
+                h2.p-sitemap__title ブログ
+                ul
+                  li
+                    a(href="#") トップページ
+                  li
+                    a(href="#") 私たちについて
+                  li
+                    a(href="#") 会社概要
+                  li
+                    a(href="#") 代表メッセージ
 
 
-        section.l-sidebar
+    section.l-sidebar
 
 

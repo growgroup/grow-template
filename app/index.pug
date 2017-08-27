@@ -4,85 +4,94 @@
 extends /inc/foundation/_base.pug
 
 block prepend title
-    - id = "top"
+  - id = "top"
 block body
 
-    // メインビジュアル
-    include /inc/object/components/_main-visual.pug
+  // メインビジュアル
+  include /inc/object/components/_main-visual.pug
 
-    section.l-main
+  section.l-main
 
-        .l-section
-            .l-container
-                h2.heading.is-xlg CONCEPT
-                p.u-text-center
-                    | ここにコンセプトテキストが入ります。
-                    | ここにコンセプトテキストが入ります。
-                    br
-                    | ここにコンセプトテキストが入ります。
-                    | ここにコンセプトテキストが入ります。
-                    | ここにコンセプトテキストが入ります。
-                    | ここにコンセプトテキストが入ります。
-                    | ここにコンセプトテキストが入ります。
-                    | ここにコンセプトテキストが入ります。
-                    | ここにコンセプトテキストが入ります。
-                    | ここにコンセプトテキストが入ります。
-                    | ここにコンセプトテキストが入ります。
-                    | ここにコンセプトテキストが入ります。
 
-                p.u-text-center
-                    a(href="#").c-button.is-lg.is-outline
-                        | 私たちについて
-                        i.fa.fa-angle-right.c-button__icon
+    .l-section
+      .l-container
+        h2.heading.is-xlg CONCEPT
+        p.u-text-center
+          :gt-textblock
+            ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。
+            ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。
+            ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。
+            ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。
 
-        .l-section.is-gray
-            .l-container
-                h2.heading.is-xlg SERVICE
-                .row
-                    .large-4
-                        a.c-card(data-heightline-group="card")
-                            .c-card__image(style="background-image: url(/assets/images/example01.jpg)")
-                            .c-card__title Web制作
-                            .c-card__text Web制作に関するテキストが入ります。
-                    .large-4
-                        a.c-card(data-heightline-group="card")
-                            .c-card__image(style="background-image: url(/assets/images/example02.jpg)")
-                            .c-card__title DTP
-                            .c-card__text DTPに関するテキストが入ります。
-                    .large-4
-                        a.c-card(data-heightline-group="card")
-                            .c-card__image(style="background-image: url(/assets/images/example03.jpg)")
-                            .c-card__title コンサルティング
-                            .c-card__text コンサルティングに関するテキストが入ります。
-                p.u-text-center
-                    a(href="#").c-button.is-lg.is-outline
-                        | サービスの詳細を見る
-                        i.fa.fa-angle-right.c-button__icon
+        p.u-text-center
+          a(href="#").c-button.is-lg.is-outline
+            | 私たちについて
+            i.fa.fa-angle-right.c-button__icon
 
-        .l-section
-            .l-container
-                h2.heading.is-xlg
-                    | NEWS
+    .l-section.is-gray
+      .l-container
+        h2.heading.is-xlg SERVICE
+        .row
+          .large-3
+            a.c-card(data-heightline-group="card",data-heightline-column="4")
+              .c-card__image(style="background-image: url(/assets/images/example01.jpg)")
+              .c-card__title Web制作
+              .c-card__text Web制作に関するテキストが入ります。
+          .large-3
+            a.c-card(data-heightline-group="card",data-heightline-column="4")
+              .c-card__image(style="background-image: url(/assets/images/example02.jpg)")
+              .c-card__title DTP
+              .c-card__text DTPに関するテキストが入ります。
+          .large-3
+            a.c-card(data-heightline-group="card",data-heightline-column="4")
+              .c-card__image(style="background-image: url(/assets/images/example03.jpg)")
+              .c-card__title コンサルティング
+              .c-card__text コンサルティングに関するテキストが入ります。
+          .large-3
+            a.c-card(data-heightline-group="card",data-heightline-column="4")
+              .c-card__image(style="background-image: url(/assets/images/example01.jpg)")
+              .c-card__title Web制作
+              .c-card__text Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。
+          .large-3
+            a.c-card(data-heightline-group="card",data-heightline-column="4")
+              .c-card__image(style="background-image: url(/assets/images/example02.jpg)")
+              .c-card__title DTP
+              .c-card__text DTPに関するテキストが入ります。
+          .large-3
+            a.c-card(data-heightline-group="card",data-heightline-column="4")
+              .c-card__image(style="background-image: url(/assets/images/example03.jpg)")
+              .c-card__title コンサルティング
+              .c-card__text コンサルティングに関するテキストが入ります。
 
-                p.heading-lead 最新の情報をお届けします。
-                .row
-                    .large-8
-                        - var i = 0;
-                        while i < 4
-                            +p_post_item("a",false,"投稿テストです。投稿テストです。","2016/10/10","お知らせ",false).is-line
-                            - i++
-                    .large-3.is-push-lg-1
-                        p
-                            a(href="#")
-                                img(src="/assets/images/example01.jpg")
-                        p
-                            a(href="#")
-                                img(src="/assets/images/example02.jpg")
-                        p
-                            a(href="#")
-                                img(src="/assets/images/example03.jpg")
+        p.u-text-center
+          a(href="#").c-button.is-lg.is-outline
+            | サービスの詳細を見る
+            i.fa.fa-angle-right.c-button__icon
 
-        include /inc/object/components/_offer.pug
+    .l-section
+      .l-container
+        h2.heading.is-xlg
+          | NEWS
+
+        p.heading-lead 最新の情報をお届けします。
+        .row
+          .large-8
+            - var i = 0;
+            while i < 4
+              +p_post_item("a",false,"投稿テストです。投稿テストです。","2016/10/10","お知らせ",false).is-line
+              - i++
+          .large-3.is-push-lg-1
+            p
+              a(href="#")
+                img(src="/assets/images/example01.jpg")
+            p
+              a(href="#")
+                img(src="/assets/images/example02.jpg")
+            p
+              a(href="#")
+                img(src="/assets/images/example03.jpg")
+
+    include /inc/object/components/_offer.pug
 
 
 
