@@ -40,14 +40,8 @@ export default class Anchor {
      * @param e ターゲットとなるエレメント
      */
     init() {
-
-
-        // ターゲットをセット
         this.target = $(this.options.selector);
-
-        // クリック時の動作
         this.onClick();
-
     }
 
     /**

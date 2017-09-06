@@ -5,11 +5,8 @@
   "license": "ISC",
   "moduleType": [],
   "homepage": "",
-  "devDependencies": {
-    "font-awesome": "~4.5.0"
-  },
   "dependencies": {
     "jquery": "~2.1.4",
-    "susy": "~2.2.10"
+    "font-awesome": "^4.7.0"
   }
 }

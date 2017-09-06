@@ -2,12 +2,12 @@
 //-
 //- # Use Case
 //- +l_section("h2","これが見出しです。").is-xlg
-mixin input(name,type)
-    input(name=name,type=type).c-form__input&attributes(attributes)
+mixin input(name,type,attrs)
+    input(name=name,type=type).c-form-block__input&attributes(attrs)
 
 //- セレクトボックス
-mixin select(name,options)
-    select(name=name).c-form__select&attributes(attributes)
+mixin select(name,options,attrs)
+    select(name=name).c-form-block__select&attributes(attrs)
         if options
             each option in options
                 option(value=option.value)= option.text
@@ -15,8 +15,8 @@ mixin select(name,options)
             block
 
 //- ラジオボタン
-mixin radio(name,options)
-    div(name=name).c-form__radio&attributes(attributes)
+mixin radio(name,options,attrs)
+    div(name=name).c-form-block__radio&attributes(attrs)
         if options
             each option in options
                 - var id = "radio_"+option.value;
@@ -27,8 +27,8 @@ mixin radio(name,options)
             block
 
 //- チェックボックス
-mixin checkbox(name,options)
-    div(name=name).c-form__checkbox&attributes(attributes)
+mixin checkbox(name,options,attrs)
+    div(name=name).c-form-block__checkbox&attributes(attrs)
         if options
             each option in options
                 label(for="checkbox_" + option.value)
@@ -51,6 +51,10 @@ mixin textarea(name,row)
             type: "text",
             name: "textbox",
             require: true,
+            attributes: {
+                class: "hogehoge",
+                placeholder: "ここに初期値"
+            }
         },{
             label: "セレクトボックス",
             type: "select",
@@ -63,26 +67,26 @@ mixin textarea(name,row)
         },
     ])
 mixin contactform(name,action,fields)
-    .c-contactform
+    .c-form
         form(name=name,action=action)
             each field in fields
                 .c-form-block
                     .row
-                        .large-4
+                        .large-4.small-12
                             .c-form-block__title
                                 if field.require
                                     span.c-label.is-danger.is-required 必須
                                 span= field.label
-                        .large-8
+                        .large-8.small-12
                             .c-form-block__content
                                 case field.type
                                     when "select"
-                                        +select(field.name,field.options)
+                                        +select(field.name,field.options,field.attributes)
                                     when "text"
-                                        +input(field.name,field.type)
+                                        +input(field.name,field.type,field.attributes)
                                     when "radio"
-                                        +radio(field.name,field.options)
+                                        +radio(field.name,field.options,field.attributes)
                                     when "checkbox"
-                                        +checkbox(field.name,field.options)
+                                        +checkbox(field.name,field.options,field.attributes)
                                     when "textarea"
-                                        +textarea(field.name,field.row)
+                                        +textarea(field.name,field.row,field.attributes)

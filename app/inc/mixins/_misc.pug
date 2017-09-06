@@ -1,10 +1,10 @@
 //- img タグ
 mixin img(file,alt)
-    img(src="/assets/images/" + file, alt!=alt)&attributes(attribute)
+    img(src="/assets/images/" + file, alt!=alt)&attributes(attributes)
 
 //- 背景画像
 mixin bgimg(file)
-    div(style="background-image: url(/assets/images/" + file + ")")&attributes(attribute)
+    div(style="background-image: url(/assets/images/" + file + ")")&attributes(attributes)
         block
 
 //- ページヘッダー
@@ -30,8 +30,8 @@ mixin loop(count)
 //- よくあるご質問
 mixin c_faqbox(title,content)
     .c-faqbox.js-accordion
-        .c-faqbox__title!= title
-        .c-faqbox__content
+        .c-faqbox__title(data-accordion-title="true")!= title
+        .c-faqbox__content(data-accordion-content="true",style="display: none")
             if content
                 != content
             else
@@ -41,13 +41,13 @@ mixin c_faqbox(title,content)
 mixin c_pagination()
     .c-pagination
         ul
-            li: a(href="#").c-pagenation__prev « 前へ
+            li: a(href="#").c-pagination__prev « 前へ
             li: span.is-active 1
             li: a(href="#") 2
             li: a(href="#") 3
             li: a(href="#") 4
             li: a(href="#") 5
-            li: a(href="#").c-pagenation__next 次へ »
+            li: a(href="#").c-pagination__next 次へ »
 
 //- 投稿ページナビゲーション
 mixin c_post_nav()
@@ -55,3 +55,10 @@ mixin c_post_nav()
         ul
             li.c-post-navs__prev: a(href="#") 前の記事へ
             li.c-post-navs__next: a(href="#") 次の記事へ
+
+//- table row
+mixin tr(th, td)
+    tr&attributes(attributes)
+        th!= th
+        td!= td
+
