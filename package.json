@@ -6,6 +6,7 @@
     "node": ">=5.0.0"
   },
   "scripts": {
+    "start" : "gulp",
     "init": "npm install && bower install",
     "postinstall": "bower install",
     "build": "gulp build"
