@@ -6,7 +6,7 @@
     "node": ">=5.0.0"
   },
   "scripts": {
-    "start" : "gulp",
+    "start": "gulp",
     "init": "npm install && bower install",
     "postinstall": "bower install",
     "build": "gulp build"
@@ -29,7 +29,6 @@
     "gulp-clean-css": "^3.7.0",
     "gulp-concat": "^2.6.1",
     "gulp-css-globbing": "^0.2.2",
-    "gulp-data": "^1.2.1",
     "gulp-eslint": "^4.0.0",
     "gulp-filter": "^5.0.1",
     "gulp-if": "^2.0.2",

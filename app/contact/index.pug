@@ -1,16 +1,13 @@
 extends /inc/foundation/_base.pug
-
-block prepend title
-  - id = "contact"
+block append config
+  - current.id = "contact" // ページのID
+  - current.title = "お問い合わせ" // タイトル
+  - current.description = "これはお問い合わせフォームの説明文です" // 説明文
+  - current.bodyClass = "contact" // body に付与するクラス
+  - current.depth = 2 // ページの階層
 
 block body
-
-  main
-
-    // メインビジュアル
-    .c-page-header
-      h1 CONTACT
-      p お問い合わせは以下のフォームからお願い致します。
+    +c_page_header(false, "お問い合わせ")
     .l-container
       .c-breadcrumb
         ul

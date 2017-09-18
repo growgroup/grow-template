@@ -1,7 +1,12 @@
 extends /inc/foundation/_base.pug
-
+block append config
+  - current.id = "mixinexample" // ページのID
+  - current.title = "Mixin サンプル" // タイトル
+  - current.description = "" // 説明文
+  - current.bodyClass = "mixinexample" // body に付与するクラス
+  - current.depth = 2 // ページの階層
 block body
-  .container
+  .l-container
     +c_button("a","テキスト","test").is-lg
     +p_post_item("div","https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150","タイトル","2016.10.10","カテゴリ","説明文説明文説明文説明文説明文説明文説明文説明文説明文説明文").is-horizon
     +l_section("bottom")

@@ -20,25 +20,25 @@
         },
         ])
 mixin c_table(data,headers)
-    table.c-table&attributes(attributes)
-        if block
-            block
-        else
-            if headers
-                thead
-                    tr
-                        each head in headers
-                            th head
-            tbody
-                each row in data
-                    tr
-                        each cell,index in row
-                            if (index === "th")
-                                th=cell
-                            else if typeof cell === "object"
-                                td&attributes(cell.attr)=cell.text
-                            else
-                                td= cell
+  table.c-table&attributes(attributes)
+    if block
+      block
+    else
+      if headers
+        thead
+          tr
+            each head in headers
+              th head
+      tbody
+        each row in data
+          tr
+            each cell,index in row
+              if (index === "th")
+                th=cell
+              else if typeof cell === "object"
+                td&attributes(cell.attr)=cell.text
+              else
+                td= cell
 
 
 

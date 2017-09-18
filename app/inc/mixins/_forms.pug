@@ -3,44 +3,44 @@
 //- # Use Case
 //- +l_section("h2","これが見出しです。").is-xlg
 mixin input(name,type,attrs)
-    input(name=name,type=type).c-form-block__input&attributes(attrs)
+  input(name=name,type=type).c-form-block__input&attributes(attrs)
 
 //- セレクトボックス
 mixin select(name,options,attrs)
-    select(name=name).c-form-block__select&attributes(attrs)
-        if options
-            each option in options
-                option(value=option.value)= option.text
-        else
-            block
+  select(name=name).c-form-block__select&attributes(attrs)
+    if options
+      each option in options
+        option(value=option.value)= option.text
+    else
+      block
 
 //- ラジオボタン
 mixin radio(name,options,attrs)
-    div(name=name).c-form-block__radio&attributes(attrs)
-        if options
-            each option in options
-                - var id = "radio_"+option.value;
-                label(for=id)
-                    input(name=name,type="radio",value=option.value,id=id)
-                    span= option.label
-        else
-            block
+  div(name=name).c-form-block__radio&attributes(attrs)
+    if options
+      each option in options
+        - var id = "radio_"+option.value;
+        label(for=id)
+          input(name=name,type="radio",value=option.value,id=id)
+          span= option.label
+    else
+      block
 
 //- チェックボックス
 mixin checkbox(name,options,attrs)
-    div(name=name).c-form-block__checkbox&attributes(attrs)
-        if options
-            each option in options
-                label(for="checkbox_" + option.value)
-                    input(name=name,type="checkbox",value=option.value)
-                    span= option.label
-        else
-            block
+  div(name=name).c-form-block__checkbox&attributes(attrs)
+    if options
+      each option in options
+        label(for="checkbox_" + option.value)
+          input(name=name,type="checkbox",value=option.value)
+          span= option.label
+    else
+      block
 
 //- テキストボックス
 mixin textarea(name,row)
-    textarea(name=name,row!=row)
-        block
+  textarea(name=name,row!=row)
+    block
 
 
 //- コンタクトフォーム
@@ -67,26 +67,26 @@ mixin textarea(name,row)
         },
     ])
 mixin contactform(name,action,fields)
-    .c-form
-        form(name=name,action=action)
-            each field in fields
-                .c-form-block
-                    .row
-                        .large-4.small-12
-                            .c-form-block__title
-                                if field.require
-                                    span.c-label.is-danger.is-required 必須
-                                span= field.label
-                        .large-8.small-12
-                            .c-form-block__content
-                                case field.type
-                                    when "select"
-                                        +select(field.name,field.options,field.attributes)
-                                    when "text"
-                                        +input(field.name,field.type,field.attributes)
-                                    when "radio"
-                                        +radio(field.name,field.options,field.attributes)
-                                    when "checkbox"
-                                        +checkbox(field.name,field.options,field.attributes)
-                                    when "textarea"
-                                        +textarea(field.name,field.row,field.attributes)
+  .c-form
+    form(name=name,action=action)
+      each field in fields
+        .c-form-block
+          .row
+            .large-4.small-12
+              .c-form-block__title
+                if field.require
+                  span.c-label.is-danger.is-required 必須
+                span= field.label
+            .large-8.small-12
+              .c-form-block__content
+                case field.type
+                  when "select"
+                    +select(field.name,field.options,field.attributes)
+                  when "text"
+                    +input(field.name,field.type,field.attributes)
+                  when "radio"
+                    +radio(field.name,field.options,field.attributes)
+                  when "checkbox"
+                    +checkbox(field.name,field.options,field.attributes)
+                  when "textarea"
+                    +textarea(field.name,field.row,field.attributes)

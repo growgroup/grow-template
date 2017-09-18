@@ -1,9 +1,14 @@
 //- filename: global-navigation.jade
 //- description: グローバルナビゲーション
 nav.l-global-nav
-    .l-container
-        ul
-          each item in config.pages
-            li
-                a(href="/" + item.name + ".html")= item.title
+  .l-container
+    ul
+      each item in nav("global_nav")
+        li
+          +a(item.url)!= item.text
+          if item.children
+            ul
+            each child_item in item.children
+              li: +a(child_item.url)!= child_item.text
+
 

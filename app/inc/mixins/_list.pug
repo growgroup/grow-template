@@ -22,19 +22,19 @@
     }
     ])
 mixin list(data)
-    ul&attributes(attributes)
-        if block
-            block
-        else
-            each li in data
-                if typeof li === "string"
-                    li= li
-                else if typeof li === "object"
-                    if li.link
-                        li
-                            if typeof li.link === "object"
-                                a(title=li.text)&attributes(li.link)= li.text
-                            else 
-                                a(title=li.text,href=li.link)= li.text
-                    else
-                        li&attributes(li.attr)= li.text
+  ul&attributes(attributes)
+    if block
+      block
+    else
+      each li in data
+        if typeof li === "string"
+          li= li
+        else if typeof li === "object"
+          if li.link
+            li
+              if typeof li.link === "object"
+                a(title=li.text)&attributes(li.link)= li.text
+              else
+                a(title=li.text,href=li.link)= li.text
+          else
+            li&attributes(li.attr)= li.text

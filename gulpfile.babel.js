@@ -1,6 +1,6 @@
 /**
  *  Grow Template
- *  Copyright 2015 GrowGroup Inc. All rights reserved.
+ *  Copyright 2017 GrowGroup Inc. All rights reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -44,8 +44,11 @@ import gulpLoadPlugins from 'gulp-load-plugins'
 // gulp-**** と名のつくパッケージは $.****で呼び出せるように
 const $ = gulpLoadPlugins();
 
-// browserSync.reload のエイリアス
-const reload = browserSync.reload;
+// BrowserSync
+const BS = browserSync.create();
+
+// BrowserSync.reload のエイリアス
+const RELOAD = BS.reload;
 
 // Sass or Scss
 const SASS_EXTENSION = "scss";
@@ -56,11 +59,11 @@ const SASS_EXTENSION = "scss";
  * =================================
  */
 
-const appPath = "app";
-const distPath = "dist";
+const APPPATH = "app";
+const DISTPATH = "dist";
 
 // スタイルガイドのアウトプット先
-const sg5OutputPath = "styleguides";
+const SG5OUTPUTPATH = "styleguides";
 
 var config = {};
 
@@ -77,7 +80,7 @@ config.browserSync = {
   },
   tunnel: false,
   // proxy: "http://change-to-develop-url.dev",
-  server: [distPath],
+  server: [DISTPATH],
   ui: false,
   scrollRestoreTechnique: "cookie"
 }
@@ -86,8 +89,8 @@ config.browserSync = {
  * 設定 - Sass
  */
 config.sass = {
-  src: appPath + "/assets/" + SASS_EXTENSION + "/*." + SASS_EXTENSION,
-  dist: distPath + "/assets/css/",
+  src: APPPATH + "/assets/" + SASS_EXTENSION + "/*." + SASS_EXTENSION,
+  dist: DISTPATH + "/assets/css/",
 }
 
 /**
@@ -95,26 +98,26 @@ config.sass = {
  */
 config.js = {
   src: [
-    appPath + "/assets/js/scripts.js",
-    "!" + appPath + "/assets/js/app/*.js",
+    APPPATH + "/assets/js/scripts.js",
+    "!" + APPPATH + "/assets/js/app/*.js",
   ],
-  dist: distPath + "/assets/js/",
+  dist: DISTPATH + "/assets/js/",
 }
 
 /**
  * 設定 - Babel
  */
 config.babel = {
-  src: appPath + "/assets/es6/index.es6",
-  dist: distPath + "/assets/js/",
+  src: APPPATH + "/assets/es6/index.es6",
+  dist: DISTPATH + "/assets/js/",
 }
 
 /**
  * 設定 - Jade
  */
 config.pug = {
-  src: [appPath + '/*.pug', appPath + '/**/*.pug'],
-  dist: distPath + "/",
+  src: [APPPATH + '/*.pug', APPPATH + '/**/*.pug'],
+  dist: DISTPATH + "/",
   settingsFilePath: "./pug-settings.json",
 }
 
@@ -122,8 +125,8 @@ config.pug = {
  * 設定 - Images
  */
 config.images = {
-  src: appPath + "/assets/images/**/*",
-  dist: distPath + "/assets/images/",
+  src: APPPATH + "/assets/images/**/*",
+  dist: DISTPATH + "/assets/images/",
 }
 
 /**
@@ -183,7 +186,7 @@ gulp.task('styles', () => {
 
   // bower がインストールされているかどうかのチェック
   try {
-    fs.statSync(__dirname + "/" + appPath + "/bower_components")
+    fs.statSync(__dirname + "/" + APPPATH + "/bower_components")
   } catch (err) {
     if (err.code === "ENOENT") {
       console.error('\u001b[33m' + "[Error] Please run \"bower install\" " + '\u001b[0m');
@@ -195,7 +198,7 @@ gulp.task('styles', () => {
   return gulp.src(config.sass.src)
     .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
     .pipe($.cssGlobbing({extensions: ['.' + SASS_EXTENSION]}))
-    // .pipe($.sourcemaps.init())
+    .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
       precision: 4,
@@ -206,7 +209,9 @@ gulp.task('styles', () => {
     }))
     .pipe($.size({title: 'styles'}))
     .pipe(gulp.dest(config.sass.dist))
-    .pipe(reload({stream: true}))
+    .pipe(BS.stream({
+      match: APPPATH + "/**/*.css"
+    }))
     .pipe($.notify("Styles Task Completed!"));
 });
 
@@ -217,7 +222,7 @@ gulp.task('styles', () => {
  * =================================
  */
 gulp.task('browserSync', () => {
-  browserSync(config.browserSync)
+  BS.init(config.browserSync)
 });
 
 /**
@@ -229,9 +234,9 @@ gulp.task('browserSync', () => {
 gulp.task('pug', () => {
   return gulp.src(config.pug.src)
     .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-    .pipe($.changed(distPath, {extension: '.html'}))
+    .pipe($.changed(DISTPATH, {extension: '.html'}))
     .pipe($.if(global.isWatching, $.cached('pug')))
-    .pipe($.pugInheritance({basedir: appPath, skip: 'node_modules'}))
+    .pipe($.pugInheritance({basedir: APPPATH, skip: 'node_modules,assets'}))
     .pipe($.filter(function (file) {
       return !/\/_/.test(file.path) && !/^_/.test(file.relative);
     }))
@@ -239,7 +244,7 @@ gulp.task('pug', () => {
       pretty: true,
       cache: true,
       escapePre: true,
-      basedir: appPath,
+      basedir: APPPATH,
       filters: {
         // 改行をbrに置換
         'gt-textblock': function (text, options) {
@@ -258,7 +263,7 @@ gulp.task('pug', () => {
     }))
     .pipe(gulp.dest(config.pug.dist))
     .pipe($.size({title: 'HTML'}))
-    .pipe(reload({stream: true}))
+    .pipe(BS.stream())
     .pipe($.notify("Pug Task Completed!"));
 });
 
@@ -278,7 +283,9 @@ gulp.task('scripts', () => {
     .pipe(gulp.dest(config.js.dist))
     .pipe($.size({title: 'scripts'}))
     .pipe($.sourcemaps.write('.'))
-    .pipe(reload({stream: true}))
+    .pipe(BS.stream({
+      match: APPPATH + "/**/*.js"
+    }))
     .pipe($.notify("Scripts Task Completed!"));
 });
 
@@ -337,7 +344,7 @@ gulp.task('lint', () => {
   gulp.src(config.js.src)
     .pipe($.eslint())
     .pipe($.eslint.format())
-    .pipe($.if(!browserSync.active, $.eslint.failOnError()))
+    .pipe($.if(!BS.active, $.eslint.failOnError()))
 });
 
 /**
@@ -353,18 +360,18 @@ gulp.task('setWatch', function () {
 
 gulp.task('watch', ['setWatch', 'browserSync'], () => {
 
-  gulp.watch([appPath + '/**/*.pug'], ['pug', reload]);
-  gulp.watch([appPath + '/bower_components/**/*'], ['copy', reload]);
-  gulp.watch([appPath + '/assets/**/*.es6'], ['babel', reload]);
-  gulp.watch([appPath + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles']);
-  gulp.watch([appPath + '/assets/js/scripts.js'], ['lint', 'scripts']);
-  gulp.watch([appPath + '/assets/js/app/*.js', appPath + '/assets/js/app.js'], ['lint', 'babel_app']);
-  gulp.watch([appPath + '/assets/images/**/*'], ['images']);
+  gulp.watch([APPPATH + '/**/*.pug'], ['pug', BS.reload]);
+  gulp.watch([APPPATH + '/bower_components/**/*'], ['copy', BS.reload]);
+  gulp.watch([APPPATH + '/assets/**/*.es6'], ['babel', BS.reload]);
+  gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles']);
+  gulp.watch([APPPATH + '/assets/js/scripts.js'], ['lint', 'scripts']);
+  gulp.watch([APPPATH + '/assets/js/app/*.js', APPPATH + '/assets/js/app.js'], ['lint', 'babel_app']);
+  gulp.watch([APPPATH + '/assets/images/**/*'], ['images']);
 
 });
 
 gulp.task('watch:styleguide', () => {
-  gulp.watch([appPath + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', reload]);
+  gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', BS.stream()]);
 })
 
 /**
@@ -376,19 +383,19 @@ gulp.task('watch:styleguide', () => {
 
 gulp.task('copy:app', () => {
   return gulp.src([
-    appPath + '/**/*',
-    appPath + '/fonts',
-    '!./' + appPath + '/assets/{' + SASS_EXTENSION + ',' + SASS_EXTENSION + '/**}',
-    '!./' + appPath + '/inc',
-    '!./' + appPath + '/*.pug',
-    '!./' + appPath + '/**/*.pug',
-    '!./' + appPath + '/assets/js/app.js',
-    '!./' + appPath + '/assets/js/app/*.js',
+    APPPATH + '/**/*',
+    APPPATH + '/fonts',
+    '!./' + APPPATH + '/assets/{' + SASS_EXTENSION + ',' + SASS_EXTENSION + '/**}',
+    '!./' + APPPATH + '/inc',
+    '!./' + APPPATH + '/*.pug',
+    '!./' + APPPATH + '/**/*.pug',
+    '!./' + APPPATH + '/assets/js/app.js',
+    '!./' + APPPATH + '/assets/js/app/*.js',
   ], {
     dot: true,
     base: "app"
   })
-    .pipe(gulp.dest(distPath))
+    .pipe(gulp.dest(DISTPATH))
     .pipe($.size({title: 'copy'}));
 });
 
@@ -400,7 +407,7 @@ gulp.task('copy', ['copy:app']);
  * dist ディレクトリ内をすべて削除
  * =================================
  */
-gulp.task('clean', cb => del([distPath + '/*', '!' + distPath + '/.git'], {dot: true}));
+gulp.task('clean', cb => del([DISTPATH + '/*', '!' + DISTPATH + '/.git'], {dot: true}));
 
 /**
  * =================================
@@ -431,12 +438,12 @@ gulp.task('images', () =>
  */
 
 gulp.task('styleguide:generate', () => {
-  return gulp.src([appPath + '/assets/' + SASS_EXTENSION + '/*.' + SASS_EXTENSION, appPath + '/assets/' + SASS_EXTENSION + '/**/*.' + SASS_EXTENSION])
+  return gulp.src([APPPATH + '/assets/' + SASS_EXTENSION + '/*.' + SASS_EXTENSION, APPPATH + '/assets/' + SASS_EXTENSION + '/**/*.' + SASS_EXTENSION])
     .pipe(styleguide.generate({
       title: 'Grow Template',
       server: true,
       port: 8888,
-      rootPath: "./" + sg5OutputPath,
+      rootPath: "./" + SG5OUTPUTPATH,
       overviewPath: "./" + 'README.md',
       extraHead: [
         '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>',
@@ -445,19 +452,19 @@ gulp.task('styleguide:generate', () => {
 
       ]
     }))
-    .pipe(gulp.dest(sg5OutputPath));
+    .pipe(gulp.dest(SG5OUTPUTPATH));
 });
 
 gulp.task('styleguide:applystyles', () => {
 
-  return gulp.src(appPath + '/assets/' + SASS_EXTENSION + '/style.' + SASS_EXTENSION)
+  return gulp.src(APPPATH + '/assets/' + SASS_EXTENSION + '/style.' + SASS_EXTENSION)
     .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
     .pipe($.cssGlobbing({extensions: ['.css', '.' + SASS_EXTENSION]}))
     .pipe($.sass({
       errLogToConsole: true
     }))
     .pipe(styleguide.applyStyles())
-    .pipe(gulp.dest(sg5OutputPath));
+    .pipe(gulp.dest(SG5OUTPUTPATH));
 });
 
 gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles', 'watch:styleguide']);
@@ -471,13 +478,13 @@ gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles', 'watch
 
 function makeWordPressFile() {
   if (wpThemeInfo) {
-    fs.writeFile(distPath + '/style.css', wpThemeInfo, (err) => {
+    fs.writeFile(DISTPATH + '/style.css', wpThemeInfo, (err) => {
       if (err) throw err;
     });
-    fs.writeFile(distPath + '/index.php', "", (err) => {
+    fs.writeFile(DISTPATH + '/index.php', "", (err) => {
       if (err) throw err;
     });
-    fs.writeFile(distPath + '/functions.php', "", (err) => {
+    fs.writeFile(DISTPATH + '/functions.php', "", (err) => {
       if (err) throw err;
     });
   }

@@ -2,17 +2,16 @@
 //- description: サイトのトップページ
 
 extends /inc/foundation/_base.pug
+block append config
+  - current.id = "top" // ページのID
+  - current.title = "トップページ" // タイトル
+  - current.description = "これはトップページの説明文です" // 説明文
+  - current.bodyClass = "top" // body に付与するクラス
+  - current.depth = 1 // ページの階層
 
-block prepend title
-  - id = "top"
 block body
-
-  // メインビジュアル
-  include /inc/object/components/_main-visual.pug
-
+  +c_mainvisual()
   section.l-main
-
-
     .l-section
       .l-container
         h2.heading.is-xlg CONCEPT
@@ -24,7 +23,7 @@ block body
             ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。
 
         p.u-text-center
-          a(href="#").c-button.is-lg.is-outline
+          +a("#").c-button.is-lg.is-outline
             | 私たちについて
             i.fa.fa-angle-right.c-button__icon
 
@@ -33,38 +32,38 @@ block body
         h2.heading.is-xlg SERVICE
         .row
           .large-3
-            a.c-card(data-heightline-group="card",data-heightline-column="4")
+            +a("#").c-card(data-heightline-group="card",data-heightline-column="4")
               .c-card__image(style="background-image: url(/assets/images/example01.jpg)")
               .c-card__title Web制作
               .c-card__text Web制作に関するテキストが入ります。
           .large-3
-            a.c-card(data-heightline-group="card",data-heightline-column="4")
+            +a("#").c-card(data-heightline-group="card",data-heightline-column="4")
               .c-card__image(style="background-image: url(/assets/images/example02.jpg)")
               .c-card__title DTP
               .c-card__text DTPに関するテキストが入ります。
           .large-3
-            a.c-card(data-heightline-group="card",data-heightline-column="4")
+            +a("#").c-card(data-heightline-group="card",data-heightline-column="4")
               .c-card__image(style="background-image: url(/assets/images/example03.jpg)")
               .c-card__title コンサルティング
               .c-card__text コンサルティングに関するテキストが入ります。
           .large-3
-            a.c-card(data-heightline-group="card",data-heightline-column="4")
+            +a("#").c-card(data-heightline-group="card",data-heightline-column="4")
               .c-card__image(style="background-image: url(/assets/images/example01.jpg)")
               .c-card__title Web制作
               .c-card__text Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。
           .large-3
-            a.c-card(data-heightline-group="card",data-heightline-column="4")
+            +a("#").c-card(data-heightline-group="card",data-heightline-column="4")
               .c-card__image(style="background-image: url(/assets/images/example02.jpg)")
               .c-card__title DTP
               .c-card__text DTPに関するテキストが入ります。
           .large-3
-            a.c-card(data-heightline-group="card",data-heightline-column="4")
+            +a("#").c-card(data-heightline-group="card",data-heightline-column="4")
               .c-card__image(style="background-image: url(/assets/images/example03.jpg)")
               .c-card__title コンサルティング
               .c-card__text コンサルティングに関するテキストが入ります。
 
         p.u-text-center
-          a(href="#").c-button.is-lg.is-outline
+          +a("/service/").c-button.is-lg.is-outline
             | サービスの詳細を見る
             i.fa.fa-angle-right.c-button__icon
 
@@ -80,18 +79,12 @@ block body
             while i < 4
               +p_post_item("a",false,"投稿テストです。投稿テストです。","2016/10/10","お知らせ",false).is-line
               - i++
-          .large-3.is-push-lg-1
-            p
-              a(href="#")
-                img(src="/assets/images/example01.jpg")
-            p
-              a(href="#")
-                img(src="/assets/images/example02.jpg")
-            p
-              a(href="#")
-                img(src="/assets/images/example03.jpg")
+          .large-3.is-push-lg-1.small-12
+            p: +a("#"): +img(src="/assets/images/example01.jpg")
+            p: +a("#"): +img(src="/assets/images/example02.jpg")
+            p: +a("#"): +img(src="/assets/images/example03.jpg")
 
-    include /inc/object/components/_offer.pug
+
 
 
 

@@ -2,21 +2,21 @@
 //- description: フッター
 
 footer.l-footer
-    .l-container
-        .row
-            .large-4
-                .l-footer__logo
-                    a(href="/")
-                        img(src="/assets/images/logo.png",alt="ロゴ")
+  .l-container
+    .row
+      .large-4.small-12
+        .l-footer__logo
+          a(href="/")
+            img(src="/assets/images/logo.png",alt="ロゴ")
 
-            .large-8
-                .l-footer__menu
-                    .large-12
-                        ul.c-inline-list
-                            each item in config.pages
-                                li
-                                    a(href="/" + item.name + "/")= item.title
+      .large-8.small-12
+        .l-footer__menu
+          .large-12
+            ul.c-inline-list
+              each item in config.pages
+                li
+                  a(href="/" + item.name + "/")= item.title
 
 .l-footer-copyright
-    .l-container
-        p copyright © sample site All Right Reserved.
+  .l-container
+    p copyright © sample site All Right Reserved.

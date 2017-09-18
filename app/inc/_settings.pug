@@ -1,10 +1,38 @@
 //- サイトの設定
 -
+  current = {
+    depth: 1,
+    id: "",
+    title: "",
+    description: "",
+    bodyClass: ""
+  }
   config = {
+    // サイトのルートパスを設定
+    // "" でドメイン直下からパスを開始
+    root: ".",
+    get rootpath(){
+      if ( this.root === "" ){
+        return this.root;
+      }
+      // 第一階層の場合
+      if ( current.depth === 1 ){
+        return this.root
+      }
+      var i = current.depth
+      var path = ""
+      while( i > 1 ){
+        path += "../"
+        i--;
+      }
+      // 末尾のスラッシュを削除
+      return path.replace(/\/$/g,"")
+    },
 
     // サイト情報
     site: {
       title: "サイト名",
+      titleSeparator: " | ",
       description: "説明文",
       keywords: "キーワード",
       viewport: "width=device-width,initial-scale=1",
@@ -19,6 +47,37 @@
         site_name: "",
         image: ""
       },
+    },
+
+    // ナビゲーション
+    navs: {
+      global_nav: [
+        {
+          url: "/",
+          text: "ホーム"
+        },{
+          url: "/about/",
+          text: "私たちについて",
+          children: [
+            {
+              url: "/about/profile/",
+              text: "会社概要"
+            }
+          ]
+        },{
+          url: "/service/",
+          text: "サービス紹介"
+        },{
+          url: "/works/",
+          text: "実績紹介"
+        },{
+          url: "/works/",
+          text: "実績紹介"
+        },{
+          url: "/contact/",
+          text: "お問い合わせ"
+        },
+      ]
     },
 
     // ページ情報
@@ -48,10 +107,11 @@
         title: "お問合せ",
         description: "",
       },
-
     },
   }
 
+
+  // ページごとの情報を取得
   getPagesValue = function(id,key){
     if ( typeof config.pages[id] !== "undefined" && typeof config.pages[id][key] !== "undefined" ){
       return config.pages[id][key];
@@ -61,6 +121,13 @@
       return config.site[key]
     }
     return "";
+  },
+  // ナビゲーションを取得
+  nav = function(id) {
+    if ( typeof config.navs[id] === "undefined" ){
+      return false;
+    }
+    return config.navs[id]
   }
 
 

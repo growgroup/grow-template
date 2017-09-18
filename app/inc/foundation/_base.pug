@@ -1,87 +1,95 @@
 include /inc/mixins/_mixins
 doctype html
 html
-    head
-        - var id = "top";
-        block config
-            include /inc/_settings.pug
+  head
+    block config
+      include /inc/_settings.pug
 
-        meta(charset='UTF-8')
+    meta(charset='UTF-8')
+    //- サイトのタイトル
+    block title
+      if typeof config.pages[current.id] !== "undefined"
+        if current.title
+          title= current.title + config.site.titleSeparator + config.site.title
+        else if current.id !== "top"
+          title= getPagesValue(current.id, "title") + config.site.titleSeparator + config.site.title
+        else
+          title= getPagesValue(current.id, "title")
+    //- メタ情報
+    block meta
+      -
+        var desc = false
+        if (current.description) {
+          desc = current.description
+        } else if ( getPagesValue(current.id, "description") ) {
+          desc = getPagesValue(current.id, "description")
+        } else {
+          desc = config.site.description
+        }
+      meta(name='description', content=desc)
+      meta(name="viewport", content=config.site.viewport)
 
-        //- サイトのタイトル
-        block title
-            if typeof config.pages[id] !== "undefined"
-                if id !== "top"
-                    title= getPagesValue(id, "title") + " | " + config.site.title
-                else
-                    title= getPagesValue(id, "title")
+    //- OGP
+    block meta_ogp
+      meta(property="og:locale", content=config.site.ogp.locale)
+      meta(property="og:type",content=config.site.ogp.type)
+      meta(property="og:title", content=getPagesValue(current.id, "title"))
+      meta(property="og:description", content=getPagesValue(id, "description") )
+      meta(property="og:url", content=config.site.ogp.url + "/" + current.id + "/")
+      meta(property="og:site_name", content=config.site.ogp.site_name)
+      meta(property="og:image", content=config.site.ogp.image)
 
-        //- メタ情報
-        block meta
-            meta(name='description', content=getPagesValue(id, "description"))
-            meta(name="viewport", content=config.site.viewport)
-
-        //- OGP
-        block meta_ogp
-            meta(property="og:locale", content=config.site.ogp.locale)
-            meta(property="og:type",content=config.site.ogp.type)
-            meta(property="og:title", content=getPagesValue(id, "title"))
-            meta(property="og:description", content=getPagesValue(id, "description") )
-            meta(property="og:url", content=config.site.ogp.url + "/" + id + "/")
-            meta(property="og:site_name", content=config.site.ogp.site_name)
-            meta(property="og:image", content=config.site.ogp.image)
-
-        //- リンクファイル
-        block link
-            link(rel='icon', href=config.favicon)
-            link(rel='shortcut icon', href=config.favicon)
-            link(rel='apple-touch-icon', href=config["apple-touch-icon"])
-
-
-        //- スタイルシート
-        block stylesheet
-            link(rel='stylesheet', href="/assets/css/style.css")
-
-        //- ヘッダーに組み込むスクリプト
-        block head_script
-
-    body(class!=bodyClass)
-
-        //- スマホメニューのボタン
-        a(href="#").slidebar-button.js-slidebar-button
-            i.fa.fa-bars
-            span メニュー
+    //- リンクファイル
+    block link
+      link(rel='icon', href=config.favicon)
+      link(rel='shortcut icon', href=config.favicon)
+      link(rel='apple-touch-icon', href=config["apple-touch-icon"])
 
 
-        .slidebar-menu.js-slidebar-menu
-            ul
-                each item in config.pages
-                    li
-                        a(href="/" + item.name + ".html")= item.title
+    //- スタイルシート
+    block stylesheet
+      +link("/assets/css/style.css")(rel="stylesheet")
 
-        //- スマホメニュー用のコンテナ
-        .slidebar-container.js-slidebar-container
-            //- ヘッダー
-            block header
-                include /inc/layout/_header.pug
+    //- ヘッダーに組み込むスクリプト
+    block head_script
 
-            //- グローバルナビゲーション
-            block global_nav
-                include /inc/layout/_global-nav.pug
+  body(class!=current.bodyClass)
 
-            //- メインコンテンツ
-            block body
+    //- スマホメニューのボタン
+    a(href="#").slidebar-button.js-slidebar-button
+      i.fa.fa-bars
+      span メニュー
 
 
-            //- フッター
-            block footer
-                include /inc/layout/_footer.pug
+    .slidebar-menu.js-slidebar-menu
+      ul
+        each item in config.pages
+          li
+            +a("/" + item.name + "/")= item.title
 
-            //- フッターに組み込むスクリプト
-            block footer_scripts
+    //- スマホメニュー用のコンテナ
+    .slidebar-container.js-slidebar-container
+      //- ヘッダー
+      block header
+        include /inc/layout/_header.pug
 
-                script(src='/bower_components/jquery/dist/jquery.js')
-                script(src='/assets/js/app.js')
-                script(src='/assets/js/scripts.js')
+      //- グローバルナビゲーション
+      block global_nav
+        include /inc/layout/_global-nav.pug
+
+      //- メインコンテンツ
+      block body
+
+
+      //- フッター
+      block footer
+        include /inc/layout/_footer.pug
+
+      //- フッターに組み込むスクリプト
+      block footer_scripts
+
+        +script('/bower_components/jquery/dist/jquery.js')
+        +script('/assets/js/app.js')
+        +script('/assets/js/scripts.js')
 
 
