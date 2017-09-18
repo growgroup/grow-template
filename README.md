@@ -145,6 +145,17 @@ app/inc/_settings.pug ファイルの値を変更することで、
 
 ```
 
+#### 注意点
+
+* a,link,script,img タグなど、パスを記述するタグについては、mixin をそれぞれ利用してください。
+
+```pug
++a("/about/")
++link("/assets/css/style.css")(rel="stylesheet")
++script("/assets/js/scripts.js")
++img("img-demo01.jpg", "alt属性の値")
+```
+
 ### Sass
 
 本テンプレートでは SCSS を採用しています。  
