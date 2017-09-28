@@ -209,9 +209,7 @@ gulp.task('styles', () => {
     }))
     .pipe($.size({title: 'styles'}))
     .pipe(gulp.dest(config.sass.dist))
-    .pipe(BS.stream({
-      match: APPPATH + "/**/*.css"
-    }))
+    .pipe(BS.stream())
     .pipe($.notify("Styles Task Completed!"));
 });
 
@@ -283,9 +281,7 @@ gulp.task('scripts', () => {
     .pipe(gulp.dest(config.js.dist))
     .pipe($.size({title: 'scripts'}))
     .pipe($.sourcemaps.write('.'))
-    .pipe(BS.stream({
-      match: APPPATH + "/**/*.js"
-    }))
+    .pipe(BS.stream())
     .pipe($.notify("Scripts Task Completed!"));
 });
 
