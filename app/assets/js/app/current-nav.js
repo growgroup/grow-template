@@ -54,12 +54,13 @@ export default class CurretnNav {
       var href = this.isHttp(href);
       href = this.isIndexPage(href);
       if (this.isMatch(href)) {
-        $(this.target[i]).closest("li").addClass(this.activeClass);
+        $(this.target[i]).addClass(this.activeClass);
       }
     }
   }
 
   isMatch(path) {
+    path = path.replace(/^(.*(?:\.\.?))/,'')
     if (this.currentPathname === path) {
       return true;
     }
