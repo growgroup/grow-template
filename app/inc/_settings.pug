@@ -10,6 +10,7 @@
     description: "",
     bodyClass: ""
   }
+
   config = {
 
     get rootpath(){
@@ -120,6 +121,34 @@
     },
   }
 
+  cssrules = {
+    component: [],
+    cleanComponent: function(){
+      var tempComponents = []
+      for(var key in cssrules.component){
+        tempComponents.push(cssrules.component[key])
+      }
+      cssrules.component = tempComponents
+    },
+    addComponent: function(component){
+      cssrules.cleanComponent()
+      cssrules.component.push(component)
+    },
+    getComponent: function(number){
+      if ( typeof cssrules.component[cssrules.component.length-(number+1)] !== "undefined" ){
+        return cssrules.component[cssrules.component.length-(number+1)]
+      }
+      return false
+    },
+    get currentComponent(){
+      cssrules.cleanComponent()
+      if ( typeof cssrules.component[cssrules.component.length-1] !== "undefined" ){
+        return cssrules.component[cssrules.component.length-1]
+      }
+      return false
+    },
+    element: "",
+  }
 
   // ページごとの情報を取得
   getPagesValue = function(id,key){
@@ -131,13 +160,17 @@
       return config.site[key]
     }
     return "";
-  },
+  }
   // ナビゲーションを取得
   nav = function(id) {
     if ( typeof config.navs[id] === "undefined" ){
       return false;
     }
     return config.navs[id]
+  }
+
+  isUpperCase = function(word){
+    return (word[0] === word[0].toUpperCase());
   }
 
 

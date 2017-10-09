@@ -243,6 +243,20 @@ gulp.task('pug', () => {
       cache: true,
       escapePre: true,
       basedir: APPPATH,
+      locals: {
+        addComponentFile: function (componentName) {
+          var componentPath = APPPATH + '/assets/' + SASS_EXTENSION + '/object/components/_' + componentName + '.' + SASS_EXTENSION
+          try {
+            fs.statSync(componentPath)
+            return true
+          } catch (err) {
+            fs.writeFile(componentPath, " ", (err) => {
+              if (err) throw err;
+            });
+            return false
+          }
+        }
+      },
       filters: {
         // 改行をbrに置換
         'gt-textblock': function (text, options) {
