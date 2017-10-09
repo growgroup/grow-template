@@ -1,4 +1,4 @@
-//- 1カラムのベースファイル
+//- 2カラムのベースファイル
 extends /inc/foundation/_head.pug
 block layout
   //- ヘッダー
@@ -9,11 +9,17 @@ block layout
   block global_nav
     include /inc/layout/_global-nav.pug
 
-  //- ページヘッダー
+  // ページヘッダー
   block page_header
 
-  //- メインコンテンツ
-  block body
+  .l-wrapper
+    .l-container
+      .l-main
+        //- メインコンテンツ
+        block body
+
+      .l-aside
+        block aside
 
   //- フッター
   block footer

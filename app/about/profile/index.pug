@@ -1,4 +1,4 @@
-extends /inc/foundation/_base.pug
+extends /inc/foundation/_base-twocolumn.pug
 block append config
   - current.id = "profile" // ページのID
   - current.title = "会社概要" // タイトル
@@ -6,45 +6,48 @@ block append config
   - current.bodyClass = "profile" // body に付与するクラス
   - current.depth = 3 // ページの階層
 
-block body
+block page_header
   +c_page_header(false,current.title)
 
-  section.l-main
-    .l-section
-      h2.heading.is-xlg 見出し大
-      .p-landing-block
-        .p-landing-block__thumbnail(style="background-image: url(/assets/images/example01.jpg)")
-        .p-landing-block__content
-          .p-landing-block__content__inner
-            h3.heading.is-lg タイトル1タイトル1タイトル1
-            p
-              | テキストテキストテキストテキストテキストテキストテキスト
-              | テキストテキストテキストテキストテキストテキストテキスト
-              | テキストテキストテキストテキストテキストテキストテキスト
-              | テキストテキストテキストテキストテキストテキストテキスト
-              | テキストテキストテキストテキストテキストテキストテキスト
-      .p-landing-block
-        .p-landing-block__content
-          .p-landing-block__content__inner
-            h3.heading.is-lg タイトル1タイトル1タイトル1
-            p
-              | テキストテキストテキストテキストテキストテキストテキスト
-              | テキストテキストテキストテキストテキストテキストテキスト
-              | テキストテキストテキストテキストテキストテキストテキスト
-              | テキストテキストテキストテキストテキストテキストテキスト
-              | テキストテキストテキストテキストテキストテキストテキスト
-        .p-landing-block__thumbnail(style="background-image: url(/assets/images/example02.jpg)")
+block body
+  .l-section
+    h2.heading.is-xlg 見出し大
+    .p-landing-block
+      .p-landing-block__thumbnail(style="background-image: url(/assets/images/example01.jpg)")
+      .p-landing-block__content
+        .p-landing-block__content__inner
+          h3.heading.is-lg タイトル1タイトル1タイトル1
+          p
+            | テキストテキストテキストテキストテキストテキストテキスト
+            | テキストテキストテキストテキストテキストテキストテキスト
+            | テキストテキストテキストテキストテキストテキストテキスト
+            | テキストテキストテキストテキストテキストテキストテキスト
+            | テキストテキストテキストテキストテキストテキストテキスト
+    .p-landing-block
+      .p-landing-block__content
+        .p-landing-block__content__inner
+          h3.heading.is-lg タイトル1タイトル1タイトル1
+          p
+            | テキストテキストテキストテキストテキストテキストテキスト
+            | テキストテキストテキストテキストテキストテキストテキスト
+            | テキストテキストテキストテキストテキストテキストテキスト
+            | テキストテキストテキストテキストテキストテキストテキスト
+            | テキストテキストテキストテキストテキストテキストテキスト
+      .p-landing-block__thumbnail(style="background-image: url(/assets/images/example02.jpg)")
 
-      .p-landing-block
-        .p-landing-block__thumbnail(style="background-image: url(/assets/images/example03.jpg)")
-        .p-landing-block__content
-          .p-landing-block__content__inner
-            h3.heading.is-lg タイトル1タイトル1タイトル1
-            p
-              | テキストテキストテキストテキストテキストテキストテキスト
-              | テキストテキストテキストテキストテキストテキストテキスト
-              | テキストテキストテキストテキストテキストテキストテキスト
-              | テキストテキストテキストテキストテキストテキストテキスト
-              | テキストテキストテキストテキストテキストテキストテキスト
+    .p-landing-block
+      .p-landing-block__thumbnail(style="background-image: url(/assets/images/example03.jpg)")
+      .p-landing-block__content
+        .p-landing-block__content__inner
+          h3.heading.is-lg タイトル1タイトル1タイトル1
+          p
+            | テキストテキストテキストテキストテキストテキストテキスト
+            | テキストテキストテキストテキストテキストテキストテキスト
+            | テキストテキストテキストテキストテキストテキストテキスト
+            | テキストテキストテキストテキストテキストテキストテキスト
+            | テキストテキストテキストテキストテキストテキストテキスト
 
-      +c_offer()
+    +c_offer()
+
+block aside
+  p テスト

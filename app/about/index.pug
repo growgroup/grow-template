@@ -6,9 +6,11 @@ block append config
   - current.bodyClass = "about" // body に付与するクラス
   - current.depth = 2 // ページの階層
 
-block body
-  // メインビジュアル
+block page_header
+  // ページヘッダー
   +c_page_header(false,current.title)
+
+block body
   section.l-main
     .l-section
       h2.heading.is-xlg 見出し大

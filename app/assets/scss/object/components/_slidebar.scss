@@ -31,7 +31,7 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
   .slidebar-button {
     display: none !important;
   }
-  .slidebar-menu{
+  .slidebar-menu {
     display: none !important;
   }
 }
@@ -55,7 +55,7 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
     > span {
       display: block;
       text-align: center;
-      font-size:rem-calc(9);
+      font-size: rem-calc(9);
     }
   }
 
@@ -72,6 +72,17 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
     top: 0;
     -webkit-transition: $slidebar-menu-eaasing;
     transition: $slidebar-menu-eaasing;
+
+    // 上から下へ
+    &.is-top-to-bottom {
+      -webkit-transform: translateX(0%);
+      -webkit-transform: translateY(-100%);
+      transform: translate3d(0px, -100%, 0px);
+      height: auto;
+      width: 100%;
+      opacity: 0;
+    }
+
     > ul > li {
       a {
         display: block;
@@ -129,13 +140,26 @@ $slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
         top: 0;
         left: 0;
       }
+
+      // 上から下の場合
+      &.is-top-to-bottom {
+        -webkit-transform: translateX(0px);
+        transform: translate3d(0px, 0px, 0px);
+        &:after {
+          top: 100px;
+        }
+      }
     }
+
 
     .slidebar-menu {
       -webkit-transform: translateX(0);
       transform: translate3d(0, 0, 0);
+      &.is-top-to-bottom {
+        -webkit-transform: translateX(100px);
+        transform: translate3d(0, 100px, 0);
+        opacity: 1;
+      }
     }
-
   }
-
 }

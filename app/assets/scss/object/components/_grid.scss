@@ -15,30 +15,30 @@
 // Styleguide 2.2.0
 
 $susy: (
-        flow: ltr,
-        math: fluid,
-        output: fluid,
-        gutter-position: inside-static,
-        container: $grid-row-width,
-        container-position: center,
-        columns: $grid-column-count,
-        gutters: map_get($grid-column-responsive-gutter,medium)/60px,
-        column-width: 60px,
-        global-box-sizing: b order-box,
-        last-flow: to,
-        debug: (
-                image: hide,
-                color: rgba(#66f, .25),
-                output: background,
-                toggle: top right,
-        ),
-        use-custom: (
-                background-image: true,
-                background-options: false,
-                box-sizing: true,
-                clearfix: false,
-                rem: true,
-        )
+  flow: ltr,
+  math: fluid,
+  output: fluid,
+  gutter-position: inside-static,
+  container: $grid-row-width,
+  container-position: center,
+  columns: $grid-column-count,
+  gutters: map_get($grid-column-responsive-gutter,medium)/60px,
+  column-width: 60px,
+  global-box-sizing: b order-box,
+  last-flow: to,
+  debug: (
+    image: hide,
+    color: rgba(#66f, .25),
+    output: background,
+    toggle: top right,
+  ),
+  use-custom: (
+    background-image: true,
+    background-options: false,
+    box-sizing: true,
+    clearfix: false,
+    rem: true,
+  )
 );
 
 // グリッド : コンテナー
@@ -75,9 +75,13 @@ $susy: (
 @for $i from 1 through $grid-column-count {
   .small-#{$i} {
     @include span($i);
+    padding-left: (map_get($grid-column-responsive-gutter,small)/2);
+    padding-right: (map_get($grid-column-responsive-gutter,small)/2);
   }
   .is-push-sm-#{$i} {
     @include push($i);
+    padding-left: (map_get($grid-column-responsive-gutter,small)/2);
+    padding-right: (map_get($grid-column-responsive-gutter,small)/2);
   }
 }
 
