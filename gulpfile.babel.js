@@ -250,7 +250,7 @@ gulp.task('pug', () => {
             fs.statSync(componentPath)
             return true
           } catch (err) {
-            fs.writeFile(componentPath, " ", (err) => {
+            fs.writeFile(componentPath, "", (err) => {
               if (err) throw err;
             });
             return false
