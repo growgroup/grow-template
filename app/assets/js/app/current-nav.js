@@ -7,7 +7,7 @@ var defaultOptions = {
   include_children: true
 }
 
-export default class CurretnNav {
+export default class CurrentNav {
 
   constructor(options) {
     this.options = $.extend(defaultOptions, options)
