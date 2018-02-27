@@ -150,7 +150,6 @@ function pugMiddleWare (req, res, next) {
 config.browserSync = {
  notify: false,
  open: true,
- port: 3001,
  ghostMode: {
   clicks: false,
   forms: false,
@@ -443,33 +442,6 @@ gulp.task('lint', () => {
 
 /**
  * =================================
- * # Watch
- * ファイルを監視
- * =================================
- */
-
-gulp.task('setWatch', function () {
- global.isWatching = true;
-});
-
-gulp.task('watch', ['setWatch', 'browserSync'], () => {
-
- gulp.watch([APPPATH + '/**/*.pug'], [BS.reload]);
- gulp.watch([APPPATH + '/bower_components/**/*'], ['copy', BS.reload]);
- gulp.watch([APPPATH + '/assets/**/*.es6'], ['babel', BS.reload]);
- gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles']);
- gulp.watch([APPPATH + '/assets/js/scripts.js'], ['lint', 'scripts']);
- gulp.watch([APPPATH + '/assets/js/app/*.js', APPPATH + '/assets/js/app.js'], ['lint', 'babel_app']);
- gulp.watch([APPPATH + '/assets/images/**/*'], ['images']);
-
-});
-
-gulp.task('watch:styleguide', () => {
- gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', BS.stream()]);
-})
-
-/**
- * =================================
  * # Copy
  * dist ディレクトリへ app ディレクトリからファイルをコピー
  * =================================
@@ -587,6 +559,33 @@ function makeWordPressFile() {
 gulp.task('wp', function () {
  makeWordPressFile();
 });
+
+/**
+ * =================================
+ * # Watch
+ * ファイルを監視
+ * =================================
+ */
+
+gulp.task('setWatch', function () {
+ global.isWatching = true;
+});
+
+gulp.task('watch', ['setWatch', 'browserSync'], () => {
+
+ gulp.watch([APPPATH + '/**/*.pug'], [BS.reload]);
+ gulp.watch([APPPATH + '/bower_components/**/*'], ['copy', BS.reload]);
+ gulp.watch([APPPATH + '/assets/**/*.es6'], ['babel', BS.reload]);
+ gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles']);
+ gulp.watch([APPPATH + '/assets/js/scripts.js'], ['lint', 'scripts']);
+ gulp.watch([APPPATH + '/assets/js/app/*.js', APPPATH + '/assets/js/app.js'], ['lint', 'babel_app']);
+ gulp.watch([APPPATH + '/assets/images/**/*'], ['images']);
+
+});
+
+gulp.task('watch:styleguide', () => {
+ gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', BS.stream()]);
+})
 
 /**
  * =================================
