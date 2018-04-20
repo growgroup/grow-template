@@ -572,15 +572,13 @@ gulp.task('setWatch', function () {
 });
 
 gulp.task('watch', ['setWatch', 'browserSync'], () => {
-
- gulp.watch([APPPATH + '/**/*.pug'], [BS.reload]);
- gulp.watch([APPPATH + '/bower_components/**/*'], ['copy', BS.reload]);
- gulp.watch([APPPATH + '/assets/**/*.es6'], ['babel', BS.reload]);
+ gulp.watch([APPPATH + '/**/*.pug'], BS.reload);
+ gulp.watch([APPPATH + '/bower_components/**/*'], ['copy'] );
+ gulp.watch([APPPATH + '/assets/**/*.es6'], ['babel']);
  gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles']);
- gulp.watch([APPPATH + '/assets/js/scripts.js'], ['lint', 'scripts']);
- gulp.watch([APPPATH + '/assets/js/app/*.js', APPPATH + '/assets/js/app.js'], ['lint', 'babel_app']);
+ gulp.watch([APPPATH + '/assets/js/scripts.js'], ['scripts']);
+ gulp.watch([APPPATH + '/assets/js/app/*.js', APPPATH + '/assets/js/app.js'], ['babel_app']);
  gulp.watch([APPPATH + '/assets/images/**/*'], ['images']);
-
 });
 
 gulp.task('watch:styleguide', () => {
