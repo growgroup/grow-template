@@ -18,10 +18,10 @@
   // グリッドの対応
   @for $i from 1 through $grid-column-count {
     .large-#{$i} {
-      @include span($i);
+      width: span($i);
     }
     .is-push-lg-#{$i} {
-      @include push($i);
+      width: push($i);
     }
   }
 }

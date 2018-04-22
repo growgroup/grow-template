@@ -27,10 +27,10 @@ import gulp from 'gulp'
 import runSequence from 'run-sequence'
 import browserSync from 'browser-sync'
 import fs from 'fs'
-import buffer from 'vinyl-buffer'
 import stream from 'vinyl-source-stream'
-import browserify from 'browserify'
-import babelify from 'babelify'
+import webpackStream from 'webpack-stream';
+import webpack from 'webpack';
+import webpackConfig from './webpack.config';
 import del from 'del'
 import styleguide from "sc5-styleguide"
 import gulpLoadPlugins from 'gulp-load-plugins'
@@ -187,21 +187,13 @@ config.js = {
  dist: DISTPATH + "/assets/js/",
 }
 
-/**
- * 設定 - Babel
- */
-config.babel = {
- src: APPPATH + "/assets/es6/index.es6",
- dist: DISTPATH + "/assets/js/",
-}
 
 /**
- * 設定 - Jade
+ * 設定 - Pug
  */
 config.pug = {
  src: [APPPATH + '/*.pug', APPPATH + '/**/*.pug'],
  dist: DISTPATH + "/",
- settingsFilePath: "./pug-settings.json",
 }
 
 /**
@@ -292,7 +284,7 @@ gulp.task('styles', () => {
   }))
   .pipe($.size({title: 'styles'}))
   .pipe(gulp.dest(config.sass.dist))
-  .pipe(BS.stream())
+  .pipe(BS.reload({stream: true}))
   .pipe($.notify("Styles Task Completed!"));
 });
 
@@ -382,48 +374,19 @@ gulp.task('scripts', () => {
   .pipe($.notify("Scripts Task Completed!"));
 });
 
-
-/**
- * =================================
- * # Babel
- * es6 のコンパイル
- * =================================
- */
-gulp.task('babel', () => {
- browserify({
-  entries: [config.babel.src]
- })
-  .transform(babelify)
-  .bundle()
-  .on("error", function (err) {
-   console.log("Error : " + err.message);
-  })
-  .pipe(stream('index.js'))
-  .pipe(buffer())
-  .pipe(gulp.dest(config.babel.dist))
-  .pipe($.notify({message: 'Babel task complete！'}));
-});
-
-
 /**
  * 初期状態で読み込む js
  */
-gulp.task('babel_app', () => {
- browserify({
-  entries: ["./app/assets/js/app.js"]
- })
-  .transform(babelify)
-  .bundle()
-  .on("error", function (err) {
-   console.log("Error : " + err.message);
-  })
-  .pipe(stream('app.js'))
-  .pipe(buffer())
-  .pipe($.sourcemaps.init())
-  .pipe($.uglify({compress: true}))
-  .pipe($.sourcemaps.write())
-  .pipe(gulp.dest(config.babel.dist))
-  .pipe($.notify({message: 'Babel App task complete！'}));
+gulp.task('webpack', () => {
+ return gulp.src([
+      APPPATH + "/assets/js/app.js",
+      APPPATH + "/assets/js/app/*.js"
+    ])
+    .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
+    .pipe(webpackStream(webpackConfig, webpack))
+    .pipe($.uglify({compress: true}))
+    .pipe(gulp.dest( DISTPATH + "/assets/js"))
+    .pipe($.notify({message: 'webpack App task complete！'}));
 });
 
 
@@ -434,7 +397,7 @@ gulp.task('babel_app', () => {
  * =================================
  */
 gulp.task('lint', () => {
- gulp.src(config.js.src)
+ return gulp.src(config.js.src)
   .pipe($.eslint())
   .pipe($.eslint.format())
   .pipe($.if(!BS.active, $.eslint.failOnError()))
@@ -459,13 +422,14 @@ gulp.task('copy:app', () => {
   '!./' + APPPATH + '/assets/js/app/*.js',
  ], {
   dot: true,
-  base: "app"
+  base: "app",
+  allowEmpty: true
  })
   .pipe(gulp.dest(DISTPATH))
   .pipe($.size({title: 'copy'}));
 });
 
-gulp.task('copy', ['copy:app']);
+gulp.task('copy', gulp.parallel('copy:app'));
 
 /**
  * =================================
@@ -533,7 +497,11 @@ gulp.task('styleguide:applystyles', () => {
   .pipe(gulp.dest(SG5OUTPUTPATH));
 });
 
-gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles', 'watch:styleguide']);
+gulp.task('watch:styleguide', () => {
+ gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', BS.stream()]);
+})
+
+gulp.task('styleguide', gulp.parallel('styleguide:generate', 'styleguide:applystyles', 'watch:styleguide'));
 
 /**
  * =================================
@@ -571,35 +539,34 @@ gulp.task('setWatch', function () {
  global.isWatching = true;
 });
 
-gulp.task('watch', ['setWatch', 'browserSync'], () => {
- gulp.watch([APPPATH + '/**/*.pug'], BS.reload);
- gulp.watch([APPPATH + '/bower_components/**/*'], ['copy'] );
- gulp.watch([APPPATH + '/assets/**/*.es6'], ['babel']);
- gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles']);
- gulp.watch([APPPATH + '/assets/js/scripts.js'], ['scripts']);
- gulp.watch([APPPATH + '/assets/js/app/*.js', APPPATH + '/assets/js/app.js'], ['babel_app']);
- gulp.watch([APPPATH + '/assets/images/**/*'], ['images']);
-});
+gulp.task('watch', gulp.parallel('setWatch', 'browserSync', (done) => {
+ gulp.watch([APPPATH + '/**/*.pug'], gulp.parallel(BS.reload));
+ gulp.watch([APPPATH + '/bower_components/**/*'], gulp.parallel('copy'));
+ gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], gulp.parallel('styles'));
+ gulp.watch([APPPATH + '/assets/js/scripts.js'], gulp.parallel('scripts'));
+ gulp.watch([APPPATH + '/assets/js/app/*.js', APPPATH + '/assets/js/app.js'], gulp.parallel('webpack'));
+ gulp.watch([APPPATH + '/assets/images/**/*'], gulp.parallel('images'));
+ done()
+}));
 
-gulp.task('watch:styleguide', () => {
- gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', BS.stream()]);
-})
 
 /**
  * =================================
  * gulp コマンドで呼び出されるデフォルトのタスク
  * =================================
  */
-gulp.task('default', ['clean'], cb => {
- runSequence(
+gulp.task('default', gulp.series(
+  'clean',
   'styles',
-  ['lint', 'scripts', 'copy', 'babel', 'babel_app'],
+  'lint',
+  'scripts',
+  'copy',
+  'webpack',
   'watch',
   'images',
   'wp',
-  cb
  )
-});
+);
 
 /**
  * =================================
@@ -607,10 +574,14 @@ gulp.task('default', ['clean'], cb => {
  * gulp コマンドで呼び出されるデフォルトのタスク
  * =================================
  */
-gulp.task('build', ['clean'], cb => {
- runSequence(
+gulp.task('build', gulp.series(
+  'clean',
   'styles',
-  ['lint', 'pug', 'scripts', 'copy', 'babel', 'images', 'babel_app'],
-  cb
+  'lint',
+  'pug',
+  'scripts',
+  'copy',
+  'webpack',
+  'images',
  )
-});
+);

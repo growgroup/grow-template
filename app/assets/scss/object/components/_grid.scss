@@ -21,11 +21,13 @@ $susy: (
   gutter-position: inside-static,
   container: $grid-row-width,
   container-position: center,
-  columns: $grid-column-count,
+  columns: susy-repeat($grid-column-count),
   gutters: map_get($grid-column-responsive-gutter,medium)/60px,
   column-width: 60px,
   global-box-sizing: b order-box,
   last-flow: to,
+  spread: 'wide',
+  container-spread: 'wide',
   debug: (
     image: hide,
     color: rgba(#66f, .25),
@@ -52,13 +54,20 @@ $susy: (
 // Styleguide 2.2.1
 
 .container {
-  @include container($susy);
+  // @include container($susy);
+  max-width: $grid-row-width;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .row {
   margin-left: -(map_get($grid-column-responsive-gutter,medium)/2);
   margin-right: -(map_get($grid-column-responsive-gutter,medium)/2);
-  @include susy-clearfix();
+  // @include susy-clearfix();
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
   @include breakpoint(small only) {
     margin-left: -(map_get($grid-column-responsive-gutter,small)/2);
     margin-right: -(map_get($grid-column-responsive-gutter,small)/2);
@@ -77,12 +86,12 @@ $susy: (
 
 @for $i from 1 through $grid-column-count {
   .small-#{$i} {
-    @include span($i);
+    width: span($i);
     padding-left: (map_get($grid-column-responsive-gutter,small)/2);
     padding-right: (map_get($grid-column-responsive-gutter,small)/2);
   }
   .is-push-sm-#{$i} {
-    @include push($i);
+    margin-left: span($i);
     padding-left: (map_get($grid-column-responsive-gutter,small)/2);
     padding-right: (map_get($grid-column-responsive-gutter,small)/2);
   }
@@ -101,10 +110,12 @@ $susy: (
 @include breakpoint(medium only) {
   @for $i from 1 through $grid-column-count {
     .medium-#{$i} {
-      @include span($i);
+      width: span($i);
+      padding-left: (map_get($grid-column-responsive-gutter,medium)/2);
+      padding-right: (map_get($grid-column-responsive-gutter,medium)/2);
     }
     .is-push-md-#{$i} {
-      @include push($i);
+      margin-left: span($i);
     }
   }
 }
@@ -122,10 +133,12 @@ $susy: (
 @include breakpoint(large) {
   @for $i from 1 through $grid-column-count {
     .large-#{$i} {
-      @include span($i);
+      width: span($i);
+      padding-left: (map_get($grid-column-responsive-gutter,medium)/2);
+      padding-right: (map_get($grid-column-responsive-gutter,medium)/2);
     }
     .is-push-lg-#{$i} {
-      @include push($i);
+      margin-left: span($i);
     }
   }
 }
