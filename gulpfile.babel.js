@@ -54,7 +54,7 @@ const BS = browserSync.create();
 const RELOAD = BS.reload;
 
 // Sass or Scss
-const SASS_EXTENSION = "scss";
+const SASS_EXTENSION = "sass";
 
 /**
  * =================================
@@ -539,8 +539,13 @@ gulp.task('setWatch', function () {
  global.isWatching = true;
 });
 
+gulp.task('reload', function (done) {
+  BS.reload();
+  done();
+});
+
 gulp.task('watch', gulp.parallel('setWatch', 'browserSync', (done) => {
- gulp.watch([APPPATH + '/**/*.pug'], gulp.parallel(BS.reload));
+ gulp.watch([APPPATH + '/**/*.pug'], gulp.parallel('reload'));
  gulp.watch([APPPATH + '/bower_components/**/*'], gulp.parallel('copy'));
  gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], gulp.parallel('styles'));
  gulp.watch([APPPATH + '/assets/js/scripts.js'], gulp.parallel('scripts'));
