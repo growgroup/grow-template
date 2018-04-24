@@ -54,7 +54,7 @@ const BS = browserSync.create();
 const RELOAD = BS.reload;
 
 // Sass or Scss
-const SASS_EXTENSION = "sass";
+const SASS_EXTENSION = "scss";
 
 /**
  * =================================
