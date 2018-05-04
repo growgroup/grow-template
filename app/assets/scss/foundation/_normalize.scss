@@ -11,6 +11,9 @@ html {
   font-family: $font-base-family; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
+  @include breakpoint(small only) {
+    font-family: sans-serif;
+  }
 }
 
 * {

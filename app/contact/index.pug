@@ -7,112 +7,102 @@ block append config
   - current.depth = 2 // ページの階層
 
 block body
-    +c_page_header(false, "お問い合わせ")
-    .l-container
-      .c-breadcrumb
-        ul
-          li
-            a(href="#") HOME
-          li
-            span >
-          li
-            span CONTACT
-    section.l-main
-      .l-section
-        .l-container
-          +contactform("name","action",[
-            {
-              label: "氏名",
-              type: "text",
-              name: "name",
-              require: true,
-              attributes: {
-                placeholder: "お名前をご記入ください"
-              }
-            }, {
-              label: "フリガナ",
-              type: "text",
-              name: "kana",
-              require: true,
-              attributes: {
-                placeholder: "フリガナをご記入ください"
-              }
-            }, {
-              label: "メールアドレス",
-              type: "text",
-              name: "address",
-              require: true,
-              attributes: {
-                placeholder: "メールアドレスをご記入ください"
-              }
-            }, {
-              label: "TEL",
-              type: "text",
-              name: "address",
-              require: false,
-              attributes: {
-                placeholder: "お電話番号をご記入ください"
-              }
-            }, {
-              label: "ご住所",
-              type: "text",
-              name: "addr2",
-              require: false,
-            }, {
-              label: "お問い合わせ種別",
-              type: "radio",
-              name: "type",
-              require: true,
-              options: [
-                {
-                  value: "1",
-                  label: "採用について"
-                }, {
-                  value: "2",
-                  label: "講習・セミナーについて"
-                }, {
-                  value: "3",
-                  label: "その他"
-                }
-              ]
-            }, {
-              label: "ご相談内容",
-              type: "textarea",
-              name: "addr2",
-              require: true,
-            }, {
-              label: "当サイトを知ったきっかけは？",
-              type: "radio",
-              name: "type",
-              require: true,
-              options: [
-                {
-                  value: "1",
-                  label: "知人の紹介"
-                }, {
-                  value: "2",
-                  label: "SNS"
-                }, {
-                  value: "3",
-                  label: "ホームページ"
-                }, {
-                  value: "4",
-                  label: "その他"
-                }
-              ]
-            },
-          ])
+  +c_page_header(false, "お問い合わせ")
+  .l-container
+    .c-breadcrumb
+      ul
+        li
+          a(href="#") HOME
+        li
+          span >
+        li
+          span CONTACT
+  section.l-main
+    .l-section
+      .l-container
+        .c-contact-head
+          .c-contact-head__text
+            | お電話でのお問い合わせは下記からお願いたします。
+          .c-contact-head__arrow
+          .c-contact-head__tel
+            a(href="tel:00-0000-0000")
+              i.fa.fa-phone(aria-hidden="true")
+              | 00-0000-0000
+          .c-contact-head__text
+            | 各項目入力後、画面下部の【確認画⾯へ】 ボタンをクリックしていただきますと、入力内容を確認していただけます。
+            br
+            | 内容を確認後、【送信】ボタンを押して下さい。
 
-          .p-privacy
-            h4 個人情報の取扱について
-            p
-              | 入力された個人情報は、当社からの連絡を目的で収集するものであり、原則として、
-              br
-              | ご本人の承諾なく第三者に開示・提供いたしません。
-          p.u-text-center
-            button.c-button.is-lg.is-outline 確認画面へ進む
+        .row.u-mbs.is-top.is-lg
+          .large-10.is-push-lg-1.small-12
+            form(name="name" action="action")
+              .c-form
+                // 会社名
+                .c-form-block
+                  .c-form-block__title
+                    span 会社名
+                    span.c-label.is-required 必須
+                  .c-form-block__content
+                    input.c-form-block__input.required(name="会社名" type="text", placeholder="会社名をご入力ください")
+                // 氏名
+                .c-form-block
+                  .c-form-block__title
+                    span 氏名
+                    span.c-label.is-required 必須
+                  .c-form-block__content
+                    input.c-form-block__input.required(name="氏名" type="text", placeholder="ご氏名をご入力ください")
+                // 郵便番号
+                .c-form-block
+                  .c-form-block__title
+                    span 郵便番号
+                    span.c-label.is-required 必須
+                  .c-form-block__content
+                    input.c-form-block__input.required.is-sm(name="郵便番号" type="text", placeholder="郵便番号をご入力ください")
+                    button.c-button.is-form#zipauto 住所自動入力
+                // ご住所
+                .c-form-block
+                  .c-form-block__title
+                    span ご住所
+                    span.c-label.is-required 必須
+                  .c-form-block__content
+                    input.c-form-block__input.required(name="ご住所" type="text", placeholder="ご住所をご入力ください")
+                // 建物名など
+                .c-form-block
+                  .c-form-block__title
+                    span 建物名など
+                  .c-form-block__content
+                    input.c-form-block__input(name="建物名など" type="text", placeholder="建物名をご入力ください")
+                // 電話番号
+                .c-form-block
+                  .c-form-block__title
+                    span 電話番号
+                    span.c-label.is-required 必須
+                  .c-form-block__content
+                    input.c-form-block__input.required(name="電話番号" type="tel", placeholder="お電話番号をご入力ください")
+                // E-mail
+                .c-form-block
+                  .c-form-block__title
+                    span E-mail
+                    span.c-label.is-required 必須
+                  .c-form-block__content
+                    input.c-form-block__input.required(name="E-mail" type="text", placeholder="メールアドレスをご入力ください")
+                // お問い合わせ内容
+                .c-form-block
+                  .c-form-block__title
+                    span お問い合わせ内容
+                    span.c-label.is-required 必須
+                  .c-form-block__content
+                    textarea.c-form-block__textarea.required(name="お問い合わせ内容", placeholder="お問い合わせ内容をご入力ください")
+              .c-form-block__check
+                input#privaci-policy(type="checkbox" name="#" value="privaci-policy")
+                label.input-label(for="privaci-policy")
+                  a(href="/privacy-policy/") 個人情報保護方針
+                  | の内容に同意する
+              .u-text-center.u-mbs.is-md.is-top
+                button.c-button
+                  span 確認へ
+                  i.fa.fa-angle-right(aria-hidden="true")
 
 
-    section.l-sidebar
 
 

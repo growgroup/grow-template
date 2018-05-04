@@ -46,7 +46,6 @@
     "gulp-svgmin": "^1.2.4",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
-    "gulp-webpack": "^1.5.0",
     "run-sequence": "^2.1.0",
     "sc5-styleguide": "^2.0.4",
     "style-loader": "^0.21.0",
@@ -58,6 +57,7 @@
   },
   "dependencies": {
     "imagesloaded": "^4.1.3",
+    "npm": "^6.0.0",
     "owl.carousel": "^2.3.4"
   },
   "skipInheritances": [

@@ -5,17 +5,19 @@ block layout
   block header
     include /inc/layout/_header.pug
 
-  //- グローバルナビゲーション
-  block global_nav
-    include /inc/layout/_global-nav.pug
+  //- スマホメニュー用のコンテナ
+  .c-slidebar-container.js-slidebar-container.is-top-to-bottom
+    //- グローバルナビゲーション
+    block global_nav
+      include /inc/layout/_global-nav.pug
 
-  //- ページヘッダー
-  block page_header
+    //- ページヘッダー
+    block page_header
 
-  //- メインコンテンツ
-  block body
+    //- メインコンテンツ
+    block body
 
-  //- フッター
-  block footer
-    include /inc/layout/_footer.pug
+    //- フッター
+    block footer
+      include /inc/layout/_footer.pug
 

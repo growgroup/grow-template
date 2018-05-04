@@ -23,20 +23,18 @@
  * # モジュールの読み込み
  * =================================
  */
-import gulp from 'gulp'
-import runSequence from 'run-sequence'
-import browserSync from 'browser-sync'
-import fs from 'fs'
-import stream from 'vinyl-source-stream'
-import webpackStream from 'webpack-stream';
+import gulp from 'gulp';
+import browserSync from 'browser-sync';
+import fs from 'fs';
 import webpack from 'webpack';
+import webpackStream from 'webpack-stream';
 import webpackConfig from './webpack.config';
-import del from 'del'
-import styleguide from "sc5-styleguide"
-import gulpLoadPlugins from 'gulp-load-plugins'
-import pug from 'pug'
-import url from 'url'
-import path from 'path'
+import del from 'del';
+import styleguide from 'sc5-styleguide';
+import gulpLoadPlugins from 'gulp-load-plugins';
+import pug from 'pug';
+import url from 'url';
+import path from 'path';
 
 /**
  * =================================
@@ -54,7 +52,7 @@ const BS = browserSync.create();
 const RELOAD = BS.reload;
 
 // Sass or Scss
-const SASS_EXTENSION = "scss";
+const SASS_EXTENSION = 'scss';
 
 /**
  * =================================
@@ -62,20 +60,22 @@ const SASS_EXTENSION = "scss";
  * =================================
  */
 
-const APPPATH = "app";
-const DISTPATH = "dist";
+const APPPATH = 'app';
+const DISTPATH = 'dist';
 
 // スタイルガイドのアウトプット先
-const SG5OUTPUTPATH = "styleguides";
+const SG5OUTPUTPATH = 'styleguides';
 
 var config = {};
 
-function fileExists(file){
+function fileExists(file) {
  try {
   fs.statSync(file);
-  return true
- } catch(err) {
-  if(err.code === 'ENOENT') return false
+  return true;
+ } catch (err) {
+  if (err.code === 'ENOENT') {
+   return false;
+  }
  }
 }
 
@@ -83,7 +83,7 @@ function fileExists(file){
  * browserSync ミドルウェア
  * pugのコンパイルを動的に対応
  */
-function pugMiddleWare (req, res, next) {
+function pugMiddleWare(req, res, next) {
  const requestPath = url.parse(req.url).pathname;
  // .html or / で終わるリクエストだけを対象とする
  if (!requestPath.match(/(\/|\.html)$/)) {
@@ -97,7 +97,7 @@ function pugMiddleWare (req, res, next) {
  }
 
  // pug のファイルパスに変換
- var pugPath = path.join( APPPATH, htmlPath.replace('.html', '.pug'));
+ var pugPath = path.join(APPPATH, htmlPath.replace('.html', '.pug'));
  // pugファイルがなければ404を返す
  if (!fileExists(pugPath)) {
   return next();
@@ -109,32 +109,34 @@ function pugMiddleWare (req, res, next) {
   cache: false,
   escapePre: true,
   basedir: APPPATH,
-  addComponentFile: function (componentName) {
-   var componentPath = APPPATH + '/assets/' + SASS_EXTENSION + '/object/components/_' + componentName + '.' + SASS_EXTENSION
+  addComponentFile: function(componentName) {
+   var componentPath = APPPATH + '/assets/' + SASS_EXTENSION + '/object/components/_' + componentName + '.' + SASS_EXTENSION;
    try {
-    fs.statSync(componentPath)
-    return true
+    fs.statSync(componentPath);
+    return true;
    } catch (err) {
-    fs.writeFile(componentPath, "", (err) => {
-     if (err) throw err;
+    fs.writeFile(componentPath, '', (err) => {
+     if (err) {
+      throw err;
+     }
     });
-    return false
+    return false;
    }
   },
   filters: {
    // 改行をbrに置換
-   'gt-textblock': function (text, options) {
+   'gt-textblock': function(text, options) {
     return text.replace(/\r?\n/g, '<br>');
    },
    // テキストを改行に合わせてリスト表示
-   'gt-simple-list': function (text, options) {
-    var list = text.split(/\r\n|\r|\n/)
-    var listhtml = []
+   'gt-simple-list': function(text, options) {
+    var list = text.split(/\r\n|\r|\n/);
+    var listhtml = [];
     for (var i = 0; i < list.length; i++) {
-     listhtml.push("<li>" + list[i] + "</li>");
+     listhtml.push('<li>' + list[i] + '</li>');
     }
-    return listhtml.join("");
-   },
+    return listhtml.join('');
+   }
   }
  });
  res.setHeader('Content-Type', 'text/html');
@@ -165,27 +167,27 @@ config.browserSync = {
   ]
  },
  ui: false,
- scrollRestoreTechnique: "cookie"
-}
+ scrollRestoreTechnique: 'cookie'
+};
 
 /**
  * 設定 - Sass
  */
 config.sass = {
- src: APPPATH + "/assets/" + SASS_EXTENSION + "/*." + SASS_EXTENSION,
- dist: DISTPATH + "/assets/css/",
-}
+ src: APPPATH + '/assets/' + SASS_EXTENSION + '/*.' + SASS_EXTENSION,
+ dist: DISTPATH + '/assets/css/'
+};
 
 /**
  * 設定 - JavaScript
  */
 config.js = {
  src: [
-  APPPATH + "/assets/js/scripts.js",
-  "!" + APPPATH + "/assets/js/app/*.js",
+  APPPATH + '/assets/js/scripts.js',
+  '!' + APPPATH + '/assets/js/app/*.js'
  ],
- dist: DISTPATH + "/assets/js/",
-}
+ dist: DISTPATH + '/assets/js/'
+};
 
 
 /**
@@ -193,46 +195,46 @@ config.js = {
  */
 config.pug = {
  src: [APPPATH + '/*.pug', APPPATH + '/**/*.pug'],
- dist: DISTPATH + "/",
-}
+ dist: DISTPATH + '/'
+};
 
 /**
  * 設定 - Images
  */
 config.images = {
- src: APPPATH + "/assets/images/**/*",
- dist: DISTPATH + "/assets/images/",
-}
+ src: APPPATH + '/assets/images/**/*',
+ dist: DISTPATH + '/assets/images/'
+};
 
 /**
  * 設定 - WordPress
  */
 config.wp = {
  // テーマ名
- "Name": "grow-html-template",
+ 'Name': 'grow-html-template',
  // テーマのURI
- "Uri": "http://github.com/growgroup/grow-html-template",
+ 'Uri': 'http://github.com/growgroup/grow-html-template',
  // 著者
- "Author": "growgroup",
+ 'Author': 'growgroup',
  // 著者URL
- "AuthorUri": "http://grow-group.jp",
+ 'AuthorUri': 'http://grow-group.jp',
  // 説明文
- "Description": "HTML Boilerplate",
+ 'Description': 'HTML Boilerplate',
  // バージョン
- "Version": "1.0.0",
+ 'Version': '1.0.0',
  // ライセンス
- "License": "GPL v3 or Later",
+ 'License': 'GPL v3 or Later',
  // ライセンスの詳細が記載されているURI
- "LicenseUri": "",
+ 'LicenseUri': '',
  // 親テーマ名
- "Template": "growp",
+ 'Template': 'growp',
  // タグ
- "Tag": "",
+ 'Tag': '',
  // テキストドメイン
- "TextDomain": "grow-html-template",
+ 'TextDomain': 'grow-html-template',
  // その他
- "Option": "",
-}
+ 'Option': ''
+};
 
 var wpThemeInfo = '@charset "UTF-8";\n'
  + '/*\n'
@@ -258,13 +260,12 @@ var wpThemeInfo = '@charset "UTF-8";\n'
  * =================================
  */
 gulp.task('styles', () => {
-
  // bower がインストールされているかどうかのチェック
  try {
-  fs.statSync(__dirname + "/" + APPPATH + "/bower_components")
+  fs.statSync(__dirname + '/' + APPPATH + '/bower_components');
  } catch (err) {
-  if (err.code === "ENOENT") {
-   console.error('\u001b[33m' + "[Error] Please run \"bower install\" " + '\u001b[0m');
+  if (err.code === 'ENOENT') {
+   console.error('\u001b[33m' + '[Error] Please run "bower install" ' + '\u001b[0m');
    return false;
   }
   ;
@@ -280,12 +281,12 @@ gulp.task('styles', () => {
    includePaths: ['.', 'node_modules/susy/sass']
   }).on('error', $.sass.logError))
   .pipe($.autoprefixer({
-   browsers: ['ie 9', 'Android 4'],
+   browsers: ['ie 9', 'Android 4']
   }))
   .pipe($.size({title: 'styles'}))
   .pipe(gulp.dest(config.sass.dist))
   .pipe(BS.reload({stream: true}))
-  .pipe($.notify("Styles Task Completed!"));
+  .pipe($.notify('Styles Task Completed!'));
 });
 
 /**
@@ -295,7 +296,7 @@ gulp.task('styles', () => {
  * =================================
  */
 gulp.task('browserSync', () => {
- BS.init(config.browserSync)
+ BS.init(config.browserSync);
 });
 
 /**
@@ -310,7 +311,7 @@ gulp.task('pug', () => {
   .pipe($.changed(DISTPATH, {extension: '.html'}))
   .pipe($.if(global.isWatching, $.cached('pug')))
   .pipe($.pugInheritance({basedir: APPPATH, skip: 'node_modules,assets'}))
-  .pipe($.filter(function (file) {
+  .pipe($.filter(function(file) {
    return !/\/_/.test(file.path) && !/^_/.test(file.relative);
   }))
   .pipe($.pug({
@@ -319,39 +320,41 @@ gulp.task('pug', () => {
    escapePre: true,
    basedir: APPPATH,
    locals: {
-    addComponentFile: function (componentName) {
-     var componentPath = APPPATH + '/assets/' + SASS_EXTENSION + '/object/components/_' + componentName + '.' + SASS_EXTENSION
+    addComponentFile: function(componentName) {
+     var componentPath = APPPATH + '/assets/' + SASS_EXTENSION + '/object/components/_' + componentName + '.' + SASS_EXTENSION;
      try {
-      fs.statSync(componentPath)
-      return true
+      fs.statSync(componentPath);
+      return true;
      } catch (err) {
-      fs.writeFile(componentPath, "", (err) => {
-       if (err) throw err;
+      fs.writeFile(componentPath, '', (err) => {
+       if (err) {
+        throw err;
+       }
       });
-      return false
+      return false;
      }
     }
    },
    filters: {
     // 改行をbrに置換
-    'gt-textblock': function (text, options) {
+    'gt-textblock': function(text, options) {
      return text.replace(/\r?\n/g, '<br>');
     },
     // テキストを改行に合わせてリスト表示
-    'gt-simple-list': function (text, options) {
-     var list = text.split(/\r\n|\r|\n/)
-     var listhtml = []
+    'gt-simple-list': function(text, options) {
+     var list = text.split(/\r\n|\r|\n/);
+     var listhtml = [];
      for (var i = 0; i < list.length; i++) {
-      listhtml.push("<li>" + list[i] + "</li>");
+      listhtml.push('<li>' + list[i] + '</li>');
      }
-     return listhtml.join("");
-    },
+     return listhtml.join('');
+    }
    }
   }))
   .pipe(gulp.dest(config.pug.dist))
   .pipe($.size({title: 'HTML'}))
   .pipe(BS.stream())
-  .pipe($.notify("Pug Task Completed!"));
+  .pipe($.notify('Pug Task Completed!'));
 });
 
 /**
@@ -371,7 +374,7 @@ gulp.task('scripts', () => {
   .pipe($.size({title: 'scripts'}))
   .pipe($.sourcemaps.write('.'))
   .pipe(BS.stream())
-  .pipe($.notify("Scripts Task Completed!"));
+  .pipe($.notify('Scripts Task Completed!'));
 });
 
 /**
@@ -379,14 +382,14 @@ gulp.task('scripts', () => {
  */
 gulp.task('webpack', () => {
  return gulp.src([
-      APPPATH + "/assets/js/app.js",
-      APPPATH + "/assets/js/app/*.js"
-    ])
-    .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-    .pipe(webpackStream(webpackConfig, webpack))
-    .pipe($.uglify({compress: true}))
-    .pipe(gulp.dest( DISTPATH + "/assets/js"))
-    .pipe($.notify({message: 'webpack App task complete！'}));
+  APPPATH + '/assets/js/app.js',
+  APPPATH + '/assets/js/app/*.js'
+ ])
+  .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
+  .pipe(webpackStream(webpackConfig, webpack))
+  .pipe($.uglify({compress: true}))
+  .pipe(gulp.dest(DISTPATH + '/assets/js'))
+  .pipe($.notify({message: 'webpack App task complete！'}));
 });
 
 
@@ -400,7 +403,7 @@ gulp.task('lint', () => {
  return gulp.src(config.js.src)
   .pipe($.eslint())
   .pipe($.eslint.format())
-  .pipe($.if(!BS.active, $.eslint.failOnError()))
+  .pipe($.if(!BS.active, $.eslint.failOnError()));
 });
 
 /**
@@ -419,10 +422,10 @@ gulp.task('copy:app', () => {
   '!./' + APPPATH + '/*.pug',
   '!./' + APPPATH + '/**/*.pug',
   '!./' + APPPATH + '/assets/js/app.js',
-  '!./' + APPPATH + '/assets/js/app/*.js',
+  '!./' + APPPATH + '/assets/js/app/*.js'
  ], {
   dot: true,
-  base: "app",
+  base: 'app',
   allowEmpty: true
  })
   .pipe(gulp.dest(DISTPATH))
@@ -473,12 +476,12 @@ gulp.task('styleguide:generate', () => {
    title: 'Grow Template',
    server: true,
    port: 8888,
-   rootPath: "./" + SG5OUTPUTPATH,
-   overviewPath: "./" + 'README.md',
+   rootPath: './' + SG5OUTPUTPATH,
+   overviewPath: './' + 'README.md',
    extraHead: [
     '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>',
     '<script src="/assets/js/vendor.js"></script>',
-    '<script src="/assets/js/app.js"></script>',
+    '<script src="/assets/js/app.js"></script>'
 
    ]
   }))
@@ -499,7 +502,7 @@ gulp.task('styleguide:applystyles', () => {
 
 gulp.task('watch:styleguide', () => {
  gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], ['styles', 'styleguide:applystyles', 'styleguide:generate', BS.stream()]);
-})
+});
 
 gulp.task('styleguide', gulp.parallel('styleguide:generate', 'styleguide:applystyles', 'watch:styleguide'));
 
@@ -513,18 +516,24 @@ gulp.task('styleguide', gulp.parallel('styleguide:generate', 'styleguide:applyst
 function makeWordPressFile() {
  if (wpThemeInfo) {
   fs.writeFile(DISTPATH + '/style.css', wpThemeInfo, (err) => {
-   if (err) throw err;
+   if (err) {
+    throw err;
+   }
   });
-  fs.writeFile(DISTPATH + '/index.php', "", (err) => {
-   if (err) throw err;
+  fs.writeFile(DISTPATH + '/index.php', '', (err) => {
+   if (err) {
+    throw err;
+   }
   });
-  fs.writeFile(DISTPATH + '/functions.php', "", (err) => {
-   if (err) throw err;
+  fs.writeFile(DISTPATH + '/functions.php', '', (err) => {
+   if (err) {
+    throw err;
+   }
   });
  }
 }
 
-gulp.task('wp', function () {
+gulp.task('wp', function() {
  makeWordPressFile();
 });
 
@@ -535,23 +544,24 @@ gulp.task('wp', function () {
  * =================================
  */
 
-gulp.task('setWatch', function () {
+gulp.task('setWatch', function() {
  global.isWatching = true;
 });
 
-gulp.task('reload', function (done) {
-  BS.reload();
-  done();
+gulp.task('reload', function(done) {
+ BS.reload();
+ done();
 });
 
 gulp.task('watch', gulp.parallel('setWatch', 'browserSync', (done) => {
- gulp.watch([APPPATH + '/**/*.pug'], gulp.parallel('reload'));
- gulp.watch([APPPATH + '/bower_components/**/*'], gulp.parallel('copy'));
- gulp.watch([APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}'], gulp.parallel('styles'));
- gulp.watch([APPPATH + '/assets/js/scripts.js'], gulp.parallel('scripts'));
+ gulp.watch(APPPATH + '/**/*.pug', gulp.parallel('reload'));
+ gulp.watch(APPPATH + '/bower_components/**/*', gulp.parallel('copy'));
+ gulp.watch(APPPATH + '/assets/' + SASS_EXTENSION + '/style.{' + SASS_EXTENSION + ',css}', gulp.parallel('styles'));
+ gulp.watch(APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}', gulp.parallel('styles'));
+ gulp.watch(APPPATH + '/assets/js/scripts.js', gulp.parallel('scripts'));
  gulp.watch([APPPATH + '/assets/js/app/*.js', APPPATH + '/assets/js/app.js'], gulp.parallel('webpack'));
  gulp.watch([APPPATH + '/assets/images/**/*'], gulp.parallel('images'));
- done()
+ done();
 }));
 
 
@@ -561,15 +571,15 @@ gulp.task('watch', gulp.parallel('setWatch', 'browserSync', (done) => {
  * =================================
  */
 gulp.task('default', gulp.series(
-  'clean',
-  'styles',
-  'lint',
-  'scripts',
-  'copy',
-  'webpack',
-  'watch',
-  'images',
-  'wp',
+ 'clean',
+ 'styles',
+ 'lint',
+ 'scripts',
+ 'copy',
+ 'webpack',
+ 'watch',
+ 'images',
+ 'wp'
  )
 );
 
@@ -580,13 +590,13 @@ gulp.task('default', gulp.series(
  * =================================
  */
 gulp.task('build', gulp.series(
-  'clean',
-  'styles',
-  'lint',
-  'pug',
-  'scripts',
-  'copy',
-  'webpack',
-  'images',
+ 'clean',
+ 'styles',
+ 'lint',
+ 'pug',
+ 'scripts',
+ 'copy',
+ 'webpack',
+ 'images'
  )
 );

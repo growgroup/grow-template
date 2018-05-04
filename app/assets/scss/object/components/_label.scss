@@ -29,6 +29,15 @@
     text-decoration: none;
   }
 
+  // 問い合わせフォーム
+  &.is-required {
+    min-width: 54px;
+    text-align: center;
+    border-radius: 0;
+    padding: 4px 8px 5px;
+    background-color: $color-state-danger;
+  }
+
   &.is-lg {
     font-size: rem-calc($font-base-size);
   }

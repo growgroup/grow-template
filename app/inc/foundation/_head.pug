@@ -40,9 +40,9 @@ html
 
     //- リンクファイル
     block link
-      link(rel='icon', href=config.favicon)
-      link(rel='shortcut icon', href=config.favicon)
-      link(rel='apple-touch-icon', href=config["apple-touch-icon"])
+      link(rel='icon', href=config.site.favicon)
+      link(rel='shortcut icon', href=config.site.favicon)
+      link(rel='apple-touch-icon', href=config.site["apple-touch-icon"])
 
 
     //- スタイルシート
@@ -55,10 +55,13 @@ html
   body(class!=current.bodyClass)
 
     //- スマホメニューのボタン
-    a(href="#").slidebar-button.js-slidebar-button
-      i.fa.fa-bars
-      span メニュー
-    .slidebar-menu.js-slidebar-menu.is-top-to-bottom
+    a(href="#").c-slidebar-button.js-slidebar-button
+      span.c-slidebar-button__line
+        span
+        span
+        span
+      span.c-slidebar-button__text メニュー
+    .c-slidebar-menu.js-slidebar-menu.is-top-to-bottom
       ul
         each item in nav("global_nav")
           li
@@ -68,9 +71,8 @@ html
               each child_item in item.children
                 li: +a(child_item.url)!= child_item.text
 
-    //- スマホメニュー用のコンテナ
-    .slidebar-container.js-slidebar-container.is-top-to-bottom
-      block layout
+
+    block layout
 
     //- フッターに組み込むスクリプト
     block footer_scripts

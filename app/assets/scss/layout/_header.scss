@@ -10,6 +10,20 @@
 .l-header {
   padding-top: rem-calc(18);
   padding-bottom: rem-calc(18);
+  @include breakpoint(small only) {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    z-index: 100;
+    padding-left: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
 }
 
 // ヘッダー
@@ -21,13 +35,19 @@
   i.fa {
     margin-right: 8px;
   }
+  @include breakpoint(small only) {
+    display: none;
+  }
 }
+
 // ヘッダー
 //
 // ロゴ
 .l-header__logo {
   img {
     max-width: 180px;
+    @include breakpoint(small only) {
+      max-width: 120px;
+    }
   }
-
 }

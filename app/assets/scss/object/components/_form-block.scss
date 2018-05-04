@@ -44,41 +44,61 @@
 // Styleguide 3.4.0
 
 .c-form {
-  border-top: 1px solid $border-base-color;
-  border-bottom: 1px solid $border-base-color;
-  padding-top: 48px;
-  padding-bottom: 48px;
+  margin: 0 auto;
+  @include breakpoint(small only) {
+    width: 100%;
+    border-bottom: none;
+  }
 }
 
 .c-form-block {
-  padding-top: rem-calc(16);
-  padding-bottom: rem-calc(16);
+  padding-top: rem-calc(24);
+  padding-bottom: rem-calc(24);
+  position: relative;
   overflow: hidden;
+  @extend %clearfix;
+  border-bottom: 1px solid $border-base-color;
+  &:first-child {
+    padding-top: 0;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+  @include breakpoint(small only) {
+    border-bottom: 1px dotted #CCC;
+    padding-top: rem-calc(14);
+    padding-bottom: rem-calc(16);
+    font-size: rem-calc(14);
+  }
 
   // 入力項目のラベル
   &__title {
-    padding-left: 80px;
-    font-weight: bold;
+    float: left;
+    width: rem-calc(226);
     position: relative;
+    padding-top: rem-calc(12);
+    @include breakpoint(small only) {
+      width: 100%;
+      float: none;
+      padding-bottom: rem-calc(4);
+      padding-top: 0;
+    }
     .c-label {
-      margin-top: 6px;
-      margin-top: -2px;
+      float: right;
+      margin-top: 1px;
       @include breakpoint(small only) {
         margin-left: 0;
       }
-    }
-    @include breakpoint(small only) {
-      margin-bottom: 20px;
-      padding-left: 50px;
-      width: 100%;
-      float: none;
     }
   }
 
   // 入力項目
   &__content {
-    width: 60%;
-    float: left;
+    margin-left: rem-calc(276);
+    position: relative;
+    @include breakpoint(small only) {
+      margin-left: 0;
+    }
 
     textarea {
       min-height: 200px;
@@ -103,15 +123,87 @@
 
   // ラジオボタンを囲むdiv
   &__radio {
+    padding-top: rem-calc(9);
+    @include breakpoint(small only) {
+      span {
+        display: block;
+      }
+    }
     label {
       display: inline-block;
-      margin-right: 32px;
-      input {
-        margin-right: 8px;
+      margin-right: 24px;
+      margin-left: 5px;
+      font-weight: normal;
+      @include breakpoint(small only) {
+        margin-right: rem-calc(0);
       }
     }
 
   }
 
-}
+  &__text {
+    margin-right: rem-calc(12);
+    @include breakpoint(small only) {
+      position: absolute;
+      top: 12px;
+      left: 0;
+    }
+  }
 
+  &__check {
+    input[type=checkbox] {
+      display: none;
+    }
+    .input-label {
+      position: relative;
+      padding: 0 0 0 29px;
+    }
+    .input-label:hover:after {
+      border-color: #0171bd;
+    }
+    .input-label:after, .input-label:before {
+      position: absolute;
+      content: "";
+      display: block;
+      top: 50%;
+    }
+    .input-label:after {
+      left: 0px;
+      margin-top: -9px;
+      width: 18px;
+      height: 18px;
+      background-color: rgba($font-base-color, 0.1);
+    }
+    .input-label:before {
+      left: 5px;
+      margin-top: -8px;
+      width: 5px;
+      height: 9px;
+      border-right: 3px solid $color-primary;
+      border-bottom: 3px solid $color-primary;
+      transform: rotate(45deg);
+      opacity: 0;
+    }
+    input[type=checkbox]:checked + .input-label:before {
+      opacity: 1;
+    }
+  }
+
+  // 郵便番号入力欄
+  &__input.is-xs {
+    width: rem-calc(200);
+    margin-right: rem-calc(12);
+    @include breakpoint(small only) {
+      width: 50%;
+      margin-right: 1%;
+    }
+  }
+  &__input.is-sm {
+    width: rem-calc(436);
+    margin-right: rem-calc(12);
+    @include breakpoint(small only) {
+      width: 50%;
+      margin-right: 1%;
+    }
+  }
+}

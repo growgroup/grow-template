@@ -23,47 +23,71 @@ $c-button-md-font-size: rem-calc(16) !default;
 $c-button-sm-font-size: rem-calc(13) !default;
 $c-button-lg-font-size: rem-calc(16) !default;
 $c-button-radius: 0px !default;
-
 .c-button {
   display: inline-block;
-  padding-left: rem-calc(16);
-  padding-right: rem-calc(16);
-  padding-top: rem-calc(12);
-  padding-bottom: rem-calc(12);
   border-radius: $c-button-radius;
   background: $color-primary;
   color: $color-white;
   text-decoration: none;
   border: none;
-  font-size: rem-calc($font-base-size);
+  font-size : 20px;
+  line-height: 20px;
+  font-weight: bold;
   position: relative;
-
-  &__icon {
+  width: 100%;
+  max-width: 344px;
+  text-align: center;
+  padding: 17px 32px 17px 16px;
+  overflow: hidden;
+  transition: all 0.75s ease 0s;
+  border: 4px solid $color-primary;
+  @include breakpoint(small only) {
+    min-width: 100%;
+    font-size : 16px;
+    padding: 9px 32px 9px 16px;
+  }
+  span {
+    color: $color-white;
+    position: relative;
+    z-index: 999;
+    transition: all 0.4s ease 0s;
+  }
+  i {
     position: absolute;
     top: 50%;
-    right: 16px;
+    right: 22px;
     margin-top: -12px;
     font-size: rem-calc(24);
+    z-index: 999;
+    transition: all 0.4s ease 0s;
+    @include breakpoint(small only) {
+      font-size: 20px;
+      margin-top: -10px;
+    }
   }
-
+  &:after {
+    content: "";
+    background-color: $color-white;
+    position: absolute;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    width: 150%;
+    transition: all 0.5s ease 0s;
+    transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  }
   &:hover {
-    opacity: 0.8;
-    color: $color-white;
-    cursor: pointer;
-  }
-  &:disabled {
-    cursor: not-allowed;
-  }
-
-  &:focus {
-    outline: none;
+    opacity: 1;
+    span,
+    i {
+      color: $color-primary;
+    }
+    &:after {
+      height: 450%;
+    }
   }
 
-  &:active {
-    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, .3);
-    outline: none;
-    color: #fff;
-  }
+
 
   //
   // @state 大きさ
@@ -74,8 +98,10 @@ $c-button-radius: 0px !default;
   }
 
   &.is-sm {
-    font-size: rem-calc($c-button-sm-font-size);
-    padding: rem-calc($margin-sm) rem-calc($margin-md);
+    width: 100%;
+    max-width: 184px;
+    font-size: 18px;
+    padding: 11px 32px 11px 16px;
   }
 
   &.is-xs {
@@ -86,8 +112,25 @@ $c-button-radius: 0px !default;
   //
   // @state カラー
   //
+  &.is-blue {
+    background: #008cd2;
+    border-color: #008cd2;
+    &:hover {
+      span,
+      i {
+        color: #008cd2;
+      }
+    }
+  }
   &.is-secondary {
     background: $color-secondary;
+    border-color: $color-secondary;
+    &:hover {
+      span,
+      i {
+        color: $color-secondary;
+      }
+    }
   }
 
   &.is-tertiary {
@@ -127,8 +170,16 @@ $c-button-radius: 0px !default;
     width: 100%;
     text-align: center;
   }
+  &.is-form {
+    font-size: rem-calc(16);
+    min-width: rem-calc(160);
+    background-color: rgba($font-base-color,0.3);
+    padding: rem-calc(13);
+    vertical-align: top;
+    border: none;
+    @include breakpoint(small only) {
+      min-width: 47%;
+    }
+  }
 
 }
-
-
-
