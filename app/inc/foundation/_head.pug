@@ -47,6 +47,7 @@ html
 
     //- スタイルシート
     block stylesheet
+      +link("/assets/css/app.css")(rel="stylesheet")
       +link("/assets/css/style.css")(rel="stylesheet")
 
     //- ヘッダーに組み込むスクリプト
@@ -76,7 +77,6 @@ html
 
     //- フッターに組み込むスクリプト
     block footer_scripts
-      +script('/bower_components/jquery/dist/jquery.js')
       +script('/assets/js/app.js')
       +script('/assets/js/scripts.js')
 

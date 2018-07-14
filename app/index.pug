@@ -1,7 +1,7 @@
 //- filename: index.jade
 //- description: サイトのトップページ
 
-extends /inc/foundation/_base.pug
+extends ./inc/foundation/_base.pug
 block append config
   - current.id = "top" // ページのID
   - current.title = "トップページ" // タイトル
@@ -15,6 +15,7 @@ block body
     .l-section
       .l-container
         h2.heading.is-xlg CONCEPT
+        i.fa.fa-right
         p.u-text-center
           :gt-textblock
             ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。

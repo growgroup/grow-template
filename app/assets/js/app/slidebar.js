@@ -24,7 +24,7 @@
  *
  */
 
-import $ from "./jquery-shim.js"
+import $ from "jquery"
 
 
 /**

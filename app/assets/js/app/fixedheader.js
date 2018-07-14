@@ -12,7 +12,7 @@
  * </header>
  *
  */
-import  $ from "./jquery-shim.js"
+import $ from "jquery"
 
 var defaultOptions = {
     selector: '.js-fixedheader', // 実行するセレクタ

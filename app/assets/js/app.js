@@ -1,4 +1,4 @@
-import $ from "./app/jquery-shim.js"
+import $ from "jquery"
 import Utils from "./app/utils.js"
 import Accordion from "./app/accordion.js"
 import Anchor from "./app/anchor.js"
@@ -9,6 +9,10 @@ import Slidebar from "./app/slidebar.js"
 import Tab from "./app/tab.js"
 import CurrentNav from "./app/current-nav.js"
 import OwlCarousel from "owl.carousel"
+
+import fontAwesome from "font-awesome/scss/font-awesome.scss"
+import OwlCss from "owl.carousel/dist/assets/owl.carousel.css"
+import OwlThemeCss from "owl.carousel/dist/assets/owl.theme.default.css"
 
 class App {
   constructor() {

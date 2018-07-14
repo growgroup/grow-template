@@ -28,7 +28,7 @@ import browserSync from 'browser-sync';
 import fs from 'fs';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
-import webpackConfig from './webpack.config';
+import webpackConfig from './webpack.config.babel.js';
 import del from 'del';
 import styleguide from 'sc5-styleguide';
 import gulpLoadPlugins from 'gulp-load-plugins';
@@ -357,53 +357,15 @@ gulp.task('pug', () => {
   .pipe($.notify('Pug Task Completed!'));
 });
 
-/**
- * =================================
- * # Scripts
- * Js の concat, uglify
- * =================================
- */
-gulp.task('scripts', () => {
- return gulp.src(config.js.src)
-  .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-  .pipe($.sourcemaps.init())
-  .pipe($.concat('scripts.js'))
-  .pipe($.uglify({compress: true}))
-  .pipe($.sourcemaps.write())
-  .pipe(gulp.dest(config.js.dist))
-  .pipe($.size({title: 'scripts'}))
-  .pipe($.sourcemaps.write('.'))
-  .pipe(BS.stream())
-  .pipe($.notify('Scripts Task Completed!'));
-});
 
 /**
  * 初期状態で読み込む js
  */
-gulp.task('webpack', () => {
- return gulp.src([
-  APPPATH + '/assets/js/app.js',
-  APPPATH + '/assets/js/app/*.js'
- ])
-  .pipe($.plumber({errorHandler: $.notify.onError('<%= error.message %>')}))
-  .pipe(webpackStream(webpackConfig, webpack))
-  .pipe($.uglify({compress: true}))
-  .pipe(gulp.dest(DISTPATH + '/assets/js'))
-  .pipe($.notify({message: 'webpack App task complete！'}));
-});
-
-
-/**
- * =================================
- * # Lint
- * ESLint の動作
- * =================================
- */
-gulp.task('lint', () => {
- return gulp.src(config.js.src)
-  .pipe($.eslint())
-  .pipe($.eslint.format())
-  .pipe($.if(!BS.active, $.eslint.failOnError()));
+gulp.task('webpack', (done) => {
+ webpack(webpackConfig, (err, stats)=>{
+   $.notify("webpack Task Completed!")
+   done()
+ })
 });
 
 /**
@@ -453,7 +415,7 @@ gulp.task('images', () =>
  gulp.src(config.images.src)
   .pipe($.plumber())
   .pipe($.cached($.imagemin({
-   optimizationLevel: 5,
+   optimizationLevel: 10,
    progressive: true,
    interlaced: true
   })))
@@ -482,7 +444,6 @@ gulp.task('styleguide:generate', () => {
     '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>',
     '<script src="/assets/js/vendor.js"></script>',
     '<script src="/assets/js/app.js"></script>'
-
    ]
   }))
   .pipe(gulp.dest(SG5OUTPUTPATH));
@@ -555,11 +516,8 @@ gulp.task('reload', function(done) {
 
 gulp.task('watch', gulp.parallel('setWatch', 'browserSync', (done) => {
  gulp.watch(APPPATH + '/**/*.pug', gulp.parallel('reload'));
- gulp.watch(APPPATH + '/bower_components/**/*', gulp.parallel('copy'));
  gulp.watch(APPPATH + '/assets/' + SASS_EXTENSION + '/style.{' + SASS_EXTENSION + ',css}', gulp.parallel('styles'));
  gulp.watch(APPPATH + '/assets/**/*.{' + SASS_EXTENSION + ',css}', gulp.parallel('styles'));
- gulp.watch(APPPATH + '/assets/js/scripts.js', gulp.parallel('scripts'));
- gulp.watch([APPPATH + '/assets/js/app/*.js', APPPATH + '/assets/js/app.js'], gulp.parallel('webpack'));
  gulp.watch([APPPATH + '/assets/images/**/*'], gulp.parallel('images'));
  done();
 }));
@@ -573,8 +531,6 @@ gulp.task('watch', gulp.parallel('setWatch', 'browserSync', (done) => {
 gulp.task('default', gulp.series(
  'clean',
  'styles',
- 'lint',
- 'scripts',
  'copy',
  'webpack',
  'watch',
@@ -592,9 +548,7 @@ gulp.task('default', gulp.series(
 gulp.task('build', gulp.series(
  'clean',
  'styles',
- 'lint',
  'pug',
- 'scripts',
  'copy',
  'webpack',
  'images'

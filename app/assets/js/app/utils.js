@@ -7,13 +7,11 @@
  * ====================================================================
  */
 
-import  $ from "./jquery-shim.js"
-
+import $ from "jquery"
 const toString = Object.prototype.toString;
 const nativeIsArray = Array.isArray;
 const nativeKeys = Object.keys;
 const MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
-
 
 export default class Utils {
 

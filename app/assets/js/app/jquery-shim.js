@@ -1,3 +1,3 @@
-var $ = window.jQuery;
+import $ from "jquery"
 
 export default $;

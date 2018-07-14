@@ -18,7 +18,7 @@
  *
  */
 
-import $ from './jquery-shim.js';
+import $ from "jquery"
 
 var defaultOptions = {
   selector: '.js-accordion',
