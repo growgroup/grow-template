@@ -42,6 +42,7 @@ function pugMiddleWare(req, res, next) {
 
   // pug のファイルパスに変換
   var pugPath = path.join(APPPATH, htmlPath.replace('.html', '.pug'));
+
   // pugファイルがなければ404を返す
   if (!fileExists(pugPath)) {
     return next();
@@ -67,7 +68,7 @@ var config = {
   // proxy: "http://change-to-develop-url.dev",
   server: {
     baseDir: [DISTPATH],
-    directory: false,
+    directory: true,
     middleware: [
       pugMiddleWare
     ]
@@ -78,7 +79,7 @@ var config = {
 /**
  * 監視タスク
  */
-bs.watch("dist/**/*.html").on("change", function (event) {
+bs.watch(["dist/*.html","dist/**/*.html"]).on("change", function (event) {
   bs.reload("*.html")
   notifier.notify({
     title: 'Grow Template',

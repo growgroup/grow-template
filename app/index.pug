@@ -4,7 +4,7 @@
 extends ./inc/foundation/_base.pug
 block append config
   - current.id = "top" // ページのID
-  - current.title = "トップページ" // タイトル
+  - current.title = "トップページs" // タイトル
   - current.description = "これはトップページの説明文です" // 説明文
   - current.bodyClass = "top" // body に付与するクラス
   - current.depth = 1 // ページの階層
@@ -30,7 +30,7 @@ block body
 
     .l-section.is-gray
       .l-container
-        h2.heading.is-xlg SERVICEs
+        h2.heading.is-xlg SERVICE
         .row
           .large-3
             +a("#").c-card(data-heightline-group="card",data-heightline-column="4")
@@ -91,9 +91,3 @@ block body
             p: +a("#"): +img(src="/assets/images/example01.jpg")
             p: +a("#"): +img(src="/assets/images/example02.jpg")
             p: +a("#"): +img(src="/assets/images/example03.jpg")
-
-
-
-
-
-

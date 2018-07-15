@@ -2,7 +2,7 @@
 var fs = require("fs")
 var pugconfig = {
   pretty: true,
-  cache: true,
+  cache: false,
   escapePre: true,
   basedir: "app/",
   locals: {

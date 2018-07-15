@@ -12,7 +12,6 @@
     var growApp = function () {
     };
 
-
     $(function () {
         var app = new growApp();
 
