@@ -1,14 +1,20 @@
-var pugConfig = require("./build/pug.js")
-var pug = require("pug")
-var browserSync = require("browser-sync")
-var url = require("url")
-var path = require("path")
-var fs = require("fs")
-
+const pugConfig = require("./build/pug.js")
+const pug = require("pug")
+const browserSync = require("browser-sync")
+const notifier = require('node-notifier');
+const url = require("url")
+const path = require("path")
+const fs = require("fs")
 const bs = browserSync.create();
+
 const APPPATH = __dirname + "/app"
 const DISTPATH = __dirname + "/dist"
 
+/**
+ * ファイルが存在するか判定
+ * @param file
+ * @returns {boolean}
+ */
 function fileExists(file) {
   try {
     fs.statSync(file);
@@ -50,7 +56,7 @@ function pugMiddleWare(req, res, next) {
 }
 
 var config = {
-  notify: true,
+  notify: false,
   open: true,
   ghostMode: {
     clicks: false,
@@ -68,14 +74,30 @@ var config = {
   },
   scrollRestoreTechnique: 'cookie'
 }
-bs.watch("dist/**/*.html").on("change", function(event) {
+
+/**
+ * 監視タスク
+ */
+bs.watch("dist/**/*.html").on("change", function (event) {
   bs.reload("*.html")
+  notifier.notify({
+    title: 'Grow Template',
+    message: 'Compiled the HTML'
+  });
 });
-bs.watch("dist/assets/**/*.css").on("change", function(event) {
+bs.watch("dist/assets/**/*.css").on("change", function (event) {
   bs.reload("*.css")
+  notifier.notify({
+    title: 'Grow Template',
+    message: 'Compiled the CSS'
+  });
 });
-bs.watch("dist/assets/**/*.js").on("change", function() {
+bs.watch("dist/assets/**/*.js").on("change", function () {
   bs.reload("*.js")
+  notifier.notify({
+    title: 'GrowTemplate',
+    message: 'Compiled the JavaScript'
+  });
 });
 
 bs.init(config)

@@ -60,6 +60,7 @@
     border-radius: 0 0 $border-radius $border-radius;
   }
 
+
   // is-danger state
   &.is-danger .c-accordion__title {
     background: $color-state-danger;
@@ -72,6 +73,7 @@
 
   // is-success state
   &.is-success .c-accordion__title {
+
     background: $color-state-success;
   }
 
@@ -84,7 +86,7 @@
   &.is-faq {
     .c-accordion__title {
       position: relative;
-      padding-left: rem-calc(68);
+      padding-left: rem-calc(66);
       &:before {
         content: "Q";
         left: rem-calc(24);

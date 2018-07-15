@@ -1,6 +1,6 @@
 # Grow Template [![Build Status](https://travis-ci.org/growgroup/grow-template.svg?branch=master)](https://travis-ci.org/growgroup/grow-template)
 
-Gulp, Sass & Pug を利用した必要最小限のプロジェクトテンプレートです。
+Sass & Pug を利用した必要最小限のHTMLコーディング用テンプレートです。
 
 より効率的なHTMLコーディングを実現するために作成しています。
 
@@ -14,9 +14,7 @@ Gulp, Sass & Pug を利用した必要最小限のプロジェクトテンプレ
 
 Homebrew、もしくはその他の方法でインストールすること。
 
-* node >=6.3.1 
-* bower >= 1.7.9
-* gulp >= 3.9.1
+* node >=6.3.1
 * git
 * editorconfig (各IDE, テキストエディタのプラグイン/パッケージ)
 
@@ -32,6 +30,20 @@ git clone https://github.com/growgroup/grow-template
 
 ```shell
 npm install
+```
+
+## 実行
+基本的に、```npm run script```にてタスクを実行します。
+詳細は、package.json を確認してください。
+
+#### 開発時 (サーバーが立ち上がります)
+```
+npm run develop -s
+```
+
+#### 公開時
+```
+npm run build
 ```
 
 ## ディレクトリ構成
@@ -55,12 +67,12 @@ dist ディレクトリ内に展開します。
 │   ├── inc
 │   │   ├── components
 │   │   ├── core
-│   │   │   └── _base.jade
+│   │   │   └── _base.pug
 │   │   └── layouts
-│   │       ├── _aside.jade
-│   │       ├── _footer.jade
-│   │       └── _header.jade
-│   └── index.jade
+│   │       ├── _aside.pug
+│   │       ├── _footer.pug
+│   │       └── _header.pug
+│   └── index.pug
 ├── bower.json
 ├── bower_components/
 ├── dist
@@ -73,7 +85,8 @@ dist ディレクトリ内に展開します。
 │   │       └── vendor.js
 │   └── index.html
 ├── docs
-├── gulpfile.babel.js
+├── webpack.config.babel.js
+├── server.js
 └── package.json
 
 ```
@@ -91,7 +104,7 @@ app/inc/_settings.pug ファイルの値を変更することで、
     //- サイトの設定
     -
       config = {
-    
+
         // サイト情報
         site: {
           title: "サイト名",
@@ -110,7 +123,7 @@ app/inc/_settings.pug ファイルの値を変更することで、
             image: ""
           },
         },
-    
+
         // ページ情報
         pages: {
           'top': {
@@ -138,10 +151,10 @@ app/inc/_settings.pug ファイルの値を変更することで、
             title: "お問合せ",
             description: "",
           },
-    
+
         },
       }
-    
+
 
 ```
 
@@ -158,7 +171,7 @@ app/inc/_settings.pug ファイルの値を変更することで、
 
 ### Sass
 
-本テンプレートでは SCSS を採用しています。  
+本テンプレートでは SCSS を採用しています。
 また CSSのコーディングルールとしてFLOCSSにて統一しています。
 
 [https://github.com/hiloki/flocss](https://github.com/hiloki/flocss)
@@ -174,19 +187,6 @@ app/inc/_settings.pug ファイルの値を変更することで、
 JavaScript の構文チェッカーとして ESLint を採用しています。
 
 [http://eslint.org/](http://eslint.org/)
-
-
-### Bower
-
-本テンプレートでは、```bower_components``` ディレクトリ内に ``` bower install ``` コマンドで追加したパッケージが格納されます。
-
-* [Bower](http://bower.io/)
-
-### StyleGuide
-
-スタイルガイドは [sc5-styleguide](https://github.com/SC5/sc5-styleguide/pulls) を導入しています。  
-gulp を実行している際に、初期状態では 8888 ポートで閲覧することができます。
-
 
 ### その他
 
