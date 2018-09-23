@@ -8,19 +8,14 @@ block append config
   - current.depth = 2 // ページの階層
 
 block body
-  // メインビジュアル
-  .c-page-header
-    h1 PRIVACY POLICY
-    p 個人情報保護方針をご紹介します
-  .l-container
-    .c-breadcrumb
-      ul
-        li
-          a(href="#") HOME
-        li
-          span >
-        li
-          span PRIVACY POLICY
+  // ページヘッダー
+  +c_page_header(current.title)
+  +c.breadcrumb
+    .l-container
+      span: +a("/") HOME
+      span >
+      span PRIVACY POLICY
+
   section.l-main
     .l-section
       .l-container

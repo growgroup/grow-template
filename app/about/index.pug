@@ -8,7 +8,12 @@ block append config
 
 block page_header
   // ページヘッダー
-  +c_page_header(false,current.title)
+  +c_page_header(current.title)
+  +c.breadcrumb
+    .l-container
+      span: +a("/") HOME
+      span >
+      span about
 
 block body
   section.l-main

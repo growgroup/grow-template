@@ -9,9 +9,7 @@ html
     //- サイトのタイトル
     block title
       if current.title
-        title= current.title + config.site.titleSeparator + config.site.title
-      else if current.id !== "top"
-        title= getPagesValue(current.id, "title") + config.site.titleSeparator + config.site.title
+        title= config.site.title
       else
         title= getPagesValue(current.id, "title")
     //- メタ情報
@@ -34,9 +32,14 @@ html
       meta(property="og:type",content=config.site.ogp.type)
       meta(property="og:title", content=getPagesValue(current.id, "title"))
       meta(property="og:description", content=getPagesValue(id, "description") )
-      meta(property="og:url", content=config.site.ogp.url + "/" + current.id + "/")
+      if current.id == "top"
+        meta(property="og:url", content="./")
+      else
+      meta(property="og:url", content=config.rootpath + "/" + current.id + "/")
       meta(property="og:site_name", content=config.site.ogp.site_name)
       meta(property="og:image", content=config.site.ogp.image)
+      meta(property="og:image:width", content="1200")
+      meta(property="og:image:height", content="630")
 
     //- リンクファイル
     block link

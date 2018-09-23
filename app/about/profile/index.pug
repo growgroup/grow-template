@@ -7,7 +7,13 @@ block append config
   - current.depth = 3 // ページの階層
 
 block page_header
-  +c_page_header(false,current.title)
+  // ページヘッダー
+  +c_page_header(current.title)
+  +c.breadcrumb
+    .l-container
+      span: +a("/") HOME
+      span >
+      span profile
 
 block body
   .l-section

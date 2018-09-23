@@ -11,8 +11,8 @@ $heading-weight: normal !default;
 $heading-accent-color: $font-base-color !default;
 
 .heading {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
   small {
     font-size: 0.65em;
     color: $color-gray;
@@ -28,24 +28,6 @@ $heading-accent-color: $font-base-color !default;
 
 .heading.is-xlg {
   font-size: rem-calc(30);
-  text-align: center;
-  position: relative;
-  letter-spacing: 2px;
-  margin-bottom:rem-calc(60);
-  color: $font-heading-color;
-  font-weight: $heading-weight;
-  @include webfont();
-  &:after{
-    content: "";
-    display: block;
-    width: rem-calc(100);
-    height: 3px;
-    background: $heading-accent-color;
-    position: absolute;
-    left: 50%;
-    bottom: rem-calc(-20px);
-    margin-left: rem-calc(-50);
-  }
   @include breakpoint(small only){
     font-size: rem-calc(24);
   }
@@ -60,9 +42,6 @@ $heading-accent-color: $font-base-color !default;
 
 .heading.is-lg {
   font-size: rem-calc(24);
-  border-bottom: 3px solid $color-primary;
-  padding-bottom:rem-calc(5);
-  font-weight: $heading-weight;
   @include breakpoint(small only){
     font-size: rem-calc(18);
   }
@@ -77,9 +56,8 @@ $heading-accent-color: $font-base-color !default;
 
 .heading.is-md {
   font-size:  rem-calc(20);
-  font-weight: $heading-weight;
   @include breakpoint(small only){
-    font-size: rem-calc(24);
+    font-size: rem-calc(20);
   }
 }
 
@@ -91,8 +69,10 @@ $heading-accent-color: $font-base-color !default;
 // Styleguide 1.1.4
 
 .heading.is-sm {
-  font-weight: $heading-weight;
   font-size:  rem-calc(16);
+  @include breakpoint(small only){
+    font-size: rem-calc(16);
+  }
 }
 
 // 見出し - 極小
@@ -104,6 +84,20 @@ $heading-accent-color: $font-base-color !default;
 
 .heading.is-xs {
   font-size:  rem-calc(14);
-  font-weight: $heading-weight;
+  @include breakpoint(small only){
+    font-size: rem-calc(14);
+  }
 }
+
+
+
+.heading {
+  &.is-top{
+    margin-bottom: 0px;
+  }
+  &.is-bottom{
+    margin-top: 0px;
+  }
+}
+
 

@@ -8,19 +8,13 @@ block append config
   - current.depth = 2 // ページの階層
 
 block body
-  // メインビジュアル
-  .c-page-header
-    h1 SITEMAP
-    p 当サイトのコンテンツ一覧を紹介します。
-  .l-container
-    .c-breadcrumb
-      ul
-        li
-          a(href="#") HOME
-        li
-          span >
-        li
-          span SITEMAP
+  +c_page_header(current.title)
+  +c.breadcrumb
+    .l-container
+      span: +a("/") HOME
+      span >
+      span SITE MAP
+
   section.l-main
     .l-section
       .l-container
