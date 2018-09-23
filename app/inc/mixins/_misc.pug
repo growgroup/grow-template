@@ -12,10 +12,10 @@ mixin bgimg(file)
     block
 
 //- ページヘッダー
-mixin c_page_header(image,text)
+mixin c_page_header(text)
   if image
-    +bgimg(image).c-page-header
-      h1!= text
+    +bgimg("pagehead-" + current.id + ".jpg").c-page-header
+      h2!= text
       block
   else
     .c-page-header
