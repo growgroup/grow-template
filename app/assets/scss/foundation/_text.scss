@@ -13,6 +13,7 @@
 p,
 .text-normal {
   margin-top: 0;
+  margin-bottom: 0;
   font-size: rem-calc(16);
   line-height: 1.725em;
 }
@@ -73,10 +74,10 @@ a,
 
 a:hover,
 .text-link.text-link--hover {
-  color: lighten($color-primary, 10);
+  opacity: 0.7;
 }
 
 a:active,
 .text-link.text-link--active {
-  color: darken($color-primary, 10);
+  opacity: 0.7;
 }

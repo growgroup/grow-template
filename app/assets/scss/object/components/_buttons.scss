@@ -24,150 +24,117 @@ $c-button-sm-font-size: rem-calc(13) !default;
 $c-button-lg-font-size: rem-calc(16) !default;
 $c-button-radius: 0px !default;
 .c-button {
+  outline: none;
   display: inline-block;
-  border-radius: $c-button-radius;
-  background: $color-primary;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+  background-color: $color-primary;
   color: $color-white;
   text-decoration: none;
-  border: none;
-  font-size : 20px;
-  line-height: 20px;
-  font-weight: bold;
+  border-radius: 4px;
+  padding: 14px 16px;
+  font-weight: 500;
+  border: 1px solid $color-primary;
   position: relative;
-  width: 100%;
-  max-width: 344px;
-  text-align: center;
-  padding: 17px 32px 17px 16px;
-  overflow: hidden;
-  transition: all 0.75s ease 0s;
-  border: 4px solid $color-primary;
+  transition: all .3s;
   @include breakpoint(small only) {
-    min-width: 100%;
-    font-size : 16px;
-    padding: 9px 32px 9px 16px;
+    max-width: 240px;
+    padding: 11px 16px;
   }
-  span {
-    color: $color-white;
+  &:before {
+    content: "\f105";
+    font-family: "FontAwesome";
+    padding-right: 12px;
     position: relative;
-    z-index: 999;
-    transition: all 0.4s ease 0s;
+    top: -1px;
   }
-  i {
-    position: absolute;
-    top: 50%;
-    right: 22px;
-    margin-top: -12px;
-    font-size: rem-calc(24);
-    z-index: 999;
-    transition: all 0.4s ease 0s;
-    @include breakpoint(small only) {
-      font-size: 20px;
-      margin-top: -10px;
+  &.is-noicon {
+    &:before {
+      content: none;
     }
-  }
-  &:after {
-    content: "";
-    background-color: $color-white;
-    position: absolute;
-    height: 0%;
-    left: 50%;
-    top: 50%;
-    width: 150%;
-    transition: all 0.5s ease 0s;
-    transform: translateX(-50%) translateY(-50%) rotate(-25deg);
   }
   &:hover {
     opacity: 1;
-    span,
-    i {
-      color: $color-primary;
-    }
-    &:after {
-      height: 450%;
-    }
+    color: $color-primary;
+    background-color: $color-white;
   }
-
-
-
   //
   // @state 大きさ
   //
   &.is-lg {
-    font-size: rem-calc($c-button-lg-font-size);
-    padding: rem-calc($margin-md) rem-calc(64px);
+    max-width: 343px;
+    @include breakpoint(small only) {
+      max-width: 375px;
+      padding: 13px 16px;
+    }
+  }
+  //
+  // @state 大きさ
+  //
+  &.is-xlg {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 80px;
+    padding-right: 80px;
+    width: auto;
+    max-width: initial;
+    @include breakpoint(small only) {
+      padding: 13px 16px;
+    }
   }
 
   &.is-sm {
-    width: 100%;
-    max-width: 184px;
-    font-size: 18px;
-    padding: 11px 32px 11px 16px;
+    padding: 9px 24px;
+    max-width: initial;
+    width: auto;
   }
 
   &.is-xs {
     font-size: rem-calc($c-button-lg-font-size*0.8);
     padding: rem-calc($margin-sm*0.5) rem-calc($margin-md*0.8);
+    max-width: initial;
+    width: auto;
   }
 
   //
   // @state カラー
-  //
-  &.is-blue {
-    background: #008cd2;
-    border-color: #008cd2;
-    &:hover {
-      span,
-      i {
-        color: #008cd2;
-      }
-    }
-  }
-  &.is-secondary {
-    background: $color-secondary;
-    border-color: $color-secondary;
-    &:hover {
-      span,
-      i {
-        color: $color-secondary;
-      }
-    }
-  }
-
-  &.is-tertiary {
-    background: $color-tertiary;
-  }
-
-  &.is-danger {
-    background: $color-state-danger;
-  }
-
-  &.is-warning {
-    background: $color-state-warning;
-  }
-
-  &.is-info {
-    background: $color-state-info;
-  }
-
-  &.is-success {
-    background: $color-state-success;
-  }
-
-  //
   // @state その他
   //
+  &.is-arrow-right {
+    &:before {
+      display: none;
+    }
+    &:after {
+      content: "\f105";
+      font-family: "FontAwesome";
+      padding-left: 12px;
+      position: relative;
+      top: -1px;
+    }
+  }
+
   &.is-round {
-    border-radius: 1000px;
+    border-radius: 1000px !important;
   }
 
   &.is-outline {
     background: transparent;
-    border: 3px solid $font-base-color;
-    color: $font-base-color;
+    border: 2px solid $color-primary;
+    color: $color-primary;
     font-weight: bold;
+    &:hover {
+      background: $color-primary;
+      color: #fff;
+    }
+    &.is-white {
+      border-color: #fff;
+      color: #fff;
+    }
   }
   &.is-expand {
     width: 100%;
+    max-width: 100%;
     text-align: center;
   }
   &.is-form {
@@ -180,6 +147,12 @@ $c-button-radius: 0px !default;
     @include breakpoint(small only) {
       min-width: 47%;
     }
+    &:hover {
+      color: #fff;
+    }
   }
-
+  &.is-box {
+    border-radius: 0px;
+  }
 }
+
