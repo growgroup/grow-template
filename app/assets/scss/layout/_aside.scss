@@ -1,8 +1,7 @@
 // 2カラム サイドバー
 $layout-sidebar-width: rem-calc(320) !default;
-$layout-sidebar-float: left !default;
 
 .l-aside {
   width: $layout-sidebar-width;
-  float: $layout-sidebar-float;
+  margin-left: auto;
 }

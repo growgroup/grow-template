@@ -186,9 +186,9 @@
 // フォームの有効化時のスタイル
 @mixin input-active(){
   outline: none;
-  border-color: $forms-input-active-border-color;
-  -webkit-box-shadow: inset 0 0 0px 2px $color-primary;
-  box-shadow: inset 0 0 0px 3px $color-primary;
+  border-color: $color-primary;
+  -webkit-box-shadow: inset 0 0 0px 1px $color-primary;
+  box-shadow: inset 0 0 0px 1px $color-primary;
 }
 
 

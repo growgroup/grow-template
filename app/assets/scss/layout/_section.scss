@@ -7,36 +7,44 @@
 //
 // Styleguide 5.3.0
 .l-section {
-
-  padding-top: rem-calc(80);
-  padding-bottom: rem-calc(80);
-
+  padding-top: 80px;
+  padding-bottom: 80px;
+  &.is-xlg {
+    padding-top: 120px !important;
+    padding-bottom: 120px !important;
+    @include breakpoint(small only) {
+      padding-top: 64px !important;
+      padding-bottom: 64px !important;
+    }
+  }
   &.is-lg {
-    padding-top: rem-calc(120);
-    padding-bottom: rem-calc(120);
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    @include breakpoint(small only) {
+      padding-top: 40px !important;
+      padding-bottom: 40px !important;
+    }
   }
-
   &.is-md {
-    padding-top: rem-calc(80);
-    padding-bottom: rem-calc(80);
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+    @include breakpoint(small only) {
+      padding-top: 32px !important;
+      padding-bottom: 32px !important;
+    }
   }
-
   &.is-sm {
-    padding-top: rem-calc(40);
-    padding-bottom: rem-calc(40);
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    @include breakpoint(small only) {
+      padding-top: 24px !important;
+      padding-bottom: 24px !important;
+    }
   }
-
-  &.is-xs {
-    padding-top: rem-calc(20);
-    padding-bottom: rem-calc(20);
-  }
-
-  &.is-bottom {
-    padding-top: 0 !important;
-  }
-
   &.is-top {
     padding-bottom: 0 !important;
   }
-
+  &.is-bottom {
+    padding-top: 0 !important;
+  }
 }

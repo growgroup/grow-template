@@ -16,4 +16,13 @@
 
 .l-container {
   @extend .container;
+  // コンツン幅が1140pxの場合
+  @media (max-width: 1204px) {
+    padding-right: rem-calc(32);
+    padding-left: rem-calc(32);
+  }
+  @include breakpoint(small only) {
+    padding-right: rem-calc(16);
+    padding-left: rem-calc(16);
+  }
 }

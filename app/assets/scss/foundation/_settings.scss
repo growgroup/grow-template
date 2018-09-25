@@ -41,7 +41,7 @@ $color-state-success: #13a83a !default; // 成功
 
 // # 2. Grid
 
-$grid-row-width: 1080px !default; // グリッドの幅
+$grid-row-width: 1140px !default; // グリッドの幅
 $grid-column-count: 12 !default; // グリッド数
 $grid-column-responsive-gutter: (// カラムとカラムの間隔
         small: 24px, // モバイル
@@ -53,7 +53,7 @@ $grid-column-responsive-gutter: (// カラムとカラムの間隔
 $font-base-size: 16 !default; // body のフォントサイズ
 $font-base-color: #333 !default; // body のフォントカラー
 
-$font-base-family: "游ゴシック Medium", "Yu Gothic Medium", "Original Yu Gothic", "Yu Gothic", YuGothic, Verdana, Meiryo, sans-serif !default; // フォントファミリー
+$font-base-family:  Noto Sans JP,Noto Sans Japanese,Noto Sans,"游ゴシック Medium", "Yu Gothic Medium", "Original Yu Gothic", "Yu Gothic", YuGothic, Verdana, Meiryo, sans-serif !default; // フォントファミリー
 $font-base-weight: normal !default; // フォント幅
 $font-base-style: normal !default; // フォントスタイル
 
@@ -109,8 +109,8 @@ $border-radius-xs: $border-radius/3 !default;
 
 $breakpoints: (
         small: 0,
-        medium: 640px,
-        large: 1024px,
+        medium: 750px,
+        large: 1140px,
         xlarge: 1200px,
         xxlarge: 1440px,
 ) !default;
