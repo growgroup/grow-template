@@ -1,0 +1,28 @@
+// レイアウト
+//
+// Webサイトのレイアウトに関するコンポーネント群
+//
+//
+// Styleguide 5.0.0
+
+// コンテナー
+//
+// 全体で共通となるコンテナ
+//
+// markup:
+// <div class="l-container"></div>
+//
+// Styleguide 5.5.0
+
+.l-container {
+  @extend .container;
+  // コンツン幅が1140pxの場合
+  @media (max-width: 1204px) {
+    padding-right: rem-calc(32);
+    padding-left: rem-calc(32);
+  }
+  @include breakpoint(small only) {
+    padding-right: rem-calc(16);
+    padding-left: rem-calc(16);
+  }
+}

@@ -16,13 +16,19 @@
 
 .l-container {
   @extend .container;
-  // コンツン幅が1140pxの場合
-  @media (max-width: 1204px) {
-    padding-right: rem-calc(32);
-    padding-left: rem-calc(32);
+  @media (max-width: 1200px) {
+    padding-right: 32px;
+    padding-left: 32px;
   }
   @include breakpoint(small only) {
-    padding-right: rem-calc(16);
-    padding-left: rem-calc(16);
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+  &.is-two-columns {
+    display: flex;
+    padding: 0!important;
+    @media (max-width: 900px) {
+      display: block;
+    }
   }
 }

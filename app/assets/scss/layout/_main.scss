@@ -7,11 +7,17 @@
 //
 // Styleguide 5.6.0
 
-// ツーカラムの場合（サイドが320px、マージンが60px）
-$layout-main-width: calc(100% - 320px - 60px) !default;
+// メインカラム
+$layout-main-width: calc(100% - rem-calc(320)) !default;
+$layout-main-float: left !default;
 
 .l-main {
   &.is-two-columns {
-    width: $layout-main-width;
+    width: calc(100% - 276px - 68px);
+    @media (max-width: 900px) {
+      width: 100%;
+      margin-right: 0;
+      padding-bottom: 56px;
+    }
   }
 }

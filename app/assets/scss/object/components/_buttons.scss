@@ -99,6 +99,32 @@ $c-button-radius: 0px !default;
 
   //
   // @state カラー
+  //
+  &.is-tertiary {
+    @include button_colors($color-tertiary);
+    color: $font-base-color;
+    &:hover {
+      color: $font-base-color;
+    }
+  }
+
+  &.is-danger {
+    @include button_colors($color-state-danger);
+  }
+
+  &.is-warning {
+    @include button_colors($color-state-warning);
+  }
+
+  &.is-info {
+    @include button_colors($color-state-info);
+  }
+
+  &.is-success {
+    @include button_colors($color-state-success);
+  }
+
+  //
   // @state その他
   //
   &.is-arrow-right {
@@ -154,5 +180,5 @@ $c-button-radius: 0px !default;
   &.is-box {
     border-radius: 0px;
   }
-}
 
+}

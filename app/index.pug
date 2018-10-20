@@ -12,85 +12,55 @@ block append config
 block body
   +c_mainvisual()
   section.l-main
-    .l-section
+    +c.opening
       .l-container
-        h2.heading.is-xlg CONCEPT
-        p.u-text-center
-          :gt-textblock
-            ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。
-            ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。
-            ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。
-            ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。ここにコンセプトテキストが入ります。
-
-        p.u-text-center
-          +a("#").c-button.is-lg.is-outline
-            | 私たちについて
-
-    .l-section.is-gray
+        h2.c-opening__title 現場を補強する、力になれます。<br>教育から開発までトータルに。
+        p.c-opening__text SE各自の開発力・技術力だけに頼ることなく、1ワークに複数のSEを投入するグループワーク制を採用しています。<br class="u-hidden-sm">一人ひとりがSEとして研鑽を積んできた経験と技術に加えて、<br class="u-hidden-sm">集団で発送し、集団で開発し管理進行を行い、高い品質と確実な納期をお約束しています。
+        +a("/service/").c-button.is-lg 事業紹介を見る
+    .l-section.is-bg.is-md
       .l-container
-        h2.heading.is-xlg SERVICEs
-        .row
-          .large-3
-            +a("#").c-card(data-heightline-group="card",data-heightline-column="4")
-              .c-card__image(style="background-image: url(/assets/images/example01.jpg)")
-              .c-card__title Web制作
-              .c-card__text Web制作に関するテキストが入ります。
-          .large-3
-            +a("#").c-card(data-heightline-group="card",data-heightline-column="4")
-              .c-card__image(style="background-image: url(/assets/images/example02.jpg)")
-              .c-card__title DTP
-              .c-card__text DTPに関するテキストが入ります。
-          .large-3
-            +a("#").c-card(data-heightline-group="card",data-heightline-column="4")
-              .c-card__image(style="background-image: url(/assets/images/example03.jpg)")
-              .c-card__title コンサルティング
-              .c-card__text コンサルティングに関するテキストが入ります。
-          .large-3
-            +a("#").c-card(data-heightline-group="card",data-heightline-column="4")
-              .c-card__image(style="background-image: url(/assets/images/example01.jpg)")
-              .c-card__title Web制作
-              .c-card__text Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。Web制作に関するテキストが入ります。
-          .large-3
-            +a("#").c-card(data-heightline-group="card",data-heightline-column="4")
-              .c-card__image(style="background-image: url(/assets/images/example02.jpg)")
-              .c-card__title DTP
-              .c-card__text DTPに関するテキストが入ります。
-          .large-3
-            +a("#").c-card(data-heightline-group="card",data-heightline-column="4")
-              .c-card__image(style="background-image: url(/assets/images/example03.jpg)")
-              .c-card__title コンサルティング
-              .c-card__text コンサルティングに関するテキストが入ります。
+        h2.heading.is-xlg.is-bottom
+          span 企業情報
+          small COMPANY
+        +c.card
+          +e.inner
+            +a("/company/greeting/").c-card__block
+              +bgimg("img-card-01.jpg").c-card__image
+              +e.title 代表あいさつ
+            +a("/company/profile/").c-card__block
+              +bgimg("img-card-02.jpg").c-card__image
+              +e.title 会社概要
+            +a("/company/history/").c-card__block
+              +bgimg("img-card-03.jpg").c-card__image
+              +e.title 沿革
+            +a("/recruit/").c-card__block
+              +bgimg("img-card-04.jpg").c-card__image
+              +e.title 採用情報
 
-        p.u-text-center
-          +a("/service/").c-button.is-lg.is-outline
-            | サービスの詳細を見る
-
-    +c.service
+    .l-section.is-md
       .l-container
-        +e.H2.title サービス
-        +e.content
-          +e.text ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
-        +e.span.content__test.is-active: | テスト
+        h2.heading.is-xlg.is-bottom.is-top
+          span 最新ニュース
+          small NEWS
+        +c.post-item
+          +e.inner
+            +a("/news/page/").c-post-item__block
+              +e.sup
+                +e.category 更新情報
+                +e.date 2017.01.01
+              +e.title タイトルがここに入ります。タイトルがここに入ります。
+            +a("/news/page/").c-post-item__block
+              +e.sup
+                +e.category 更新情報
+                +e.date 2017.01.01
+              +e.title タイトルがここに入ります。タイトルがここに入ります。
+            +a("/news/page/").c-post-item__block
+              +e.sup
+                +e.category 更新情報
+                +e.date 2017.01.01
+              +e.title タイトルがここに入ります。タイトルがここに入ります。
+          +e.button
+            +a("/news/").c-button.is-lg ニュース一覧を見る
 
-    .l-section
-      .l-container
-        h2.heading.is-xlg
-          | NEWS
-
-        p.heading-lead 最新の情報をお届けします。
-        .row
-          .large-8
-            - var i = 0;
-            while i < 4
-              +p_post_item("a",false,"投稿テストです。投稿テストです。","2016/10/10","お知らせ",false).is-line
-              - i++
-          .large-3.is-push-lg-1.small-12
-            p: +a("#"): +img(src="/assets/images/example01.jpg")
-            p: +a("#"): +img(src="/assets/images/example02.jpg")
-            p: +a("#"): +img(src="/assets/images/example03.jpg")
-
-
-
-
-
-
+  // オファーブロック
+  +c_offer()

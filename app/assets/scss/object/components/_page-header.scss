@@ -24,25 +24,59 @@
 
 .c-page-header{
   width: 100%;
-  max-width: 100%;
-  padding-top: rem-calc($margin-lg);
-  padding-bottom: rem-calc($margin-lg);
-  background: $color-tertiary;
-  border-top: 1px solid darken($color-tertiary,5);
-  border-bottom: 1px solid darken($color-tertiary,5);
-  text-align: center;
-  &.is-left{
-    text-align: left;
+  height: 15.715vw;
+  min-height: 220px;
+  max-height: 302px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  @media (max-width: 950px) {
+    margin-top: 55px;
   }
-
-  &.is-right{
-    text-align: right;
+  @include breakpoint(small only) {
+    min-height: 140px;
   }
-  &__title{
-    font-size: rem-calc(36);
-
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba($color-black,0.2) url("../images/ptn-dots.png") repeat;
+    top: 0;
+    left: 0;
   }
-  &__subtitle{
-    font-size: rem-calc(16);
+  &__inner {
+    text-align: center;
+    color: $color-white;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 99;
+    padding: 0 16px;
+  }
+  &__title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 1.6px;
+    @include breakpoint(small only) {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 1.1px;
+    }
+  }
+  &__subtitle {
+    @include webfont();
+    font-size: 15px;
+    letter-spacing: 1.6px;
+    line-height: 1.5;
+    @include breakpoint(small only) {
+      font-size: 13px;
+      letter-spacing: 1.1px;
+    }
   }
 }

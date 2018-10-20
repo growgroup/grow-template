@@ -1,0 +1,25 @@
+// カプセルナビ
+//
+// markup:
+// <div class="c-capsule-nav">
+//    <ul>
+//         <li><a href="#" class="c-button is-outline is-expand">カプセルナビ1</a><li>
+//         <li><a href="#" class="c-button is-outline is-expand">カプセルナビ2</a><li>
+//         <li><a href="#" class="c-button is-outline is-expand">カプセルナビ3</a><li>
+//         <li><a href="#" class="c-button is-outline is-expand">カプセルナビ4</a><li>
+//    </ul>
+// </div>
+//
+// Styleguide 2.24.0
+
+.c-capsule-nav {
+  > ul {
+    display: table;
+    width: 100%;
+    > li {
+      display: table-cell;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+  }
+}

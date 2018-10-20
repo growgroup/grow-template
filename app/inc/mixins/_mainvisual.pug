@@ -1,6 +1,8 @@
 //- メインビジュアル
 mixin c_mainvisual
-  .c-mainvisual.owl-carousel.owl-theme
-    .c-mainvisual__item: +img("example01.jpg","サンプル1")
-    .c-mainvisual__item: +img("example02.jpg","サンプル2")
-    .c-mainvisual__item: +img("example03.jpg","サンプル3")
+  +c.main-visual
+    +bgimg("main-visual.jpg").c-main-visual__image
+    +e.inner
+      +e.text: +img("main-visual-text.png","現場のスペシャリスト集団。それがサンプルです。")
+      +a("/aboutus/").c-main-visual__button 私たちについて
+

@@ -8,14 +8,45 @@ block append config
 
 block body
   // メインビジュアル
-  +c_page_header("example01.jpg",text)
-
-  .l-section
+  +c_page_header("pagehead-default.jpg","スタイルガイド","STYLE GUIDE")
+  +c.breadcrumb
     .l-container
-      h1 h1 見出し1
-      h2 h2 見出し2
-      h3 h3 見出し3
-      h4 h4 見出し4
-      h5 h5 見出し5
-      h6 h6 見出し6
+      span: +a("/") ホーム
+      span >
+      span 私たちについて
 
+  // テキスト関係
+  include /format/components/_text.pug
+
+  // ボタン関係
+  include /format/components/_buttons.pug
+
+  // カードデザイン
+  include /format/components/_card.pug
+
+  // ブロックデザイン
+  include /format/components/_block.pug
+
+  // タブ
+  include /format/components/_tab.pug
+
+  // バナー
+  include /format/components/_banner.pug
+
+  // オファー
+  include /format/components/_offer.pug
+
+  // お知らせ
+  include /format/components/_news.pug
+
+  // 導入事例スライダー
+  include /format/components/_case-slider.pug
+
+  // フッター
+  include /format/components/_footer.pug
+
+  // ヘッダー
+  include /format/components/_header.pug
+
+  // メインビジュアル
+  include /format/components/_mainvisual.pug

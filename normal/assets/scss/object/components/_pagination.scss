@@ -1,0 +1,72 @@
+// ページネーション
+//
+// 投稿記事一覧のページネーション
+//
+// markup:
+// <div class="c-pagination">
+//     <ul>
+//         <li><a class="c-pagination__prev" href="#">« 前へ</a></li>
+//         <li><a  href="#">1</a></li>
+//         <li><span class="is-active">2</span></li>
+//         <li><a  href="#/">3</a></li>
+//         <li><a  href="#/">4</a></li>
+//         <li><a  href="#/">5</a></li>
+//         <li><a class="c-pagination__next" href="#/">次へ »</a></li>
+//     </ul>
+// </div>
+//
+// Styleguide 2.10.0
+.c-pagination {
+
+  > ul {
+    text-align: center;
+    list-style: none;
+  }
+
+  > ul > li {
+    display: inline-block;
+  }
+
+  > ul > li > span,
+  > ul > li > a {
+    display: inline-block;
+    padding-left: rem-calc(16);
+    padding-right: rem-calc(16);
+    padding-top: rem-calc(8);
+    padding-bottom: rem-calc(8);
+    text-decoration: none;
+    border-radius: $border-radius;
+
+    &:hover {
+      background: $color-primary;
+      color: #fff;
+    }
+
+    &.is-active {
+      background: $color-primary;
+      color: #fff;
+    }
+  }
+
+
+  // 次のページへ、前のページへ 共通
+  &__next,
+  &__prev {
+    display: inline-block;
+    padding-left: $margin-base;
+    padding-right: $margin-base;
+    text-decoration: none;
+    background: $color-primary;
+    color: #fff;
+    border-radius: 1000px;
+  }
+
+  &__prev {
+    margin-right: rem-calc($margin-lg);
+  }
+
+  &__next {
+    margin-left: rem-calc($margin-lg);
+
+  }
+}

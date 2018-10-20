@@ -14,8 +14,11 @@ p,
 .text-normal {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: rem-calc(16);
-  line-height: 1.725em;
+  font-size: 15px;
+  line-height: 1.8em;
+  @include breakpoint(small only) {
+    font-size: 14px;
+  }
 }
 
 // テキスト - 縮小
@@ -41,7 +44,10 @@ small,
 
 strong,
 .text-strong {
-  font-weight: bold;
+  font-weight: 500;
+  @include breakpoint(small only) {
+    font-weight: 600;
+  }
 }
 
 // テキスト - 打ち消し線
@@ -70,14 +76,18 @@ del,
 a,
 .text-link {
   color: $color-primary;
+  font-weight: 500;
+  @include breakpoint(small only) {
+    font-weight: 600;
+  }
 }
 
 a:hover,
 .text-link.text-link--hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 a:active,
 .text-link.text-link--active {
-  opacity: 0.7;
+  color: darken($color-primary, 10);
 }

@@ -1,0 +1,17 @@
+// メインカラム
+//
+// ページのメインとなるコンテンツを囲むラッパ
+//
+// markup:
+// <div class="l-main"></div>
+//
+// Styleguide 5.6.0
+// メインカラム
+$layout-main-width: calc(100% - rem-calc(320)) !default;
+$layout-main-float: left !default;
+.l-main {
+  &.is-two-columns {
+    width: $layout-main-width;
+    float: $layout-main-float;
+  }
+}

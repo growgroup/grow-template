@@ -1,0 +1,86 @@
+include /inc/mixins/_mixins
+doctype html
+html
+  head
+    block config
+      include /inc/_settings.pug
+
+    meta(charset='UTF-8')
+    //- サイトのタイトル
+    block title
+      if current.title
+        title= config.site.title
+      else
+        title= getPagesValue(current.id, "title")
+    //- メタ情報
+    block meta
+      -
+        var desc = false
+        if (current.description) {
+        desc = current.description
+        } else if ( getPagesValue(current.id, "description") ) {
+        desc = getPagesValue(current.id, "description")
+        } else {
+        desc = config.site.description
+        }
+      meta(name='description', content=desc)
+      meta(name="viewport", content=config.site.viewport)
+
+    //- OGP
+    block meta_ogp
+      meta(property="og:locale", content=config.site.ogp.locale)
+      meta(property="og:type",content=config.site.ogp.type)
+      meta(property="og:title", content=getPagesValue(current.id, "title"))
+      meta(property="og:description", content=getPagesValue(id, "description") )
+      if current.id == "top"
+        meta(property="og:url", content="./")
+      else
+      meta(property="og:url", content=config.rootpath + "/" + current.id + "/")
+      meta(property="og:site_name", content=config.site.ogp.site_name)
+      meta(property="og:image", content=config.site.ogp.image)
+      meta(property="og:image:width", content="1200")
+      meta(property="og:image:height", content="630")
+
+    //- リンクファイル
+    block link
+      link(rel='icon', href=config.site.favicon)
+      link(rel='shortcut icon', href=config.site.favicon)
+      link(rel='apple-touch-icon', href=config.site["apple-touch-icon"])
+
+
+    //- スタイルシート
+    block stylesheet
+      +link("/assets/css/app.css")(rel="stylesheet")
+      +link("/assets/css/style.css")(rel="stylesheet")
+
+    //- ヘッダーに組み込むスクリプト
+    block head_script
+
+  body(class!=current.bodyClass)
+
+    //- スマホメニューのボタン
+    a(href="#").c-slidebar-button.js-slidebar-button
+      span.c-slidebar-button__line
+        span
+        span
+        span
+      span.c-slidebar-button__text メニュー
+    .c-slidebar-menu.js-slidebar-menu.is-top-to-bottom
+      ul
+        each item in nav("global_nav")
+          li
+            +a(item.url)!= item.text
+            if item.children
+              ul
+              each child_item in item.children
+                li: +a(child_item.url)!= child_item.text
+
+
+    block layout
+
+    //- フッターに組み込むスクリプト
+    block footer_scripts
+      +script('/assets/js/app.js')
+      +script('/assets/js/scripts.js')
+
+

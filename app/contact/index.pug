@@ -7,7 +7,7 @@ block append config
   - current.depth = 2 // ページの階層
 
 block page_header
-  +c_page_header(false,"お問い合わせ")
+  +c_page_header("pagehead-default.jpg","お問い合わせ","CONTACT")
   +c.breadcrumb
     .l-container
       span: +a("/") ホーム
@@ -15,7 +15,7 @@ block page_header
       span お問い合わせ
 
 block body
-  main.l-main
+  section.l-main
     .l-section.is-lg
       .l-container
         .row
