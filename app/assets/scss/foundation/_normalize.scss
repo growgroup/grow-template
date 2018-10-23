@@ -29,7 +29,15 @@ html {
 body {
   color: $font-base-color;
   margin: 0;
-  line-height: 1.7;
+  line-height: 1.8;
+  letter-spacing: 0.8px;
+  font-size: 15px;
+  &.is-slidebar-active {
+    overflow: hidden;
+  }
+  @include breakpoint(small only) {
+    font-size: 14px;
+  }
 }
 
 /* HTML5 display definitions

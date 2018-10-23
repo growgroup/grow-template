@@ -14,16 +14,19 @@
 // Styleguide 2.5.0
 
 .c-label {
-  background: $color-primary;
+  background-color: $color-primary;
   color: $color-white;
-  font-size: $font-small-size;
-  border-radius: $border-radius;
   display: inline-block;
-  padding-top: rem-calc($margin-sm);
-  padding-bottom: rem-calc($margin-sm);
-  padding-left: rem-calc($margin-base);
-  padding-right: rem-calc($margin-base);
-  vertical-align: middle;
+  text-align: center;
+  min-width: 100px;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 1px 4px;
+  @include breakpoint(small only) {
+    font-size: 12px;
+    min-width: 88px;
+    border-radius: 2px;
+  }
   > a {
     color: $color-white;
     text-decoration: none;
@@ -31,11 +34,12 @@
 
   // 問い合わせフォーム
   &.is-required {
+    font-size: 12px;
     min-width: 54px;
     text-align: center;
     border-radius: 0;
-    padding: 4px 8px 5px;
-    background-color: $color-state-danger;
+    padding: 1px 8px 1px;
+    background-color: $color-primary;
   }
 
   &.is-lg {
@@ -48,6 +52,7 @@
 
   &.is-secondary {
     background: $color-secondary;
+    color: $font-base-color;
   }
 
   &.is-tertiary {
@@ -68,6 +73,9 @@
 
   &.is-success {
     background: $color-state-success;
+  }
+  &.is-box {
+    border-radius: 0px;
   }
 
 }

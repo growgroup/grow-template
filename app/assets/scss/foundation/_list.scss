@@ -26,6 +26,29 @@ ul {
   }
 }
 
+.ul-list {
+  li {
+    position: relative;
+    padding-left: 20px;
+    &:before {
+      content: "\f111";
+      font-family: "FontAwesome";
+      color: $color-primary;
+      position: absolute;
+      top: 1px;
+      left: 0;
+    }
+    ul {
+      li {
+        padding-left: 18px;
+        &:before {
+          content: "・";
+        }
+      }
+    }
+  }
+}
+
 
 // 順序ありリスト
 //
@@ -48,6 +71,18 @@ ul {
 ol {
   li {
 
+  }
+}
+
+.ol-list {
+  li {
+    position: relative;
+    list-style: decimal;
+    ul {
+      li {
+        margin-left: 24px;
+      }
+    }
   }
 }
 

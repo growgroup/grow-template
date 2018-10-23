@@ -18,10 +18,11 @@ mixin c(el)
       delete classlist[target_component_class_key]
       attributes.class =  classlist.join(" ")
       cssrules.addComponent(temp_class)
-      addComponentFile(temp_class)
+      locals.locals.addComponentFile(temp_class)
     }
   #{el}(class!="c-" + temp_class )&attributes(attributes)
     block
+
 
 //- 要素
 mixin e(el,component_name,history)

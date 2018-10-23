@@ -1,0 +1,23 @@
+//- 1カラムのベースファイル
+extends _head.pug
+block layout
+  //- ヘッダー
+  block header
+    include /inc/layout/_header.pug
+
+  //- スマホメニュー用のコンテナ
+  .c-slidebar-container.js-slidebar-container.is-top-to-bottom
+    //- グローバルナビゲーション
+    block global_nav
+      include /inc/layout/_global-nav.pug
+
+    //- ページヘッダー
+    block page_header
+
+    //- メインコンテンツ
+    block body
+
+    //- フッター
+    block footer
+      include /inc/layout/_footer.pug
+

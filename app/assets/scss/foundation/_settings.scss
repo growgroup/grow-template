@@ -7,12 +7,12 @@ $color-white: #fff !default; // 白
 $color-black: #000 !default; // 黒
 
 // # プライマリ
-$color-primary: #29b48e !default; // プライマリカラー
+$color-primary: #4B6CCD !default; // プライマリカラー
 $color-primary-dark: darken($color-primary, 10) !default; // 濃いプライマリカラー
 $color-primary-light: lighten($color-primary, 10) !default; // 薄いプライマリカラー
 
 // # セカンダリー
-$color-secondary: #666 !default; // セカンダリカラー
+$color-secondary: #F6F7F9 !default; // セカンダリカラー
 $color-secondary-dark: darken($color-secondary, 10) !default; // 濃いセカンダリカラー
 $color-secondary-light: lighten($color-secondary, 10) !default; // 薄いセカンダリカラー
 
@@ -22,7 +22,9 @@ $color-tertiary-light: darken($color-tertiary, 10) !default; // 薄いターシ�
 $color-tertiary-dark: lighten($color-tertiary, 10) !default; // 濃いターシャリカラー
 
 // # アクセント
-$color-accent: #b8b8b8 !default; // ターシャリカラー
+$color-accent: #30A09C !default; // ターシャリカラー
+$color-accent-green: #65AC29 !default; // ターシャリカラー
+$color-accent-orange: #E6A54D !default; // ターシャリカラー
 $color-accent-light: darken($color-tertiary, 10) !default; // 薄いターシャリカラー
 $color-accent-dark: lighten($color-tertiary, 10) !default; // 濃いターシャリカラー
 
@@ -41,7 +43,7 @@ $color-state-success: #13a83a !default; // 成功
 
 // # 2. Grid
 
-$grid-row-width: 1140px !default; // グリッドの幅
+$grid-row-width: 1080px !default; // グリッドの幅
 $grid-column-count: 12 !default; // グリッド数
 $grid-column-responsive-gutter: (// カラムとカラムの間隔
         small: 24px, // モバイル
@@ -52,8 +54,7 @@ $grid-column-responsive-gutter: (// カラムとカラムの間隔
 
 $font-base-size: 16 !default; // body のフォントサイズ
 $font-base-color: #333 !default; // body のフォントカラー
-
-$font-base-family:  Noto Sans JP,Noto Sans Japanese,Noto Sans,"游ゴシック Medium", "Yu Gothic Medium", "Original Yu Gothic", "Yu Gothic", YuGothic, Verdana, Meiryo, sans-serif !default; // フォントファミリー
+$font-base-family: Noto Sans JP,Noto Sans Japanese,Noto Sans,sans-serif; // フォントファミリー
 $font-base-weight: normal !default; // フォント幅
 $font-base-style: normal !default; // フォントスタイル
 
@@ -95,7 +96,7 @@ $margin-xs: $margin-base !default;
 
 // # 5. border
 
-$border-base-color: $color-gray-light !default;
+$border-base-color: #CBCBCB;
 $border-base-width: 1px !default;
 
 $border-radius: 3px !default;
@@ -110,7 +111,7 @@ $border-radius-xs: $border-radius/3 !default;
 $breakpoints: (
         small: 0,
         medium: 750px,
-        large: 1140px,
+        large: 1080px,
         xlarge: 1200px,
         xxlarge: 1440px,
 ) !default;

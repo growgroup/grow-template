@@ -35,13 +35,13 @@
   @extend %clearfix;
   padding: $margin-md;
   background: $color-white;
-
+  display: flex;
   // サムネイル
   .p-post-item__thumbnail {
     float: left;
     margin-right: $margin-md;
     margin-bottom: 0;
+    min-width: 30%;
   }
-
 }
 

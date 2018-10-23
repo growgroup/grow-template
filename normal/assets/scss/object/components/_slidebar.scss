@@ -1,0 +1,205 @@
+// スライドメニュー
+//
+// スマホ時のメニュー。別途 GApp プラグインを呼び出す必要があります。
+//
+// markup:
+//  <!-- メニュー -->
+// <div class="slidebar-menu js-slidebar-menu">
+//   <ul>
+//    <li class="is-current">
+//        <a href="#">サンプル1</a>
+//   </li>
+//  </ul>
+// </div>
+//  <!-- ボタン -->
+//  <a href="#" class="slidebar-button js-slidebar-button">
+//    <i class="fa fa-bars"></i>
+//  </a>
+//  <!-- 全体を包むラッパー -->
+//  <div class="slidebar-container js-slidebar-container">
+//     hogehoge
+//  </div>
+//
+// Styleguide 4.5
+
+$slidebar-menu-bg: $color-primary !default;
+$slidebar-menu-width: 75% !default;
+$slidebar-menu-eaasing: all ease-in-out .2s !default;
+$slidebar-container-bg: rgba(0, 0, 0, 0.8) !default;
+
+@include breakpoint(medium up) {
+  .c-slidebar-button {
+    display: none !important;
+  }
+  .c-slidebar-menu {
+    display: none !important;
+  }
+}
+
+@include breakpoint(small only) {
+
+  // トリガーとなるボタン
+  .c-slidebar-button {
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    text-align: center;
+    font-size: rem-calc(12);
+    z-index: 100000;
+    text-decoration: none;
+    padding: 4px;
+    background: $color-primary;
+    line-height: 1;
+    color: $color-white;
+    width: 60px;
+    height: 60px;
+    padding-top: 13px;
+    // ボーダー
+    &__line {
+      > span {
+        display: block;
+        height: 3px;
+        background: #fff;
+        width: 100%;
+        max-width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 6px;
+        transition: all ease .2s;
+      }
+    }
+    // メニューテキスト
+    &__text {
+      transition: all ease .2s;
+    }
+  }
+
+  // メニュー自体
+  .c-slidebar-menu {
+    height: 100vh;
+    position: fixed;
+    z-index: 9980;
+    width: $slidebar-menu-width;
+    -webkit-transform: translateX(100%);
+    transform: translate3d(100%, 0px, 0px);
+    right: 0;
+    -webkit-transition: $slidebar-menu-eaasing;
+    transition: $slidebar-menu-eaasing;
+    overflow-x: scroll;
+    top: 0;
+
+    // 上から下へ
+    &.is-top-to-bottom {
+      -webkit-transform: translateX(0%);
+      -webkit-transform: translateY(-100%);
+      transform: translate3d(0px, -100%, 0px);
+      height: auto;
+      width: 100%;
+      opacity: 0;
+    }
+
+    ul {
+      background: $color-white;
+      li {
+        border-bottom: 1px solid $border-base-color;
+        &:last-child {
+          border-bottom: none;
+        }
+        a {
+          font-size: rem-calc(15);
+          display: block;
+          padding-left: rem-calc(35);
+          padding-top: rem-calc(13);
+          padding-bottom: rem-calc(13);
+          padding-right: rem-calc(8);
+          text-decoration: none;
+          color: $font-base-color;
+          font-weight: bold;
+          &:before {
+            content: "\f105";
+            font-family: "FontAwesome";
+            padding-right: rem-calc(16);
+            color: $color-primary;
+          }
+        }
+      }
+    }
+  }
+
+  // メニュー以外をラップする要素
+  .c-slidebar-container {
+    height: 100vh;
+    -webkit-transition: $slidebar-menu-eaasing;
+    transition: $slidebar-menu-eaasing;
+    &:after {
+      content: "";
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: $slidebar-container-bg;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      -webkit-transition: $slidebar-menu-eaasing;
+      transition: $slidebar-menu-eaasing;
+      display: none;
+    }
+  }
+
+  // 有効時
+  .is-slidebar-active {
+    cursor: pointer;
+    .c-slidebar-button {
+      &__line {
+        > span {
+          &:nth-child(1){
+            transform: rotate(-45deg) translateY(11px) translateX(-8px);
+          }
+          &:nth-child(2){
+            transform: rotate(45deg) translateY(1px) translateX(5px);
+          }
+          &:nth-child(3){
+            display: none;
+          }
+        }
+      }
+      &__text {
+        display: none;
+      }
+    }
+    .c-slidebar-container {
+      -webkit-transform: translateX(-$slidebar-menu-width);
+      transform: translate3d(-$slidebar-menu-width, 0px, 0px);
+      &:after {
+        content: "";
+        opacity: 1;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: $slidebar-container-bg;
+        display: block;
+        top: 0;
+        left: 0;
+      }
+
+      // 上から下の場合
+      &.is-top-to-bottom {
+        -webkit-transform: translateX(0px);
+        transform: translate3d(0px, 0px, 0px);
+        &:after {
+          top: 60px;
+        }
+      }
+    }
+
+    .c-slidebar-menu {
+      -webkit-transform: translateX(0);
+      transform: translate3d(0, 0, 0);
+      &.is-top-to-bottom {
+        -webkit-transform: translateY(60px);
+        transform: translate3d(0, 60px, 0);
+        opacity: 1;
+      }
+    }
+  }
+}

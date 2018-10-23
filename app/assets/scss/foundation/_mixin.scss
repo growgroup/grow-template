@@ -267,6 +267,16 @@
   }
 }
 
+
+@mixin button_colors($color){
+  background: $color;
+  border-color: $color;
+  &:hover {
+    background: #fff;
+    color: $color;
+  }
+}
+
 // Pug Mixin
 //
 // Pug テンプレート内で利用可能なMixin一覧
@@ -391,3 +401,9 @@
 // <pre>+p_post_item(el,image,title,date,category,text)</pre>
 //
 // Styleguide 6.5.0
+
+@mixin bg-option(){
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}

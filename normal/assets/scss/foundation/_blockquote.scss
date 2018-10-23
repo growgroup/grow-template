@@ -1,0 +1,20 @@
+// 引用
+//
+// markup:
+// <blockquote>
+// 引用文引用文引用文引用文引用文引用文引用文引用文引用文引用文引用文
+// <cite>著者名</cite>
+// </blockquote>
+//
+// Styleguide 1.5.0
+
+blockquote {
+  border-left: 4px solid $color-primary;
+  padding-left: $margin-md;
+  margin-top: $margin-md;
+  margin-bottom: $margin-md;
+  cite{
+    display: block;
+    text-align: right;
+  }
+}

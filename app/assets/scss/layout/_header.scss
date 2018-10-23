@@ -8,46 +8,83 @@
 // Styleguide 5.1.0
 
 .l-header {
-  padding-top: rem-calc(18);
-  padding-bottom: rem-calc(18);
-  @include breakpoint(small only) {
-    padding-top: 0;
-    padding-bottom: 0;
-    height: 60px;
+  padding-top: 12px;
+  background-color: $color-white;
+  @media (max-width: 950px) {
     position: fixed;
     top: 0;
     left: 0;
-    background: #fff;
     width: 100%;
-    z-index: 100;
-    padding-left: 8px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    height: 55px;
+    z-index: 9990;
+    padding-top: 5px;
+    box-shadow: 1px 1px 1px rgba($color-black,0.1);
   }
-}
+  &__content {
+    display: flex;
+  }
 
-// ヘッダー
-//
-// 電話番号
-.l-header__tel {
-  color: $font-base-color;
-  font-size: rem-calc(22);
-  i.fa {
-    margin-right: 8px;
+  &__heading {
+    font-size: 12px;
+    margin: 0;
+    color: #9A9A9A;
+    font-weight: 400;
+    @media (max-width: 950px) {
+      display: none;
+    }
   }
-  @include breakpoint(small only) {
-    display: none;
-  }
-}
 
-// ヘッダー
-//
-// ロゴ
-.l-header__logo {
-  img {
-    max-width: 180px;
-    @include breakpoint(small only) {
-      max-width: 120px;
+  // 電話番号
+  &__tel {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    @media (max-width: 950px) {
+      display: none;
+    }
+  }
+  &__number {
+    display: block;
+    font-size: 23px;
+    @include webfont();
+    text-decoration: none;
+    letter-spacing: 0.8px;
+    line-height: 1.2;
+    &:before {
+      content: "\f095";
+      font-family: "FontAwesome";
+      padding-right: 6px;
+      font-size: 21px;
+    }
+  }
+  &__text {
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    padding-left: 12px;
+  }
+
+  // ロゴ
+  &__inner {
+    display: flex;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 17px;
+  }
+  &__logo {
+    display: block;
+    width: rem-calc(532)/2;
+    @media (max-width: 950px) {
+      width: rem-calc(380)/2;
+    }
+    img {
+      width: 100%;
+      height: auto;
     }
   }
 }
+
+
+
+
+
+

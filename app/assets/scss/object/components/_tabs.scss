@@ -16,47 +16,52 @@
 //
 // Styleguide 2.19.0
 
-.c-tabs__navs {
-  margin-left: 0;
-  padding-left: 0;
-  margin-bottom: 0;
-
-  > li {
-    display: inline-block;
+.c-tabs {
+  &__navs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    @include breakpoint(small only) {
+      margin-bottom: 32px;
+    }
+    li {
+      width: 50%;
+      max-width: 264px;
+      a {
+        background-color: $color-white;
+        color: $color-primary;
+        border: 1px solid $color-primary;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        padding: 11px;
+        position: relative;
+        @include breakpoint(small only) {
+          padding: 6px;
+        }
+        &:after {
+          content: "\f107";
+          font-family: "FontAwesome";
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          margin-top: -12px;
+        }
+        &.is-active {
+          background-color: $color-primary;
+          color: $color-white;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
   }
-  > li > a {
-    display: inline-block;
-    padding: rem-calc($margin-base) rem-calc($margin-md);
-    background: $color-tertiary;
-    text-decoration: none;
-    border-radius: $border-radius $border-radius 0 0;
-
-    &:hover,
+  &__content {
+    display: none;
     &.is-active {
-      background: $color-primary;
-      color: $color-white;
+      display: block;
     }
   }
-
-  // 拡張
-  &.is-expand {
-    > li > a {
-      padding: rem-calc($margin-base) rem-calc($margin-lg);
-    }
-  }
-}
-
-// タブコンテンツ
-.c-tabs__content {
-  border: 1px solid $color-tertiary;
-  padding: $margin-base;
-  background: $color-white;
-  display: none;
-  &.is-active {
-    display: block;
-  }
-  p {
-    margin-top: 0;
-  }
-
 }

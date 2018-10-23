@@ -12,15 +12,11 @@ mixin bgimg(file)
     block
 
 //- ページヘッダー
-mixin c_page_header(text)
-  if image
-    +bgimg("pagehead-" + current.id + ".jpg").c-page-header
-      h2!= text
-      block
-  else
-    .c-page-header
-      h1!= text
-      block
+mixin c_page_header(image,title,subtitle)
+  +bgimg(image).c-page-header
+    .c-page-header__inner
+      h1.c-page-header__title!= title
+      .c-page-header__subtitle!= subtitle
 
 //- ループ
 //- +loop(10)
@@ -66,8 +62,31 @@ mixin tr(th, td)
     th!= th
     td!= td
 
+mixin c_relation()
+  +c.relation
+    .l-container
+      +e.title 関連するコンテンツ
+      +e.button
+        ul
+          li: +a("/aboutus/") 私たちについて
+          li: +a("/company/greeting/") 代表あいさつ
+          li: +a("/company/profile/") 会社概要
+          li: +a("/company/history/") 沿革
+
+
 mixin c_offer()
-  .c-offer
+  +c.offer
+    .l-container
+      +e.inner
+        h2.c-offer__title 株式会社サンプルへの<br class="u-hidden-lg">お見積り/お問い合わせはこちら
+        +e.box
+          <a href="tel:123-456-7890" class="c-offer__button">
+            +e.button__number
+              span 123-456-7890
+              small 受付：9:00〜18:00（平日）
+          </a>
+          +a("/contact/").c-offer__button.is-contact お問い合わせフォーム
+
 
 
 mixin link(href)

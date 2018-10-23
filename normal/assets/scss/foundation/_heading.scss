@@ -1,0 +1,103 @@
+// ベース
+//
+// Styleguide 1.0.0
+
+// 見出し
+//
+// Styleguide 1.1.0
+
+$heading-color: $font-base-color !default;
+$heading-weight: normal !default;
+$heading-accent-color: $font-base-color !default;
+
+.heading {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  small {
+    font-size: 0.65em;
+    color: $color-gray;
+  }
+}
+
+// 見出し - 極大
+//
+// markup:
+// <h1 class="heading is-xlg">見出し - 極大 <small>heading top</small</h1>
+//
+// Styleguide 1.1.1
+
+.heading.is-xlg {
+  font-size: rem-calc(30);
+  @include breakpoint(small only){
+    font-size: rem-calc(24);
+  }
+}
+
+// 見出し - 大
+//
+// markup:
+// <h1 class="heading is-lg">見出し:大 <small>heading large</small</h1>
+//
+// Styleguide 1.1.2
+
+.heading.is-lg {
+  font-size: rem-calc(24);
+  @include breakpoint(small only){
+    font-size: rem-calc(18);
+  }
+}
+
+// 見出し - 中
+//
+// markup:
+// <h1 class="heading is-md">見出し:中 <small>heading middle</small</h1>
+//
+// Styleguide 1.1.3
+
+.heading.is-md {
+  font-size:  rem-calc(20);
+  @include breakpoint(small only){
+    font-size: rem-calc(20);
+  }
+}
+
+// 見出し - 小
+//
+// markup:
+// <h1 class="heading is-sm">見出し:小 <small>heading small</small</h1>
+//
+// Styleguide 1.1.4
+
+.heading.is-sm {
+  font-size:  rem-calc(16);
+  @include breakpoint(small only){
+    font-size: rem-calc(16);
+  }
+}
+
+// 見出し - 極小
+//
+// markup:
+// <h1 class="heading is-xs">見出し:極小 <small>heading small</small</h1>
+//
+// Styleguide 1.1.5
+
+.heading.is-xs {
+  font-size:  rem-calc(14);
+  @include breakpoint(small only){
+    font-size: rem-calc(14);
+  }
+}
+
+
+
+.heading {
+  &.is-top{
+    margin-bottom: 0px;
+  }
+  &.is-bottom{
+    margin-top: 0px;
+  }
+}
+
+
