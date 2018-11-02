@@ -11,6 +11,11 @@ import CurrentNav from './app/current-nav.js';
 import buildFormat from './app/format.js';
 import OwlCarousel from 'owl.carousel';
 
+import fontAwesome from "font-awesome/scss/font-awesome.scss"
+import OwlCss from "owl.carousel/dist/assets/owl.carousel.css"
+import OwlThemeCss from "owl.carousel/dist/assets/owl.theme.default.css"
+
+
 class App {
   constructor() {
     this.Utils = new Utils();
