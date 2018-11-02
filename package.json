@@ -10,7 +10,7 @@
     "init": "npm install",
     "server": "node ./server.js",
     "clean": "rimraf ./dist",
-    "copy:images": "cpx 'app/**/*.{png,jpg,gif,jpeg,svg,ico}' ./dist",
+    "copy:images": "cpx 'app/**/*.{png,jpg,gif,jpeg,svg,ico,pdf}' ./dist",
     "copy:images:dev": "chokidar 'app/assets/**/*.*' -c 'npm run copy:images'",
     "copy:js": "cpx 'app/**/*.{js}' ./dist && cpx 'app/assets/js/scripts.js' ./dist/assets/js && cpx './node_modules/jquery/dist/jquery.min.js' ./dist/assets/js",
     "copy:fonts": "cpx 'app/**/*.{woff,svg,otf,ttf,woff2,eot}' ./dist",
