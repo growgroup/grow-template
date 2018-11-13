@@ -2,7 +2,7 @@ import webpack from 'webpack'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import path from 'path'
 
-const BASE_DIR = "/"
+const BASE_DIR = "../../"
 
 export default {
   mode: 'development',
