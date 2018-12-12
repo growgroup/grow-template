@@ -97,22 +97,28 @@ class App {
     }
 
     $(function() {
-      $('.c-case-slider .owl-carousel').owlCarousel({
-        items: 4,
-        margin: 16
-      });
-      $('.c-mainvisual-slider').owlCarousel({
-        items: 1,
-        margin: 0,
-        dots: true,
-        loop: true,
-        nav: true,
-        autoplayHoverPause: true,
-        autoplay: true,
-        autoplaySpeed: 500,
-        center: true,
-        navText: ['<img src="/assets/images/icon-slider-prev.svg" />','<img src="/assets/images/icon-slider-next.svg" />'],
-      });
+        var owls = $('.owl-carousel');
+        if (owls.length === 0) {
+            return false
+        }
+        owls.imagesLoaded(function () {
+            $('.c-case-slider .owl-carousel').owlCarousel({
+                items: 4,
+                margin: 16
+            });
+            $('.c-mainvisual-slider').owlCarousel({
+                items: 1,
+                margin: 0,
+                dots: true,
+                loop: true,
+                nav: true,
+                autoplayHoverPause: true,
+                autoplay: true,
+                autoplaySpeed: 500,
+                center: true,
+                navText: ['<img src="/assets/images/icon-slider-prev.svg" />','<img src="/assets/images/icon-slider-next.svg" />'],
+            });
+        });
       buildFormat();
     });
   }
