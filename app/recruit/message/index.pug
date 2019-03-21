@@ -1,0 +1,51 @@
+extends /inc/foundation/_base.pug
+block append config
+  - current.id = "recruit" // ページのID
+  - current.title = "代表ご挨拶" // タイトル
+  - current.description = "先輩社員の声" // 説明文
+  - current.bodyClass = "interivews_detail" // body に付与するクラス
+  - current.depth = 3 // ページの階層
+
+block page_header
+  +c_page_header("bg-pageheader-" + current.id + ".jpg","採用情報")
+  +c.breadcrumb
+    .l-container
+      span: +a("/") ホーム
+      span >
+      span: +a("/recruit/") 採用情報
+      span >
+      span 代表ご挨拶
+
+block body
+  section.l-main
+    +c.interview
+      .l-container
+        +e.head
+          +e.head__image
+            +img("img-message01.jpg")
+          +e.head__content
+            +e.head__title.
+              代表ご挨拶
+            +e.head__meta
+              +e.head__category
+                .c-label.is-primary 代表取締役
+              +e.head__name
+                span 山田　俊彦
+    .l-section.is-top
+      .l-container
+        .row
+          .large-10.is-push-lg-1.small-12
+            p.
+              私は株式会社テクノタイムサービスの代表を務めます山田と申します。<br>
+              当社は2000年10月にグループ時計メーカーのアフターサービス部から独立した会社です。<br>
+              ここまでの道のりで私が信条とする3つの言葉があります。 <br>
+            h2.heading.is-xlg 「誠実」・「堅実」・「積極的」
+            p.
+              誠実であること。迷ったとき、課題に行き当たったとき、どの選択が「誠実」であるかと自分に問いかけます。また、多くのお客様と社員を抱える会社の経営者として、「堅実」であることは忘れてはなりません。地道に一歩一歩前に進むことで、大きな目標を達成できると思うからです。<br>
+              <br>
+              これに反するようですが、「積極的」な姿勢も忘れてはなりません。常に我々が得意とする分野に拡大し、ここぞという時には、積極的に取り組むことで、事業を成長させることができるからです。<br>
+              <br>
+              これからも社員の成長が会社の成長に繋がり、社員の幸せはお客様の幸せに繋がるよう、日々努めてまいる所存でございます。
+
+  +front_recruit_relation()
+  +c_offer()

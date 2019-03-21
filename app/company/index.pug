@@ -1,43 +1,103 @@
 extends /inc/foundation/_base.pug
 block append config
   - current.id = "company" // ページのID
-  - current.title = "企業情報" // タイトル
-  - current.description = "これは企業情報の説明文です" // 説明文
+  - current.title = "会社案内" // タイトル
+  - current.description = "これは採用情報の説明文です" // 説明文
   - current.bodyClass = "company" // body に付与するクラス
   - current.depth = 2 // ページの階層
 
 block page_header
-  +c_page_header("pagehead-default.jpg","企業情報","COMPANY")
+  +c_page_header("bg-pageheader-" + current.id + ".jpg",current.title)
   +c.breadcrumb
     .l-container
       span: +a("/") ホーム
       span >
-      span 企業情報
+      span= current.title
 
 block body
   section.l-main
-    .l-section.is-md
-      .l-container
-        h2.heading.is-lg.is-primary.u-text-center.is-bottom 株式会社サンプルは、IT黎明期から活動を開始しました。
-        p.u-text-center 今から30年前。ITという言葉がまだ一般的になる前から、私たち株式会社サンプルは創業をはじめました。<br>創業から変わらぬ代表の思いから、この会社の歴史をご紹介します。
-    .l-section.is-gray.is-md
-      .l-container
-        +c.card.is-three-column
-          +e.inner
-            +a("/company/greeting/").c-card__block
-              +bgimg("img-card-01.jpg").c-card__image
-              +e.title 代表あいさつ
-            +a("/company/profile/").c-card__block
-              +bgimg("img-card-02.jpg").c-card__image
-              +e.title 会社概要
-            +a("/company/history/").c-card__block
-              +bgimg("img-card-03.jpg").c-card__image
-              +e.title 沿革
-    .l-section.is-lg
-      .l-container
-        +c.bnr-lg
-          +a("/recruit/").c-bnr-lg__block
-            +bgimg("bnr-recruit.jpg").c-bnr-lg__image
-            +e.text 採用情報はこちら
+    .l-container.is-sm
+      .l-section.is-top
+          +c.capsule-nav
+            ul
+              li: +a("#").c-button.is-sm.is-icon.js-anchor
+                span 会社概要
+                i.fa.fa-chevron-circle-down
+              li: +a("#").c-button.is-sm.is-icon.js-anchor
+                span 拠点
+                i.fa.fa-chevron-circle-down
+              li: +a("#").c-button.is-sm.is-icon.js-anchor
+                span グループ
+                i.fa.fa-chevron-circle-down
+      .l-section.is-top#company
+        h2.heading.is-xlg 会社概要
+        table.c-table
+          tr
+            th 社名
+            td 株式会社テクノタイムサービス
+          tr
+            th 代表者
+            td 山田　俊彦
+          tr
+            th 設立
+            td 2000年10月6日
+          tr
+            th 電話番号（代表）
+            td 03-3552-8223（本社代表）
+          tr
+            th 電話番号（修理受付）
+            td 045-581-7111（修理受付）
+          tr
+            th 事業内容
+            td.
+              時計修理業<br>
+              時計用電池・部品・工具・バンド・卸業
+          tr
+            th 主要仕入先
+            td HOROTEC（スイス）　CASIO（技術認定）　SEIKO.C.S
+          tr
+            th 取引銀行
+            td 三井住友銀行　みずほ銀行　横浜銀行
+
+      .l-section.is-top#area
+        h2.heading.is-xlg 拠点
+        +c.company-areabox
+          +e.content
+            +e.title 本社
+            +e.text.
+              〒104-0041　東京都中央区新富１丁目13番21号　ヤマトビル２Ｆ<br>
+              TEL:03-3552-8223 FAX:03-6222-3335
+          +e.image
+            +img("img-company01.jpg")
+        +c.company-areabox
+          +e.content
+            +e.title 横浜テクニカルセンター
+            +e.text.
+              〒230-0076　神奈川県横浜市鶴見区馬場3-2-32<br>
+              TEL:045-581-7111 FAX:045-581-0118
+          +e.image
+            +img("img-company02.jpg")
+        +c.company-areabox
+          +e.content
+            +e.title 広島サービスセンター
+            +e.text.
+              〒733-0003　広島県広島市西区三篠町1-7-17-101<br>
+              TEL:082-509-4280 FAX:082-509-4281
+          +e.image
+            +img("img-company03.jpg")
+        +c.company-areabox
+          +e.content
+            +e.title 東京銀座修理工房
+            +e.text.
+              〒104-0061　東京都中央区銀座4-14-1　銀座紗古夢堂（サコムドウ）<br>
+              TEL:03-3543-7356
+          +e.image
+            +img("img-company03.jpg")
+
+      .l-section.is-top#group
+        h2.heading.is-xlg グループ会社紹介
+        .u-mbs.u-text-center
+          +img("img-company-group.jpg").u-hidden-sm
+          +img("img-company-group_sp.jpg").u-hidden-lg
 
   +c_offer()

@@ -7,8 +7,16 @@
 //
 // Styleguide 5.3.0
 .l-section {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 72px;
+  padding-bottom: 72px;
+  @include breakpoint(small only) {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+
+  &.is-negativemargin-bottom {
+    margin-bottom: -112px;
+  }
 
   &.is-xlg {
     padding-top: 80px !important;
@@ -58,8 +66,9 @@
   &.is-gray {
     background-color: #F6F7F9;
   }
+
   &.is-bg {
-    background: url("../images/ptn-stripe.png") repeat;
+    background: rgba(#A8ADBB, 0.1);
   }
 
   &.is-half-bg {
@@ -70,6 +79,7 @@
       background: url("../images/ptn-stripe.png") repeat;
       padding-bottom: 40px;
     }
+
     &:after {
       content: "";
       display: block;

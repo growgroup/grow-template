@@ -1,0 +1,77 @@
+extends /inc/foundation/_base.pug
+block append config
+  - current.id = "facility" // ページのID
+  - current.title = "主要設備" // タイトル
+  - current.description = "主要設備" // 説明文
+  - current.bodyClass = "facility" // body に付与するクラス
+  - current.depth = 2 // ページの階層
+
+block page_header
+  +c_page_header("bg-pageheader-" + current.id + ".jpg",current.title)
+  +c.breadcrumb
+    .l-container
+      span: +a("/") ホーム
+      span >
+      span= current.title
+
+block body
+  section.l-main
+    +c.opening
+      .l-container
+        h2.c-opening__title
+          | 時計修理を支える主要設備を<br class="u-hidden-lg">紹介します。
+        p.c-opening__text.
+          テクノタイムサービスでは、時計修理のクオリティを支えるために、必要な設備を整えています。
+    .l-container
+      .row
+        .large-4.small-6.medium-6
+          +c.case-item
+            +e.image
+              +img("img-facility01.jpg")
+            +e.title.
+              超音波自動洗浄機
+            +e.meta.
+              オーバーホールの工程で分解したネジ、歯車などの汚れや油を専用洗浄液と超音波により綺麗に洗浄します。
+        .large-4.small-6.medium-6
+          +c.case-item
+            +e.image
+              +img("img-facility02.jpg")
+            +e.title.
+              時計用精密旋盤
+            +e.meta.
+              アンティーク時計の部品など生産が完了してしまった部品の作成をします。
+        .large-4.small-6.medium-6
+          +c.case-item
+            +e.image
+              +img("img-facility03.jpg")
+            +e.title.
+              防水試験機（エアリークテスター）
+            +e.meta.
+              スポーツ防水から日常生活防水まで、電池交換やオーバーホールなどの検査として防水監査を実施しています。※20気圧までの測定が可能です。
+        .large-4.small-6.medium-6
+          +c.case-item
+            +e.image
+              +img("img-case-sample.jpg")
+            +e.title.
+              ワインディングマシン
+            +e.meta.
+              オーバーホールの精度調整の過程において時計の日差測定や自動巻き時計の巻上テストをおこないます。
+        .large-4.small-6.medium-6
+          +c.case-item
+            +e.image
+              +img("img-case-sample.jpg")
+            +e.title.
+              研磨機各種
+            +e.meta.
+              当社では研磨工房を持ち研磨専用職人が研磨作業をおこなっております。<br>
+              様々な研磨をおこなうことが出来るよう専用の機材を備えています。
+        .large-4.small-6.medium-6
+          +c.case-item
+            +e.image
+              +img("img-case-sample.jpg")
+            +e.title.
+              歩度測定器
+            +e.meta.
+              スイスの高級時計メーカーも使用している機械式時計の歩度測定器により、正確な時間調整をおこないます。
+
+  +c_offer()

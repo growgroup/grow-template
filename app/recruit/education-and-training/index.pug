@@ -1,0 +1,55 @@
+extends /inc/foundation/_base.pug
+block append config
+  - current.id = "recruit" // ページのID
+  - current.title = "教育と研修" // タイトル
+  - current.description = "教育と研修" // 説明文
+  - current.bodyClass = "education_detail" // body に付与するクラス
+  - current.depth = 3 // ページの階層
+
+block page_header
+  +c_page_header("bg-pageheader-" + current.id + ".jpg","採用情報")
+  +c.breadcrumb
+    .l-container
+      span: +a("/") ホーム
+      span >
+      span: +a("/recruit/") 採用情報
+      span >
+      span!=current.title
+
+block body
+  section.l-main
+    +c.opening
+      .l-container
+        h2.c-opening__title
+          | 教育と研修
+        p.c-opening__text.
+          テクノタイムサービスでは、テクニカルサービスセンターで2週間～1ヵ月の研修を行います。<br>
+          マニュアル、工具も完備しており、専門講師が時計の構造や電池交換など、座学と実技にて指導します。<br>
+          その後は配属先の店舗でOJTを実施します。各店舗3～7名のスタッフがいるのでご安心ください。
+
+    .l-container.is-sm
+      .row
+        .large-6.small-6.medium-6
+          +c.case-item.is-half
+            +e.image
+              +img("img-education-and-training01.jpg")
+            +e.title.
+              技術研修（マンツーマン指導）
+            +e.meta.
+              初めての電池交換もご安心ください。<br>
+              時計の構造から修理技術まで新人さんのペースに合わせてマンツーマン指導を行います。<br>
+              指導講師は教育セミナーを担当する親切がモットーな人を厳選しています。<br>
+              最後まで不安なく現場で対応できるよう教えます。
+        .large-6.small-6.medium-6
+          +c.case-item.is-half
+            +e.image
+              +img("img-education-and-training02.jpg")
+            +e.title.
+              接客研修（ロールプレイングOJT）
+            +e.meta.
+              店頭接客対応に必要なイロハを親切丁寧に教わることができます。<br>
+              スタートは8代用語から明確な行動4原則・店舗接客対応・話し方マニュアルまで分かりやすく明文化したものをベースにロールプレイングをおこないます。<br>
+              配属後の店舗で定期的にOJTも実施して接客レベル向上を目指します。
+
+  +front_recruit_relation()
+  +c_offer()

@@ -39,7 +39,6 @@
 .c-table {
   width: 100%;
   border-top: 1px solid $border-base-color;
-
   // table全体
   tr th,
   tr td {
@@ -51,13 +50,13 @@
 
   // thead
   thead tr th {
-    background-color: #F2F5FD;
+    background-color: rgba(#A8ADBB, 0.1);
     font-weight: 500;
   }
 
   // tbody
   tbody tr th {
-    background-color: #F2F5FD;
+    background-color: rgba(#A8ADBB, 0.1);
     font-weight: 500;
     text-align: left;
     width: 180px;
@@ -65,6 +64,7 @@
       width: 120px;
     }
   }
+
   tbody tr {
     border-bottom: 1px solid $border-base-color;
   }

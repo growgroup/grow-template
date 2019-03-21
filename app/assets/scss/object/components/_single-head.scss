@@ -2,7 +2,8 @@
   margin-bottom: 24px;
   &__title {
     @extend .heading;
-    @extend .heading.is-lg;
+    @extend .heading.is-xlg;
+    @extend .heading.is-left;
     margin-bottom: 24px;
     margin-top: 0;
     @include breakpoint(small only) {

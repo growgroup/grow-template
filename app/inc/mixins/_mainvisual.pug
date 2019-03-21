@@ -1,8 +1,10 @@
 //- メインビジュアル
 mixin c_mainvisual
   +c.main-visual
-    +bgimg("main-visual.jpg").c-main-visual__image
+    +bgimg("bg-mainvisual.jpg").c-main-visual__image
     +e.inner
-      +e.text: +img("main-visual-text.png","現場のスペシャリスト集団。それがサンプルです。")
-      +a("/aboutus/").c-main-visual__button 私たちについて
+      +e.text.heading.is-xxlg.is-white.
+        時計修理技能士が多数在籍。<br>
+        確かな信頼と安心を<br class="u-hidden-lg">お届けします。
+      +a("/features/").c-main-visual__button.c-button.is-accent テクノタイムサービスの強み
 

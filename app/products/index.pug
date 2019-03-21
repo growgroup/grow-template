@@ -1,0 +1,43 @@
+extends /inc/foundation/_base.pug
+block append config
+  - current.id = "products" // ページのID
+  - current.title = "商品案内" // タイトル
+  - current.description = "商品案内" // 説明文
+  - current.bodyClass = "products" // body に付与するクラス
+  - current.depth = 2 // ページの階層
+
+block page_header
+  +c_page_header("bg-pageheader-" + current.id + ".jpg",current.title)
+  +c.breadcrumb
+    .l-container
+      span: +a("/") ホーム
+      span >
+      span= current.title
+
+block body
+  section.l-main
+    .l-container
+      .l-section.is-top
+        .u-mbs.is-bottom
+          .c-lead.u-text-center.
+            時計修理の専業企業のテクノタイムサービスだからこそ紹介できる、<br class="u-hidden-sm">
+            信頼できる時計修理関連の商品を掲載しています。
+        +c.products-banners
+          .row
+            .large-4.small-6
+              +c.A.products-banner.is-list(href="/products/01/",style="background-image: url(/assets/images/bg-products-banner01.jpg)")
+                +e.text 電池
+              +e.desc ソニー・マクセルなど国内流通電池を中心に取扱いをしています。
+            .large-4.small-6
+              +c.A.products-banner.is-list(href="/products/01/",style="background-image: url(/assets/images/bg-products-banner02.jpg)")
+                +e.text 時計部品
+              +e.desc 国内外のムーブメントや純正部品、ご要望に応じてジュエネリック開発部品の取扱いをしています。
+            .large-4.small-6
+              +c.A.products-banner.is-list(href="/products/01/",style="background-image: url(/assets/images/bg-products-banner03.jpg)")
+                +e.text 工具
+              +e.desc 技術者が信頼できるスイス製工具など、国内外の使い易い工具をご案内させていただきます。
+            .large-4.small-6
+              +c.A.products-banner.is-list(href="/products/01/",style="background-image: url(/assets/images/bg-products-banner04.jpg)")
+                +e.text セミナー教育
+              +e.desc 時計修理技能士を目指す方の応援教育セミナーを定期的に開催しています。
+  +c_offer()

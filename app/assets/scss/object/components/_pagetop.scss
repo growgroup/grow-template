@@ -1,4 +1,6 @@
 .c-pagetop {
+  position: relative;
+
   &__button {
     display: block;
     text-decoration: none;
@@ -11,5 +13,25 @@
     background-color: $color-primary;
     text-align: center;
     transition: all .3s;
+    width: 80px;
+    height: 80px;
+    background: $color-accent;
+    color: #fff;
+    font-size: rem-calc(50);
+    position: fixed;
+    bottom: 46px;
+    right: 24px;
+    padding-top: 12px;
+    @include breakpoint(small only) {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+      bottom: 22px;
+      right: 16px;
+      padding-top: 8px;
+      svg {
+        max-width: 20px;
+      }
+    }
   }
 }

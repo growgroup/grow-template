@@ -44,7 +44,7 @@ small,
 
 strong,
 .text-strong {
-  font-weight: 500;
+  font-weight: 800;
   @include breakpoint(small only) {
     font-weight: 600;
   }
@@ -76,7 +76,7 @@ del,
 a,
 .text-link {
   color: $color-primary;
-  font-weight: 500;
+  font-weight: 400;
   @include breakpoint(small only) {
     font-weight: 600;
   }

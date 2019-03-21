@@ -14,19 +14,20 @@
 // Styleguide 2.5.0
 
 .c-label {
-  background-color: $color-primary;
-  color: $color-white;
+  background-color: $color-tertiary;
+  color: $font-base-color;
   display: inline-block;
   text-align: center;
-  min-width: 100px;
-  border-radius: 4px;
+  min-width: 120px;
   font-size: 14px;
-  padding: 1px 4px;
+  font-weight: bold;
+  padding: 8px 16px;
   @include breakpoint(small only) {
     font-size: 12px;
     min-width: 88px;
     border-radius: 2px;
   }
+
   > a {
     color: $color-white;
     text-decoration: none;
@@ -39,7 +40,8 @@
     text-align: center;
     border-radius: 0;
     padding: 1px 8px 1px;
-    background-color: $color-primary;
+    background-color: $color-accent;
+    color: #fff;
   }
 
   &.is-lg {
@@ -48,6 +50,11 @@
 
   &.is-sm {
     font-size: rem-calc($font-small-size*0.8);
+  }
+
+  &.is-primary {
+    background: $color-primary;
+    color: #fff;
   }
 
   &.is-secondary {
@@ -74,6 +81,7 @@
   &.is-success {
     background: $color-state-success;
   }
+
   &.is-box {
     border-radius: 0px;
   }

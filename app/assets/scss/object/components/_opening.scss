@@ -1,33 +1,56 @@
 .c-opening {
-  background: url("../images/bg-opening.jpg") center center no-repeat;
   background-size: cover;
   padding-top: 82px;
   padding-bottom: 72px;
   text-align: center;
   @include breakpoint(small only) {
     padding-top: 32px;
-    padding-bottom: 48px;
+    padding-bottom: 24px;
     text-align: left;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right bottom;
   }
+
   &__title {
     margin-top: 0;
-    font-size: 32px;
-    letter-spacing: 1.6px;
-    font-weight: 500;
+    font-size: rem-calc(36);
     color: $color-primary;
-    margin-bottom: 14px;
+    margin-bottom: 28px;
+    font-weight: bold;
+    strong {
+      color: $color-accent;
+    }
+
     @include breakpoint(small only) {
-      font-size: 21px;
+      font-size: 20px;
       line-height: 1.6;
       letter-spacing: 1px;
       font-weight: 600;
       margin-bottom: 12px;
+      text-align: center;
     }
   }
+
   &__text {
     margin-bottom: 36px;
+    letter-spacing: 0.05em;
+    font-size: rem-calc(18);
+    font-weight: bold;
     @include breakpoint(small only) {
       margin-bottom: 24px;
+      @include breakpoint(small only) {
+        font-size: rem-calc(14);
+      }
+    }
+
+
+  }
+
+  &__small {
+    font-size: rem-calc(14);
+    @include breakpoint(small only) {
+      font-size: rem-calc(12);
     }
   }
 }

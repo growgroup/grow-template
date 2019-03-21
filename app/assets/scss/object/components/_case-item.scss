@@ -1,0 +1,82 @@
+.c-case-item {
+  display: block;
+  text-decoration: none;
+  color: $font-base-color;
+  margin-bottom: 32px;
+
+  &.is-half & {
+    &__image {
+      max-width: 443px;
+      width: 100%;
+    }
+
+    &__title {
+      margin-top: 32px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__image {
+    position: relative;
+    margin-bottom: 24px;
+    max-width: 345px;
+
+    img {
+      transform: translate3d(10px, 0px, 0px);
+    }
+
+    &:after {
+      transform: translate3d(10px, 0px, 0px);
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      max-width: 620px;
+      height: 100%;
+      box-sizing: border-box;
+      top: 10px;
+      left: -10px;
+      z-index: -10;
+      border: 1px solid rgba($color-primary, 0.5);
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: rem-calc(18);
+    margin-bottom: 8px;
+    @include breakpoint(small only) {
+      font-size: rem-calc(14);
+      line-height: 1.5;
+    }
+  }
+
+  &__category {
+    position: absolute;
+    bottom: -10px;
+    background: $color-primary;
+    color: #fff;
+    max-width: 153px;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: rem-calc(14);
+    @include breakpoint(small only) {
+      font-size: rem-calc(12);
+      max-width: 100px;
+    }
+  }
+
+  &__meta {
+    font-size: rem-calc(14);
+    @include breakpoint(small only) {
+      font-size: rem-calc(12);
+      line-height: 1.5;
+    }
+  }
+
+}

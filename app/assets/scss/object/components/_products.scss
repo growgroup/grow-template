@@ -1,0 +1,98 @@
+.c-products {
+  display: flex;
+  @include breakpoint(small only) {
+    display: block;
+  }
+
+  &__block {
+    max-width: 50%;
+    width: 100%;
+
+    &:nth-child(2) {
+      background-image: url(../images/bg-products0202.jpg);
+    }
+
+    @include breakpoint(small only) {
+      max-width: 100%;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    @include bg-option;
+    @include breakpoint(small only) {
+      padding-top: 36px;
+      padding-bottom: 36px;
+    }
+
+    &__heading {
+      font-size: rem-calc(36);
+      text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+      position: relative;
+      padding-bottom: 16px;
+      color: #fff;
+      margin-bottom: 24px;
+      @include breakpoint(small only) {
+        font-size: rem-calc(24);
+      }
+
+      &:after {
+        position: absolute;
+        display: block;
+        content: '';
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 0;
+        border: solid 2px #ffffff;
+        @include breakpoint(small only) {
+          border-bottom-width: 1px;
+        }
+      }
+    }
+
+    &__text {
+      color: #fff;
+      letter-spacing: 0.9px;
+      @include breakpoint(small only) {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+    }
+
+  }
+
+
+  &__content {
+    padding: 56px;
+    background: $color-primary;
+    color: #fff;
+    @include breakpoint(small only) {
+      padding: 24px 16px;
+    }
+
+    &__title {
+      font-size: rem-calc(24);
+      font-weight: bold;
+      letter-spacing: 0.9px;
+      margin-bottom: 32px;
+      @include breakpoint(small only) {
+        font-size: rem-calc(18);
+      }
+    }
+
+    &__banners {
+      justify-content: space-between;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__button {
+    text-align: center;
+  }
+
+}

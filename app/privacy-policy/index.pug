@@ -7,7 +7,7 @@ block append config
   - current.depth = 2 // ページの階層
 
 block page_header
-  +c_page_header("pagehead-default.jpg","個人情報保護方針","PRIVACY POLICY")
+  +c_page_header("bg-pageheader-" + current.id + ".jpg",current.title)
   +c.breadcrumb
     .l-container
       span: +a("/") ホーム
@@ -20,7 +20,7 @@ block body
       .l-container
         .row
           .large-10.is-push-lg-1.small-12
-            p 株式会社 サンプル（以下「当社」）は、以下のとおり個人情報保護方針を定め、個人情報保護の仕組みを構築し、全従業員に個人情報保護の重要性の認識と取組みを徹底させることにより、個人情報の保護を推進致します。
+            p 株式会社テクノタイムサービス（以下「当社」）は、以下のとおり個人情報保護方針を定め、個人情報保護の仕組みを構築し、全従業員に個人情報保護の重要性の認識と取組みを徹底させることにより、個人情報の保護を推進致します。
             div.u-mbs.is-top.is-md
               h2.heading.is-xs.is-bg 個人情報の管理
               p 当社は、お客さまの個人情報を正確かつ最新の状態に保ち、個人情報への不正アクセス・紛失・破損・改ざん・漏洩などを防止するため、セキュリティシステムの維持・管理体制の整備・社員教育の徹底等の必要な措置を講じ、安全対策を実施し個人情報の厳重な管理を行ないます。
@@ -43,6 +43,7 @@ block body
             div.u-mbs.is-top.is-md
               h2.heading.is-xs.is-bg 法令、規範の遵守と見直し
               p 当社は、保有する個人情報に関して適用される日本の法令、その他規範を遵守するとともに、本ポリシーの内容を適宜見直し、その改善に努めます。
+
             div.u-mbs.is-top.is-md
               h2.heading.is-xs.is-bg Googleアナリティクスの使用について
               p.
@@ -58,5 +59,9 @@ block body
                 a(href="http://www.google.com/intl/ja/policies/privacy/",target="_blank") http://www.google.com/intl/ja/policies/privacy/
                 br
                 a(href="https://www.google.com/intl/ja/policies/privacy/partners/",target="_blank") https://www.google.com/intl/ja/policies/privacy/partners/
+            div.u-mbs.is-top.is-md
+              h2.heading.is-xs.is-bg お問い合せ
+              p.
+                当社の個人情報の取扱に関するお問い合せは下記までご連絡ください。
 
   +c_offer()

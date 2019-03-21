@@ -14,53 +14,76 @@ block body
   section.l-main
     +c.opening
       .l-container
-        h2.c-opening__title 現場を補強する、力になれます。<br>教育から開発までトータルに。
-        p.c-opening__text SE各自の開発力・技術力だけに頼ることなく、1ワークに複数のSEを投入するグループワーク制を採用しています。<br class="u-hidden-sm">一人ひとりがSEとして研鑽を積んできた経験と技術に加えて、<br class="u-hidden-sm">集団で発送し、集団で開発し管理進行を行い、高い品質と確実な納期をお約束しています。
-        +a("/service/").c-button.is-lg 事業紹介を見る
-    .l-section.is-bg.is-md
-      .l-container
-        h2.heading.is-xlg.is-bottom
-          span 企業情報
-          small COMPANY
-        +c.card
-          +e.inner
-            +a("/company/greeting/").c-card__block
-              +bgimg("img-card-01.jpg").c-card__image
-              +e.title 代表あいさつ
-            +a("/company/profile/").c-card__block
-              +bgimg("img-card-02.jpg").c-card__image
-              +e.title 会社概要
-            +a("/company/history/").c-card__block
-              +bgimg("img-card-03.jpg").c-card__image
-              +e.title 沿革
-            +a("/recruit/").c-card__block
-              +bgimg("img-card-04.jpg").c-card__image
-              +e.title 採用情報
+        h2.c-opening__title テクノタイムサービスは、<br class="u-hidden-lg"><strong>時計修理の専業企業</strong>です。
+        p.c-opening__text.
+          最高峰の時計技術をもったWOSTEP認定者を含め国家資格である時計修理技能士が50名以上在籍。<br class="u-hidden-sm">
+          テクノタイムサービスは、総勢120名を専門チームに分けて、各々プロフェッショナル部門として、<br class="u-hidden-sm">
+          お客様のお役に立てるように日々努力しています。
+        p.c-opening__small.
+          ※ WOSTEPとは、100を超えるスイスの時計メーカー等により設立された時計技術者の養成校です。<br>
+          WOSTEP最終試験は現在最高峰の時計技術試験です。
 
-    .l-section.is-md
+    +c.products
+      +e.block
+        +e.title(style="background-image: url(/assets/images/bg-product01.jpg)")
+          +e.title__heading 時計修理
+          +e.title__text.
+            BtoBの時計修理専業のため、<br class="u-hidden-lg">専門技術にも対応可能です。<br>
+            修理でお困りの際はまずご相談ください。
+        +e.content
+          +e.content__title 修理事例のご紹介
+          +e.content__cases
+            +loop(2)
+              +c.A.products-case(href="/cases/01/")
+                +e.image(style="background-image: url(/assets/images/img-default-image@2x.jpg)")
+                +e.content
+                  +e.title タイトルタイトルタイトルタイトル
+                  +e.meta 東京都 / Y.M 様
+                  +e.text.
+                    テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります
+          +e("div","products").button
+            +a("/cases/").c-button.is-xlg.is-opacity 修理事例をすべて見る
+
+      +e("div","products").block
+        +e.title(style="background-image: url(/assets/images/bg-product02.jpg)")
+          +e.title__heading 部品販売
+          +e.title__text.
+            時計修理の専業企業のテクノサービスだからこそ紹介できる、<br class="u-hidden-sm">
+            信頼できる時計修理関連の商品を掲載しています。
+        +e.content(style="background-image: url(/assets/images/bg-product0202.jpg)")
+          +e.content__title 商品のご案内
+          +e.content__banners
+            +c.A.products-banner(href="/products/01/")
+              +e.text 電池
+            +c.A.products-banner(href="/products/01/")
+              +e.text 時計部品
+            +c.A.products-banner(href="/products/01/")
+              +e.text 工具
+            +c.A.products-banner(href="/products/01/")
+              +e.text セミナー教育
+          +e("div","products").button
+            +a("/products/").c-button.is-xlg.is-opacity 取扱商品をすべて見る
+
+    +front_recruit()
+    +c.front-news
       .l-container
-        h2.heading.is-xlg.is-bottom.is-top
-          span 最新ニュース
-          small NEWS
-        +c.post-item
-          +e.inner
-            +a("/news/page/").c-post-item__block
-              +e.sup
-                +e.category 更新情報
-                +e.date 2017.01.01
-              +e.title タイトルがここに入ります。タイトルがここに入ります。
-            +a("/news/page/").c-post-item__block
-              +e.sup
-                +e.category 更新情報
-                +e.date 2017.01.01
-              +e.title タイトルがここに入ります。タイトルがここに入ります。
-            +a("/news/page/").c-post-item__block
-              +e.sup
-                +e.category 更新情報
-                +e.date 2017.01.01
-              +e.title タイトルがここに入ります。タイトルがここに入ります。
-          +e.button
-            +a("/news/").c-button.is-lg ニュース一覧を見る
+        .row
+          .large-3.small-12
+            +c.news-head
+              +e.H2.title お知らせ
+              +e.button
+                +a("/news/").c-button.is-sm.is-icon
+                  span 一覧を見る
+                  i.fa.fa-chevron-circle-right
+          .large-9.small-12
+            .p-post-list
+              +loop(3)
+                a.p-post-item.is-line(href='/news/single/')
+                  .p-post-item__sup
+                    .p-post-item__category: span.c-label カテゴリ
+                    .p-post-item__date 2018.01.01
+                  h3.p-post-item__title テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります
+
 
   // オファーブロック
   +c_offer()

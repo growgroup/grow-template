@@ -11,4 +11,10 @@
 
 .c-lead {
   font-size: rem-calc(18);
+  font-weight: bold;
+  letter-spacing: 0.9px;
+  @include breakpoint(small only) {
+    font-size: rem-calc(14);
+    text-align: center;
+  }
 }

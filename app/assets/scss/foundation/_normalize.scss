@@ -11,6 +11,10 @@ html {
   font-family: $font-base-family; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
+  @include breakpoint(small only) {
+
+  }
+
 }
 
 * {
@@ -26,12 +30,14 @@ html {
 body {
   color: $font-base-color;
   margin: 0;
-  line-height: 1.8;
-  letter-spacing: 0.8px;
-  font-size: 15px;
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+  font-size: 16px;
+
   &.is-slidebar-active {
     overflow: hidden;
   }
+
   @include breakpoint(small only) {
     font-size: 14px;
   }

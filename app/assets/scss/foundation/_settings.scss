@@ -7,22 +7,22 @@ $color-white: #fff !default; // 白
 $color-black: #000 !default; // 黒
 
 // # プライマリ
-$color-primary: #4B6CCD !default; // プライマリカラー
+$color-primary: #07216B !default; // プライマリカラー
 $color-primary-dark: darken($color-primary, 10) !default; // 濃いプライマリカラー
 $color-primary-light: lighten($color-primary, 10) !default; // 薄いプライマリカラー
 
 // # セカンダリー
-$color-secondary: #F6F7F9 !default; // セカンダリカラー
+$color-secondary: #A8ADBB !default; // セカンダリカラー
 $color-secondary-dark: darken($color-secondary, 10) !default; // 濃いセカンダリカラー
 $color-secondary-light: lighten($color-secondary, 10) !default; // 薄いセカンダリカラー
 
 // # ターシャリー
-$color-tertiary: #efefef !default; // ターシャリカラー
+$color-tertiary: #EFEFEF !default; // ターシャリカラー
 $color-tertiary-light: darken($color-tertiary, 10) !default; // 薄いターシャリカラー
 $color-tertiary-dark: lighten($color-tertiary, 10) !default; // 濃いターシャリカラー
 
 // # アクセント
-$color-accent: #30A09C !default; // ターシャリカラー
+$color-accent: #CA211B !default; // ターシャリカラー
 $color-accent-green: #65AC29 !default; // ターシャリカラー
 $color-accent-orange: #E6A54D !default; // ターシャリカラー
 $color-accent-light: darken($color-tertiary, 10) !default; // 薄いターシャリカラー
@@ -43,38 +43,38 @@ $color-state-success: #13a83a !default; // 成功
 
 // # 2. Grid
 
-$grid-row-width: 1080px !default; // グリッドの幅
+$grid-row-width: 1140px !default; // グリッドの幅
 $grid-column-count: 12 !default; // グリッド数
 $grid-column-responsive-gutter: (// カラムとカラムの間隔
-        small: 24px, // モバイル
-        medium: 32px, // タブレット以上
+  small: 24px, // モバイル
+  medium: 32px, // タブレット以上
 );
 
 // # 3. font
 
 $font-base-size: 16 !default; // body のフォントサイズ
-$font-base-color: #333 !default; // body のフォントカラー
+$font-base-color: #333333 !default; // body のフォントカラー
 $font-base-family: 'Noto Sans JP', sans-serif; // フォントファミリー
 $font-base-weight: normal !default; // フォント幅
 $font-base-style: normal !default; // フォントスタイル
 
 $font-heading-sizes: (// 見出しのフォントサイズ
-        small: (
-                'h1': 24px,
-                'h2': 20px,
-                'h3': 19px,
-                'h4': 18px,
-                'h5': 17px,
-                'h6': 16px,
-        ),
-        medium: (
-                'h1': 48px,
-                'h2': 40px,
-                'h3': 31px,
-                'h4': 25px,
-                'h5': 20px,
-                'h6': 16px,
-        ),
+  small: (
+    'h1': 24px,
+    'h2': 20px,
+    'h3': 19px,
+    'h4': 18px,
+    'h5': 17px,
+    'h6': 16px,
+  ),
+  medium: (
+    'h1': 48px,
+    'h2': 40px,
+    'h3': 31px,
+    'h4': 25px,
+    'h5': 20px,
+    'h6': 16px,
+  ),
 );
 
 $font-heading-color: #333 !default; // 見出しカラー
@@ -109,11 +109,11 @@ $border-radius-xs: $border-radius/3 !default;
 // # 6. breakpoint
 
 $breakpoints: (
-        small: 0,
-        medium: 750px,
-        large: 1080px,
-        xlarge: 1200px,
-        xxlarge: 1440px,
+  small: 0,
+  medium: 750px,
+  large: 1080px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
 ) !default;
 
 $breakpoint-classes: (small medium large) !default;

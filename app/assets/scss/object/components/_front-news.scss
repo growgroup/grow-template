@@ -1,0 +1,7 @@
+.c-front-news {
+  padding-top: 24px;
+  padding-bottom: 0px;
+  @include breakpoint(small only) {
+    padding-bottom: 60px;
+  }
+}

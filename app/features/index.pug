@@ -1,0 +1,61 @@
+extends /inc/foundation/_base.pug
+block append config
+  - current.id = "features" // ページのID
+  - current.title = "当社の強み" // タイトル
+  - current.description = "当社の強み" // 説明文
+  - current.bodyClass = "features" // body に付与するクラス
+  - current.depth = 2 // ページの階層
+
+block page_header
+  +c_page_header("bg-pageheader-" + current.id + ".jpg",current.title)
+  +c.breadcrumb
+    .l-container
+      span: +a("/") ホーム
+      span >
+      span= current.title
+
+block body
+  section.l-main
+
+    +c.opening
+      .l-container
+        h2.c-opening__title
+          | 時計修理技能士が多数在籍。
+          br
+          | 確かな
+          strong 信頼
+          | と
+          strong 安心
+          | をお届けします。
+        p.c-opening__text.
+          時計修理技能士が多数在籍。確かな信頼と安心をお届けします。<br>
+          テクノタイムサービスは、時計修理技能士が多数在籍しています。安心してお任せください。
+    +c.special
+      +e.inner
+        +e.block
+          +e.head
+            +e.number 1
+            +img("img-features01.jpg")
+          +e.content
+            +e.title 多数の実績
+            +e.text.
+              全国の小売店・時計専門店・時計組合加盟店や時計買取り店などからのご依頼があり、毎日多数の修理品が届いています。<br>
+              高級海外ブランドから国内ブランドまで、数多くの修理実績があります。
+        +e.block
+          +e.head
+            +e.number 2
+            +img("img-features02.jpg")
+          +e.content
+            +e.title 確かな技術力
+            +e.text.
+              マニュファクチュールメーカーの最高級時計、クロノグラフや特殊機能が付いた複雑時計、取扱いが難しいアンティーク時計まで経験豊富な職人が様々な修理をおこない、外装仕上げは新品のような輝きが甦ります。
+        +e.block
+          +e.head
+            +e.number 3
+            +img("img-features03.jpg")
+          +e.content
+            +e.title 時計修理に特化した設備
+            +e.text.
+              内装修理から外装修理まで、様々な修理に対応できる専用機材が常備されています。時計の本場スイスの機材を中心に多種多様な設備により修理の正確さ、効率化をおこなっています。
+
+  +c_offer()

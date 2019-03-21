@@ -2,17 +2,18 @@ extends /inc/foundation/_base.pug
 block append config
   - current.id = "contact" // ページのID
   - current.title = "お問い合わせ" // タイトル
-  - current.description = "これはお問い合わせの説明文です" // 説明文
+  - current.description = "これは採用情報の説明文です" // 説明文
   - current.bodyClass = "contact" // body に付与するクラス
   - current.depth = 2 // ページの階層
 
 block page_header
-  +c_page_header("pagehead-default.jpg","お問い合わせ","CONTACT")
+  +c_page_header("bg-pageheader-" + current.id + ".jpg",current.title)
   +c.breadcrumb
     .l-container
       span: +a("/") ホーム
       span >
-      span お問い合わせ
+      span= current.title
+
 
 block body
   section.l-main
@@ -20,8 +21,13 @@ block body
       .l-container
         .row
           .large-10.is-push-lg-1.small-12
-            h2.heading.is-lg.is-primary.u-text-center.is-bottom お気軽にお問い合わせください
             p.u-text-center お電話でもメールでも、お気軽にお問い合わせください。担当スタッフが親身に対応いたします。<br>下記のフォームに必要事項をご記入の上、【確認画面へ】ボタンをクリックしてください。
+
+            .c-contact-box__utility.is-black.u-mbs.is-top
+              .c-contact-box__tel
+                +a("tel:045-581-7111")(style="color: #333").is-decoretion-none <i class="fa fa-phone" aria-hidden="true"></i>045-581-7111
+                .c-contact-box__reception-time 受付時間 : 10：00～16：00
+
             form(name="name",action="action")
               +c.form-block
                 +e.block
@@ -85,4 +91,3 @@ block body
                     | の内容に同意する
                 +e.submit
                   button 確認画面へ
-  +c_offer()

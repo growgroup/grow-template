@@ -1,46 +1,92 @@
 .c-content-box {
   &__block {
-    background-color: $color-white;
-    border-top: 2px solid $color-primary;
+    background-color: rgba(#A8ADBB, 0.1);
     display: flex;
-    padding: 32px;
-    box-shadow: 2px 2px 2px rgba($color-black,0.1);
-    margin-bottom: 24px;
+    padding: 60px 50px 44px 73px;
+    margin-bottom: 42px;
+    position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 1px solid $color-primary;
+      transform: translate3d(16px, 18px, 0px);
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include breakpoint(small only) {
+        transform: translate3d(8px, 8px, 0px);
+        z-index: -10;
+        display: none;
+      }
+    }
+
     &:last-child {
       margin-bottom: 0;
     }
     @include breakpoint(small only) {
       flex-wrap: wrap;
-      padding: 24px;
+      padding: 20px;
     }
   }
+
   &__content {
-    width: calc(100% - 388px - 32px);
+    width: calc(100% - 333px - 42px);
     @media (max-width: 950px) {
       width: calc(100% - 280px - 32px);
     }
     @include breakpoint(small only) {
       width: 100%;
       order: 2;
+
     }
   }
+
   &__title {
     @extend .heading;
     @extend .heading.is-md;
     color: $color-primary;
     margin-top: 0;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    letter-spacing: 1.4px;
     @media (max-width: 950px) {
       font-size: 18px;
     }
   }
-  &__text {
-    @media (max-width: 950px) {
-      font-size: 14px;
+
+  &__meta {
+    font-size: rem-calc(14);
+    margin-bottom: 20px;
+    @include breakpoint(small only) {
+      font-size: rem-calc(12);
+      margin-bottom: 10px;
     }
   }
+
+  &__text {
+    font-size: rem-calc(14);
+    @media (max-width: 950px) {
+      font-size: 13px;
+    }
+  }
+
+  &__subtitle {
+    font-weight: bold;
+    font-size: rem-calc(18);
+    margin-bottom: 10px;
+    @include breakpoint(small only) {
+      font-size: rem-calc(16);
+      margin-bottom: 8px;
+    }
+  }
+
   &__image {
-    width: 388px;
-    margin-left: auto;
+    width: 333px;
+    margin-right: auto;
     @media (max-width: 950px) {
       width: 280px;
     }
@@ -48,6 +94,27 @@
       width: 100%;
       order: 1;
       margin-bottom: 12px;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    transform: translate3d(18px, 20px, 0px);
+    @include breakpoint(small only) {
+      transform: none;
+      position: static;
+      margin-top: 24px;
+    }
+
+    .c-button.is-sm {
+      padding-left: 15px;
+      padding-right: 15px;
+      @include breakpoint(small only) {
+        width: 100%;
+      }
     }
   }
 }

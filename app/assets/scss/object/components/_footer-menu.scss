@@ -1,23 +1,23 @@
 .c-footer-menu {
-  padding-top: 64px;
-  padding-bottom: 88px;
-  background-color: $font-base-color;
+  background-color: #fff;
   @include breakpoint(small only) {
     padding: 0;
     background-color: transparent;
+    background: $color-primary;
+    width: 100%;
   }
+
   &__inner {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     @include breakpoint(small only) {
       display: block;
-      width: calc(100% + 32px);
-      margin-left: -16px;
     }
   }
+
   &__block {
-    padding-right: 40px;
+    padding-right: 4vw;
     @media (max-width: 900px) {
       padding-right: 24px;
       &:last-child {
@@ -28,19 +28,40 @@
       padding: 0;
     }
   }
+
   &__title {
-    color: $color-white;
     margin-bottom: 20px;
-    font-weight: 500;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+
+    &:before {
+      content: "\f0da";
+      font-family: FontAwesome;
+      color: $color-primary;
+      margin-right: 8px;
+    }
+
     @include breakpoint(small only) {
       border-bottom: 1px solid $border-base-color;
       padding: 12px 24px;
       margin: 0;
-      background-color: $font-base-color;
+      background-color: $color-primary;
+      width: 100%;
+      color: #fff;
+      display: block;
+      position: relative;
+      padding-left: 18px;
       &:before {
+        display: none;
+
+      }
+      &:after {
+        position: absolute;
+        right: 16px;
         content: "\f107";
         font-family: "FontAwesome";
-        color: $color-primary;
+        color: #fff;
         padding-right: 12px;
       }
       &.is-open {
@@ -50,49 +71,64 @@
       }
     }
   }
+
   &__list {
     li {
       margin-bottom: 24px;
       @include breakpoint(small only) {
-        margin: 0!important;
+        margin: 0 !important;
         border-bottom: 1px solid $border-base-color;
       }
+
       a {
-        color: $color-white;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: bold;
+        color: $font-base-color;
+
+        &:before {
+          content: "\f0da";
+          font-family: FontAwesome;
+          color: $color-primary;
+          margin-right: 8px;
+        }
+
         @include breakpoint(small only) {
-          padding: 14px 24px;
+          padding: 16px 18px;
           display: block;
-          background-color: $font-base-color;
+          background-color: $color-primary;
+          color: $color-white;
           &:hover {
             opacity: 1;
           }
           &:before {
-            content: "\f105";
-            font-family: "FontAwesome";
-            color: $color-primary;
-            padding-right: 12px;
+            display: none;
           }
         }
       }
     }
+
     &.is-sub {
+      margin-bottom: 24px;
       @include breakpoint(small only) {
         display: none;
       }
+
       li {
-        margin-bottom: 11px;
+        margin-bottom: 0px;
+        margin-left: 14px;
         @include breakpoint(small only) {
           border: none;
         }
+
         a {
           font-weight: 400;
-          color: rgba($color-white,0.8);
+          font-size: rem-calc(14);
+          //color: rgba($color-white, 0.8);
           @include breakpoint(small only) {
-            background-color: rgba($font-base-color,0.8);
+            background-color: rgba($font-base-color, 0.8);
             padding: 10px 44px;
           }
+
           &:before {
             display: none;
           }

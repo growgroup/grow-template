@@ -1,0 +1,42 @@
+.c-company-areabox {
+  display: flex;
+  border: 1px solid $color-primary;
+  padding: 32px;
+  margin-bottom: 32px;
+  justify-content: space-between;
+  @include breakpoint(small only) {
+    padding: 16px 24px;
+    flex-wrap: wrap;
+  }
+
+  &__content {
+    flex-basis: calc(64% - 32px);
+    @include breakpoint(small only) {
+      order: 2;
+      flex-basis: 100%;
+    }
+  }
+
+  &__title {
+    font-size: rem-calc(18);
+    font-weight: bold;
+    margin-bottom: 16px;
+    @include breakpoint(small only) {
+      font-size: rem-calc(16);
+    }
+  }
+  &__text {
+    @include breakpoint(small only) {
+      font-size: rem-calc(13);
+    }
+  }
+
+  &__image {
+    flex-basis: 36%;
+    @include breakpoint(small only) {
+      order: 1;
+      flex-basis: 100%;
+      margin-bottom: 20px;
+    }
+  }
+}

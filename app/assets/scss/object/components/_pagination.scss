@@ -18,6 +18,7 @@
 // Styleguide 2.10.0
 .c-pagination {
   margin-top: 64px;
+  text-align: center;
   @include breakpoint(small only) {
     margin-top: 32px;
   }
@@ -37,17 +38,16 @@
     display: inline-block;
     padding: 8px 18px;
     text-decoration: none;
-    border-radius: 2px;
-    color: rgba($font-base-color,0.8);
-    border: 1px solid rgba($font-base-color,0.8);
-    background-color: $color-white;
+    border-radius: 4px;
+    color: rgba($font-base-color, 0.8);
+    background-color: rgba(#A8ADBB, 0.1);
     @include breakpoint(small only) {
       padding: 4px 12px;
     }
 
     &:hover {
       opacity: 1;
-      background: rgba($color-primary,0.1);
+      background: rgba($color-primary, 0.1);
     }
 
     &.is-active {
@@ -61,7 +61,7 @@
   // 次のページへ、前のページへ 共通
   &__next,
   &__prev {
-    padding-left: 16px!important;
-    padding-right: 15px!important;
+    padding-left: 16px !important;
+    padding-right: 15px !important;
   }
 }

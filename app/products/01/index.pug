@@ -1,0 +1,91 @@
+extends /inc/foundation/_base.pug
+block append config
+  - current.id = "products" // ページのID
+  - current.title = "商品案内" // タイトル
+  - current.description = "商品案内" // 説明文
+  - current.bodyClass = "products_detail" // body に付与するクラス
+  - current.depth = 2 // ページの階層
+
+block page_header
+  +c_page_header("bg-pageheader-" + current.id + ".jpg",current.title)
+  +c.breadcrumb
+    .l-container
+      span: +a("/") ホーム
+      span >
+      span 商品案内
+      span >
+      span 電池
+
+block body
+  section.l-main
+    +c.opening(style="background-image: url(/assets/images/bg-products-detail01.jpg)")
+      .l-container
+        h2.c-opening__title 電池
+        p.c-opening__text.
+          日本固有の四季折々による温度・湿度に耐える、<br class="u-hidden-sm">
+          高品質な日本国内流通専用電池のみを国内メーカーのソニーとマクセルより厳選使用。
+    .l-section.is-bg
+      .l-container
+        h2.heading.is-xlg 「電池」の特徴
+        +c.product-features
+          .row
+            .large-4.small-12.medium-4
+              +e.box
+                +e.box__image
+                  +img("img-products-detail01@2x.jpg")
+                  +e.box__number 1
+                +e.box__title ソニー無水銀電池の特徴
+                +e.box__text.
+                  世界で初めて酸化銀電池・アルカリボタン電池・リチウムコイン電池全てにおいて無水銀化に成功。<br>
+                  年間約470kgの水銀を削減、「地球にやさしく」を推進しています。
+
+            .large-4.small-12.medium-4
+              +e.box
+                +e.box__image
+                  +img("img-products-detail02@2x.jpg")
+                  +e.box__number 2
+                +e.box__title マクセルの金ボタン電池の特徴
+                +e.box__text.
+                  SR電池の商品化から30年目のリニューアルとして負極の水銀・鉛ゼロ化・プラス側金コーティングの新パッケージの採用をおこなっている。
+
+            .large-4.small-12.medium-4
+              +e.box
+                +e.box__image
+                  +img("img-products-detail03@2x.jpg")
+                  +e.box__number 3
+                +e.box__title 日本国内流通専用電池とは
+                +e.box__text.
+                  電池電圧は1.55V以上、製品化2年間の消費期限を基本に安定した電圧とすぐれた耐漏液特性の電池を厳選して取り扱います。
+    .l-section
+      .l-container
+        h2.heading.is-xlg 商品一覧
+        .row
+          +loop(20)
+            .large-3.small-6.medium-4
+              +c.product-item
+                +e.image
+                  +img("img-product-sample.jpg")
+                +e.text.
+                  RENATA CR2320 リチウムボタン電池 腕時計　ミニクロック　携帯ミニゲーム 電池交換 5個入り　1シート スイス製
+        .u-mbs.u-text-center.is-top
+          a(href="/contact/").c-button.is-xlg.is-icon.is-accent
+            span お問い合わせはこちら
+            i.fa.fa-chevron-circle-right
+    .l-section.is-bg.is-negativemargin-bottom
+      .l-container
+        h2.heading.is-xlg 関連する商品
+        +c.products-banners
+          .row
+            .large-4.small-6.medium-6
+              +c.A.products-banner.is-related(href="/products/01/",style="background-image: url(/assets/images/bg-products-banner01.jpg)")
+                +e.text 電池
+              +e.desc ソニー・マクセルの日本国内流通電池を中心に取り揃えています。
+            .large-4.small-6.medium-6
+              +c.A.products-banner.is-related(href="/products/01/",style="background-image: url(/assets/images/bg-products-banner02.jpg)")
+                +e.text 時計部品
+              +e.desc 時計メーカー純正部品、ご要望に応ジェネリック開発部品を取り揃えています。
+            .large-4.small-6.medium-6
+              +c.A.products-banner.is-related(href="/products/01/",style="background-image: url(/assets/images/bg-products-banner03.jpg)")
+                +e.text 工具
+              +e.desc スイス・日本・中国の使い易い工具を取り揃えご案内をさせていただきます。
+  +c_offer()

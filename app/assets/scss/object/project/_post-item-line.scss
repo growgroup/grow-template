@@ -31,41 +31,48 @@
 // Styleguide 3.2.2
 // 1行スタイル
 .p-post-item.is-line {
-  border-bottom: 1px solid $color-tertiary;
   @extend %clearfix;
-  padding-top: $margin-md;
-  padding-bottom: $margin-md;
-  display: block;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  width: 100%;
   margin-bottom: 0;
-
-  // サムネイル
-  .p-post-item__thumbnail {
-    float: left;
-    margin-right: $margin-md;
-    margin-bottom: 0;
-    > img {
-      max-height: rem-calc(24);
-      width: auto;
-    }
+  text-decoration: none;
+  align-items: flex-start;
+  @include breakpoint(small only) {
+    flex-wrap: wrap;
   }
-
   // カテゴリ、日付
   .p-post-item__date,
   .p-post-item__category {
     margin-right: $margin-md;
-    float: left;
     color: $font-base-color;
+  }
+
+  .p-post-item__sup {
+    display: flex;
+    align-items: center;
+  }
+
+  .p-post-item__date {
+    color: $color-primary;
+    font-weight: bold;
+    letter-spacing: 0.07em;
   }
 
   // タイトル
   .p-post-item__title {
-    float: left;
-    color: $font-base-color;
+    color: $color-primary;
     margin-right: $margin-md;
     margin-bottom: 0;
-    font-size: rem-calc(14);
-    margin-top: rem-calc(3);
-    margin-right: $margin-md;
+    text-decoration: underline;
+    font-size: rem-calc(16);
+    margin-top: 0;
+    font-weight: normal;
+    @include breakpoint(small only) {
+      font-size: rem-calc(14);
+      margin-top: 16px;
+      margin-right: 0;
+    }
   }
-
 }

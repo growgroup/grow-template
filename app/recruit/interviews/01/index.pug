@@ -1,0 +1,52 @@
+extends /inc/foundation/_base.pug
+block append config
+  - current.id = "recruit" // ページのID
+  - current.title = "先輩社員の声" // タイトル
+  - current.description = "先輩社員の声" // 説明文
+  - current.bodyClass = "interivews_detail" // body に付与するクラス
+  - current.depth = 4 // ページの階層
+
+block page_header
+  +c_page_header("bg-pageheader-" + current.id + ".jpg","先輩社員の声")
+  +c.breadcrumb
+    .l-container
+      span: +a("/") ホーム
+      span >
+      span: +a("/recruit/") 採用情報
+      span >
+      span: +a("/recruit/interviews/") 先輩社員の声
+
+block body
+  section.l-main
+    +c.interview
+      .l-container
+        +e.head
+          +e.head__image
+            +img("img-interview01.jpg")
+          +e.head__content
+            +e.head__title.
+              キャッチコピーキャッチコピー
+            +e.head__meta
+              +e.head__category
+                .c-label.is-primary 営業
+              +e.head__name
+                span 〇〇 〇〇さん
+            +e.head__year 2016 年中途入社
+        +e.content
+          +e.block
+            +e.block__title 普段のお仕事の内容を教えてください。
+            +e.block__text: span テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。
+          +e.block
+            +e.block__title やりがいを感じるのは、どんなときでしょう？
+            +e.block__text: span テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。
+          +e.block
+            +e.block__title テクノタイムサービスへの入社の”決め手”はなんでしたか？
+            +e.block__text: span テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。
+          +e.block
+            +e.block__title 最後に求⼈応募を考えている⽅へメッセージをお願いします。
+            +e.block__text: span テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。テキストがここに入ります。
+  +front_recruit_relation()
+
+
+
+  +c_offer()

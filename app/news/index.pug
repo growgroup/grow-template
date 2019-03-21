@@ -1,4 +1,4 @@
-extends /inc/foundation/_base-twocolumn.pug
+extends /inc/foundation/_base.pug
 block append config
   - current.id = "news" // ページのID
   - current.title = "お知らせ" // タイトル
@@ -7,87 +7,97 @@ block append config
   - current.depth = 2 // ページの階層
 
 block page_header
-  +c_page_header("pagehead-default.jpg","お知らせ","NEWS")
+  +c_page_header("bg-pageheader-" + current.id + ".jpg",current.title)
   +c.breadcrumb
     .l-container
       span: +a("/") ホーム
       span >
       span お知らせ
-
 block body
-  +c.post-item.is-list
-    +e.inner
-      +a("/news/page/").c-post-item__block
-        +e.sup
-          +e.category 更新情報
-          +e.date 2017.01.01
-        +e.title タイトルがここに入ります。タイトルがここに入ります。
-      +a("/news/page/").c-post-item__block
-        +e.sup
-          +e.category 更新情報
-          +e.date 2017.01.01
-        +e.title タイトルがここに入ります。タイトルがここに入ります。
-      +a("/news/page/").c-post-item__block
-        +e.sup
-          +e.category 更新情報
-          +e.date 2017.01.01
-        +e.title タイトルがここに入ります。タイトルがここに入ります。
-      +a("/news/page/").c-post-item__block
-        +e.sup
-          +e.category 更新情報
-          +e.date 2017.01.01
-        +e.title タイトルがここに入ります。タイトルがここに入ります。
-      +a("/news/page/").c-post-item__block
-        +e.sup
-          +e.category 更新情報
-          +e.date 2017.01.01
-        +e.title タイトルがここに入ります。タイトルがここに入ります。
-      +a("/news/page/").c-post-item__block
-        +e.sup
-          +e.category 更新情報
-          +e.date 2017.01.01
-        +e.title タイトルがここに入ります。タイトルがここに入ります。
-      +a("/news/page/").c-post-item__block
-        +e.sup
-          +e.category 更新情報
-          +e.date 2017.01.01
-        +e.title タイトルがここに入ります。タイトルがここに入ります。
-      +a("/news/page/").c-post-item__block
-        +e.sup
-          +e.category 更新情報
-          +e.date 2017.01.01
-        +e.title タイトルがここに入ります。タイトルがここに入ります。
-      +a("/news/page/").c-post-item__block
-        +e.sup
-          +e.category 更新情報
-          +e.date 2017.01.01
-        +e.title タイトルがここに入ります。タイトルがここに入ります。
-      +a("/news/page/").c-post-item__block
-        +e.sup
-          +e.category 更新情報
-          +e.date 2017.01.01
-        +e.title タイトルがここに入ります。タイトルがここに入ります。
-      +a("/news/page/").c-post-item__block
-        +e.sup
-          +e.category 更新情報
-          +e.date 2017.01.01
-        +e.title タイトルがここに入ります。タイトルがここに入ります。
-      +a("/news/page/").c-post-item__block
-        +e.sup
-          +e.category 更新情報
-          +e.date 2017.01.01
-        +e.title タイトルがここに入ります。タイトルがここに入ります。
-  <div class="c-pagination">
-  <ul>
-  // <li><a class="c-pagination__prev" href="#/"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
-  <li><span class="is-active">1</span></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a class="c-pagination__next" href="#/"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-  </ul>
-  </div>
+  .l-main
+    .l-container.is-sm
+      .l-section.is-top
+        +c.capsule-nav
+          +e.title カテゴリから探す
+          ul
+            li: +a("#").c-button.is-sm.is-icon
+              span お知らせ
+              i.fa.fa-chevron-circle-right
+            li: +a("#").c-button.is-sm.is-icon
+              span 採用情報
+              i.fa.fa-chevron-circle-right
 
-block aside
-  include /inc/layout/_aside.pug
+      +c.post-item.is-list
+        +e.inner
+          +a("/news/page/").c-post-item__block
+            +e.sup
+              +e.category 更新情報
+              +e.date 2017.01.01
+            +e.title タイトルがここに入ります。タイトルがここに入ります。
+          +a("/news/page/").c-post-item__block
+            +e.sup
+              +e.category 更新情報
+              +e.date 2017.01.01
+            +e.title タイトルがここに入ります。タイトルがここに入ります。
+          +a("/news/page/").c-post-item__block
+            +e.sup
+              +e.category 更新情報
+              +e.date 2017.01.01
+            +e.title タイトルがここに入ります。タイトルがここに入ります。
+          +a("/news/page/").c-post-item__block
+            +e.sup
+              +e.category 更新情報
+              +e.date 2017.01.01
+            +e.title タイトルがここに入ります。タイトルがここに入ります。
+          +a("/news/page/").c-post-item__block
+            +e.sup
+              +e.category 更新情報
+              +e.date 2017.01.01
+            +e.title タイトルがここに入ります。タイトルがここに入ります。
+          +a("/news/page/").c-post-item__block
+            +e.sup
+              +e.category 更新情報
+              +e.date 2017.01.01
+            +e.title タイトルがここに入ります。タイトルがここに入ります。
+          +a("/news/page/").c-post-item__block
+            +e.sup
+              +e.category 更新情報
+              +e.date 2017.01.01
+            +e.title タイトルがここに入ります。タイトルがここに入ります。
+          +a("/news/page/").c-post-item__block
+            +e.sup
+              +e.category 更新情報
+              +e.date 2017.01.01
+            +e.title タイトルがここに入ります。タイトルがここに入ります。
+          +a("/news/page/").c-post-item__block
+            +e.sup
+              +e.category 更新情報
+              +e.date 2017.01.01
+            +e.title タイトルがここに入ります。タイトルがここに入ります。
+          +a("/news/page/").c-post-item__block
+            +e.sup
+              +e.category 更新情報
+              +e.date 2017.01.01
+            +e.title タイトルがここに入ります。タイトルがここに入ります。
+          +a("/news/page/").c-post-item__block
+            +e.sup
+              +e.category 更新情報
+              +e.date 2017.01.01
+            +e.title タイトルがここに入ります。タイトルがここに入ります。
+          +a("/news/page/").c-post-item__block
+            +e.sup
+              +e.category 更新情報
+              +e.date 2017.01.01
+            +e.title タイトルがここに入ります。タイトルがここに入ります。
+      <div class="c-pagination">
+      <ul>
+      // <li><a class="c-pagination__prev" href="#/"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+      <li><span class="is-active">1</span></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li><a class="c-pagination__next" href="#/"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+      </ul>
+      </div>
+  +c_offer

@@ -61,25 +61,36 @@ html(lang="ja")
     .c-slidebar-menu.js-slidebar-menu.is-top-to-bottom
       ul
         li: +a("/") ホーム
-        li: +a("/aboutus/") 私たちについて
+        li: +a("/features/") 当社の強み
+        li: +a("/facility/") 主要設備
         li.c-slidebar-menu__parent.js-accordion
-          span(data-accordion-title="menu-title") 企業情報
+          span(data-accordion-title="menu-title") 商品案内
           ul.c-slidebar-menu__children(data-accordion-content="menu-text")
-            li: +a("/company/greeting/") 代表あいさつ
-            li: +a("/company/profile/") 会社概要
-            li: +a("/company/history/") 沿革
-            li: +a("/recruit/") 採用情報
+            li: +a("/products/01/") 電池
+            li: +a("/products/01/") 時計部品
+            li: +a("/products/01/") 工具
+            li: +a("/products/01/") セミナー教育
+        li: +a("/cases/") 修理事例
         li.c-slidebar-menu__parent.js-accordion
-          span(data-accordion-title="menu-title") 事業紹介
+          span(data-accordion-title="menu-title") 採用情報
           ul.c-slidebar-menu__children(data-accordion-content="menu-text")
-            li: +a("/service/traning/") 社員研修事業
-            li: +a("/service/project-management/") プロジェクトマネジメント事業
-            li: +a("/service/system/") システム開発事業
+            li: +a("/recruit/message/") 代表ご挨拶
+            li: +a("/recruit/interviews/") 先輩社員の声
+            li: +a("/recruit/jobdescripton/") 仕事内容
+            li: +a("/recruit/education-and-training/") 教育と研修
+            li: +a("/recruit/requirements/") 募集要項
+            li: +a("/recruit/entry/") 応募エントリー
+        li: +a("/company/") 会社案内
         li: +a("/news/") お知らせ
-        li: +a("/faq/") よくあるご質問
-        li: +a("/voice/") お客様の声
-        li: +a("/blog/") 企業ブログ
-        li: +a("/contact/").is-contact お問い合わせ
+      a(href="tel:045-581-7111").c-slidebar-menu__tel
+        span <i class="fa fa-phone" aria-hidden="true"></i>045-581-7111
+        <small>受付時間 : 10：00～16：00</small>
+      .c-slidebar-menu__button
+        a(href="/contact/").c-button.is-xlg.is-icon.is-accent
+          span お問い合わせ
+          i.fa.fa-chevron-circle-right
+
+
 
     block layout
 

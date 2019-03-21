@@ -1,71 +1,74 @@
-// 投稿詳細ナビゲーション
-//
-// 投稿詳細ページの記事ナビゲーション
-//
-// markup:
-// <nav class="c-post-navs">
-//     <ul>
-//         <li class="c-post-navs__prev"><a href="#">前の記事へ</a></li>
-//         <li class="c-post-navs__next"><a href="#">次の記事へ</a></li>
-//     </ul>
-// </nav>
-//
-// Styleguide 2.16.0
 .c-post-navs {
-  margin-top: rem-calc(64);
+  margin-top: 40px;
   @include breakpoint(small only) {
-    margin-top: rem-calc(32);
+    margin-top: 32px;
+  }
+  &.is-sm {
+    max-width: 600px;
+    margin: 40px auto 0;
   }
   ul {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+  }
+  &__list {
+    a {
+      @extend .c-button;
+      min-width: 252px;
+      @include breakpoint(small only) {
+        min-width: 80px;
+        padding: 10px!important;
+        font-size: 12px!important;
+      }
+      i {
+        margin-right: 8px;
+      }
+      &:before {
+        display: none;
+      }
+    }
   }
 
   &__prev,
   &__next {
     a {
-      border: 1px solid $color-primary;
-      background-color: $color-primary;
-      color: $color-white;
+      color: $color-primary;
       display: block;
       text-decoration: none;
-      padding: 6px 6px 6px 22px;
-      min-width: rem-calc(160);
       text-align: center;
       position: relative;
+      padding-left: 28px;
       transition: all .3s;
       @include breakpoint(small only) {
-        min-width: rem-calc(140);
-        padding-left: 19px;
+        padding-left: 12px;
+        font-size: 12px;
       }
       &:before {
         content: "\f104";
         font-family: "FontAwesome";
         position: absolute;
+        top: 1px;
         left: 12px;
         @include breakpoint(small only) {
-          left: 10px;
+          left: 0;
         }
-      }
-      &:hover {
-        background: $color-white;
-        color: $color-primary;
       }
     }
   }
   &__next {
     a {
       padding-left: 0;
-      padding-right: 22px;
+      padding-right: 28px;
       @include breakpoint(small only) {
-        padding-right: 19px;
+        padding-right: 12px;
       }
       &:before {
         content: "\f105";
         left: auto;
         right: 12px;
         @include breakpoint(small only) {
-          right: 10px;
+          right: 0;
         }
       }
     }

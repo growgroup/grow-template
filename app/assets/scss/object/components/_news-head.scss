@@ -6,7 +6,18 @@
       position: absolute;
       top: 0;
       right: 0;
-      margin-top: 0!important;
+      margin-top: 0 !important;
     }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: rem-calc(24);
+    letter-spacing: 0.05em;
+    line-height: (32px/24px);
+    text-align: left;
+    color: $color-primary;
+    margin-top: 0;
+    margin-bottom: 24px;
   }
 }

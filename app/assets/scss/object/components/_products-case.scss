@@ -1,0 +1,53 @@
+.c-products-case {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  color: #fff;
+  text-decoration: none;
+  &__image {
+    max-width: 240px;
+    width: 100%;
+    display: block;
+    @include bg-option;
+    min-height: 154px;
+    @include breakpoint(small only) {
+      max-width: 120px;
+      width: 100%;
+      max-height: 75px;
+      min-height: 75px;
+    }
+  }
+
+  &__content {
+    max-width: calc(100% - (240px + 24px));
+    @include breakpoint(small only) {
+      max-width: calc(100% - (120px + 24px));
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: rem-calc(18);
+    @include breakpoint(small only) {
+      font-size: rem-calc(14);
+      line-height: 1.5;
+    }
+  }
+
+  &__meta {
+    font-size: rem-calc(14);
+    margin-bottom: 20px;
+    @include breakpoint(small only) {
+      font-size: rem-calc(12);
+      margin-bottom: 10px;
+    }
+  }
+
+  &__text {
+    font-size: rem-calc(16);
+    color: rgba(#fff, 0.7);
+    @include breakpoint(small only) {
+      font-size: rem-calc(13);
+    }
+  }
+}

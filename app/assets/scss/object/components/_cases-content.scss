@@ -1,0 +1,185 @@
+.c-cases-content {
+  &__head {
+    position: relative;
+    margin-bottom: 32px;
+    @include breakpoint(small only) {
+      padding-bottom: 0;
+      margin-bottom: 24px;
+    }
+
+    &__label {
+      @extend .c-label;
+      display: inline-block;
+      @include breakpoint(small only) {
+        font-size: 12px !important;
+        margin-bottom: 16px;
+        padding: 6px !important;
+      }
+    }
+
+    &__meta {
+      display: flex;
+      align-items: center;
+    }
+
+    &__title {
+      @extend .heading;
+      @extend .heading.is-lg;
+      font-weight: bold;
+      color: $color-primary;
+      letter-spacing: 0.1em;
+      margin-top: 24px;
+      @include breakpoint(small only) {
+        font-size: 18px;
+      }
+    }
+
+    &__subtitle {
+      @extend .heading;
+      @extend .heading.is-xs;
+      font-weight: 500;
+      margin-top: 0;
+      margin-bottom: 0;
+      @include breakpoint(small only) {
+        font-size: 14px;
+      }
+    }
+
+    &__sup {
+      margin-left: 24px;
+      @include breakpoint(small only) {
+        font-size: 12px;
+        margin-top: 12px;
+      }
+    }
+  }
+
+  &__content {
+    //padding: 0 56px;
+    @include breakpoint(small only) {
+      padding: 0;
+    }
+  }
+
+  &__flow {
+    display: flex;
+    margin-top: 48px;
+    margin-bottom: 42px;
+    @include breakpoint(small only) {
+      display: block;
+      margin-top: 16px;
+    }
+
+    &__image {
+      text-align: center;
+      margin-bottom: 24px;
+      margin-top: 24px;
+      @include breakpoint(small only) {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+      }
+    }
+
+    &__block {
+      border: 1px solid #8099AD;
+      width: calc(50% - 16px);
+      position: relative;
+      background-color: #F1F3F5;
+      @include breakpoint(small only) {
+        width: 100%;
+        margin-right: 0 !important;
+      }
+
+      &:nth-child(1) {
+        margin-right: 32px;
+        @include breakpoint(small only) {
+          margin-bottom: 36px;
+        }
+
+        &:before {
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 12px 0 12px 18px;
+          border-color: transparent transparent transparent #8099AD;
+          position: absolute;
+          right: -18px;
+          top: 50%;
+          margin-top: -12px;
+          @include breakpoint(small only) {
+            right: 50%;
+            top: auto;
+            bottom: -28px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 16px 12px 0 12px;
+            transform: translateX(50%);
+            border-color: #8099AD transparent transparent transparent;
+          }
+        }
+      }
+
+
+      &.is-primary {
+        border-color: $color-primary;
+
+        .c-cases-content__flow__title {
+          background-color: $color-primary;
+        }
+      }
+    }
+
+    &__title {
+      background-color: #8099AD;
+      color: $color-white;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 9px 16px;
+      @include breakpoint(small only) {
+        padding: 6px;
+        font-size: 16px;
+      }
+    }
+
+    &__text {
+      padding: 12px 16px;
+    }
+  }
+
+  &__message {
+    background: #F6F7F8;
+    padding-left: 56px;
+    padding-right: 56px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    @include breakpoint(small only) {
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    &__title {
+      font-size: rem-calc(24);
+      font-weight: bold;
+      color: $color-primary;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+      @include breakpoint(small only) {
+        font-size: rem-calc(20);
+        margin-bottom: 10px;
+      }
+    }
+
+    &__text {
+    }
+  }
+}

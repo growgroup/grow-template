@@ -16,7 +16,6 @@ mixin c_page_header(image,title,subtitle)
   +bgimg(image).c-page-header
     .c-page-header__inner
       h1.c-page-header__title!= title
-      .c-page-header__subtitle!= subtitle
 
 //- ループ
 //- +loop(10)
@@ -75,22 +74,79 @@ mixin c_relation()
 
 
 mixin c_offer()
-  +c.offer
-    .l-container
-      +e.inner
-        h2.c-offer__title 株式会社サンプルへの<br class="u-hidden-lg">お見積り/お問い合わせはこちら
-        +e.box
-          <a href="tel:123-456-7890" class="c-offer__button">
-            +e.button__number
-              span 123-456-7890
-              small 受付：9:00〜18:00（平日）
-          </a>
-          +a("/contact/").c-offer__button.is-contact お問い合わせフォーム
-
-
+  .c-contact-box__wrap
+    +c.contact-box
+      .l-container
+        div.u-mbs.is-top.is-bottom.c-contact-box__title
+          h2.heading.is-xxlg.is-white テクノタイムサービスへの<br class="u-hidden-lg">お問い合わせ
+        p.u-text-center.c-contact-box__lead.
+          テキストが入りますテキストが入りますテキストが入りますテキストが入ります<br>
+          テキストが入りますテキストが入りますテキストが入ります
+        +e.utility
+          +e.tel
+            +a("tel:045-581-7111").is-decoretion-none <i class="fa fa-phone" aria-hidden="true"></i>045-581-7111
+            +e("p").reception-time 受付時間 : 10：00～16：00
+    +e.buttons
+      .l-container
+        .row
+          .large-4.small-12.medium-4: +a("/contact/").c-button.is-lg.is-accent.is-icon
+            span 修理のお問い合わせ
+            i.fa.fa-chevron-circle-right
+          .large-4.small-12.medium-4: +a("/contact/").c-button.is-lg.is-accent.is-icon
+            span 部品等のお問い合わせ
+              i.fa.fa-chevron-circle-right
+          .large-4.small-12.medium-4: +a("/contact/").c-button.is-lg.is-icon
+            span 採用のお問い合わせ
+              i.fa.fa-chevron-circle-right
 
 mixin link(href)
   link(href=config.rootpath + href)&attributes(attributes)
 
 mixin script(src)
   script(src=config.rootpath + src)&attributes(attributes)
+
+mixin front_recruit(classes)
+  if !classes
+    - var classes = ""
+  +c.front-recruit(class!=classes)
+    .l-container
+      if !classes
+        .heading.is-xlg 先輩社員の声
+        .c-lead.u-text-center.
+          新卒・経験者問わず積極的に採用を行っています。<br>
+          技術を得たい・伸ばしたい方、<br class="u-hidden-lg">販売の現場で活躍したい方、<br>
+          あなたのご活躍をお待ちしています。
+      +e.upper
+        +e.upper__left
+          +e.upper__title 先輩社員の声
+          +e.upper__text.
+            技術職も営業・販売職も、チャレンジできる場所があります。それぞれの先輩の声を聞いてみました。
+          +e.upper__button
+            +a("/recruit/interviews/").c-button.is-opacity.is-md
+              | すべての先輩の声を見る
+        +e.upper__right()
+      +e.bottom
+        +e.A.bottom__banner(href="/recruit/message/")
+          span 代表ご挨拶
+        +e.bottom__list
+          ul
+            li: +a("/recruit/jobdescription/") 仕事内容
+            li: +a("/recruit/education-and-training/") 教育と研修
+            li: +a("/recruit/requirements/") 募集要項
+            li: +a("/recruit/entry/") 応募エントリー
+mixin front_recruit_relation()
+  +c.front-recruit.is-relation
+    .l-container
+      .heading.is-xlg テクノタイムサービスの<br class="u-hidden-lg">採用情報
+      +e.bottom.is-only
+        +e.bottom__banners
+          +e.A.bottom__banner.is-recruit(href="/recruit/interviews/")
+            span 先輩社員の声
+          +e.A.bottom__banner(href="/recruit/message/")
+            span 代表ご挨拶
+        +e.bottom__list
+          ul
+            li: +a("/recruit/jobdescription/") 仕事内容
+            li: +a("/recruit/education-and-training/") 教育と研修
+            li: +a("/recruit/requirements/") 募集要項
+            li: +a("/recruit/entry/") 応募エントリー

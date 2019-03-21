@@ -1,0 +1,60 @@
+extends /inc/foundation/_base.pug
+block append config
+  - current.id = "cases" // ページのID
+  - current.title = "修理事例" // タイトル
+  - current.description = "修理事例" // 説明文
+  - current.bodyClass = "cases_detail" // body に付与するクラス
+  - current.depth = 2 // ページの階層
+
+block page_header
+  +c_page_header("bg-pageheader-" + current.id + ".jpg",current.title)
+  +c.breadcrumb
+    .l-container
+      span: +a("/") ホーム
+      span >
+      span 修理事例
+      span >
+      span 修理事例01
+
+block body
+  section.l-main
+    .l-section.is-bg.is-sm
+      .l-container
+        .u-mbs.u-text-center.is-sm
+          div.c-lead これまでテクノタイムサービスにご依頼いただいた修理事例を掲載しています。
+    .l-section
+      .l-container
+        .row
+          .large-10.is-push-lg-1.small-12
+            +c.cases-content
+              +e.head
+                +e.head__content
+                  +e.head__meta
+                    +e.head__label ガラス
+                    +e.head__sup 東京都 / Y.M様
+                  +e.head__title 修理事例のタイトルがここに入ります。修理事例のタイトルがここに入ります。
+
+              +e.content
+                +e.flow
+                  +e.flow__block
+                    +e.flow__title 修理前
+                    +e.flow__image: +img("img-case-sample.jpg")
+                    +e.flow__text サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト
+                  +e.flow__block.is-primary
+                    +e.flow__title 修理後
+                    +e.flow__image: +img("img-case-sample.jpg")
+                    +e.flow__text サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト
+
+              +e.message
+                +e.message__title 技術者からのコメント
+                +e.message__text.
+                  技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント技術者からのコメント
+
+            <nav class="c-post-navs is-sm">
+              <ul>
+                <li class="c-post-navs__prev"><a href="/cases/01/">前の記事へ</a></li>
+                <li class="c-post-navs__list"><a href="/cases/"><span><i class="fa fa-th-list" aria-hidden="true"></i>修理事例一覧へ</span></a></li>
+                <li class="c-post-navs__next"><a href="/cases/01/">次の記事へ</a></li>
+              </ul>
+            </nav>
+  +c_offer()

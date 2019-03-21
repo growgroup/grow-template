@@ -1,0 +1,63 @@
+.c-product-features {
+  &__box {
+    //padding-left: 6px;
+    //padding-right: 6px;
+    @include breakpoint(small only) {
+      margin-bottom: 32px;
+    }
+
+
+    &__image {
+      position: relative;
+      margin-bottom: 42px;
+      max-width: 333px;
+      img {
+        transform: translate3d(23px, 0px, 0px);
+
+      }
+
+      &:after {
+        transform: translate3d(23px, 0px, 0px);
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        max-width: 620px;
+        height: 100%;
+        box-sizing: border-box;
+        top: 10px;
+        left: -10px;
+        z-index: -10;
+        border: 1px solid rgba($color-primary, 0.5);
+      }
+    }
+
+    &__number {
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      color: $color-white;
+      font-size: rem-calc(36);
+      font-weight: bold;
+      @include webfont;
+      text-align: center;
+      padding-top: 8px;
+      bottom: -32px;
+      background: $color-primary;
+    }
+
+    &__title {
+      font-size: rem-calc(24);
+      font-weight: bold;
+      color: $color-primary;
+      margin-bottom: 16px;
+      @include breakpoint(small only) {
+        font-size: rem-calc(20);
+        margin-bottom: 8px;
+      }
+    }
+
+    &__text {
+    }
+  }
+}

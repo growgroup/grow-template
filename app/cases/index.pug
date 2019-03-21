@@ -1,0 +1,51 @@
+extends /inc/foundation/_base.pug
+block append config
+  - current.id = "cases" // ページのID
+  - current.title = "修理事例" // タイトル
+  - current.description = "修理事例" // 説明文
+  - current.bodyClass = "cases" // body に付与するクラス
+  - current.depth = 2 // ページの階層
+
+block page_header
+  +c_page_header("bg-pageheader-" + current.id + ".jpg",current.title)
+  +c.breadcrumb
+    .l-container
+      span: +a("/") ホーム
+      span >
+      span= current.title
+
+block body
+  section.l-main
+    .l-container
+      .l-section.is-top
+        +c.capsule-nav
+          +e.title カテゴリから探す
+          ul
+            li: +a("#").c-button.is-sm.is-icon
+              span オーバーホール
+              i.fa.fa-chevron-circle-right
+            li: +a("#").c-button.is-sm.is-icon
+              span ポリッシュ
+              i.fa.fa-chevron-circle-right
+            li: +a("#").c-button.is-sm.is-icon
+              span 硝子別作
+              i.fa.fa-chevron-circle-right
+            li: +a("#").c-button.is-sm.is-icon
+              span 文字盤・リダン
+              i.fa.fa-chevron-circle-right
+            li: +a("#").c-button.is-sm.is-icon
+              span 外装修理
+              i.fa.fa-chevron-circle-right
+        .row
+          +loop(12)
+            .large-4.small-6.medium-6
+              +c.A.case-item(href="/cases/01/")
+                +e.image
+                  +img("img-case-sample.jpg")
+                  +e.category ガラス
+                +e.title.
+                  修理事例のタイトルがここに入ります。修理事例のタイトルがここに入ります。
+                +e.meta 東京都 / Y.M 様
+        .u-mbs
+          +c_pagination()
+  +c_offer()

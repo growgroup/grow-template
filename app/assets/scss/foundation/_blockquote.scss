@@ -2,14 +2,17 @@ blockquote {
   border-left: 2px solid $color-primary;
   margin-top: $margin-md;
   margin-bottom: $margin-md;
-  background-color: rgba($color-primary,0.1);
+  background-color: rgba(#A8ADBB, 0.1);
   padding: 30px 45px;
   position: relative;
+  margin-left: 0;
+  margin-right: 0;
   @include breakpoint(small only) {
     margin-left: 0;
     margin-right: 0;
     padding: 16px 24px 16px 40px;
   }
+
   &:before {
     content: "\f10d";
     display: block;
@@ -24,7 +27,8 @@ blockquote {
       top: 6px;
     }
   }
-  cite{
+
+  cite {
     display: block;
     text-align: right;
   }

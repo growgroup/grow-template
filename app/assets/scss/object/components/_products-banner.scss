@@ -1,0 +1,77 @@
+.c-products-banner {
+  display: block;
+  text-decoration: none;
+  @include bg-option;
+  max-width: calc(50% - 12px);
+  width: 100%;
+  min-height: 150px;
+  color: #333;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 28px;
+  @include breakpoint(small only) {
+    min-height: 92px;
+    margin-bottom: 10px;
+  }
+
+  &.is-list {
+    max-width: 100%;
+    border: 1px solid #CCCCCC;
+  }
+
+  &.is-related {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  &__desc {
+    margin-bottom: 32px;
+    @include breakpoint(small only) {
+      margin-bottom: 32px;
+      font-size: rem-calc(13);
+    }
+  }
+
+  &__text {
+    padding-left: 48px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0px;
+    font-weight: bold;
+    font-size: rem-calc(18);
+    @include breakpoint(small only) {
+      font-size: rem-calc(13);
+      padding-left: 32px;
+    }
+
+    &:before {
+      content: "\f138";
+      position: absolute;
+      font-family: FontAwesome;
+      display: inline-block;
+      color: $color-accent;
+      left: 26px;
+      @include breakpoint(small only) {
+        left: 18px;
+      }
+    }
+  }
+
+  &:nth-child(1) {
+    background-image: url(../images/bg-products-banner01.jpg);
+  }
+
+  &:nth-child(2) {
+    background-image: url(../images/bg-products-banner02.jpg);
+  }
+
+  &:nth-child(3) {
+    background-image: url(../images/bg-products-banner03.jpg);
+  }
+
+  &:nth-child(4) {
+    background-image: url(../images/bg-products-banner04.jpg);
+  }
+}

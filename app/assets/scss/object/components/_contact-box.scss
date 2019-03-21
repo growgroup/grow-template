@@ -1,15 +1,26 @@
-.c-contact-box{
+.c-contact-box {
   position: relative;
   z-index: 10;
 
+  .heading.is-xxlg {
+    letter-spacing: 1.1px;
+    margin-bottom: 28px;
+  }
+
   &__wrap {
-    background: url(../images/bg-offer.jpg) center center no-repeat;
+    background: url(../images/bg-offer@2x.jpg) center center no-repeat;
     background-size: cover;
     text-align: center;
     color: #fff;
-    padding-top: 88px;
-    padding-bottom: 92px;
+    padding-top: 66px;
+    padding-bottom: 42px;
     position: relative;
+    margin-top: 112px;
+    @include breakpoint(small only) {
+      margin-top: 60px;
+      padding-top: 33px;
+      padding-bottom: 14px;
+    }
     &:after {
       position: relative;
       z-index: 0;
@@ -18,85 +29,109 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.3) url(../images/ptn-dots.png) repeat;
+      max-height: 447px;
+      background: rgba($color-primary, 0.3);
       top: 0;
       left: 0;
+      @include breakpoint(small only) {
+        max-height: 60%;
+      }
     }
   }
-  &__title{
+
+  &__title {
   }
-  &__lead{
+
+  &__lead {
     margin-top: 14px;
-    margin-bottom: 18px;
+    margin-bottom: 32px;
     color: $color-white;
-    @include breakpoint(small only){
+    font-size: rem-calc(18);
+    @include breakpoint(small only) {
       margin-top: 10px;
       margin-bottom: 14px;
+      font-size: rem-calc(14);
     }
   }
-  &__utility{
+
+  &__utility {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: center;
     margin: 0 160/1080*100%;
     position: relative;
-    &:before{
-      content: "";
-      display: block;
-      width: 1px;
-      height: 100%;
-      background: $color-white;
-      position: absolute;
-      left: 50%;
-      top: 0;
-    }
     @media (max-width: 1000px) {
       display: block;
-      &:before{
+      &:before {
         display: none;
       }
     }
-    @include breakpoint(small only){
+    @include breakpoint(small only) {
       margin: 0;
-
     }
   }
-  &__tel{
+
+  &__tel {
     color: $color-white;
-    a{
+
+    a {
       text-decoration: none;
       display: block;
-      font-size: 40px;
+      font-size: 60px;
       font-weight: bold;
-      color: $color-white;
       line-height: 1;
-      margin-bottom: 10px;
-      padding-top: 4px;
-      @include breakpoint(small only){
+      color: $color-white;
+      text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+      letter-spacing: .0px;
+      @include webfont;
+      @include breakpoint(small only) {
         font-size: 30px;
       }
     }
-    i{
-      color: $color-primary;
-      margin-right: 1rem;
+
+    i {
+      margin-right: 10px;
     }
+
     @media (max-width: 1000px) {
       margin-bottom: 20px;
     }
   }
-  &__reception-time{
-    text-align: left;
-    padding-left: 50px;
-    line-height: 1;
+
+  &__reception-time {
+    text-align: center;
+    line-height: 1.7;
+    max-width: 240px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 24px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    display: block;
+    background: #fff;
+    border-radius: 100px;
+    font-weight: 500;
+    color: $color-primary;
+    font-size: rem-calc(16);
+    letter-spacing: 0em;
     @media (max-width: 1000px) {
       text-align: center;
       padding-left: 0px;
+      font-size: rem-calc(14);
+      margin-top: 16px;
     }
   }
-  &__button{
-    width: 344/760*100%;
-    @media (max-width: 1000px) {
-      width: 100%;
+
+  &__buttons {
+    margin-top: 112px;
+    @include breakpoint(small only) {
+      margin-top: 80px;
+      .c-button {
+        margin-bottom: 8px;
+      }
     }
   }
 }

@@ -1,0 +1,36 @@
+extends /inc/foundation/_base.pug
+block append config
+  - current.id = "recruit" // ページのID
+  - current.title = "募集要項" // タイトル
+  - current.description = "募集要項" // 説明文
+  - current.bodyClass = "requirements_detail" // body に付与するクラス
+  - current.depth = 3 // ページの階層
+
+block page_header
+  +c_page_header("bg-pageheader-" + current.id + ".jpg","採用情報")
+  +c.breadcrumb
+    .l-container
+      span: +a("/") ホーム
+      span >
+      span: +a("/recruit/") 採用情報
+      span >
+      span!=current.title
+
+block body
+  section.l-main
+    +c.opening
+      .l-container
+        h2.c-opening__title
+          | 募集要項
+        p.c-opening__text.
+          現在下記の募集要項にて採用をお受付しております。<br>
+          採用希望の方は下記の募集要項を選択の上、ご応募ください。
+    .l-container
+      .row
+        .large-3.small-6.medium-4.u-mbs.is-sm.is-bottom: a(href="/recruit/requirements/01/").c-button.is-accent.is-md 時計修理技術者（正社員）
+        .large-3.small-6.medium-4.u-mbs.is-sm.is-bottom: a(href="/recruit/requirements/01/").c-button.is-accent.is-md 店頭修理受付（正社員）
+        .large-3.small-6.medium-4.u-mbs.is-sm.is-bottom: a(href="/recruit/requirements/01/").c-button.is-accent.is-md 店頭修理受付（契約社員）
+        .large-3.small-6.medium-4.u-mbs.is-sm.is-bottom: a(href="/recruit/requirements/01/").c-button.is-accent.is-md 店頭修理受付（アルバイト）
+        .large-3.small-6.medium-4.u-mbs.is-sm.is-bottom: a(href="/recruit/requirements/01/").c-button.is-accent.is-md 修理受付（アルバイト）
+  +front_recruit_relation()
+  +c_offer()

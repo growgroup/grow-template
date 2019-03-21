@@ -1,0 +1,224 @@
+.c-front-recruit {
+  background-image: url(../images/bg-front-recruit.jpg);
+  background-repeat: no-repeat;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  @include breakpoint(small only) {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    background-size: contain;
+    .l-container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  &.is-relation {
+    margin-top: 112px;
+    background: rgba(#A8ADBB, 0.1);
+    margin-bottom: -112px;
+    @include breakpoint(small only) {
+      margin-top: 60px;
+      margin-bottom: -60px;
+    }
+  }
+
+  &.is-relation & {
+    &__bottom {
+      border-bottom: none;
+      padding-bottom: 40px;
+      @include breakpoint(small only) {
+        padding-bottom: 20px;
+      }
+    }
+  }
+
+
+  &__upper {
+    margin-top: 60px;
+    display: flex;
+    @include breakpoint(small only) {
+      display: block;
+      margin-top: 40px;
+    }
+
+    &__left {
+      max-width: 50%;
+      width: 100%;
+      background: $color-primary;
+      color: #fff;
+      padding: 49px 43px 47px 43px;
+      @include breakpoint(small only) {
+        max-width: 100%;
+        padding: 24px 22px 24px 22px;
+      }
+    }
+
+    &__right {
+      max-width: 50%;
+      width: 100%;
+      background-image: url(../images/bg-front-recruit-upper.png);
+      @include bg-option;
+      @include breakpoint(small only) {
+        max-width: 100%;
+        min-height: 156px;
+      }
+    }
+
+    &__title {
+      font-size: rem-calc(24);
+      font-weight: bold;
+      position: relative;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+      @include breakpoint(small only) {
+        font-size: rem-calc(18);
+      }
+
+      &:after {
+        content: "";
+        width: 60px;
+        border-bottom: 2px solid #fff;
+        display: block;
+        height: 0;
+        position: absolute;
+        bottom: 0;
+      }
+    }
+
+    &__text {
+      opacity: 0.7;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 112px;
+    @include breakpoint(small only) {
+      display: block;
+      border-bottom: none;
+      padding-bottom: 20px;
+    }
+
+    &.is-only & {
+      &__banners {
+        max-width: 50%;
+        width: 100%;
+        @include breakpoint(small only) {
+          max-width: 100%;
+        }
+      }
+
+      &__banner {
+        max-width: 100%;
+        min-height: 150px;
+
+        &.is-recruit {
+          background-image: url(../images/bg-front-recruit-interviews.jpg);
+          margin-bottom: 16px;
+        }
+      }
+
+      &__list {
+        ul {
+          padding-top: 0;
+        }
+      }
+    }
+
+    &__banner {
+      max-width: 50%;
+      width: 100%;
+      display: block;
+      background-image: url(../images/bg-front-recruit-bottom01@2x.jpg);
+      @include bg-option;
+      color: $color-accent;
+      min-height: 312px;
+      position: relative;
+      text-decoration: none;
+      @include breakpoint(small only) {
+        max-width: 100%;
+        min-height: 156px;
+      }
+
+      span {
+        color: #fff;
+        font-size: rem-calc(24);
+        display: block;
+        font-weight: bold;
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: right;
+        width: 100%;
+        padding-right: 48px;
+        @include breakpoint(small only) {
+          font-size: rem-calc(18);
+        }
+
+        &:after {
+          content: '\f138';
+          font-family: FontAwesome;
+          margin-left: 24px;
+        }
+      }
+    }
+
+    &__list {
+      max-width: 50%;
+      width: 100%;
+      @include breakpoint(small only) {
+        max-width: 100%;
+      }
+
+      ul {
+        padding-left: 33px;
+        padding-top: 10px;
+        @include breakpoint(small only) {
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 10px;
+        }
+
+        li {
+          a {
+            display: block;
+            padding-top: 24px;
+            padding-bottom: 24px;
+            text-decoration: none;
+            color: $color-primary;
+            letter-spacing: 0.9px;
+            position: relative;
+            padding-left: 24px;
+            border-bottom: 1px solid #CCCCCC;
+            font-size: rem-calc(18);
+            font-weight: bold;
+            @include breakpoint(small only) {
+              padding-top: 16px;
+              padding-bottom: 16px;
+              padding-left: 16px;
+              font-size: rem-calc(14);
+            }
+
+            &:after {
+              position: absolute;
+              right: 8px;
+              top: 50%;
+              -webkit-transform: translateY(-50%);
+              -moz-transform: translateY(-50%);
+              -ms-transform: translateY(-50%);
+              -o-transform: translateY(-50%);
+              transform: translateY(-50%);
+              content: "\f138";
+              font-family: FontAwesome;
+              color: $color-accent;
+            }
+          }
+        }
+      }
+    }
+  }
+}

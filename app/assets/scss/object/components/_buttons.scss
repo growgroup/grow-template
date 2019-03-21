@@ -27,7 +27,7 @@ $c-button-radius: 0px !default;
   outline: none;
   display: inline-block;
   width: 100%;
-  max-width: 280px;
+  max-width: 320px;
   text-align: center;
   background-color: $color-primary;
   color: $color-white;
@@ -37,38 +37,56 @@ $c-button-radius: 0px !default;
   font-weight: 500;
   border: 1px solid $color-primary;
   position: relative;
+  font-size: rem-calc(15);
   transition: all .3s;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  &:focus,
+  &:active {
+    color: $color-white;
+  }
   @include breakpoint(small only) {
     max-width: 240px;
     padding: 11px 16px;
   }
-  &:before {
-    content: "\f105";
-    font-family: "FontAwesome";
-    padding-right: 12px;
-    position: relative;
-    top: -1px;
-  }
+
+  //&:after {
+  //  content: "\f105";
+  //  font-family: "FontAwesome";
+  //  padding-right: 12px;
+  //  position: relative;
+  //  top: -1px;
+  //}
+
   &.is-noicon {
     &:before {
       content: none;
     }
   }
+
   &:hover {
     opacity: 1;
-    color: $color-primary;
+
     background-color: $color-white;
   }
+
   //
   // @state 大きさ
   //
   &.is-lg {
-    max-width: 343px;
+    max-width: 356px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    font-size: rem-calc(18);
+    letter-spacing: 0.07em;
     @include breakpoint(small only) {
       max-width: 375px;
-      padding: 13px 16px;
+      padding: 16px 16px;
+      font-size: rem-calc(14);
     }
   }
+
   //
   // @state 大きさ
   //
@@ -79,15 +97,32 @@ $c-button-radius: 0px !default;
     padding-right: 80px;
     width: auto;
     max-width: initial;
+    font-size: rem-calc(18);
     @include breakpoint(small only) {
       padding: 13px 16px;
+      font-size: rem-calc(13);
     }
   }
 
   &.is-sm {
-    padding: 9px 24px;
+    padding: 10px 32px;
     max-width: initial;
     width: auto;
+    letter-spacing: 0.07em;
+    @include breakpoint(small only) {
+      font-size: rem-calc(13);
+      padding: 8px 16px;
+    }
+  }
+
+  &.is-icon {
+    text-indent: 8px;
+    @include breakpoint(small only) {
+      text-indent: 4px;
+    }
+    i.fa {
+      margin-left: 8px;
+    }
   }
 
   &.is-xs {
@@ -97,12 +132,45 @@ $c-button-radius: 0px !default;
     width: auto;
   }
 
+  &.is-opacity {
+    background-color: #fff;
+    font-size: rem-calc(18);
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    text-indent: 16px;
+    @include breakpoint(small only) {
+      font-size: rem-calc(14);
+
+    }
+    &:focus,
+    &:hover,
+    &:active {
+      color: $color-white;
+    }
+    &:after {
+      content: "\f138";
+      font-family: FontAwesome;
+      margin-left: 16px;
+    }
+  }
+
+  &.is-md {
+    font-size: rem-calc(16);
+    @include breakpoint(small only) {
+      font-size: rem-calc(14);
+    }
+  }
+
   //
   // @state カラー
   //
   &.is-tertiary {
     @include button_colors($color-tertiary);
     color: $font-base-color;
+
     &:hover {
       color: $font-base-color;
     }
@@ -124,6 +192,10 @@ $c-button-radius: 0px !default;
     @include button_colors($color-state-success);
   }
 
+  &.is-accent {
+    @include button_colors($color-accent);
+  }
+
   //
   // @state その他
   //
@@ -131,6 +203,7 @@ $c-button-radius: 0px !default;
     &:before {
       display: none;
     }
+
     &:after {
       content: "\f105";
       font-family: "FontAwesome";
@@ -149,34 +222,40 @@ $c-button-radius: 0px !default;
     border: 2px solid $color-primary;
     color: $color-primary;
     font-weight: bold;
+
     &:hover {
       background: $color-primary;
       color: #fff;
     }
+
     &.is-white {
       border-color: #fff;
       color: #fff;
     }
   }
+
   &.is-expand {
     width: 100%;
     max-width: 100%;
     text-align: center;
   }
+
   &.is-form {
     font-size: rem-calc(16);
     min-width: rem-calc(160);
-    background-color: rgba($font-base-color,0.3);
+    background-color: rgba($font-base-color, 0.3);
     padding: rem-calc(13);
     vertical-align: top;
     border: none;
     @include breakpoint(small only) {
       min-width: 47%;
     }
+
     &:hover {
       color: #fff;
     }
   }
+
   &.is-box {
     border-radius: 0px;
   }

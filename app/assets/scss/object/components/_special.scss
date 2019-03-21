@@ -3,7 +3,14 @@
     display: flex;
     align-items: flex-start;
     padding-top: 32px;
-    padding-left: 16px;
+    //padding-left: 16px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    &:nth-child(1) {
+      padding-top: 0;
+    }
+
     margin-bottom: 48px;
     @media (max-width: 900px) {
       display: block;
@@ -11,13 +18,15 @@
       padding-right: 24px;
       margin-bottom: 32px;
     }
+
     &:last-child {
       margin-bottom: 0;
     }
   }
+
   &__head {
     width: 100%;
-    max-width: 418px;
+    max-width: 44.285714286vw;
     position: relative;
     @media (max-width: 900px) {
       max-width: 320px;
@@ -26,37 +35,65 @@
       max-width: 100%;
       margin-bottom: 16px;
     }
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      max-width: 620px;
+      height: 100%;
+      top: 15px;
+      left: 15px;
+      z-index: -10;
+      border: 1px solid $color-primary;
+    }
   }
+
   &__number {
     @include webfont();
-    font-size: 65px;
+    font-size: rem-calc(60);
     position: absolute;
-    top: -32px;
-    left: -16px;
+    top: 64px;
+    width: 96px;
+    height: 96px;
+    background: $color-primary;
+    color: $color-white;
+    text-align: center;
+    right: -52px;
+    padding-top: 18px;
     line-height: 1;
     @media (max-width: 900px) {
-      font-size: 56px;
+      font-size: 40px;
+      width: 70px;
+      height: 70px;
+      right: initial;
+      left: -16px;
     }
   }
+
   &__content {
     width: 100%;
-    max-width: calc(100% - 418px - 32px);
-    margin-left: auto;
-    @media (max-width: 900px) {
-      max-width: calc(100% - 320px - 32px);
-    }
+    max-width: 490px;
+    margin-left: 98px;
+    padding-top: 86px;
     @include breakpoint(small only) {
       max-width: 100%;
+      margin-left: 0;
+      padding-top: 32px;
     }
   }
+
   &__title {
-    @extend .heading;
-    @extend .heading.is-md;
-    @extend .heading.is-underline;
+    font-size: rem-calc(30);
+    color: $color-primary;
+    letter-spacing: 0.07em;
+    font-weight: bold;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
     @include breakpoint(small only) {
       margin-bottom: 12px;
+      font-size: rem-calc(24);
     }
   }
 }
@@ -68,9 +105,26 @@
       order: 2;
       margin-left: auto;
     }
+
+    .c-special__head:after {
+      border-color: $color-accent;
+      top: 17px;
+      left: -19px;
+    }
+
     .c-special__content {
       order: 1;
-      margin-left: 0;
+      margin-left: auto;
+    }
+
+    .c-special__title {
+      text-align: right;
+    }
+
+    .c-special__number {
+      right: initial;
+      left: -62px;
+      background: $color-accent;
     }
   }
 

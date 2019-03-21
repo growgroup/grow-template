@@ -1,0 +1,76 @@
+extends /inc/foundation/_base.pug
+block append config
+  - current.id = "recruit" // ページのID
+  - current.title = "仕事内容" // タイトル
+  - current.description = "先輩社員の声" // 説明文
+  - current.bodyClass = "interivews_detail" // body に付与するクラス
+  - current.depth = 3 // ページの階層
+
+block page_header
+  +c_page_header("bg-pageheader-" + current.id + ".jpg","採用情報")
+  +c.breadcrumb
+    .l-container
+      span: +a("/") ホーム
+      span >
+      span: +a("/recruit/") 採用情報
+      span >
+      span!=current.title
+
+block body
+  section.l-main
+    +c.opening
+      .l-container
+        h2.c-opening__title
+          | 仕事内容
+        p.c-opening__text.
+          テクノタイムサービスの仕事内容を紹介します。
+
+    .l-container
+      .row
+        .large-4.small-6.medium-6
+          +c.case-item
+            +e.image
+              +img("img-jobdescription01.jpg")
+            +e.title.
+              営業・店舗部
+            +e.meta.
+              営業部は全国の小売店、時計専門店など各社の営業（企画）推進を預かる部門になります。新規開拓をおこない店舗のサポートもおこなっています。 <br>
+              店舗部は小売店の時計修理工房で活躍しています。店頭で電池交換、軽作業をおこない、修理技術を高められます。お客様との接点を持てる楽しさがある、やりがいのある部門です。
+        .large-4.small-6.medium-6
+          +c.case-item
+            +e.image
+              +img("img-jobdescription02.jpg")
+            +e.title.
+              技術部
+            +e.meta.
+              時計修理の職人は日々の努力により技術が向上します。それぞれが一流の時計技能士を目指して切磋琢磨しています。止まった時計に再び生命を与えて、動き始めた時の感動と喜びを感じられる部門です。
+        .large-4.small-6.medium-6
+          +c.case-item
+            +e.image
+              +img("img-jobdescription03.jpg")
+            +e.title.
+              オペレーター部
+            +e.meta.
+              お客様から送られる大切な修理品を1個1個、丁寧にチェックし受付処理をおこないます。<br>
+              お見積りなどの連絡をして、完成された修理品は丁寧に梱包発送をします。<br>
+              お客様のご依頼やご要望を正確に把握し、職人との橋渡しをする大切な部門です。
+        .large-4.small-6.medium-6
+          +c.case-item
+            +e.image
+              +img("img-jobdescription04.jpg")
+            +e.title.
+              経理・総務部
+            +e.meta.
+              経理部門は正確・スピード・親切をモットーに、総務部門は正確・思いやり・親切を大切に数多くの業務フォローをおこなっています。
+        .large-4.small-6.medium-6
+          +c.case-item
+            +e.image
+              +img("img-Jobdescription05.jpg")
+            +e.title.
+              販売部
+            +e.meta.
+              時計用部品、工具の販売をおこないます。当社カタログによる販売や大手得意先様とECサイトを利用した修理受付などを展開しています。
+
+
+  +front_recruit_relation()
+  +c_offer()

@@ -18,6 +18,7 @@ $heading-accent-color: $font-base-color !default;
   @include breakpoint(small only) {
     font-weight: 600;
   }
+
   small {
     font-size: 0.65em;
   }
@@ -30,33 +31,49 @@ $heading-accent-color: $font-base-color !default;
 //
 // Styleguide 1.1.1
 
+.heading.is-xxlg {
+  font-weight: bold;
+  font-size: rem-calc(36);
+  letter-spacing: 0.12em;
+  text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  @include breakpoint(small only) {
+    font-size: rem-calc(20);
+  }
+}
+
 .heading.is-xlg {
   text-align: center;
   margin-bottom: 52px;
+  font-size: rem-calc(32);
+  position: relative;
+  color: $color-primary;
+  letter-spacing: 0.05em;
+  font-weight: bold;
   @include breakpoint(small only) {
     margin-bottom: 28px;
+    font-size: rem-calc(21);
+    margin-bottom: 36px;
   }
-  span {
-    font-size: 32px;
-    letter-spacing: 1.6px;
+
+  &:after {
+    content: "";
     display: block;
-    font-weight: 500;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60px;
+    border-bottom: 2px solid $color-accent;
+    margin-top: 24px;
     @include breakpoint(small only) {
-      font-weight: 600;
-      font-size: 22px;
+      margin-top: 16px;
     }
   }
-  small {
-    display: block;
-    @include webfont();
-    font-size: 15px;
-    letter-spacing: 1.6px;
-    line-height: 1.5;
-    color: $color-primary;
-    @include breakpoint(small only) {
-      font-size: 12px;
-      letter-spacing: 0.8px;
-      margin-top: 2px;
+
+  &.is-left {
+    text-align: left;
+
+    &:after {
+      margin-left: 0;
     }
   }
 }
@@ -85,7 +102,10 @@ $heading-accent-color: $font-base-color !default;
 // Styleguide 1.1.3
 
 .heading.is-md {
-  font-size: 24px;
+  font-size: rem-calc(24);
+  font-weight: bold;
+  color: $color-primary;
+  margin-bottom: 24px;
   letter-spacing: 1.4px;
   @include breakpoint(small only) {
     font-size: 20px;
@@ -100,7 +120,7 @@ $heading-accent-color: $font-base-color !default;
 // Styleguide 1.1.4
 
 .heading.is-sm {
-  font-size: 22px;
+  font-size: rem-calc(18);
   letter-spacing: 1px;
   margin-bottom: 14px;
   @include breakpoint(small only) {
@@ -150,12 +170,13 @@ $heading-accent-color: $font-base-color !default;
     padding-bottom: 8px;
     margin-bottom: 24px;
   }
+
   &:before {
     content: "";
     display: block;
     width: 50px;
     height: 3px;
-    background-color: $color-primary;
+    background-color: $color-accent;
     position: absolute;
     bottom: -3px;
     left: 0;
@@ -167,7 +188,7 @@ $heading-accent-color: $font-base-color !default;
 }
 
 .heading.is-bg {
-  background-color: rgba($color-primary,0.1);
+  background-color: rgba(#A8ADBB, 0.1);
   padding: 6px 20px;
   border-left: 4px solid $color-primary;
   @include breakpoint(small only) {
@@ -181,6 +202,7 @@ $heading-accent-color: $font-base-color !default;
   @include breakpoint(small only) {
     padding-left: 20px;
   }
+
   &:before {
     content: "\f111";
     font-family: "FontAwesome";
@@ -196,9 +218,13 @@ $heading-accent-color: $font-base-color !default;
 
 // マージン調整
 .heading.is-top {
-  margin-bottom: 0!important;
+  margin-bottom: 0 !important;
 }
 
 .heading.is-bottom {
-  margin-top: 0!important;
+  margin-top: 0 !important;
+}
+
+.heading.is-white {
+  color: #fff;
 }
