@@ -1,4 +1,10 @@
 {
-  "presets": ["es2015"],
-  "retainLines": true
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "usage"
+      }
+    ]
+  ]
 }
