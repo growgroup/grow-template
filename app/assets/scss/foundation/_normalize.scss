@@ -7,10 +7,10 @@
  */
 
 html {
-  font-size: ($font-base-size) + px;
-  font-family: $font-base-family; /* 1 */
-  -ms-text-size-adjust: 100%; /* 2 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+  font-size: $font-base-size;
+  font-family: $font-base-family;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 * {
@@ -26,14 +26,14 @@ html {
 body {
   color: $font-base-color;
   margin: 0;
-  line-height: 1.8;
-  letter-spacing: 0.8px;
-  font-size: 15px;
+  line-height: $font-base-line-hight;
+  letter-spacing: $font-base-letter-spacing;
+  font-size: $font-base-size;
   &.is-slidebar-active {
     overflow: hidden;
   }
   @include breakpoint(small only) {
-    font-size: 14px;
+    font-size:  $font-base-size*0.9;
   }
 }
 

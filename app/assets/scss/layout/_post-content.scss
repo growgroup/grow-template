@@ -4,36 +4,7 @@
 //
 
 .l-post-content {
-  p,
-  img {
-    margin-bottom: 16px;
+  p {
+    text-align: left;
   }
-  h2 {
-    @extend .heading;
-    @extend .heading.is-md;
-    @extend .heading.is-underline;
-  }
-  h3 {
-    @extend .heading;
-    @extend .heading.is-sm;
-  }
-  h4 {
-    @extend .heading;
-    @extend .heading.is-sm;
-    @extend .heading.is-primary;
-  }
-  h5 {
-    @extend .heading;
-    @extend .heading.is-xs;
-    @extend .heading.is-bg;
-  }
-  h6 {
-    @extend .heading;
-    @extend .heading.is-xxs;
-    @extend .heading.is-icon;
-  }
-  table {
-    @extend .c-table;
-  }
-
 }

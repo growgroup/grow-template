@@ -1,0 +1,152 @@
+// ベース
+//
+// Styleguide 1.0.0
+
+// 見出し
+//
+// Styleguide 1.1.0
+
+$heading-color: $font-base-color !default;
+$heading-weight: normal !default;
+$heading-accent-color: $font-base-color !default;
+
+.p-heading {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: 700;
+  line-height: 1.5;
+  small {
+    font-size: 0.65em;
+  }
+}
+
+// 見出し - 極大
+//
+// markup:
+// <h1 class="heading is-xlg"><span>TEXTLEVEL1</span><small>見出しレベル1</small</h1>
+//
+// Styleguide 1.1.1
+
+.p-heading.is-xlg {
+  text-align: center;
+  color: $color-primary;
+  margin-bottom: 48px;
+  @include breakpoint(small only) {
+    margin-bottom: 32px;
+  }
+  span {
+    display: block;
+    @include webfont-bold();
+    font-size: 42px;
+    letter-spacing: 0.1em;
+    @include breakpoint(small only) {
+      font-size: 32px;
+    }
+  }
+  small {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    @include breakpoint(small only) {
+      font-size: 13px;
+    }
+  }
+}
+
+// 見出し - 大
+//
+// markup:
+// <h1 class="heading is-lg"><span>見出しレベル1見出しレベル1</span><small>TEXTLEVEL1</small</h1>
+//
+// Styleguide 1.1.2
+
+.p-heading.is-lg {
+  text-align: center;
+  color: $color-primary;
+  font-size: 32px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 32px;
+  @include breakpoint(small only) {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  small {
+    display: block;
+    @include webfont-bold();
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    margin-top: 6px;
+    @include breakpoint(small only) {
+      font-size: 13px;
+      margin-top: 4px;
+    }
+  }
+}
+
+// 見出し - 中
+//
+// markup:
+// <h1 class="heading is-md">見出し:中 <small>heading middle</small</h1>
+//
+// Styleguide 1.1.3
+
+.p-heading.is-md {
+}
+
+// 見出し - 小
+//
+// markup:
+// <h1 class="heading is-sm">見出し:小 <small>heading small</small</h1>
+//
+// Styleguide 1.1.4
+
+.p-heading.is-sm {
+}
+
+// 見出し - 極小
+//
+// markup:
+// <h1 class="heading is-xs">見出し:極小 <small>heading small</small</h1>
+//
+// Styleguide 1.1.5
+
+.p-heading.is-xs {
+}
+
+.p-heading.is-xxs {
+}
+
+// 装飾
+.p-heading.is-line {
+  position: relative;
+  padding-bottom: 24px;
+  @include breakpoint(small only) {
+    padding-bottom: 12px;
+  }
+  &:after {
+    content: "";
+    display: block;
+    width: 84px;
+    height: 3px;
+    background-color: $color-primary;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    @include breakpoint(small only) {
+      width: 64px;
+      height: 2px;
+    }
+  }
+}
+
+// マージン調整
+.p-heading.is-top {
+  margin-bottom: 0!important;
+}
+
+.p-heading.is-bottom {
+  margin-top: 0!important;
+}
