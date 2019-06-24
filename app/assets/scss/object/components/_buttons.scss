@@ -18,167 +18,235 @@
 // <p><a href="#" class="c-button is-lg is-expand">最大幅</a><p>
 //
 // Styleguide 2.11.0
-
-$c-button-md-font-size: rem-calc(16) !default;
-$c-button-sm-font-size: rem-calc(13) !default;
-$c-button-lg-font-size: rem-calc(16) !default;
-$c-button-radius: 0px !default;
 .c-button {
   outline: none;
   display: inline-block;
   width: 100%;
-  max-width: 280px;
+  max-width: rem-calc(203);
   text-align: center;
   background-color: $color-primary;
   color: $color-white;
+  border: 1px solid $color-primary;
   text-decoration: none;
   border-radius: 4px;
-  padding: 14px 16px;
-  font-weight: 500;
-  border: 1px solid $color-primary;
+  padding: 13px 24px;
   position: relative;
   transition: all .3s;
-  @include breakpoint(small only) {
-    max-width: 240px;
-    padding: 11px 16px;
-  }
-  &:before {
+  font-weight: 700;
+  // *アイコン
+  &:after {
     content: "\f105";
+    display: block;
     font-family: "FontAwesome";
-    padding-right: 12px;
-    position: relative;
-    top: -1px;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    font-weight: 400;
   }
-  &.is-noicon {
-    &:before {
-      content: none;
-    }
-  }
+  // *hover
   &:hover {
     opacity: 1;
-    color: $color-primary;
     background-color: $color-white;
-  }
-  //
-  // @state 大きさ
-  //
-  &.is-lg {
-    max-width: 343px;
-    @include breakpoint(small only) {
-      max-width: 375px;
-      padding: 13px 16px;
-    }
-  }
-  //
-  // @state 大きさ
-  //
-  &.is-xlg {
-    padding-top: 24px;
-    padding-bottom: 24px;
-    padding-left: 80px;
-    padding-right: 80px;
-    width: auto;
-    max-width: initial;
-    @include breakpoint(small only) {
-      padding: 13px 16px;
-    }
-  }
-
-  &.is-sm {
-    padding: 9px 24px;
-    max-width: initial;
-    width: auto;
-  }
-
-  &.is-xs {
-    font-size: rem-calc($c-button-lg-font-size*0.8);
-    padding: rem-calc($margin-sm*0.5) rem-calc($margin-md*0.8);
-    max-width: initial;
-    width: auto;
-  }
-
-  //
-  // @state カラー
-  //
-  &.is-tertiary {
-    @include button_colors($color-tertiary);
-    color: $font-base-color;
-    &:hover {
-      color: $font-base-color;
-    }
-  }
-
-  &.is-danger {
-    @include button_colors($color-state-danger);
-  }
-
-  &.is-warning {
-    @include button_colors($color-state-warning);
-  }
-
-  &.is-info {
-    @include button_colors($color-state-info);
-  }
-
-  &.is-success {
-    @include button_colors($color-state-success);
-  }
-
-  //
-  // @state その他
-  //
-  &.is-arrow-right {
-    &:before {
-      display: none;
-    }
-    &:after {
-      content: "\f105";
-      font-family: "FontAwesome";
-      padding-left: 12px;
-      position: relative;
-      top: -1px;
-    }
-  }
-
-  &.is-round {
-    border-radius: 1000px !important;
-  }
-
-  &.is-outline {
-    background: transparent;
-    border: 2px solid $color-primary;
     color: $color-primary;
-    font-weight: bold;
-    &:hover {
-      background: $color-primary;
-      color: #fff;
-    }
-    &.is-white {
-      border-color: #fff;
-      color: #fff;
-    }
-  }
-  &.is-expand {
-    width: 100%;
-    max-width: 100%;
-    text-align: center;
-  }
-  &.is-form {
-    font-size: rem-calc(16);
-    min-width: rem-calc(160);
-    background-color: rgba($font-base-color,0.3);
-    padding: rem-calc(13);
-    vertical-align: top;
-    border: none;
-    @include breakpoint(small only) {
-      min-width: 47%;
-    }
-    &:hover {
-      color: #fff;
-    }
-  }
-  &.is-box {
-    border-radius: 0px;
   }
 
+  // カラー設定
+  // -> セカンダリカラー
+  &.is-secondary {
+    background-color: lighten($color-primary, 40);
+    color: $color-primary;
+    border-color: lighten($color-primary, 40);
+    &:hover {
+      background-color: $color-white;
+      border-color: $color-primary;
+    }
+  }
+  // -> アクセントカラー
+  &.is-accent {
+    background-color: $color-accent;
+    border-color: $color-accent;
+    &:hover {
+      background-color: $color-white;
+      color: $color-accent;
+    }
+  }
+  // -> ホワイトカラー
+  &.is-white {
+    background-color: $color-white;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+    &:hover {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+
+  // サイズ設定
+  // -> 大
+  &.is-xlg {
+    max-width: rem-calc(392);
+    padding: 26px 32px;
+    font-size: 18px;
+    &:after {
+      font-size: 24px;
+    }
+  }
+  // -> 中
+  &.is-lg {
+    max-width: rem-calc(356);
+    padding: 16px 24px;
+  }
+  // -> 小
+  &.is-sm {
+    max-width: rem-calc(155);
+    padding: 10px 18px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    &:after {
+      right: 10px;
+    }
+  }
+  // -> 極小
+  &.is-xs {
+    width: inherit;
+    max-width: 100%;
+    background-color: transparent;
+    padding: 0 16px 0 0;
+    border: none!important;
+    color: $font-base-color;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    &:after {
+      color: $color-primary;
+      right: 0;
+    }
+    // *hover
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  // デザイン設定
+  // ->矢印左
+  &.is-arrow-left {
+    &:after {
+      content: "\f104";
+      right: auto;
+      left: rem-calc(12);
+    }
+  }
+  // -> ラインライト
+  &.is-line-right {
+    background-color: $color-white;
+    border: 1px solid $font-base-color;
+    color: $font-base-color;
+    border-radius: 0;
+    &:after {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background-color: $font-base-color;
+      position: absolute;
+    }
+    // *hover
+    &:hover {
+      opacity: 1;
+      &:after {
+        transform: translate(16px,-50%);
+      }
+    }
+    // *極小
+    &.is-xs {
+      padding-right: 78px;
+      &:after {
+        width: 64px;
+      }
+    }
+  }
+
+  // -> 矢印
+  &.is-arrow-right {
+    border-radius: 0;
+    &:after {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background-color: $color-white;
+      top: calc(50% + 6px);
+    }
+    &:before {
+      content: "";
+      display: block;
+      width: 12px;
+      height: 1px;
+      background-color: $color-white;
+      position: absolute;
+      right:  16px;
+      top: calc(50% + 3px);
+      transform: translate(1px, -50%) rotate(40deg);
+      transition: all .3s;
+    }
+    // *hover
+    &:hover {
+      opacity: 1;
+      &:after,
+      &:before {
+        right: 8px;
+        background-color: $color-primary;
+      }
+    }
+    // *極小
+    &.is-xs {
+      padding-right: 58px;
+      &:after {
+        width: 48px;
+        background-color: $font-base-color;
+      }
+      &:before {
+        background-color: $font-base-color;
+        right: 0;
+      }
+      // *hover
+      &:hover {
+        &:after,
+        &:before {
+          right: -8px;
+        }
+      }
+    }
+  }
+  // -> アイコン
+  &.is-icon-right {
+    border-radius: 0;
+    &:after {
+      border: 2px solid $color-white;
+      width: 24px;
+      height: 24px;
+      border-radius: 1000px;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding-left: 3px;
+      padding-bottom: 1px;
+    }
+    // *hover
+    &:hover {
+      &:after {
+        border-color: $color-primary;
+      }
+    }
+    // *極小
+    &.is-xs {
+      color: $color-primary;
+      padding-right: 32px;
+      &:after {
+        border-color: $color-primary;
+        right: 0;
+      }
+    }
+  }
 }

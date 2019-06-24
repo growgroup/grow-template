@@ -33,7 +33,6 @@
   }
   &__label {
     @extend .c-label;
-    @extend .c-label.is-required;
     margin-left: auto;
   }
   &__content {
@@ -85,7 +84,6 @@
     text-align: center;
     button {
       @extend .c-button;
-      @extend .c-button.is-lg;
     }
   }
 }

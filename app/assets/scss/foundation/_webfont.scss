@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&display=swap');
 
 // 英語アクセントフォント -> Roboto
-@import url('https://fonts.googleapis.com/css?family=Roboto:500,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 // regular400
 @mixin webfont() {
   font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 // bold700

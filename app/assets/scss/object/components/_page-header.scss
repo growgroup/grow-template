@@ -24,28 +24,30 @@
 
 .c-page-header{
   width: 100%;
-  height: 15.715vw;
-  min-height: 220px;
-  max-height: 302px;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  height: rem-calc(330);
   position: relative;
-  @media (max-width: 950px) {
-    margin-top: 55px;
-  }
-  @include breakpoint(small only) {
-    min-height: 140px;
-  }
+  overflow: hidden;
   &:after {
     content: "";
     display: block;
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba($color-black,0.2) url("../images/ptn-dots.png") repeat;
+    background: rgba($color-black,0.2);
     top: 0;
     left: 0;
+  }
+  &__image {
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width:100%;
+      height: auto;
+      min-height: rem-calc(330);
+      min-width: rem-calc(1400);
+    }
   }
   &__inner {
     text-align: center;
@@ -56,27 +58,29 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 99;
-    padding: 0 16px;
+    padding: 0 rem-calc(16);
   }
   &__title {
+    @include webfont-bold();
+    font-size: rem-calc(42);
+    line-height: 1.2;
+    letter-spacing: 0.06em;
     margin: 0;
-    font-size: 32px;
-    font-weight: 500;
-    letter-spacing: 1.6px;
-    @include breakpoint(small only) {
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: 1.1px;
-    }
   }
   &__subtitle {
-    @include webfont();
-    font-size: 15px;
-    letter-spacing: 1.6px;
-    line-height: 1.5;
-    @include breakpoint(small only) {
-      font-size: 13px;
-      letter-spacing: 1.1px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  // 画像なし単色
+  &.is-image-hidden {
+    height: rem-calc(200);
+    background-color: $color-secondary;
+    &:after {
+      display: none;
+    }
+    .c-page-header__inner {
+      color: $color-primary;
     }
   }
 }

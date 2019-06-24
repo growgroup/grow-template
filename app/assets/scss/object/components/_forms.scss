@@ -1,0 +1,38 @@
+.c-forms {
+  //ラジオボタン
+  
+  &__block {
+    display: flex;
+    align-items: center;
+    padding: rem-calc(24) 0;
+    border-bottom: 1px solid $border-base-color;
+  }
+  &__title {
+    width: rem-calc(196);
+  }
+  &__content {
+    width: 100%;
+
+  }
+  &__radio,
+  &__checkbox {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    label {
+      display: flex;
+      align-items: center;
+      margin-right: rem-calc(64);
+    }
+    input {
+      margin-right: rem-calc(8);
+      margin-top: rem-calc(2);
+    }
+  }
+  &__checkbox {
+    input {
+      margin-right: rem-calc(6);
+      margin-top: rem-calc(4);
+    }
+  }
+}

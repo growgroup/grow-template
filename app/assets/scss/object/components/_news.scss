@@ -1,0 +1,44 @@
+.c-news {
+  &__title {
+    text-align: left!important;
+    margin: 0!important;
+  }
+  &__button {
+    margin-top: rem-calc(56);
+  }
+  &__block {
+    text-decoration: none;
+    color: $font-base-color;
+    font-weight: 400;
+    border-bottom: 1px solid $border-base-color;
+    display: flex;
+    align-items: center;
+    padding: rem-calc(24) 0 rem-calc(16);
+  }
+  &__date {
+    @include webfont-bold();
+    font-size: rem-calc(16);
+    color: $color-primary;
+    letter-spacing: 0;
+  }
+  &__label {
+    margin-left: rem-calc(24);
+  }
+  &__text {
+    margin-left: rem-calc(24);
+    font-weight: 700;
+  }
+  // ワンカラム
+  &.is-onecolumn {
+    .c-news__title {
+      text-align: center!important;
+      margin-bottom: rem-calc(40)!important;
+    }
+    .c-news__button {
+      text-align: center;
+      .c-button {
+        max-width: rem-calc(224);
+      }
+    }
+  }
+}

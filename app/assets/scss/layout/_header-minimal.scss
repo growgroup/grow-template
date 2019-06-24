@@ -1,0 +1,124 @@
+// ヘッダー
+//
+// ヘッダーの標準スタイル
+//
+// markup:
+// <header class="l-header"></header>
+//
+// Styleguide 5.1.0
+
+.l-header-minimal {
+  background-color: $color-white;
+  width: 100%;
+  z-index: 9990;
+  padding: rem-calc(24) rem-calc(32) 0;
+  &__inner {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  &__text {
+    font-size: rem-calc(12);
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    margin: 0;
+    font-weight: 400;
+  }
+  &__tel {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $font-base-color;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-left: rem-calc(20);
+    margin-left: auto;
+    //電話番号
+    span {
+      color: $color-primary;
+      @include webfont();
+      font-size: rem-calc(24);
+      letter-spacing: 0.02em;
+      margin-right: rem-calc(16);
+    }
+    //アイコン
+    i {
+      margin-right: rem-calc(6);
+    }
+    //受付時間
+    small {
+      font-size: rem-calc(13);
+      letter-spacing: 0;
+    }
+  }
+  &__heading {
+    margin: 0;
+    width: rem-calc(175);
+  }
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+  &__nav {
+    margin-left: auto;
+    ul {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      li {
+        margin-left: rem-calc(12);
+        margin-right: 32px;
+        a {
+          text-decoration: none;
+          color: $font-base-color;
+          font-size: rem-calc(14);
+          position: relative;
+          padding-bottom: rem-calc(32);
+          transition: all .3s ease;
+          //装飾
+          &:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: rem-calc(2);
+            background-color: $color-primary;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: all .3s ease;
+          }
+          //*hover
+          &:hover {
+            opacity: 1;
+            color: $color-primary;
+            &:after {
+              width: 100%;
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__button {
+    //*矢印削除
+    max-width: rem-calc(196)!important;
+    margin-left: rem-calc(24);
+    &:after {
+      display: none;
+    }
+    //*アイコン
+    i {
+      font-size: rem-calc(16);
+      padding-right: rem-calc(8);
+    }
+  }
+}
+
+
+
+
+
+

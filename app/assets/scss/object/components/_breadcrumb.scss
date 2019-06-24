@@ -12,26 +12,21 @@
 //
 // Styleguide 2.3.0
 .c-breadcrumb {
-  background-color: $color-secondary;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  @include breakpoint(small only) {
-    padding-top: 4px;
-    padding-bottom: 4px;
+  padding: rem-calc(12) 0;
+  &__inner {
+    display: flex;
+    align-items: center;
   }
   span {
-    margin-right: 6px;
-    color: rgba($font-base-color,0.7);
-    @include breakpoint(small only) {
-      font-size: 12px;
-    }
-    &:last-child {
+    font-size: rem-calc(13);
+    margin-right: rem-calc(8);
+    a {
       color: $color-primary;
+      font-weight: 400;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
-  }
-  a {
-    font-weight: 400;
-    text-decoration: none;
-    color: rgba($font-base-color,0.7);
   }
 }

@@ -22,46 +22,35 @@
     margin-top: 32px;
   }
   > ul {
-    list-style: none;
-    font-size: 0;
+    display: flex;
   }
-
   > ul > li {
-    display: inline-block;
-    margin-right: 8px;
+    margin-right: rem-calc(6);
   }
-
   > ul > li > span,
   > ul > li > a {
-    font-size: 15px;
-    display: inline-block;
-    padding: 8px 18px;
+    @include webfont-bold();
+    font-size: rem-calc(16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: rem-calc(48);
+    height: rem-calc(48);
     text-decoration: none;
-    border-radius: 2px;
-    color: rgba($font-base-color,0.8);
-    border: 1px solid rgba($font-base-color,0.8);
+    border-radius: 4px;
+    color: $color-primary;
+    border: 1px solid $color-primary;
     background-color: $color-white;
-    @include breakpoint(small only) {
-      padding: 4px 12px;
-    }
-
     &:hover {
       opacity: 1;
-      background: rgba($color-primary,0.1);
+      background: $color-primary;
+      color: $color-white;
     }
 
-    &.is-active {
+    &.is-current {
       background: $color-primary;
       border-color: $color-primary;
       color: $color-white;
     }
-  }
-
-
-  // 次のページへ、前のページへ 共通
-  &__next,
-  &__prev {
-    padding-left: 16px!important;
-    padding-right: 15px!important;
   }
 }

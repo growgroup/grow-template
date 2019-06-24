@@ -1,0 +1,52 @@
+.c-news-twoline {
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: rem-calc(24);
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0!important;
+    small {
+      color: $font-base-color;
+      margin-left: rem-calc(16);
+    }
+  }
+  &__button {
+    margin-left: auto;
+    width: inherit;
+    .c-button {
+      width: rem-calc(155)!important;
+    }
+  }
+  &__block {
+    text-decoration: none;
+    color: $font-base-color;
+    font-weight: 400;
+    border-bottom: 1px solid #E2E2E2;
+    display: block;
+    padding: rem-calc(20) 0;
+    font-size: rem-calc(14);
+    letter-spacing: 0.05em;
+    //*画像有りver
+    &.is-image-display {
+      display: flex;
+      align-items: flex-start;
+    }
+    .c-news-twoline__image {
+      flex-shrink: 0;
+      margin-right: rem-calc(24);
+    }
+    .c-news-twoline__date {
+      line-height: 1;
+      margin-bottom: rem-calc(10);
+    }
+  }
+  &__date {
+    color: $color-primary;
+    @include webfont();
+    margin-bottom: rem-calc(2);
+  }
+}

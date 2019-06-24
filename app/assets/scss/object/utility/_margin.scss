@@ -24,52 +24,93 @@
 // Styleguide 4.3.0
 
 .u-mbs {
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin-top: rem-calc(56);
+  margin-bottom: rem-calc(56);
+  @include breakpoint(small only) {
+    margin-top: rem-calc(56)/2;
+    margin-bottom: rem-calc(56)/2;
+  }
+
+  &.is-xxxxlg {
+    margin-top: rem-calc(120);
+    margin-bottom: rem-calc(120);
+    @include breakpoint(small only) {
+      margin-top: rem-calc(120)/2;
+      margin-bottom: rem-calc(120)/2;
+    }
+  }
+
+  &.is-xxxlg {
+    margin-top: rem-calc(96);
+    margin-bottom: rem-calc(96);
+    @include breakpoint(small only) {
+      margin-top: rem-calc(96)/2;
+      margin-bottom: rem-calc(96)/2;
+    }
+  }
+
+  &.is-xxlg {
+    margin-top: rem-calc(80);
+    margin-bottom: rem-calc(80);
+    @include breakpoint(small only) {
+      margin-top: rem-calc(80)/2;
+      margin-bottom: rem-calc(80)/2;
+    }
+  }
 
   &.is-xlg {
-    margin-top: 120px !important;
-    margin-bottom: 120px !important;
+    margin-top: rem-calc(72);
+    margin-bottom: rem-calc(72);
     @include breakpoint(small only) {
-      margin-top: 64px !important;
-      margin-bottom: 64px !important;
+      margin-top: rem-calc(72)/2;
+      margin-bottom: rem-calc(72)/2;
     }
   }
 
   &.is-lg {
-    margin-top: 80px !important;
-    margin-bottom: 80px !important;
+    margin-top: rem-calc(64);
+    margin-bottom: rem-calc(64);
     @include breakpoint(small only) {
-      margin-top: 40px !important;
-      margin-bottom: 40px !important;
+      margin-top: rem-calc(64)/2;
+      margin-bottom: rem-calc(64)/2;
     }
   }
-
-  &.is-md {
-    margin-top: 56px !important;
-    margin-bottom: 56px !important;
-    @include breakpoint(small only) {
-      margin-top: 32px !important;
-      margin-bottom: 32px !important;
-    }
-  }
-
   &.is-sm {
-    margin-top: 32px !important;
-    margin-bottom: 32px !important;
+    margin-top: rem-calc(48);
+    margin-bottom: rem-calc(48);
     @include breakpoint(small only) {
-      margin-top: 24px !important;
-      margin-bottom: 24px !important;
+      margin-top: rem-calc(24)/2;
+      margin-bottom: rem-calc(24)/2;
+    }
+  }
+  &.is-xs {
+    margin-top: rem-calc(32);
+    margin-bottom: rem-calc(32);
+    @include breakpoint(small only) {
+      margin-top: rem-calc(32)/2;
+      margin-bottom: rem-calc(32)/2;
+    }
+  }
+  &.is-xxs {
+    margin-top: rem-calc(24);
+    margin-bottom: rem-calc(24);
+    @include breakpoint(small only) {
+      margin-top: rem-calc(24)/2;
+      margin-bottom: rem-calc(24)/2;
+    }
+  }
+  &.is-xxs {
+    margin-top: rem-calc(16);
+    margin-bottom: rem-calc(16);
+    @include breakpoint(small only) {
+      margin-top: rem-calc(16)/2;
+      margin-bottom: rem-calc(16)/2;
     }
   }
 
   &.is-xs {
-    margin-top: 24px !important;
-    margin-bottom: 24px !important;
-    @include breakpoint(small only) {
-      margin-top: 16px !important;
-      margin-bottom: 16px !important;
-    }
+    margin-top: rem-calc(8);
+    margin-bottom: rem-calc(8);
   }
 
   &.is-top {

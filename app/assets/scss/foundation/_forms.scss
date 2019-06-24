@@ -21,11 +21,12 @@ input[type="text"],
 input[type="url"],
 input[type="search"],
 input[type="email"],
+input[type="password"],
 input[type="tel"] {
   font-size: $forms-input-font-size;
   line-height: 1.8;
-  border: 2px solid rgba($font-base-color,0.3);
-  padding: 7px 12px;
+  border: 1px solid $border-base-color;
+  padding: rem-calc(8) rem-calc(12);
   max-width: 100%;
   width: 100%;
   transition: $forms-transition;
@@ -120,22 +121,22 @@ select {
 
 /*  プレイスホルダーの色変更 */
 :placeholder-shown {
-  color: rgba($font-base-color,0.5);
+  color: rgba($font-base-color,0.3);
 }
 
 /* Google Chrome, Safari, Opera 15+, Android, iOS */
 ::-webkit-input-placeholder {
-  color: rgba($font-base-color,0.5);
+  color: rgba($font-base-color,0.3);
 }
 
 /* Firefox 18- */
 :-moz-placeholder {
-  color: rgba($font-base-color,0.5);
+  color: rgba($font-base-color,0.3);
 }
 
 /* Firefox 19+ */
 ::-moz-placeholder {
-  color: rgba($font-base-color,0.5);
+  color: rgba($font-base-color,0.3);
 }
 
 /* IE 10+ */

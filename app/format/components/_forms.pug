@@ -1,0 +1,41 @@
+// フォーム
++c.forms
+    // -> インプット
+    +e.block
+        +e.title インプット
+        +e.content
+            input(type="text",placeholder="（例）")
+
+    // -> パスワード
+    +e.block
+        +e.title パスワード
+        +e.content
+            input(type="password")
+
+    // -> チェックボックス
+    +e.block
+        +e.title チェックボックス
+        +e.content
+            +e.checkbox
+                span
+                    label
+                        input(type="checkbox",name="選択肢1",value="選択肢1",checked)
+                        span 選択肢1
+                span
+                    label
+                        input(type="checkbox",name="選択肢2",value="選択肢2")
+                        span 選択肢2
+
+    // -> ラジオボタン
+    +e.block
+        +e.title ラジオボタン
+        +e.content
+            +e.radio
+                span
+                    label
+                        input(type="radio",name="選択肢1",value="選択肢1",checked)
+                        span 選択肢1
+                span
+                    label
+                        input(type="radio",name="選択肢2",value="選択肢2")
+                        span 選択肢2

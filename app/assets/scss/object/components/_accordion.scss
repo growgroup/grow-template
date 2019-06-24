@@ -42,65 +42,65 @@
 // Styleguide 2.18.0
 
 .c-accordion {
-
-  // タイトル
-  &__title {
-    background: $color-primary;
-    color: $color-white;
-    padding: $margin-md $margin-lg;
-    margin-bottom: 0;
-    font-size: rem-calc(18);
-    border-radius: $border-radius $border-radius 0 0;
-  }
-
-  // コンテンツ
-  &__content {
-    padding: $margin-md $margin-lg;
-    border: 1px solid $color-tertiary;
-    border-radius: 0 0 $border-radius $border-radius;
-  }
-
-  // is-danger state
-  &.is-danger .c-accordion__title {
-    background: $color-state-danger;
-  }
-
-  // is-warning state
-  &.is-warning .c-accordion__title {
-    background: $color-state-warning;
-  }
-
-  // is-success state
-  &.is-success .c-accordion__title {
-    background: $color-state-success;
-  }
-
-  // is-info state
-  &.is-info .c-accordion__title {
-    background: $color-state-info;
-  }
-
-  // よくあるご質問アコーディオン
-  &.is-faq {
-    .c-accordion__title {
-      position: relative;
-      padding-left: rem-calc(68);
-      &:before {
-        content: "Q";
-        left: rem-calc(24);
-        top: rem-calc(14);
-        font-size: rem-calc(18);
-        background: $color-accent;
-        text-align: center;
-        border-radius: rem-calc(1000);
-        display: block;
-        width: rem-calc(32);
-        height: rem-calc(32);
-        box-sizing: border-box;
-        padding-top: rem-calc(2);
-        margin-right: rem-calc(8);
-        position: absolute;
+  &__block {
+    border: 1px solid $border-base-color;
+    padding: 0 rem-calc(32);
+    margin-bottom: rem-calc(16);
+    // オープン時
+    &.is-open {
+      .c-accordion__head {
+        &:after {
+          content: "\f106";
+        }
       }
     }
+  }
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    padding: rem-calc(24) 0 rem-calc(16);
+    cursor: pointer;
+    position: relative;
+    //*矢印
+    &:after {
+      content: "\f107";
+      font-family: "FontAwesome";
+      color: $color-primary;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+    }
+  }
+  &__title {
+    font-weight: 700;
+    font-size: rem-calc(16);
+    letter-spacing: 0.05em;
+    color: $color-primary;
+    padding-top: rem-calc(4);
+  }
+  &__icon {
+    color: $color-white;
+    @include webfont-bold();
+    font-size: rem-calc(22);
+    background-color: $color-primary;
+    width: rem-calc(40);
+    height: rem-calc(40);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: rem-calc(16);
+    padding-left: rem-calc(2);
+    &.is-color-accent {
+      background-color: $color-accent;
+    }
+  }
+  &__content {
+    padding: rem-calc(24) 0;
+    display: flex;
+    align-items: flex-start;
+    border-top: 1px solid $border-base-color;
+    display: none;
   }
 }

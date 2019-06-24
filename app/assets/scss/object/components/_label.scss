@@ -18,64 +18,31 @@
   color: $color-white;
   display: inline-block;
   text-align: center;
-  min-width: 100px;
-  border-radius: 4px;
-  font-size: 14px;
-  padding: 1px 4px;
+  min-width: rem-calc(116);
+  font-size: rem-calc(13);
+  padding: rem-calc(1) rem-calc(8);
+  border: 1px solid $color-primary;
+  font-weight: 700;
   @include breakpoint(small only) {
-    font-size: 12px;
-    min-width: 88px;
+    font-size: rem-calc(12);
+    min-width: rem-calc(88);
     border-radius: 2px;
   }
-  > a {
-    color: $color-white;
-    text-decoration: none;
-  }
-
-  // 問い合わせフォーム
-  &.is-required {
-    font-size: 12px;
-    min-width: 54px;
-    text-align: center;
-    border-radius: 0;
-    padding: 1px 8px 1px;
-    background-color: $color-primary;
-  }
-
   &.is-lg {
-    font-size: rem-calc($font-base-size);
+    min-width: rem-calc(160);
+    font-size: rem-calc(13);
   }
-
   &.is-sm {
     font-size: rem-calc($font-small-size*0.8);
   }
 
+  // カラー
+  &.is-white {
+    background-color: $color-white;
+    color: $color-primary;
+  }
   &.is-secondary {
     background: $color-secondary;
     color: $font-base-color;
   }
-
-  &.is-tertiary {
-    background: $color-tertiary;
-  }
-
-  &.is-danger {
-    background: $color-state-danger;
-  }
-
-  &.is-warning {
-    background: $color-state-warning;
-  }
-
-  &.is-info {
-    background: $color-state-info;
-  }
-
-  &.is-success {
-    background: $color-state-success;
-  }
-  &.is-box {
-    border-radius: 0px;
-  }
-
 }

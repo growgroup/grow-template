@@ -1,0 +1,9 @@
+.c-capsul-nav {
+  &__block {
+    margin-bottom: rem-calc(16);
+    &.is-current {
+      background-color: rgba($color-primary, 0.2);
+      border-color: rgba($color-primary, 0.2);
+    }
+  }
+}

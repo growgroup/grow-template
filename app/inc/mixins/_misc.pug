@@ -13,10 +13,11 @@ mixin bgimg(file)
 
 //- ページヘッダー
 mixin c_page_header(image,title,subtitle)
-  +bgimg(image).c-page-header
-    .c-page-header__inner
-      h1.c-page-header__title!= title
-      .c-page-header__subtitle!= subtitle
+  +c.page-header
+    +e.image: +img(image)
+    +e.inner
+      h1.c-page-header__title=title
+      +e.subtitle=subtitle
 
 //- ループ
 //- +loop(10)
