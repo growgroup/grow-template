@@ -20,7 +20,6 @@
 
 .c-table-sm {
   width: 100%;
-  max-width: 650px;
   border-top: 1px solid $border-base-color;
   letter-spacing: 0.02em;
   th,
@@ -39,19 +38,28 @@
     }
     th {
       text-align: left;
-      padding: 10px 16px;
+      padding: rem-calc(10) rem-calc(16);
+      @include breakpoint(small only) {
+        padding: rem-calc(5) rem-calc(8);
+      }
     }
     td {
       text-align: center;
-      padding: 10px 8px;
+      padding: rem-calc(10) rem-calc(8);
+      @include breakpoint(small only) {
+        padding: rem-calc(5) rem-calc(4);
+      }
     }
   }
   tbody {
     th,
     td {
-      padding: 18px 8px;
+      padding: rem-calc(18) rem-calc(8);
       font-weight: 400;
       text-align: center;
+      @include breakpoint(small only) {
+        padding: rem-calc(8) rem-calc(4);
+      }
     }
     th {
       background-color: rgba($color-primary,0.1);

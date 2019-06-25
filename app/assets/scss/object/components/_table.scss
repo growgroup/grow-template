@@ -26,18 +26,18 @@
     td {
       text-align: left;
       border-bottom: 1px solid $border-base-color;
-      padding: 24px;
+      padding: rem-calc(24);
       vertical-align: top;
       @include breakpoint(small only) {
-        padding: 12px;
+        padding: rem-calc(12);
       }
     }
     th {
       color: $color-primary;
-      width: 196px;
+      width: rem-calc(196);
       position: relative;
       @include breakpoint(small only) {
-        width: 96px;
+        width: rem-calc(96);
       }
       &:after {
         content: "";

@@ -1,13 +1,18 @@
 .c-box {
  &__block {
    background-color: $color-secondary;
-   padding: rem-calc(40);
+   padding: rem-calc(32) rem-calc(40);
    margin-bottom: rem-calc(56);
+   @include breakpoint(small only) {
+     padding: rem-calc(24);
+     margin-bottom: rem-calc(24);
+
+   }
    //*最後は矢印なし
    &:last-child {
      margin-bottom: 0;
      &:after {
-       display: none;
+       display: none!important;
      }
    }
  }
@@ -27,6 +32,9 @@
         left: 50%;
         bottom: 0;
         transform: translate(-50%,100%);
+        @include breakpoint(small only) {
+          border-width: 16px 16px 0 16px;
+        }
       }
     }
     .c-box__number {
@@ -41,17 +49,33 @@
       line-height: 1;
       left: 0;
       padding-top: rem-calc(14);
+      @include breakpoint(small only) {
+        width: rem-calc(64);
+        height: rem-calc(64);
+        padding-top: rem-calc(10);
+      }
       small {
         @include webfont-bold();
         font-size: rem-calc(18);
         letter-spacing: 0.1em;
         display: block;
+        @include breakpoint(small only) {
+          font-size: rem-calc(14);
+        }
       }
       span {
         font-size: rem-calc(42);
         letter-spacing: 0;
         display: block;
+        @include breakpoint(small only) {
+          font-size: rem-calc(32);
+        }
       }
+    }
+  }
+  &__image {
+    @include breakpoint(small only) {
+      margin-bottom: rem-calc(16);
     }
   }
 }

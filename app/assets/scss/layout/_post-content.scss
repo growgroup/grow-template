@@ -3,8 +3,47 @@
 // ヴィジュアルエディタ出力調整用css
 //
 
-.l-post-content {
+.l-post-content.is-onecolumn {
   p {
     text-align: left;
+  }
+  h2 {
+    @extend .c-heading;
+    @extend .c-heading.is-md;
+    @extend .c-heading.is-line-under;
+    margin-top: 0;
+    color: $color-primary;
+  }
+  h3 {
+    @extend .c-heading;
+    @extend .c-heading.is-sm;
+    @extend .c-heading.is-border-under;
+    margin-bottom: rem-calc(48);
+    margin-top: 0;
+  }
+  h4 {
+    @extend .c-heading;
+    @extend .c-heading.is-xs;
+    @extend .c-heading.is-color-primary;
+    @extend .c-heading.is-bg-color;
+    margin-top: 0;
+    margin-bottom: rem-calc(16);
+  }
+  h5 {
+    @extend .c-heading;
+    @extend .c-heading.is-xxs;
+    @extend .c-heading.is-color-primary;
+    @extend .c-heading.is-icon;
+    margin-top: 0;
+  }
+  h6 {
+    @extend .c-heading;
+    @extend .c-heading.is-xxs;
+    @extend .c-heading.is-color-primary;
+    @extend .c-heading.is-icon;
+    margin-top: 0;
+  }
+  table {
+    @extend .c-table;
   }
 }

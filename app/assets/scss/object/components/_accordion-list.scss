@@ -1,6 +1,9 @@
 .c-accordion-list {
   &__block {
     margin-bottom: rem-calc(20);
+    @include breakpoint(small only) {
+      margin-bottom: rem-calc(16);
+    }
   }
   &__head {
     font-size: rem-calc(20);
@@ -8,6 +11,11 @@
     letter-spacing: 0.1em;
     border-bottom: 2px solid rgba($font-base-color,0.5);
     padding-bottom: rem-calc(12);
+    @include breakpoint(small only) {
+      font-size: rem-calc(20)*0.8;
+      border-width: 1px;
+      padding-bottom: rem-calc(8);
+    }
   }
   &__content {
     display: none;
@@ -15,6 +23,9 @@
       li {
         padding: rem-calc(24) rem-calc(8);
         border-bottom: 1px solid $border-base-color;
+        @include breakpoint(small only) {
+          padding: rem-calc(16) rem-calc(8);
+        }
         a {
           font-weight: 400;
 

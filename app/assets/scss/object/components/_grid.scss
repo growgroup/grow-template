@@ -130,7 +130,7 @@ $susy: (
 //
 // Styleguide 2.2.4
 
-@include breakpoint(large) {
+@include breakpoint(medium up) {
   @for $i from 1 through $grid-column-count {
     .large-#{$i} {
       width: span($i);

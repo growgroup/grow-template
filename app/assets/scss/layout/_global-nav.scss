@@ -10,6 +10,9 @@
 .l-global-nav {
   border-top: 1px solid #E2E2E2;
   border-bottom: 1px solid #E2E2E2;
+  @include breakpoint(medium down) {
+    display: none;
+  }
   ul {
     display: flex;
     li {

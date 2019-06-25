@@ -29,7 +29,7 @@
   border: 1px solid $color-primary;
   text-decoration: none;
   border-radius: 4px;
-  padding: 13px 24px;
+  padding: rem-calc(13) rem-calc(24);
   position: relative;
   transition: all .3s;
   font-weight: 700;
@@ -40,7 +40,7 @@
     font-family: "FontAwesome";
     position: absolute;
     top: 50%;
-    right: 16px;
+    right: rem-calc(16);
     transform: translateY(-50%);
     font-weight: 400;
   }
@@ -51,6 +51,10 @@
     color: $color-primary;
   }
 
+  // width: 100%
+  &.is-display-block {
+    max-width: 100%!important;
+  }
   // カラー設定
   // -> セカンダリカラー
   &.is-secondary {
@@ -86,25 +90,35 @@
   // -> 大
   &.is-xlg {
     max-width: rem-calc(392);
-    padding: 26px 32px;
-    font-size: 18px;
+    padding: rem-calc(26) rem-calc(32);
+    font-size: rem-calc(18);
+    @include breakpoint(small only) {
+      font-size: rem-calc(18)*0.9;
+      padding: rem-calc(20) rem-calc(32);
+    }
     &:after {
-      font-size: 24px;
+      font-size: rem-calc(24);
+      @include breakpoint(small only) {
+        font-size: rem-calc(24)*0.9;
+      }
     }
   }
   // -> 中
   &.is-lg {
     max-width: rem-calc(356);
-    padding: 16px 24px;
+    padding: rem-calc(16) rem-calc(24);
   }
   // -> 小
   &.is-sm {
     max-width: rem-calc(155);
-    padding: 10px 18px;
-    font-size: 14px;
+    padding: rem-calc(10) rem-calc(18);
+    font-size: rem-calc(14);
     letter-spacing: 0.1em;
+    @include breakpoint(small only) {
+      font-size: rem-calc(14)*0.9;
+    }
     &:after {
-      right: 10px;
+      right: rem-calc(10);
     }
   }
   // -> 極小
@@ -112,11 +126,14 @@
     width: inherit;
     max-width: 100%;
     background-color: transparent;
-    padding: 0 16px 0 0;
+    padding: 0 rem-calc(16) 0 0;
     border: none!important;
     color: $font-base-color;
-    font-size: 14px;
+    font-size: rem-calc(14);
     letter-spacing: 0.1em;
+    @include breakpoint(small only) {
+      font-size: rem-calc(14)*0.9;
+    }
     &:after {
       color: $color-primary;
       right: 0;
@@ -144,8 +161,8 @@
     border-radius: 0;
     &:after {
       content: "";
-      width: 32px;
-      height: 1px;
+      width: rem-calc(32);
+      height: rem-calc(1);
       background-color: $font-base-color;
       position: absolute;
     }
@@ -158,9 +175,15 @@
     }
     // *極小
     &.is-xs {
-      padding-right: 78px;
+      padding-right: rem-calc(78);
+      @include breakpoint(small only) {
+        padding-right: rem-calc(64);
+      }
       &:after {
-        width: 64px;
+        width: rem-calc(64);
+        @include breakpoint(small only) {
+          width: rem-calc(48);
+        }
       }
     }
   }
@@ -170,37 +193,40 @@
     border-radius: 0;
     &:after {
       content: "";
-      width: 36px;
-      height: 1px;
+      width: rem-calc(36);
+      height: rem-calc(1);
       background-color: $color-white;
       top: calc(50% + 6px);
     }
     &:before {
       content: "";
       display: block;
-      width: 12px;
+      width: rem-calc(12);
       height: 1px;
       background-color: $color-white;
       position: absolute;
-      right:  16px;
+      right:  rem-calc(16);
       top: calc(50% + 3px);
       transform: translate(1px, -50%) rotate(40deg);
       transition: all .3s;
+      @include breakpoint(small only) {
+        top: calc(50% + 2px);
+      }
     }
     // *hover
     &:hover {
       opacity: 1;
       &:after,
       &:before {
-        right: 8px;
+        right: rem-calc(8);
         background-color: $color-primary;
       }
     }
     // *極小
     &.is-xs {
-      padding-right: 58px;
+      padding-right: rem-calc(58);
       &:after {
-        width: 48px;
+        width: rem-calc(48);
         background-color: $font-base-color;
       }
       &:before {
@@ -211,7 +237,7 @@
       &:hover {
         &:after,
         &:before {
-          right: -8px;
+          right: rem-calc(-8);
         }
       }
     }
@@ -221,17 +247,24 @@
     border-radius: 0;
     &:after {
       border: 2px solid $color-white;
-      width: 24px;
-      height: 24px;
+      width: rem-calc(24);
+      height: rem-calc(24);
       border-radius: 1000px;
-      font-size: 13px;
+      font-size: rem-calc(13);
       font-weight: 700;
       display: flex;
       justify-content: center;
       align-items: center;
       box-sizing: border-box;
-      padding-left: 3px;
-      padding-bottom: 1px;
+      padding-left: rem-calc(3);
+      padding-bottom: rem-calc(1);
+      @include breakpoint(small only) {
+        border-width: 1px;
+        width: rem-calc(22);
+        height: rem-calc(22);
+        font-size: rem-calc(12);
+        padding-bottom: 0;
+      }
     }
     // *hover
     &:hover {

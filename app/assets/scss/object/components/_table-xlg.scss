@@ -26,6 +26,9 @@
 .c-table-xlg {
   width: 100%;
   border-top: 1px solid $border-base-color;
+  @include breakpoint(small only) {
+    width: rem-calc(944);
+  }
   th,
   td {
     border-bottom: 1px solid $border-base-color;
@@ -34,14 +37,20 @@
     background-color: $color-secondary;
     th,
     td {
-      padding: 10px 16px;
+      padding: rem-calc(10) rem-calc(16);
+      @include breakpoint(small only) {
+        padding: rem-calc(6) rem-calc(8);
+      }
     }
   }
   tbody {
     th,
     td {
-      padding: 20px 32px;
+      padding: rem-calc(20) rem-calc(32);
       font-weight: 400;
+      @include breakpoint(small only) {
+        padding: rem-calc(12) rem-calc(24);
+      }
     }
     th {
       background-color: $color-secondary;
@@ -49,5 +58,12 @@
       vertical-align: middle;
       width: 294/1140*100%;
     }
+  }
+}
+
+//スマホ時
+.js-responsive-table {
+  @include breakpoint(small only) {
+    overflow: scroll;
   }
 }

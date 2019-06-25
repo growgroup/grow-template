@@ -28,98 +28,75 @@ class App {
     this.CurrentNav = new CurrentNav();
     this.Tab = new Tab();
 
-
-    function buildFormat() {
-      var $toc = $('<div />', {id: 'toc_container'});
-      var $list = $('<ul />', {class: 'toc_list'});
-      var $groups = $('.u-format-group');
-      // フォーマットグループごとの処理
-      for (var i = 0; i < $groups.length; i++) {
-        var $_list = $('<ul />');
-        var $group = $($groups[i]);
-        var group_title = $group.find('.u-format-group__title').text();
-        var $group_li = $('<li />');
-        var groupid = 'formatgroup_' + (i + 1);
-        $group.attr('id', groupid);
-        $list.append(
-          $group_li.append(
-            $('<a />',
-              {
-                text: (i + 1) + '. ' + group_title,
-                href: '#' + groupid
-              }
-            )
-          )
-        );
-        // フォーマットごとの処理
-        var $formats = $group.find('.u-format-group__content').find('.u-format');
-        var $_ul = $('<ul />');
-        for (var m = 0; m < $formats.length; m++) {
-          var $format = $($formats[m]);
-          var $format_title = $format.find('.u-format__title');
-          var $format_content = $format.find('.u-format__content');
-          var formatid = 'format_' + (i + 1) + (m + 1);
-          $format.find('.u-format__title').attr('id', formatid);
-          var format_title = $format_title.text();
-          var format_number = (i + 1) + '.' + (m + 1) + '. ';
-          $format_title.text(format_number + format_title);
-          $_ul.append(
-            $('<li />').append(
-              $('<a />', {
-                  href: '#' + formatid,
-                  text: format_number + format_title
-                }
-              )
-            )
-          );
-
-          // コードを追加
-          var $code = $('<div />', {class: 'u-format__code'});
-          $code.append($('<div />', {
-            class: 'u-format__code__title',
-            text: format_number + format_title
-          }));
-          var formathtml = $format.find('.u-format__content').html();
-          $code.append($('<pre />', {text: formathtml.trim()}));
-          $format.append($code);
+      //SPメニューの高さ取得
+    function menuHight() {
+        var win = $(window).innerWidth();
+        if (win > 750) {
+            return false;
         }
-        $group_li.append($_ul);
-        $_list.append($group_li);
-        $list.append($_list);
-      }
-      $toc.append($list);
-      $('.c-breadcrumb').after(
-        $('<div />', {
-            class: 'l-container'
-          }
-        ).append($toc)
-      );
+
+        var $smpHeaderHeight = $('.l-header').height();
+        var windowHeight = window.innerHeight;
+        var winH = windowHeight - $smpHeaderHeight;
+
+        console.log($smpHeaderHeight);
+
+        //動かすターゲットを取得
+        var targetSlidebarWrap = $('.c-slidebar-menu'),
+            targetSlidebarMenu = $('.c-slidebar__parent'),
+            targetSlidebarBtn = $('.c-slidebar-menu__parent');
+
+
+        //いざ実行(クリックしたら処理を実行する)
+        targetSlidebarBtn.on('click', function () {
+            $('.c-slidebar-menu').toggleClass('is-active');
+
+        });
     }
 
+      //フッターメニューSPスライド
+      function menuSlide() {
+          var win = $(window).innerWidth();
+          if (win > 750) {
+              return false;
+          }
+          $('.l-footer__block').on('click',function() {
+              $(this).children(".l-footer__menutitle").toggleClass('is-open');
+              $(this).children(".l-footer__menulist.is-sub").slideToggle();
+          })
+      }
+      //owlcarousel
+      function owlCarousel() {
+          var owls = $('.owl-carousel');
+          if (owls.length === 0) {
+              return false
+          }
+          owls.imagesLoaded(function () {
+              $('.c-case-slider .owl-carousel').owlCarousel({
+                  items: 4,
+                  margin: 16
+              });
+              $('.c-main-visual__slider').owlCarousel({
+                  items: 1,
+                  margin: 0,
+                  dots: true,
+                  loop: true,
+                  nav: false,
+                  autoplayHoverPause: true,
+                  autoplay: true,
+                  autoplaySpeed: 500,
+                  autoWidth: false,
+                  autoHeight: false,
+                  center: true,
+                  navText: ['<img src="/assets/images/icon-slider-prev.png" />','<img src="/assets/images/icon-slider-next.png" />'],
+              });
+          });
+      }
+
+
     $(function() {
-        var owls = $('.owl-carousel');
-        if (owls.length === 0) {
-            return false
-        }
-        owls.imagesLoaded(function () {
-            $('.c-case-slider .owl-carousel').owlCarousel({
-                items: 4,
-                margin: 16
-            });
-            $('.c-mainvisual-slider').owlCarousel({
-                items: 1,
-                margin: 0,
-                dots: true,
-                loop: true,
-                nav: true,
-                autoplayHoverPause: true,
-                autoplay: true,
-                autoplaySpeed: 500,
-                center: true,
-                navText: ['<img src="/assets/images/icon-slider-prev.svg" />','<img src="/assets/images/icon-slider-next.svg" />'],
-            });
-        });
-      buildFormat();
+        menuSlide();
+        owlCarousel();
     });
   }
 }

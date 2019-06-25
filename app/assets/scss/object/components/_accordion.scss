@@ -46,6 +46,10 @@
     border: 1px solid $border-base-color;
     padding: 0 rem-calc(32);
     margin-bottom: rem-calc(16);
+    @include breakpoint(small only) {
+      padding: 0 rem-calc(16);
+      margin-bottom: rem-calc(8);
+    }
     // オープン時
     &.is-open {
       .c-accordion__head {
@@ -58,9 +62,12 @@
   &__head {
     display: flex;
     align-items: flex-start;
-    padding: rem-calc(24) 0 rem-calc(16);
+    padding: rem-calc(16) rem-calc(24) rem-calc(16) 0;
     cursor: pointer;
     position: relative;
+    @include breakpoint(small only) {
+      padding: rem-calc(16) rem-calc(24) rem-calc(12) 0;
+    }
     //*矢印
     &:after {
       content: "\f107";
@@ -70,14 +77,20 @@
       top: 50%;
       transform: translateY(-50%);
       right: 0;
+      @include breakpoint(small only) {
+        top: rem-calc(20);
+        transform: translateY(0);
+      }
     }
   }
   &__title {
     font-weight: 700;
-    font-size: rem-calc(16);
     letter-spacing: 0.05em;
     color: $color-primary;
-    padding-top: rem-calc(4);
+    padding-top: rem-calc(6);
+    @include breakpoint(small only) {
+      padding-top: rem-calc(0);
+    }
   }
   &__icon {
     color: $color-white;
@@ -92,15 +105,25 @@
     flex-shrink: 0;
     margin-right: rem-calc(16);
     padding-left: rem-calc(2);
+    @include breakpoint(small only) {
+      width: rem-calc(32);
+      height: rem-calc(32);
+      font-size: rem-calc(18);
+    }
     &.is-color-accent {
       background-color: $color-accent;
+      position: absolute;
+      top: rem-calc(16);
+      left: 0;
     }
   }
   &__content {
-    padding: rem-calc(24) 0;
-    display: flex;
-    align-items: flex-start;
+    padding: rem-calc(24) 0 rem-calc(24) rem-calc(56);
+    position: relative;
     border-top: 1px solid $border-base-color;
     display: none;
+    @include breakpoint(small only) {
+      padding: rem-calc(16) 0 rem-calc(16) rem-calc(48);
+    }
   }
 }

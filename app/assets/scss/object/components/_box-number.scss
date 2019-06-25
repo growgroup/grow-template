@@ -3,6 +3,9 @@
     display: flex;
     position: relative;
     margin-bottom: rem-calc(40);
+    @include breakpoint(small only) {
+      margin-bottom: rem-calc(32);
+    }
     &:after {
       content: "";
       display: block;
@@ -31,6 +34,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @include breakpoint(small only) {
+      width: rem-calc(72);
+    }
   }
   &__number {
     color: $color-white;
@@ -42,18 +48,28 @@
       font-size: rem-calc(16);
       letter-spacing: 0.1em;
       display: block;
+      @include breakpoint(small only) {
+        font-size: rem-calc(14);
+      }
     }
     span {
       font-size: rem-calc(32);
       letter-spacing: 0;
       display: block;
+      @include breakpoint(small only) {
+        font-size: rem-calc(32);
+      }
     }
   }
   //*テキストコンテンツ
   &__content {
     background-color: $color-secondary;
     padding: rem-calc(28) rem-calc(40);
-    width: calc(100% - 85px);
+    width: calc(100% - 86px);
+    @include breakpoint(small only) {
+      padding: rem-calc(16) rem-calc(24);
+      width: calc(100% - 72px);
+    }
   }
   &__text {
     font-size: rem-calc(14);

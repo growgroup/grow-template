@@ -8,67 +8,131 @@
 // Styleguide 5.2.0
 .l-footer {
   background-color: $font-base-color;
-  border-top: 1px solid rgba($border-base-color,0.5);
-  padding-top: 36px;
-  padding-bottom: 36px;
-  @include breakpoint(small only) {
-    padding-top: 32px;
-    padding-bottom: 12px;
+  color: $color-white;
+  &__menu {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: rem-calc(80);
+    padding-bottom: rem-calc(56);
+    @include breakpoint(medium down) {
+      display: block;
+      width: calc(100% + 32px);
+      margin-left: rem-calc(-16);
+      padding-top: rem-calc(0);
+      padding-bottom: rem-calc(0);
+    }
   }
-  &__inner {
+  &__block {
+    padding-right: rem-calc(40);
+    @media (max-width: 900px) {
+      padding-right: rem-calc(24);
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+    @include breakpoint(medium down) {
+      padding: 0;
+    }
+  }
+  &__menutitle {
+    margin-bottom: rem-calc(10);
+    font-weight: 400;
+    font-size: rem-calc(14);
+    @include breakpoint(medium down) {
+      border-bottom: 1px solid $border-base-color;
+      padding: rem-calc(12) rem-calc(24);
+      margin: 0;
+      background-color: $font-base-color;
+      &:before {
+        content: "\f107";
+        font-family: "FontAwesome";
+        color: $color-primary;
+        padding-right: rem-calc(12);
+      }
+      &.is-open {
+        &:before {
+          content: "\f106";
+        }
+      }
+    }
+  }
+  &__menulist {
+    li {
+      margin-bottom: rem-calc(20);
+      @include breakpoint(medium down) {
+        margin: 0!important;
+        border-bottom: 1px solid $border-base-color;
+      }
+      a {
+        color: $color-white;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: rem-calc(14);
+        @include breakpoint(medium down) {
+          padding: rem-calc(14) rem-calc(24);
+          display: block;
+          background-color: $font-base-color;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    &.is-sub {
+      @include breakpoint(medium down) {
+        display: none;
+      }
+      li {
+        margin-bottom: rem-calc(8);
+        @include breakpoint(medium down) {
+          border: none;
+        }
+        a {
+          font-weight: 400;
+          color: rgba($color-white,0.7);
+          @include breakpoint(medium down) {
+            background-color: rgba($font-base-color,0.8);
+            padding: rem-calc(10) rem-calc(44);
+          }
+        }
+      }
+    }
+  }
+  &__content {
+    border-top: 1px solid rgba($border-base-color,0.2);
+    padding: rem-calc(40) 0;
     display: flex;
     align-items: center;
-    @media (max-width: 1020px) {
-      flex-wrap: wrap;
-    }
-    @include breakpoint(small only) {
+    @include breakpoint(medium down) {
       display: block;
+      padding: rem-calc(24) 0;
     }
   }
   &__logo {
     display: block;
-    width: rem-calc(532)/2;
-    @include breakpoint(small only) {
-      width: rem-calc(400)/2;
-      margin: 0 auto 36px;
-    }
-    img {
-      width: 100%;
-      height: auto;
-    }
+    width: 100%;
+    max-width: rem-calc(175);
   }
-  &__menu {
-    display: flex;
-    margin-left: auto;
-    @include breakpoint(small only) {
-      justify-content: center;
-    }
-    li {
-      margin-left: 48px;
-      @include breakpoint(small only) {
-        margin: 0 20px;
-      }
-      a {
-        color: $color-white;
-        font-weight: 400;
-        text-decoration: none;
-      }
+  &__address {
+    font-style: normal;
+    font-size: rem-calc(13);
+    letter-spacing: 0.1em;
+    margin-left: rem-calc(24);
+    @include breakpoint(medium down) {
+      margin: rem-calc(24) 0;
+      font-size: rem-calc(12);
     }
   }
   &__copyright {
-    color: #9A9A9A;
-    margin-left: 56px;
-    letter-spacing: 0.4px;
+    opacity: 0.5;
+    margin-left: auto;
+    margin-top: rem-calc(12);
     display: block;
-    @media (max-width: 1020px) {
-      width: 100%;
-      margin-top: 32px;
-      margin-left: 0;
+    font-size: rem-calc(12);
+    @include breakpoint(medium down) {
+      margin-top: 0;
       text-align: center;
-    }
-    @include breakpoint(small only) {
-      letter-spacing: 0;
-      margin-top: 14px;
     }
   }
 }

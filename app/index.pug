@@ -10,57 +10,81 @@ block append config
   - current.depth = 1 // ページの階層
 
 block body
-  +c_mainvisual()
-  section.l-main
-    +c.opening
+  +c_main-visual()
+  main.l-main
+    section.l-section.is-lg.is-color-secondary
       .l-container
-        h2.c-opening__title 現場を補強する、力になれます。<br>教育から開発までトータルに。
-        p.c-opening__text SE各自の開発力・技術力だけに頼ることなく、1ワークに複数のSEを投入するグループワーク制を採用しています。<br class="u-hidden-sm">一人ひとりがSEとして研鑽を積んできた経験と技術に加えて、<br class="u-hidden-sm">集団で発送し、集団で開発し管理進行を行い、高い品質と確実な納期をお約束しています。
-        +a("/service/").c-button.is-lg 事業紹介を見る
-    .l-section.is-bg.is-md
+        h2.c-heading.is-xlg.is-bottom
+          span ABOUT
+          small 私たちについて
+        p.u-text-center テキストテキストテキストテキストテキストテキストテキストテキストテキスト<br>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+        +c.card.u-mbs.is-top.is-lg
+          .row
+            .large-4.small-12
+              +e.block
+                +e.image: +img("img-card-01.jpg")
+                +e.content
+                  h3.c-card__title コンセプトタイトル
+                  p.c-card__text ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+            .large-4.small-12
+              +e.block
+                +e.image: +img("img-card-01.jpg")
+                +e.content
+                  h3.c-card__title コンセプトタイトル
+                  p.c-card__text ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+            .large-4.small-12
+              +e.block
+                +e.image: +img("img-card-01.jpg")
+                +e.content
+                  h3.c-card__title コンセプトタイトル
+                  p.c-card__text ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+    section.l-section.is-lg.is-top
       .l-container
-        h2.heading.is-xlg.is-bottom
-          span 企業情報
-          small COMPANY
-        +c.card
-          +e.inner
-            +a("/company/greeting/").c-card__block
-              +bgimg("img-card-01.jpg").c-card__image
-              +e.title 代表あいさつ
-            +a("/company/profile/").c-card__block
-              +bgimg("img-card-02.jpg").c-card__image
-              +e.title 会社概要
-            +a("/company/history/").c-card__block
-              +bgimg("img-card-03.jpg").c-card__image
-              +e.title 沿革
-            +a("/recruit/").c-card__block
-              +bgimg("img-card-04.jpg").c-card__image
-              +e.title 採用情報
-
-    .l-section.is-md
+        h2.c-heading.is-xlg.is-bottom
+          span SERVICE
+          small 事業内容
+      +c.hero-block-square
+        +e.block
+          +e.image: +img("img-hero-block-01.jpg")
+          .l-container
+            +e.content
+              +e.inner
+                h3.c-heading.is-sm.is-bottom タイトルがここに入ります。
+                p テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                +e.button: +a("#").c-button.is-sm ボタンテキスト
+        +e.block
+          +e.image: +img("img-hero-block-01.jpg")
+          .l-container
+            +e.content
+              +e.inner
+                h3.c-heading.is-sm.is-bottom タイトルがここに入ります。
+                p テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                +e.button: +a("#").c-button.is-sm ボタンテキスト
+        +e.block
+          +e.image: +img("img-hero-block-01.jpg")
+          .l-container
+            +e.content
+              +e.inner
+                h3.c-heading.is-sm.is-bottom タイトルがここに入ります。
+                p テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                +e.button: +a("#").c-button.is-sm ボタンテキスト
+    section.l-section.is-lg
       .l-container
-        h2.heading.is-xlg.is-bottom.is-top
-          span 最新ニュース
-          small NEWS
-        +c.post-item
-          +e.inner
-            +a("/news/page/").c-post-item__block
-              +e.sup
-                +e.category 更新情報
-                +e.date 2017.01.01
-              +e.title タイトルがここに入ります。タイトルがここに入ります。
-            +a("/news/page/").c-post-item__block
-              +e.sup
-                +e.category 更新情報
-                +e.date 2017.01.01
-              +e.title タイトルがここに入ります。タイトルがここに入ります。
-            +a("/news/page/").c-post-item__block
-              +e.sup
-                +e.category 更新情報
-                +e.date 2017.01.01
-              +e.title タイトルがここに入ります。タイトルがここに入ります。
-          +e.button
-            +a("/news/").c-button.is-lg ニュース一覧を見る
-
+        +c.news
+          .row
+            .large-3.small-12
+              +e.head
+                h2.c-news__title.c-heading.is-xlg
+                  span NEWS
+                  small お知らせ
+                +e.button: +a("/news/").c-button.is-sm 一覧を見る
+            .large-9.small-12
+              +e.content
+                -for (var i = 0; i<3; i++){
+                  +a("/news/page/").c-news__block
+                    +e.date 2018.10.10
+                    +e.label.c-label.is-white カテゴリ
+                    +e.text お知らせの投稿タイトルがここに入ります。
+                - }
   // オファーブロック
   +c_offer()

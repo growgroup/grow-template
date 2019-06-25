@@ -41,6 +41,10 @@
     color: $color-primary;
     border: 1px solid $color-primary;
     background-color: $color-white;
+    @include breakpoint(small only) {
+      width: rem-calc(40);
+      height: rem-calc(40);
+    }
     &:hover {
       opacity: 1;
       background: $color-primary;

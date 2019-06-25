@@ -33,7 +33,7 @@ body {
     overflow: hidden;
   }
   @include breakpoint(small only) {
-    font-size:  $font-base-size*0.9;
+    font-size:  $font-base-size*0.875;
   }
 }
 

@@ -18,13 +18,24 @@
     align-items: center;
     justify-content: space-between;
     li {
+      width: rem-calc(155);
+      @include breakpoint(small only) {
+        width: calc(33% - 8px);
+      }
       a {
-        width: rem-calc(155);
+        display: block;
+        @include breakpoint(small only) {
+          font-size: rem-calc(12)!important;
+          letter-spacing: 0!important;
+        }
       }
     }
   }
   &__prev {
-
+    @include breakpoint(small only) {
+      padding-left: rem-calc(20)!important;
+      padding-right: rem-calc(8)!important;
+    }
   }
   &__archive {
     display: inline-flex;
@@ -36,9 +47,16 @@
       margin-right: rem-calc(12);
       font-size: rem-calc(18);
       margin-top: rem-calc(2);
+      @include breakpoint(small only) {
+        display: none;
+      }
     }
   }
   &__next {
     margin-left: auto;
+    @include breakpoint(small only) {
+      padding-right: rem-calc(20)!important;
+      padding-left: rem-calc(8)!important;
+    }
   }
 }

@@ -71,7 +71,6 @@
             $('.c-slidebar-menu').toggleClass('is-active');
 
         });
-
     }
 
     growApp.prototype.footerMenu = function () {

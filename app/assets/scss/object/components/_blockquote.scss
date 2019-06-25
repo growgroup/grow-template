@@ -5,25 +5,25 @@
   border-bottom: 1px solid $border-base-color;
   border-left: 3px solid $color-primary;
   position: relative;
-  padding: 24px 24px 24px 48px;
+  padding: rem-calc(24) rem-calc(24) rem-calc(24) rem-calc(48);
   font-size: 0.8em;
-  margin: 16px 0;
+  margin: rem-calc(16) 0;
   @include breakpoint(small only) {
-    padding: 12px 12px 12px 34px;
+    padding: rem-calc(12) rem-calc(12) rem-calc(12) rem-calc(32);
   }
   &:before {
     content: "\f10d";
     display: block;
     font-family: "FontAwesome";
-    font-size: 20px;
+    font-size: rem-calc(20);
     color: $color-primary;
     position: absolute;
-    left: 12px;
-    top: 8px;
+    left: rem-calc(12);
+    top: rem-calc(8);
     @include breakpoint(small only) {
-      font-size: 16px;
-      top: 2px;
-      left: 8px;
+      font-size: rem-calc(20)*0.8;
+      top: rem-calc(2);
+      left: rem-calc(8);
     }
   }
 }

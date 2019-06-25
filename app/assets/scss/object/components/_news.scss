@@ -1,10 +1,30 @@
 .c-news {
+  @include breakpoint(small only) {
+    position: relative;
+    padding-bottom: rem-calc(72);
+  }
+  &__head {
+    @include breakpoint(small only) {
+      margin-bottom: rem-calc(16);
+    }
+  }
   &__title {
     text-align: left!important;
     margin: 0!important;
   }
   &__button {
     margin-top: rem-calc(56);
+    @include breakpoint(small only) {
+      margin-top: 0;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      right: 0;
+      text-align: center;
+      .c-button {
+        max-width: rem-calc(224);
+      }
+    }
   }
   &__block {
     text-decoration: none;
@@ -14,25 +34,41 @@
     display: flex;
     align-items: center;
     padding: rem-calc(24) 0 rem-calc(16);
+    @include breakpoint(small only) {
+      flex-wrap: wrap;
+      padding: rem-calc(16) 0 rem-calc(12)!important;
+    }
+    &:first-child {
+      padding-top: 0;
+    }
   }
   &__date {
     @include webfont-bold();
-    font-size: rem-calc(16);
     color: $color-primary;
     letter-spacing: 0;
   }
   &__label {
     margin-left: rem-calc(24);
+    @include breakpoint(small only) {
+      margin-left: rem-calc(16);
+    }
   }
   &__text {
     margin-left: rem-calc(24);
     font-weight: 700;
+    @include breakpoint(small only) {
+      margin-left: 0;
+      margin-top: rem-calc(8);
+    }
   }
   // ワンカラム
   &.is-onecolumn {
     .c-news__title {
       text-align: center!important;
       margin-bottom: rem-calc(40)!important;
+      @include breakpoint(small only) {
+        margin-bottom: rem-calc(24)!important;
+      }
     }
     .c-news__button {
       text-align: center;

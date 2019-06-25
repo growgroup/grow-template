@@ -1,4 +1,8 @@
 .c-anchor-nav {
+  margin-bottom: rem-calc(64);
+  @include breakpoint(small only) {
+    margin-bottom: rem-calc(64)/2;
+  }
   &__block {
     text-decoration: none;
     color: $font-base-color;
@@ -7,6 +11,10 @@
     text-align: center;
     padding: rem-calc(10) rem-calc(16);
     position: relative;
+    @include breakpoint(small only) {
+      margin-bottom: rem-calc(8);
+      border-width: 1px;
+    }
     &:after {
       content: "\f0dd";
       font-family: "FontAwesome";
