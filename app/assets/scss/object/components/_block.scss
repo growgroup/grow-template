@@ -7,7 +7,11 @@
   }
   &__image {
     @include breakpoint(small only) {
-      margin: rem-calc(16) 0;
+      margin-bottom: rem-calc(16);
+    }
+    img {
+      width: 100%;
+      height: auto;
     }
   }
 }

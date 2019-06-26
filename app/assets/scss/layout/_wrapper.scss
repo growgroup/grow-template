@@ -1,18 +1,12 @@
 
 .l-wrapper {
-  padding-bottom: 96px;
-  padding-top: 80px;
-  @media (max-width: 1200px) {
-    padding-right: 32px;
-    padding-left: 32px;
-  }
-  @media (max-width: 900px) {
-    padding-bottom: 32px;
-    padding-top: 32px;
-  }
+  padding-bottom: rem-calc(80);
+  padding-top: rem-calc(64);
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
   @include breakpoint(small only) {
-
-    padding-right: 16px;
-    padding-left: 16px;
+    padding-top: rem-calc(24);
+    padding-bottom: rem-calc(40);
   }
 }

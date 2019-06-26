@@ -27,9 +27,6 @@
   height: rem-calc(330);
   position: relative;
   overflow: hidden;
-  @include breakpoint(medium down) {
-    margin-top: rem-calc(55);
-  }
   @include breakpoint(small only) {
     height: 44vw;
   }

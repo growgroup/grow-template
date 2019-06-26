@@ -72,10 +72,6 @@ class App {
               return false
           }
           owls.imagesLoaded(function () {
-              $('.c-case-slider .owl-carousel').owlCarousel({
-                  items: 4,
-                  margin: 16
-              });
               $('.c-main-visual__slider').owlCarousel({
                   items: 1,
                   margin: 0,

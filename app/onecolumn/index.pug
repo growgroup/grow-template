@@ -3,7 +3,7 @@ block append config
   - current.id = "onecolumn" // ページのID
   - current.title = "ページ_1カラム" // タイトル
   - current.description = "これは私たちについての説明文です" // 説明文
-  - current.bodyClass = "aboutus" // body に付与するクラス
+  - current.bodyClass = "onecolumn" // body に付与するクラス
   - current.depth = 2 // ページの階層
 
 block page_header
@@ -14,7 +14,7 @@ block body
   main.l-main
     section.l-section.is-lg
       .l-container
-        .l-post-content.is-onecolumn
+        .l-post-content
           +c.anchor-nav
             .row
               .large-3.small-6
@@ -54,7 +54,7 @@ block body
                 +c.box
                   +e.block
                     +e.content
-                      h5 <i class="fa fa-circle-o" aria-hidden="true"></i>見出しレベル5
+                      h5 見出しレベル5
                       p ブロックテキストブロックテキストブロックテキストブロックテキストブロックテキストブロックテキストブロックテキストブロックテキストブロックテキストブロックテキストブロックテキストブロックテキストブロックテキストブロックテキストブロックテキストブロックテキスト
 
           div.u-mbs.is-top.is-lg

@@ -17,18 +17,20 @@
 //
 // Styleguide 2.10.0
 .c-pagination {
-  margin-top: 64px;
+  margin-top: rem-calc(48);
   @include breakpoint(small only) {
-    margin-top: 32px;
+    margin-top: rem-calc(32);
   }
-  > ul {
+  ul {
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  > ul > li {
+  ul li {
     margin-right: rem-calc(6);
   }
-  > ul > li > span,
-  > ul > li > a {
+  ul li span,
+  ul li a {
     @include webfont-bold();
     font-size: rem-calc(16);
     display: flex;
@@ -55,6 +57,12 @@
       background: $color-primary;
       border-color: $color-primary;
       color: $color-white;
+    }
+  }
+  // 左寄せ
+  &.is-align-left {
+    ul {
+      justify-content: flex-start;
     }
   }
 }

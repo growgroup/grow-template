@@ -318,12 +318,13 @@ $heading-accent-color: $font-base-color !default;
 
 .c-heading.is-icon {
   position: relative;
-  padding-left: rem-calc(38);
+  padding-left: rem-calc(32);
   @include breakpoint(small only) {
-    padding-left: rem-calc(28);
+    padding-left: rem-calc(24);
   }
   i,
-  span {
+  span,
+  &:before {
     font-size: rem-calc(24);
     color: $color-primary;
     position: absolute;

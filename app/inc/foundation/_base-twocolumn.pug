@@ -5,21 +5,22 @@ block layout
   block header
     include /inc/layout/_header.pug
 
-  // ページヘッダー
-  block page_header
+  //- スマホメニュー用のコンテナ
+  .c-slidebar-container.js-slidebar-container.is-top-to-bottom
 
-  .l-wrapper
-    .l-container.is-two-columns
-      section.l-main.is-two-columns
-        .l-post-content
-          //- メインコンテンツ
-          block body
+    // ページヘッダー
+    block page_header
+    .l-container
+      .l-wrapper
+        main.l-main.is-twocolumns
+          .l-post-content.is-twocolumns
+            //- メインコンテンツ
+            block body
 
-      aside.l-aside
-        block aside
+        aside.l-aside
+          block aside
 
-  +c_offer()
-  //- フッター
-  block footer
-    include /inc/layout/_footer.pug
-
+    +c_offer()
+    //- フッター
+    block footer
+      include /inc/layout/_footer.pug

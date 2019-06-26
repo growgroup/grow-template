@@ -30,6 +30,10 @@
     @include breakpoint(medium down) {
       width: rem-calc(418)/3;
     }
+    a,
+    img {
+      display: block;
+    }
   }
   &__content {
     display: flex;

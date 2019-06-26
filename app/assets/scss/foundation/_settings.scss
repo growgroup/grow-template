@@ -46,7 +46,7 @@ $color-state-success: #13a83a !default; // 成功
 $grid-row-width: 1140px !default; // グリッドの幅
 $grid-column-count: 12 !default; // グリッド数
 $grid-column-responsive-gutter: (// カラムとカラムの間隔
-        small: 24px, // モバイル
+        small: 16px, // モバイル
         medium: 36px, // タブレット以上
 );
 

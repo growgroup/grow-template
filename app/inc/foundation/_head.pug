@@ -51,37 +51,8 @@ html(lang="ja")
       |  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
   body(class!=current.bodyClass)
-
-    //- スマホメニューのボタン
-    a(href="#").c-slidebar-button.js-slidebar-button
-      span.c-slidebar-button__line
-        span
-        span
-        span
-      span.c-slidebar-button__text MENU
-    .c-slidebar-menu.js-slidebar-menu.is-top-to-bottom
-      ul
-        li: +a("/") ホーム
-        li: +a("/aboutus/") 私たちについて
-        li.c-slidebar-menu__parent.js-accordion
-          span(data-accordion-title="menu-title") 企業情報
-          ul.c-slidebar-menu__children(data-accordion-content="menu-text")
-            li: +a("/company/greeting/") 代表あいさつ
-            li: +a("/company/profile/") 会社概要
-            li: +a("/company/history/") 沿革
-            li: +a("/recruit/") 採用情報
-        li.c-slidebar-menu__parent.js-accordion
-          span(data-accordion-title="menu-title") 事業紹介
-          ul.c-slidebar-menu__children(data-accordion-content="menu-text")
-            li: +a("/service/traning/") 社員研修事業
-            li: +a("/service/project-management/") プロジェクトマネジメント事業
-            li: +a("/service/system/") システム開発事業
-        li: +a("/news/") お知らせ
-        li: +a("/faq/") よくあるご質問
-        li: +a("/voice/") お客様の声
-        li: +a("/blog/") 企業ブログ
-        li: +a("/contact/").is-contact お問い合わせ
-
+    //- スマホメニュー
+    +c_slidebar
     block layout
 
     //- フッターに組み込むスクリプト

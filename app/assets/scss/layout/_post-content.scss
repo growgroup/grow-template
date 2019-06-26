@@ -3,7 +3,7 @@
 // ヴィジュアルエディタ出力調整用css
 //
 
-.l-post-content.is-onecolumn {
+.l-post-content {
   p {
     text-align: left;
   }
@@ -20,6 +20,9 @@
     @extend .c-heading.is-border-under;
     margin-bottom: rem-calc(48);
     margin-top: 0;
+    @include breakpoint(small only) {
+      margin-bottom: rem-calc(24);
+    }
   }
   h4 {
     @extend .c-heading;
@@ -27,23 +30,40 @@
     @extend .c-heading.is-color-primary;
     @extend .c-heading.is-bg-color;
     margin-top: 0;
-    margin-bottom: rem-calc(16);
+    margin-bottom: rem-calc(24);
+    @include breakpoint(small only) {
+      margin-bottom: rem-calc(16);
+    }
   }
   h5 {
     @extend .c-heading;
     @extend .c-heading.is-xxs;
-    @extend .c-heading.is-color-primary;
+    color: $color-primary;
     @extend .c-heading.is-icon;
     margin-top: 0;
+    &:before {
+      content: "\f10c";
+      font-family: "FontAwesome";
+      line-height: 1;
+      display: block;
+    }
   }
   h6 {
     @extend .c-heading;
-    @extend .c-heading.is-xxs;
-    @extend .c-heading.is-color-primary;
-    @extend .c-heading.is-icon;
+    @extend .c-heading.is-xxxs;
     margin-top: 0;
   }
   table {
     @extend .c-table;
+  }
+}
+
+.l-post-content.is-twocolumns {
+  h2 {
+    @extend .c-heading.is-text-left;
+    margin-bottom: rem-calc(48);
+    @include breakpoint(small only) {
+      margin-bottom: rem-calc(24);
+    }
   }
 }

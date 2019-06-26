@@ -73,6 +73,7 @@
   &__heading {
     margin: 0;
     width: rem-calc(175);
+    flex-shrink: 0;
     @include breakpoint(medium down) {
       width: rem-calc(148);
     }
@@ -149,7 +150,14 @@
   }
 }
 
-
+// スマホメニューopen時
+.is-slidebar-active {
+  .l-header-minimal {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
 
 
 

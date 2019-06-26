@@ -32,7 +32,9 @@
     font-size: rem-calc(13);
   }
   &.is-sm {
-    font-size: rem-calc($font-small-size*0.8);
+    min-width: rem-calc(80);
+    font-size: rem-calc(12);
+    padding: 0 rem-calc(8);
   }
 
   // カラー

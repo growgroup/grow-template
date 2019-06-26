@@ -3,9 +3,11 @@ $layout-sidebar-width: rem-calc(320) !default;
 $layout-sidebar-float: left !default;
 
 .l-aside {
-  min-width: 276px;
+  width: 100%;
+  max-width: rem-calc(293);
   margin-left: auto;
-  @media (max-width: 900px) {
-
+  @include breakpoint(medium down) {
+    width: 100%;
+    max-width: 100%;
   }
 }

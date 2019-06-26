@@ -12,7 +12,10 @@
 //
 // Styleguide 2.16.0
 .c-post-navs {
-  margin-top: rem-calc(64);
+  margin: rem-calc(64) 0;
+  @include breakpoint(small only) {
+    margin: rem-calc(32) 0;
+  }
   ul {
     display: flex;
     align-items: center;
