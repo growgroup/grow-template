@@ -1,26 +1,34 @@
-// ページヘッダー
-//
-// 下層ページの各タイトル部
-//
-// markup:
-// <header class="c-page-header">
-//     <h1 class="c-page-header__title">ページヘッダータイトル</h1>
-//     <p class="c-page-header__subtitle">ページヘッダーサブタイトル</p>
-// </header>
-// <header class="c-page-header is-left">
-//    <div class="container">
-//        <h1 class="c-page-header__title">ページヘッダータイトル</h1>
-//        <p class="c-page-header__subtitle">ページヘッダーサブタイトル</p>
-//    </div>
-// </header>
-// <header class="c-page-header is-right">
-//    <div class="container">
-//        <h1 class="c-page-header__title">ページヘッダータイトル</h1>
-//        <p class="c-page-header__subtitle">ページヘッダーサブタイトル</p>
-//    </div>
-// </header>
-//
-// Styleguide 2.7.0
+/*
+---
+name: PageHeader
+category: Components
+---
+# 通常ページヘッダー
+```types.html
+<div class="c-page-header">
+          <div class="c-page-header__image"><img src="/dist/assets/images/img-page-header-format.jpg" alt="">
+          </div>
+          <div class="c-page-header__inner">
+            <h1 class="c-page-header__title">PAGE TITLE</h1>
+            <div class="c-page-header__subtitle">ページタイトル
+            </div>
+          </div>
+        </div>
+```
+*/
+
+/*
+# 通常ページヘッダー（画像なし）
+```types.html
+<div class="c-page-header  is-image-hidden">
+          <div class="c-page-header__inner">
+            <h1 class="c-page-header__title">PAGE TITLE</h1>
+            <div class="c-page-header__subtitle">ページタイトル
+            </div>
+          </div>
+        </div>
+```
+*/
 
 .c-page-header{
   width: 100%;

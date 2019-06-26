@@ -15,7 +15,6 @@ import fontAwesome from "font-awesome/scss/font-awesome.scss"
 import OwlCss from "owl.carousel/dist/assets/owl.carousel.css"
 import OwlThemeCss from "owl.carousel/dist/assets/owl.theme.default.css"
 
-
 class App {
   constructor() {
     this.Utils = new Utils();
@@ -71,6 +70,7 @@ class App {
           if (owls.length === 0) {
               return false
           }
+          //->スライダー
           owls.imagesLoaded(function () {
               $('.c-main-visual__slider').owlCarousel({
                   items: 1,
@@ -87,8 +87,24 @@ class App {
                   navText: ['<img src="/assets/images/icon-slider-prev.png" />','<img src="/assets/images/icon-slider-next.png" />'],
               });
           });
+          //->カルーセル
+          owls.imagesLoaded(function () {
+              $('.c-main-visual__carousel').owlCarousel({
+                  items: 3,
+                  margin: 0,
+                  dots: true,
+                  loop: true,
+                  nav: false,
+                  autoplayHoverPause: true,
+                  autoplay: true,
+                  autoplaySpeed: 500,
+                  autoWidth: false,
+                  autoHeight: false,
+                  center: true,
+                  navText: ['<img src="/assets/images/icon-slider-prev.png" />','<img src="/assets/images/icon-slider-next.png" />'],
+              });
+          });
       }
-
 
     $(function() {
         menuSlide();

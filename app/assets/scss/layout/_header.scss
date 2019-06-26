@@ -1,12 +1,28 @@
-// ヘッダー
-//
-// ヘッダーの標準スタイル
-//
-// markup:
-// <header class="l-header"></header>
-//
-// Styleguide 5.1.0
-
+/*
+---
+name: Header
+category: Layout
+---
+# 通常ヘッダー
+```types.html
+<header class="l-header">
+          <div class="l-container">
+            <div class="l-header__inner">
+              <div class="l-header__heading"><a href="/"><img src="/dist/assets/images/logo.png" alt="株式会社サンプル"></a>
+              </div>
+              <div class="l-header__content">
+                <ul class="l-header__submenu">
+                  <li><a href="#"><i class="fa fa-hospital-o" aria-hidden="true"></i>医療機関様へ</a>
+                  </li>
+                  <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>交通アクセス</a>
+                  </li>
+                </ul><a class="l-header__tel" href="tel: 00-0000-0000"><span><i class="fa fa-phone" aria-hidden="true"></i>00-0000-0000</span><small>受付時間 / 平日00：00～00：00</small></a><a class="l-header__button c-button is-sm" href="/contact/"><i class="fa fa-envelope" aria-hidden="true"></i>お問い合わせ</a>
+              </div>
+            </div>
+          </div>
+        </header>
+```
+*/
 .l-header {
   background-color: $color-white;
   width: 100%;

@@ -1,4 +1,4 @@
-name: Acme Design
+name: GG StyleGuide
 
 excludeDir:
 - dist
@@ -6,28 +6,18 @@ excludeDir:
 
 assets:
 - dist
-- fonts
 
 theme:
-    logo: assets/brand/logo.png
-
-    css:
-    - theme/theme.css
-
-    js:
-    - theme/theme.js
-
     sidebar:
         background: "#3b2a55"
         textColor: "#fff"
-
 examples:
     css:
-    - dist/css/app.min.css
-
+            - dist/assets/css/app.css
+            - dist/assets/css/style.css
     js:
-    - https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
-    - dist/js/app.min.js
+        - https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
+        - dist/assets/js/app.js
 
     doctypeTag: <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
     htmlTag: <html id="acme">
@@ -43,8 +33,3 @@ examples:
         <div style="padding: 20px">
             {html}
         </div>
-
-order:
-- +Introduction
-- +Installation
-- -Credits

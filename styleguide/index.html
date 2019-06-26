@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en-us" id="insta">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link href="_stylemark/css/all.css" rel="stylesheet">
+		<link rel="icon" href="" type="image/x-icon">
+
+		<!-- @todo Replace with custom icomoon/fontello bundle -->
+		<script src="https://use.fontawesome.com/6dd56ad32d.js"></script>
+
+		<title>GG StyleGuide</title>
+
+	</head>
+	<body class="overflow-x-off i-page theme-page">
+		<div class="i-page__content theme-content">
+
+			<div class="i-nav-select theme-mobile-nav">
+				<form class="form">
+					<select class="form-control form-control-lg theme-mobile-nav-select">
+						<option disabled selected>Go to…</option>
+							<optgroup label="Components">
+									<option value="main-visual">MainVisual</option>
+									<option value="page-header">PageHeader</option>
+							</optgroup>
+							<optgroup label="Layout">
+									<option value="footer">Footer</option>
+									<option value="global-nav">GlobalNav</option>
+									<option value="header">Header</option>
+									<option value="header-minimal">HeaderMinimal</option>
+							</optgroup>
+					</select>
+				</form>
+			</div>
+
+				<div id="category-components" class="theme-content-category">
+						<div id="main-visual" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">MainVisual</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">object/components/_main-visual.scss</span>
+	</span>
+	<div class="theme-content-element-description"><div id="通常-メインビジュアル" class="i-pad-top-5 i-section"><h1 class="i-pad-top-3 i-position-container"><a href="#通常-メインビジュアル" class="icon-link i-section__link -heading"></a>通常 メインビジュアル</h1></div><div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="main-visual-types.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="main-visual-types.html"
+                            data-initinview="true"
+                            data-title="Loading..." 
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;div class=&quot;c-main-visual&quot;&gt;
+          &lt;div class=&quot;c-main-visual__image&quot; style=&quot;background-image: url(/dist/assets/images/img-main-visual-01.jpg)&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;c-main-visual__inner&quot;&gt;
+            &lt;div class=&quot;c-main-visual__text&quot;&gt;&lt;img src=&quot;/dist/assets/images/img-main-visual-text.png&quot; alt=&quot;キャッチコピーが入ります&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;c-main-visual__button&quot;&gt;&lt;a class=&quot;c-button is-lg&quot; href=&quot;/aboutus/&quot;&gt;詳細はこちら&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;div class=&quot;c-main-visual&quot;&gt;
+          &lt;div class=&quot;c-main-visual__image&quot; style=&quot;background-image: url(/dist/assets/images/img-main-visual-01.jpg)&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;c-main-visual__inner&quot;&gt;
+            &lt;div class=&quot;c-main-visual__text&quot;&gt;&lt;img src=&quot;/dist/assets/images/img-main-visual-text.png&quot; alt=&quot;キャッチコピーが入ります&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;c-main-visual__button&quot;&gt;&lt;a class=&quot;c-button is-lg&quot; href=&quot;/aboutus/&quot;&gt;詳細はこちら&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;</code></pre>
+	</div>
+</div><div id="スライダー-メインビジュアル" class="i-pad-top-5 i-section"><h1 class="i-pad-top-3 i-position-container"><a href="#スライダー-メインビジュアル" class="icon-link i-section__link -heading"></a>スライダー_メインビジュアル</h1></div>
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;div class=&quot;c-main-visual&quot;&gt;
+          &lt;div class=&quot;c-main-visual__slider  owl-carousel&quot;&gt;
+            &lt;div class=&quot;c-main-visual__image&quot; style=&quot;background-image: url(/dist/assets/images/img-main-visual-01.jpg)&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;c-main-visual__image&quot; style=&quot;background-image: url(/dist/assets/images/img-main-visual-01.jpg)&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;c-main-visual__image&quot; style=&quot;background-image: url(/dist/assets/images/img-main-visual-01.jpg)&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;c-main-visual__inner&quot;&gt;
+            &lt;div class=&quot;c-main-visual__text&quot;&gt;&lt;img src=&quot;/dist/assets/images/img-main-visual-text.png&quot; alt=&quot;キャッチコピーが入ります&quot;/&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;c-main-visual__button&quot;&gt;&lt;a class=&quot;c-button is-lg&quot; href=&quot;/aboutus/&quot;&gt;詳細はこちら&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;div class=&quot;c-main-visual&quot;&gt;
+          &lt;div class=&quot;c-main-visual__slider  owl-carousel&quot;&gt;
+            &lt;div class=&quot;c-main-visual__image&quot; style=&quot;background-image: url(/dist/assets/images/img-main-visual-01.jpg)&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;c-main-visual__image&quot; style=&quot;background-image: url(/dist/assets/images/img-main-visual-01.jpg)&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;c-main-visual__image&quot; style=&quot;background-image: url(/dist/assets/images/img-main-visual-01.jpg)&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;c-main-visual__inner&quot;&gt;
+            &lt;div class=&quot;c-main-visual__text&quot;&gt;&lt;img src=&quot;/dist/assets/images/img-main-visual-text.png&quot; alt=&quot;キャッチコピーが入ります&quot;/&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;c-main-visual__button&quot;&gt;&lt;a class=&quot;c-button is-lg&quot; href=&quot;/aboutus/&quot;&gt;詳細はこちら&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+						<div id="page-header" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">PageHeader</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">object/components/_page-header.scss</span>
+	</span>
+	<div class="theme-content-element-description"><div id="通常ページヘッダー" class="i-pad-top-5 i-section"><h1 class="i-pad-top-3 i-position-container"><a href="#通常ページヘッダー" class="icon-link i-section__link -heading"></a>通常ページヘッダー</h1></div><div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="page-header-types.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="page-header-types.html"
+                            data-initinview="true"
+                            data-title="Loading..." 
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;div class=&quot;c-page-header&quot;&gt;
+          &lt;div class=&quot;c-page-header__image&quot;&gt;&lt;img src=&quot;/dist/assets/images/img-page-header-format.jpg&quot; alt=&quot;&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;c-page-header__inner&quot;&gt;
+            &lt;h1 class=&quot;c-page-header__title&quot;&gt;PAGE TITLE&lt;/h1&gt;
+            &lt;div class=&quot;c-page-header__subtitle&quot;&gt;ページタイトル
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;div class=&quot;c-page-header&quot;&gt;
+          &lt;div class=&quot;c-page-header__image&quot;&gt;&lt;img src=&quot;/dist/assets/images/img-page-header-format.jpg&quot; alt=&quot;&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;c-page-header__inner&quot;&gt;
+            &lt;h1 class=&quot;c-page-header__title&quot;&gt;PAGE TITLE&lt;/h1&gt;
+            &lt;div class=&quot;c-page-header__subtitle&quot;&gt;ページタイトル
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+				</div>
+				<div id="category-layout" class="theme-content-category">
+						<div id="footer" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Footer</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">layout/_footer.scss</span>
+	</span>
+	<div class="theme-content-element-description"><div id="サイトマップ型フッター" class="i-pad-top-5 i-section"><h1 class="i-pad-top-3 i-position-container"><a href="#サイトマップ型フッター" class="icon-link i-section__link -heading"></a>サイトマップ型フッター</h1></div><div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="footer-types.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="footer-types.html"
+                            data-initinview="true"
+                            data-title="Loading..." 
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;footer class=&quot;l-footer&quot;&gt;
+      &lt;div class=&quot;l-container&quot;&gt;
+        &lt;div class=&quot;l-footer__menu&quot;&gt;
+          &lt;div class=&quot;l-footer__block&quot;&gt;
+            &lt;ul class=&quot;l-footer__menulist&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/&quot;&gt;ホーム&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/aboutus/&quot;&gt;私たちについて&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/case/&quot;&gt;導入事例&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;l-footer__block&quot;&gt;
+            &lt;div class=&quot;l-footer__menutitle&quot;&gt;&lt;span&gt;企業情報&lt;/span&gt;&lt;/div&gt;
+            &lt;ul class=&quot;l-footer__menulist is-sub&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/company/greeting/&quot;&gt;代表あいさつ&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/company/profile/&quot;&gt;会社概要&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/company/history/&quot;&gt;沿革&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/recruit/&quot;&gt;採用情報&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;l-footer__block&quot;&gt;
+            &lt;div class=&quot;l-footer__menutitle&quot;&gt;&lt;span&gt;事業紹介&lt;/span&gt;&lt;/div&gt;
+            &lt;ul class=&quot;l-footer__menulist is-sub&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/service/traning/&quot;&gt;社員研修事業&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/service/project-management/&quot;&gt;プロジェクトマネジメント事業&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/service/system/&quot;&gt;システム開発事業&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;l-footer__block&quot;&gt;
+            &lt;div class=&quot;l-footer__menutitle&quot;&gt;&lt;span&gt;お知らせ&lt;/span&gt;&lt;/div&gt;
+            &lt;ul class=&quot;l-footer__menulist is-sub&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/news/&quot;&gt;更新情報&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/news/&quot;&gt;ニュースリリース&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;l-footer__block&quot;&gt;
+            &lt;ul class=&quot;l-footer__menulist&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/blog/&quot;&gt;企業ブログ&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/media/&quot;&gt;企業メディア&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/faq/&quot;&gt;よくあるご質問&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/voice/&quot;&gt;お客様の声&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/contact/&quot;&gt;お問い合わせ&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;l-footer__content&quot;&gt;&lt;a class=&quot;l-footer__logo&quot; href=&quot;/&quot;&gt;&lt;img src=&quot;/dist/assets/images/logo-white.png&quot; alt=&quot;ロゴ&quot;&gt;&lt;/a&gt;
+          &lt;address class=&quot;l-footer__address&quot;&gt;〒464-0850 &lt;br&gt;愛知県名古屋市千種区今池3丁目12-20 KAビル6F&lt;br&gt;TEL：052-753-6413 / FAX：052-753-6414&lt;/address&gt;&lt;small class=&quot;l-footer__copyright&quot;&gt;＠2019 サンプル Co.Ltd.&lt;/small&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;footer class=&quot;l-footer&quot;&gt;
+      &lt;div class=&quot;l-container&quot;&gt;
+        &lt;div class=&quot;l-footer__menu&quot;&gt;
+          &lt;div class=&quot;l-footer__block&quot;&gt;
+            &lt;ul class=&quot;l-footer__menulist&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/&quot;&gt;ホーム&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/aboutus/&quot;&gt;私たちについて&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/case/&quot;&gt;導入事例&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;l-footer__block&quot;&gt;
+            &lt;div class=&quot;l-footer__menutitle&quot;&gt;&lt;span&gt;企業情報&lt;/span&gt;&lt;/div&gt;
+            &lt;ul class=&quot;l-footer__menulist is-sub&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/company/greeting/&quot;&gt;代表あいさつ&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/company/profile/&quot;&gt;会社概要&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/company/history/&quot;&gt;沿革&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/recruit/&quot;&gt;採用情報&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;l-footer__block&quot;&gt;
+            &lt;div class=&quot;l-footer__menutitle&quot;&gt;&lt;span&gt;事業紹介&lt;/span&gt;&lt;/div&gt;
+            &lt;ul class=&quot;l-footer__menulist is-sub&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/service/traning/&quot;&gt;社員研修事業&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/service/project-management/&quot;&gt;プロジェクトマネジメント事業&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/service/system/&quot;&gt;システム開発事業&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;l-footer__block&quot;&gt;
+            &lt;div class=&quot;l-footer__menutitle&quot;&gt;&lt;span&gt;お知らせ&lt;/span&gt;&lt;/div&gt;
+            &lt;ul class=&quot;l-footer__menulist is-sub&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/news/&quot;&gt;更新情報&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/news/&quot;&gt;ニュースリリース&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;l-footer__block&quot;&gt;
+            &lt;ul class=&quot;l-footer__menulist&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/blog/&quot;&gt;企業ブログ&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/media/&quot;&gt;企業メディア&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/faq/&quot;&gt;よくあるご質問&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/voice/&quot;&gt;お客様の声&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;/contact/&quot;&gt;お問い合わせ&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;l-footer__content&quot;&gt;&lt;a class=&quot;l-footer__logo&quot; href=&quot;/&quot;&gt;&lt;img src=&quot;/dist/assets/images/logo-white.png&quot; alt=&quot;ロゴ&quot;&gt;&lt;/a&gt;
+          &lt;address class=&quot;l-footer__address&quot;&gt;〒464-0850 &lt;br&gt;愛知県名古屋市千種区今池3丁目12-20 KAビル6F&lt;br&gt;TEL：052-753-6413 / FAX：052-753-6414&lt;/address&gt;&lt;small class=&quot;l-footer__copyright&quot;&gt;＠2019 サンプル Co.Ltd.&lt;/small&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+						<div id="global-nav" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">GlobalNav</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">layout/_global-nav.scss</span>
+	</span>
+	<div class="theme-content-element-description"><div id="通常グローバルナビ" class="i-pad-top-5 i-section"><h1 class="i-pad-top-3 i-position-container"><a href="#通常グローバルナビ" class="icon-link i-section__link -heading"></a>通常グローバルナビ</h1></div><div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="global-nav-types.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="global-nav-types.html"
+                            data-initinview="true"
+                            data-title="Loading..." 
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;nav class=&quot;l-global-nav&quot;&gt;
+          &lt;div class=&quot;l-container&quot;&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;ホーム&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;メニュー1&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;メニュー2&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;メニュー3&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;メニュー4&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;メニュー5&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;メニュー6&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/nav&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;nav class=&quot;l-global-nav&quot;&gt;
+          &lt;div class=&quot;l-container&quot;&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;ホーム&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;メニュー1&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;メニュー2&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;メニュー3&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;メニュー4&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;メニュー5&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;メニュー6&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/nav&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+						<div id="header" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Header</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">layout/_header.scss</span>
+	</span>
+	<div class="theme-content-element-description"><div id="通常ヘッダー" class="i-pad-top-5 i-section"><h1 class="i-pad-top-3 i-position-container"><a href="#通常ヘッダー" class="icon-link i-section__link -heading"></a>通常ヘッダー</h1></div><div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="header-types.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="header-types.html"
+                            data-initinview="true"
+                            data-title="Loading..." 
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;header class=&quot;l-header&quot;&gt;
+          &lt;div class=&quot;l-container&quot;&gt;
+            &lt;div class=&quot;l-header__inner&quot;&gt;
+              &lt;div class=&quot;l-header__heading&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;/dist/assets/images/logo.png&quot; alt=&quot;株式会社サンプル&quot;&gt;&lt;/a&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;l-header__content&quot;&gt;
+                &lt;ul class=&quot;l-header__submenu&quot;&gt;
+                  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-hospital-o&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;医療機関様へ&lt;/a&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-map-marker&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;交通アクセス&lt;/a&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;&lt;a class=&quot;l-header__tel&quot; href=&quot;tel: 00-0000-0000&quot;&gt;&lt;span&gt;&lt;i class=&quot;fa fa-phone&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;00-0000-0000&lt;/span&gt;&lt;small&gt;受付時間 / 平日00：00～00：00&lt;/small&gt;&lt;/a&gt;&lt;a class=&quot;l-header__button c-button is-sm&quot; href=&quot;/contact/&quot;&gt;&lt;i class=&quot;fa fa-envelope&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;お問い合わせ&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/header&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;header class=&quot;l-header&quot;&gt;
+          &lt;div class=&quot;l-container&quot;&gt;
+            &lt;div class=&quot;l-header__inner&quot;&gt;
+              &lt;div class=&quot;l-header__heading&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;/dist/assets/images/logo.png&quot; alt=&quot;株式会社サンプル&quot;&gt;&lt;/a&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;l-header__content&quot;&gt;
+                &lt;ul class=&quot;l-header__submenu&quot;&gt;
+                  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-hospital-o&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;医療機関様へ&lt;/a&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-map-marker&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;交通アクセス&lt;/a&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;&lt;a class=&quot;l-header__tel&quot; href=&quot;tel: 00-0000-0000&quot;&gt;&lt;span&gt;&lt;i class=&quot;fa fa-phone&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;00-0000-0000&lt;/span&gt;&lt;small&gt;受付時間 / 平日00：00～00：00&lt;/small&gt;&lt;/a&gt;&lt;a class=&quot;l-header__button c-button is-sm&quot; href=&quot;/contact/&quot;&gt;&lt;i class=&quot;fa fa-envelope&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;お問い合わせ&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/header&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+						<div id="header-minimal" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">HeaderMinimal</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">layout/_header-minimal.scss</span>
+	</span>
+	<div class="theme-content-element-description"><div id="ミニマルヘッダー" class="i-pad-top-5 i-section"><h1 class="i-pad-top-3 i-position-container"><a href="#ミニマルヘッダー" class="icon-link i-section__link -heading"></a>ミニマルヘッダー</h1></div><div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="header-minimal-types.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="header-minimal-types.html"
+                            data-initinview="true"
+                            data-title="Loading..." 
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;header class=&quot;l-header-minimal&quot;&gt;
+      &lt;div class=&quot;l-header-minimal__inner&quot;&gt;
+        &lt;div class=&quot;l-header-minimal__text&quot;&gt;テキストテキストテキストテキストテキスト&lt;/div&gt;&lt;a class=&quot;l-header-minimal__tel&quot; href=&quot;tel: 00-0000-0000&quot;&gt;&lt;span&gt;&lt;i class=&quot;fa fa-phone&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;00-0000-0000&lt;/span&gt;&lt;small&gt;受付時間 / 平日00：00～00：00&lt;/small&gt;&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;l-header-minimal__content&quot;&gt;
+        &lt;div class=&quot;l-header-minimal__heading&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;/dist/assets/images/logo.png&quot; alt=&quot;株式会社サンプル&quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;nav class=&quot;l-header-minimal__nav&quot;&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;/onecolumn/&quot;&gt;1COLUMN&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/twocolumns/&quot;&gt;2COLUMN&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/format/&quot;&gt;FORMAT&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/archive-onecolumn/&quot;&gt;ARCHIVE1&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/archive-twocolumns/&quot;&gt;ARCHIVE2&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/nav&gt;&lt;a class=&quot;l-header-minimal__button c-button is-sm&quot; href=&quot;/contact/&quot;&gt;&lt;i class=&quot;fa fa-envelope&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;お問い合わせ&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;header class=&quot;l-header-minimal&quot;&gt;
+      &lt;div class=&quot;l-header-minimal__inner&quot;&gt;
+        &lt;div class=&quot;l-header-minimal__text&quot;&gt;テキストテキストテキストテキストテキスト&lt;/div&gt;&lt;a class=&quot;l-header-minimal__tel&quot; href=&quot;tel: 00-0000-0000&quot;&gt;&lt;span&gt;&lt;i class=&quot;fa fa-phone&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;00-0000-0000&lt;/span&gt;&lt;small&gt;受付時間 / 平日00：00～00：00&lt;/small&gt;&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;l-header-minimal__content&quot;&gt;
+        &lt;div class=&quot;l-header-minimal__heading&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;/dist/assets/images/logo.png&quot; alt=&quot;株式会社サンプル&quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;nav class=&quot;l-header-minimal__nav&quot;&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;/onecolumn/&quot;&gt;1COLUMN&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/twocolumns/&quot;&gt;2COLUMN&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/format/&quot;&gt;FORMAT&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/archive-onecolumn/&quot;&gt;ARCHIVE1&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/archive-twocolumns/&quot;&gt;ARCHIVE2&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/nav&gt;&lt;a class=&quot;l-header-minimal__button c-button is-sm&quot; href=&quot;/contact/&quot;&gt;&lt;i class=&quot;fa fa-envelope&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;お問い合わせ&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+				</div>
+		</div>
+		<div
+			class="i-page__sidebar theme-sidebar"
+			style="background: #3b2a55;color: #fff;"
+		>
+			<h1 class="i-sidebar-title h4 mt-4 theme-sidebar-header">
+				<span class="theme-sidebar-header-title">GG StyleGuide</span>
+			</h1>
+			
+			<div class="relative mt-3 mb-2 px-0 theme-sidebar-search">
+				<div class="i-search-input">
+					<input id="search-filter" name="filter" type="search" placeholder="Search" class="form-control i-sidebar-item-filter">
+					<label for="search-filter" class="search-input-icon icon-search"></label>
+					<button type="button" class="i-search-input-reset" aria-label="Clear">
+						<i class="icon-cross"></i>
+					</button>
+				</div>
+			</div>
+			
+			<div class="theme-sidebar-categories">
+					<div class="i-sidebar-list-group theme-sidebar-category">
+			
+						<h5
+							class="pt-4 mb-1 theme-sidebar-category-title"
+							data-filter-value=" MainVisual  PageHeader "
+						>
+							<a href="#category-components" class="i-sidebar-list-item">
+								<b>Components</b>
+							</a>
+						</h5>
+			
+						<div>
+								<a
+									href="#main-visual"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="MainVisual"
+								>
+									<span>MainVisual</span>
+								</a>
+								<a
+									href="#page-header"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="PageHeader"
+								>
+									<span>PageHeader</span>
+								</a>
+						</div>
+			
+					</div>
+					<div class="i-sidebar-list-group theme-sidebar-category">
+			
+						<h5
+							class="pt-4 mb-1 theme-sidebar-category-title"
+							data-filter-value=" Footer  GlobalNav  Header  HeaderMinimal "
+						>
+							<a href="#category-layout" class="i-sidebar-list-item">
+								<b>Layout</b>
+							</a>
+						</h5>
+			
+						<div>
+								<a
+									href="#footer"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Footer"
+								>
+									<span>Footer</span>
+								</a>
+								<a
+									href="#global-nav"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="GlobalNav"
+								>
+									<span>GlobalNav</span>
+								</a>
+								<a
+									href="#header"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Header"
+								>
+									<span>Header</span>
+								</a>
+								<a
+									href="#header-minimal"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="HeaderMinimal"
+								>
+									<span>HeaderMinimal</span>
+								</a>
+						</div>
+			
+					</div>
+			</div>
+			
+			<div class="i-sidebar-filter-no-results i-muted i-pad-horiz-2 theme-sidebar-search-no-results">
+				No matches.
+			</div>
+			
+			<div class="row no-gutters mt-auto py-4 theme-sidebar-footer">
+				<span class="col">
+					Generated by <a href="https://github.com/nextbigsoundinc/stylemark">Stylemark</a>
+				</span>
+			</div>
+		</div>
+
+		<script src="_stylemark/js/vendor/jquery-3.2.1.slim.min.js"></script>
+		<script src="_stylemark/js/vendor/popper.min.js"></script>
+		<script src="_stylemark/js/vendor/tether.min.js"></script>
+		<script src="_stylemark/js/vendor/bootstrap.min.js"></script>
+		<script src="_stylemark/js/vendor/iframeResizer.min.js"></script>
+		<script src="_stylemark/js/vendor/lazyframe.min.js"></script>
+		<script src="_stylemark/js/vendor/highlight.min.js"></script>
+		<script src="_stylemark/js/vendor/clipboard.min.js"></script>
+		<script src="_stylemark/js/vendor/in-view.min.js"></script>
+		<script src="_stylemark/js/app.js"></script>
+
+	</body>
+</html>
